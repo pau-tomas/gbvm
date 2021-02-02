@@ -1,7 +1,12 @@
 #ifndef PROJECTILES_H
 #define PROJECTILES_H
 
+#include "math.h"
+#include "collision.h"
+#include "gbs_types.h"
+
 #define MAX_PROJECTILES 5
+#define MAX_PROJECTILE_DEFS 5
 
 typedef struct projectile_t
 {
@@ -22,6 +27,6 @@ typedef struct projectile_t
 
 void projectiles_init() __banked;
 void projectiles_update() __banked;
-void projectile_launch(UBYTE index, upoint16_t pos, UBYTE angle) __banked;
+void projectile_launch(UBYTE index, upoint16_t *pos, UBYTE angle) __banked;
 
 #endif
