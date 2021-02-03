@@ -12,6 +12,7 @@
 #include "input.h"
 #include "math.h"
 #include "Actor.h"
+#include "projectiles.h"
 #include "shadow.h"
 
 #define ui_frame_tl_tiles 0xC0u
@@ -254,6 +255,7 @@ UBYTE ui_run_menu() __banked {
         
         toggle_shadow_OAM();
         actors_update();
+        projectiles_render();
         activate_shadow_OAM();
 
         game_time++;
@@ -309,6 +311,7 @@ void ui_run_modal(UBYTE wait_flags) __banked {
 
         toggle_shadow_OAM();
         actors_update();
+        projectiles_render();
         activate_shadow_OAM();
 
         game_time++;

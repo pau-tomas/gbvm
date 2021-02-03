@@ -12,6 +12,9 @@ ___bank_script_s2a0_interact = 255
 
 _script_s2a0_interact::
 
+        VM_PUSH_CONST           1
+        VM_ACTOR_EMOTE          .ARG0, ___bank_spritesheet_1, _spritesheet_1
+
         ;VM_SOUND_PLAY           2, 1, 0x4c,0x81,0x43,0x73,0x86
         VM_WAVE_PLAY             32, ___bank_waveform_0, _waveform_0, ___size_waveform_0 
 

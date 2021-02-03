@@ -3,6 +3,22 @@
 
 // #define STRICT_LINKED_LIST
 
+#define LL_PUSH_HEAD(head, item) \
+    (item)->next = (head); \
+    (head) = (item)
+
+#define LL_REMOVE_ITEM(head, item, prev) \
+    if (prev) { \
+        (prev)->next = (item)->next; \
+    } else { \
+        (head) = (item)->next; \
+    }
+
+#define LL_REMOVE_HEAD(head) \
+    if (head) { \
+        (head) = (head)->next; \
+    }
+
 #define DL_PUSH_HEAD(head, item) \
     (item)->prev = 0; \
     (item)->next = (head); \

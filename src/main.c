@@ -6,6 +6,7 @@
 #include "bankdata.h"
 #include "game_time.h"
 #include "Actor.h"
+#include "projectiles.h"
 #include "camera.h"
 #include "linked_list.h"
 #include "ui.h"
@@ -73,7 +74,8 @@ void process_VM() {
                 camera_update();
                 scroll_update();
                 actors_update();
-                // projectiles_update();
+                projectiles_update();
+                projectiles_render();
 
                 activate_shadow_OAM();
 

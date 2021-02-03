@@ -6,6 +6,7 @@
 #include "data_manager.h"
 #include "linked_list.h"
 #include "Actor.h"
+#include "projectiles.h"
 #include "scroll.h"
 #include "trigger.h"
 #include "camera.h"
@@ -166,7 +167,7 @@ UBYTE load_scene(const scene_t* scene, UBYTE bank, UBYTE init_data) __banked {
         scene_LCD_type = LCD_parallax;
     }
 
-    //   ProjectilesInit();
+    projectiles_init();
 
     if (scene_type != SCENE_TYPE_LOGO) {
         // Load player

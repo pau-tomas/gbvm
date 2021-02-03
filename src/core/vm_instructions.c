@@ -6,6 +6,7 @@
 #include "vm_music.h"
 #include "vm_camera.h"
 #include "vm_math.h"
+#include "vm_projectiles.h"
 
 // here we define all VM instructions: their handlers and parameter lengths in bytes
 // this array must be nonbanked as well as STEP_VM()
@@ -134,5 +135,22 @@ const SCRIPT_CMD script_cmds[] = {
     // camera instructions section
     {vm_camera_move_to,         4}, // 0x70
     {vm_camera_set_pos,         2}, // 0x71
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+    {0, 0},
+
+    // projectiles instructions section
+    {vm_projectile_launch,         3}, // 0x80
 
 };

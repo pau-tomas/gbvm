@@ -599,3 +599,10 @@ OP_VM_CAMERA_SET_POS     = 0x71
 .macro VM_CAMERA_SET_POS IDX
         .db OP_VM_CAMERA_SET_POS, #>IDX, #<IDX
 .endm
+
+; --- PROJECTILES ---------------------------------
+
+OP_VM_PROJECTILE_LAUNCH     = 0x80
+.macro VM_PROJECTILE_LAUNCH TYPE, IDX
+        .db OP_VM_PROJECTILE_LAUNCH, #>IDX, #<IDX, #<TYPE
+.endm

@@ -345,6 +345,25 @@ actor_t *actor_overlapping_player(UBYTE inc_noclip) __banked {
     return NULL;
 }
 
+actor_t *actor_overlapping_bb(bounding_box_t *bb, upoint16_t *offset, UBYTE inc_noclip) __banked {
+    actor_t *actor = &PLAYER;
+
+    while (actor) {
+        if (!inc_noclip && !actor->collision_enabled) {
+            actor = actor->prev;
+            continue;
+        };
+
+        if (bb_intersects(bb, offset, &actor->bounds, &actor->pos)) {
+            return actor;
+        }
+
+        actor = actor->prev;
+    }
+
+    return NULL;
+}
+
 void actors_handle_player_collision() __banked {
     if (player_iframes == 0 && player_collision_actor != NULL) {
         if (player_collision_actor->collision_group) {
