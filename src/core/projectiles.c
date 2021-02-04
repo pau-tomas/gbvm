@@ -1,3 +1,5 @@
+#pragma bank 3
+
 #include "projectiles.h"
 
 #include "scroll.h"
