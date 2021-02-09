@@ -72,13 +72,14 @@ typedef struct trigger_t {
 typedef struct scene_t {
     UINT8 width, height;
     scene_type_e type;
-    UINT8 n_actors, n_triggers, n_sprites;
+    UINT8 n_actors, n_triggers, n_projectiles, n_sprites;
     far_ptr_t player_sprite;
     far_ptr_t background, collisions, colors, palette, sprite_palette;
     far_ptr_t script_init, script_p_hit1, script_p_hit2, script_p_hit3;
     far_ptr_t sprites;
     far_ptr_t actors;
     far_ptr_t triggers;
+    far_ptr_t projectiles;    
     parallax_row_t parallax_rows[3];
 } scene_t;
 
@@ -101,11 +102,10 @@ typedef struct spritesheet_t {
     UINT8 tiles[];
 } spritesheet_t;
 
-typedef struct projectile_t
+typedef struct projectile_def_t
 {
-    upoint16_t pos;
     bounding_box_t bounds;
-    UBYTE angle;
+    far_ptr_t sprite;
     UBYTE life_time;
     UINT8 base_tile;
     UINT8 frame;
@@ -114,7 +114,13 @@ typedef struct projectile_t
     UINT8 anim_tick;
     UINT8 move_speed;
     collision_group_e collision_group;
-    far_ptr_t sprite;
+} projectile_def_t;
+
+typedef struct projectile_t
+{
+    upoint16_t pos;
+    UBYTE angle;
+    projectile_def_t def;
     struct projectile_t *next;
 } projectile_t;
 

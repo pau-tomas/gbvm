@@ -11,6 +11,7 @@
 #include "data/palette_0.h"
 #include "data/scene_2_actors.h"
 #include "data/scene_2_triggers.h"
+#include "data/scene_2_projectiles.h"
 #include "data/scene_2_sprites.h"
 #include "data/script_s2_init.h"
 #include "data/script_s2_p_hit1.h"
@@ -29,9 +30,11 @@ const struct scene_t scene_2 = {
   .player_sprite = TO_FAR_PTR_T(spritesheet_0),
   .n_actors = 1,
   .n_triggers = 3,
-  .n_sprites = 1,
+  .n_projectiles = 2,
+  .n_sprites = 2,
   .actors = TO_FAR_PTR_T(scene_2_actors),
   .triggers = TO_FAR_PTR_T(scene_2_triggers),
+  .projectiles = TO_FAR_PTR_T(scene_2_projectiles),
   .sprites = TO_FAR_PTR_T(scene_2_sprites),
   .script_init = TO_FAR_PTR_T(script_s2_init),
   .script_p_hit1 = TO_FAR_PTR_T(script_s2_p_hit1)

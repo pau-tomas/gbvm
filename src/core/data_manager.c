@@ -35,6 +35,7 @@ UINT16 image_width;
 UINT16 image_height;
 UBYTE sprites_len;
 UBYTE actors_len = 0;
+UBYTE projectiles_len;
 UBYTE player_sprite_len = 0;
 scene_type_e scene_type;
 LCD_isr_e scene_LCD_type;
@@ -142,6 +143,7 @@ UBYTE load_scene(const scene_t* scene, UBYTE bank, UBYTE init_data) __banked {
     scene_type = scn.type;
     actors_len = scn.n_actors + 1;
     triggers_len = scn.n_triggers;
+    projectiles_len = scn.n_projectiles;
     sprites_len = scn.n_sprites;
 
     collision_bank = scn.collisions.bank;
@@ -235,6 +237,18 @@ UBYTE load_scene(const scene_t* scene, UBYTE bank, UBYTE init_data) __banked {
                 if (actor->pinned) activate_actor(actor);
             }
         }
+
+        // Load projectiles
+        if (projectiles_len  != 0) {
+            projectile_def_t * projectile_def = projectile_defs;
+            MemcpyBanked(projectile_def, scn.projectiles.ptr, sizeof(projectile_def_t) * projectiles_len, scn.projectiles.bank);
+            for (i = projectiles_len; i != 0; i--, projectile_def++) {
+                // resolve and set base_tile for each projectile
+                UBYTE idx = get_farptr_index(scn.sprites.ptr, scn.sprites.bank, sprites_len, &projectile_def->sprite);
+                projectile_def->base_tile = (idx < sprites_len) ? base_tiles[idx] : 0;
+            }
+        }
+
     } else {
         actor_t *actor = actors_active_head;
         while (actor) {

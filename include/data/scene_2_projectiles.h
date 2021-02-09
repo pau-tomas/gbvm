@@ -7,6 +7,6 @@
 #include "gbs_types.h"
 
 extern const void __bank_scene_2_projectiles;
-extern const struct actor_t scene_2_projectiles[];
+extern const struct projectile_def_t scene_2_projectiles[];
 
 #endif

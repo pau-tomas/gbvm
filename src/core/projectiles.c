@@ -2,6 +2,8 @@
 
 #include "projectiles.h"
 
+#include <string.h>
+
 #include "scroll.h"
 #include "actor.h"
 #include "metasprite.h"
@@ -11,7 +13,7 @@
 #include "data/spritesheet_0.h"
 
 projectile_t projectiles[MAX_PROJECTILES];
-projectile_t projectile_defs[MAX_PROJECTILE_DEFS];
+projectile_def_t projectile_defs[MAX_PROJECTILE_DEFS];
 projectile_t *projectiles_active_head;
 projectile_t *projectiles_inactive_head;
 
@@ -33,7 +35,7 @@ void projectiles_update() __banked {
     prev_projectile = NULL;
 
     while (projectile) {
-        if (projectile->life_time == 0) {
+        if (projectile->def.life_time == 0) {
             // Remove projectile
             next = projectile->next;
             LL_REMOVE_ITEM(projectiles_active_head, projectile, prev_projectile);
@@ -41,12 +43,21 @@ void projectiles_update() __banked {
             projectile = next;
             continue;
         }
-        projectile->life_time--;
+        projectile->def.life_time--;
     
-        // Move projectile
-        point_translate_angle(&projectile->pos, projectile->angle, projectile->move_speed);
+        // Check reached animation tick frame
+        if ((game_time & projectile->def.anim_tick) == 0) {
+            projectile->def.frame++;
+            // Check reached end of animation
+            if (projectile->def.frame == projectile->def.frame_end) {
+                projectile->def.frame = projectile->def.frame_start;
+            }
+        }
 
-        actor_t *hit_actor = actor_overlapping_bb(&projectile->bounds, &projectile->pos, FALSE);
+        // Move projectile
+        point_translate_angle(&projectile->pos, projectile->angle, projectile->def.move_speed);
+
+        actor_t *hit_actor = actor_overlapping_bb(&projectile->def.bounds, &projectile->pos, FALSE);
         if (hit_actor) {
             // Hit! - Fire collision script here
             if (hit_actor->script.bank) {
@@ -88,12 +99,12 @@ void projectiles_render() __nonbanked {
             continue;
         }
 
-        SWITCH_ROM_MBC1(projectile->sprite.bank);
-        spritesheet_t *sprite = projectile->sprite.ptr;
+        SWITCH_ROM_MBC1(projectile->def.sprite.bank);
+        spritesheet_t *sprite = projectile->def.sprite.ptr;
     
         allocated_hardware_sprites += move_metasprite(
-            *(sprite->metasprites + projectile->frame),
-            projectile->base_tile,
+            *(sprite->metasprites + projectile->def.frame),
+            projectile->def.base_tile,
             allocated_hardware_sprites,
             screen_x,
             screen_y
@@ -106,27 +117,13 @@ void projectiles_render() __nonbanked {
     SWITCH_ROM_MBC1(_save);
 }
 
-void projectile_launch(UBYTE index, upoint16_t *pos, UBYTE angle) __banked {
-    index;
-    
+void projectile_launch(UBYTE index, upoint16_t *pos, UBYTE angle) __banked {    
     projectile_t *projectile = projectiles_inactive_head;
     if (projectile) {
         projectile->pos.x = pos->x;
         projectile->pos.y = pos->y;
         projectile->angle = angle;
-
-        // @todo memcpy this from projectile defs
-        projectile->bounds.left = 4;
-        projectile->bounds.right = 12;
-        projectile->bounds.top = -12;
-        projectile->bounds.bottom = -4;    
-        projectile->move_speed = 32;
-        projectile->sprite.bank = (char)&__bank_spritesheet_0;
-        projectile->sprite.ptr = (void *)&spritesheet_0;
-        projectile->base_tile = 0;
-        projectile->frame = 0;    
-        projectile->life_time = 100;
-
+        memcpy(&projectile->def, &projectile_defs[index], sizeof(projectile_def_t));
         LL_REMOVE_HEAD(projectiles_inactive_head);
         LL_PUSH_HEAD(projectiles_active_head, projectile);
     }

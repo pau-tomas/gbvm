@@ -8,6 +8,8 @@
 #define MAX_PROJECTILES 5
 #define MAX_PROJECTILE_DEFS 5
 
+extern projectile_def_t projectile_defs[MAX_PROJECTILES];
+
 void projectiles_init() __banked;
 void projectiles_update() __banked;
 void projectiles_render() __nonbanked;
