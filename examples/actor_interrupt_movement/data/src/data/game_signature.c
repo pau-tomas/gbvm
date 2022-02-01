@@ -1,1 +1,0 @@
-const unsigned long save_signature = 0x4A2DA025;

@@ -1,5 +1,5 @@
 {
-    "name": "Actor Stop Movement Testing",
+    "name": "Actor Move Cancel",
     "author": "Justin",
     "_version": "3.0.0",
     "_release": "1",
@@ -131,11 +131,11 @@
                                         "id": "61262b37-5aea-4e74-97ae-445c6e6d2218"
                                     },
                                     {
-                                        "command": "EVENT_ACTOR_INTERRUPT_MOVEMENT",
+                                        "command": "EVENT_ACTOR_MOVE_CANCEL",
                                         "args": {
                                             "actorId": "$self$"
                                         },
-                                        "id": "b363142e-2a2e-44db-99ac-e4c931fdb9d7"
+                                        "id": "298342fa-cbc1-4d8a-95db-0547f5fb62da"
                                     }
                                 ],
                                 "false": [
@@ -268,11 +268,11 @@
                                         "id": "25165797-3982-42fa-aa4d-bf5603d3c23a"
                                     },
                                     {
-                                        "command": "EVENT_ACTOR_INTERRUPT_MOVEMENT",
+                                        "command": "EVENT_ACTOR_MOVE_CANCEL",
                                         "args": {
                                             "actorId": "$self$"
                                         },
-                                        "id": "fbe566b8-4e3b-4f97-969c-6b7dcd8003d5"
+                                        "id": "14f2853c-6457-4a76-acd6-4550f88174ec"
                                     }
                                 ],
                                 "false": [
@@ -405,11 +405,11 @@
                                         "id": "f1c85dea-75b9-4422-bdce-c05cc5a80d96"
                                     },
                                     {
-                                        "command": "EVENT_ACTOR_INTERRUPT_MOVEMENT",
+                                        "command": "EVENT_ACTOR_MOVE_CANCEL",
                                         "args": {
                                             "actorId": "$self$"
                                         },
-                                        "id": "43c9bb31-285f-4e81-997a-770522bdd995"
+                                        "id": "7b7020c2-da3a-4172-979d-f20cccebe10c"
                                     }
                                 ],
                                 "false": [
@@ -1474,7 +1474,7 @@
         "worldScrollX": 1379.3333740234375,
         "worldScrollY": 1396,
         "zoom": 325,
-        "customColorsEnabled": true,
+        "customColorsEnabled": false,
         "sgbEnabled": false,
         "customHead": "",
         "defaultBackgroundPaletteIds": [
