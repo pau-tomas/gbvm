@@ -27,7 +27,7 @@ _script_s0a2_interact::
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 3
 
-        VM_ACTOR_INTERRUPT_MOVEMENT .LOCAL_ACTOR
+        VM_ACTOR_MOVE_CANCEL    .LOCAL_ACTOR
 
         VM_JUMP                 4$
 3$:
