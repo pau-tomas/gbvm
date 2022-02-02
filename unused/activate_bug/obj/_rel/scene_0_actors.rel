@@ -1,0 +1,58 @@
+XL3
+H A areas E global symbols
+M scene_0_actors
+O -mgbz80
+S _script_s0a1_interact Ref000000
+S _script_s0a2_interact Ref000000
+S ___bank_spritesheet_1 Ref000000
+S ___bank_spritesheet_2 Ref000000
+S .__.ABS. Def000000
+S _spritesheet_1 Ref000000
+S _spritesheet_2 Ref000000
+S ___bank_scene_0_actors Def000005
+S ___bank_script_s0a0_update Ref000000
+S _script_s0a0_update Ref000000
+S ___bank_script_s0a1_interact Ref000000
+S ___bank_script_s0a2_interact Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size 96 flags 0 addr 0
+S _scene_0_actors Def000000
+S ___func_scene_0_actors Def000000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 20 80 0E 00 09 00 00 0F F8 07 00 00 00
+R 00 00 07 00
+T 0D 00 00 00 0F 10 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 1A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 0B 02 00 02 0E 05 00
+T 25 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00
+R 00 00 07 00 0B 06 08 00 02 09 09 00
+T 30 00 00 00 00 20 00 0C 80 0A 00 00 0F F8 07 00
+R 00 00 07 00
+T 3D 00 00 00 00 00 0F 10 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 4A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 0D 03 00
+T 55 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 02 03 06 00 0B 05 0A 00 02 08 00 00
+T 60 00 00 00 00 00 00 20 00 0F 80 0A 00 00 0F F8
+R 00 00 07 00
+T 6D 00 00 07 00 00 00 00 0F 10 00 00 00 00 00 00
+R 00 00 07 00
+T 7A 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 86 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 03 03 00 02 06 06 00 0B 08 0B 00
+T 8A 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 02 03 01 00

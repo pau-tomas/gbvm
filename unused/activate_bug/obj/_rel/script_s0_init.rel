@@ -1,0 +1,19 @@
+XL3
+H 2 areas 6 global symbols
+M script_s0_init
+S ___bank_script_s0_init Def000005
+S _fade_frames_per_step Ref000000
+S b_wait_frames Ref000000
+S .__.ABS. Def000000
+S _wait_frames Ref000000
+A _CODE size 0 flags 0 addr 0
+A _CODE_5 size 16 flags 0 addr 0
+S _script_s0_init Def000000
+T 00 00 00
+R 00 00 01 00
+T 00 00 00 25 12 01 14 00 01 FF FF 0D FF FF 00
+R 00 00 01 00
+T 0C 00 00 00 00 00 00 00 00 00 00 00 21 01
+R 00 00 01 00 8B 03 04 00 0B 06 04 00 0B 09 02 00
+T 11 00 00 00 00 00 00 00 00 57 03 00
+R 00 00 01 00 8B 03 01 00 0B 06 01 00

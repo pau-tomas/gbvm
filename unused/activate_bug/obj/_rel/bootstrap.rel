@@ -1,0 +1,15 @@
+XL3
+H 2 areas 5 global symbols
+S ___bank_script_engine_init Ref000000
+S _script_engine_init Ref000000
+S .__.ABS. Def000000
+S ___bank_bootstrap_script Def000005
+A _CODE size 0 flags 0 addr 0
+A _CODE_5 size B flags 0 addr 0
+S _bootstrap_script Def000000
+T 00 00 00
+R 00 00 01 00
+T 00 00 00 25 0A 00 00 00 00 00 00 00 00 00 61 57
+R 00 00 01 00 8B 05 01 00 0B 08 01 00 0B 0B 00 00
+T 07 00 00 01 27 00 01
+R 00 00 01 00

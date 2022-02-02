@@ -1,0 +1,46 @@
+XL3
+H A areas 4 global symbols
+M frame_image
+O -mgbz80
+S ___bank_frame_image Def000005
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size 90 flags 0 addr 0
+S _frame_image Def000000
+S ___func_frame_image Def000000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 3F 00 7F 3F C0 40 DF 5F F0 50 D0 50 F0
+R 00 00 07 00
+T 0D 00 00 50 F0 50 FF 00 FF FF 00 00 FF FF 00 00
+R 00 00 07 00
+T 1A 00 00 00 00 00 00 00 00 FC 00 FE FC 03 02 FB
+R 00 00 07 00
+T 27 00 00 FA 0F 0A 0B 0A 0F 0A 0F 0A F0 50 F0 50
+R 00 00 07 00
+T 34 00 00 F0 50 F0 50 F0 50 F0 50 F0 50 F0 50 00
+R 00 00 07 00
+T 41 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 4E 00 00 00 00 0F 0A 0F 0A 0F 0A 0F 0A 0F 0A 0F
+R 00 00 07 00
+T 5B 00 00 0A 0F 0A 0F 0A D0 70 F0 50 D0 70 F0 50
+R 00 00 07 00
+T 68 00 00 DF 7F C0 7F 7F 3F 3F 00 00 00 00 00 00
+R 00 00 07 00
+T 75 00 00 00 00 00 FF FF 00 FF FF FF FF 00 0B 0E
+R 00 00 07 00
+T 82 00 00 0F 0A 0B 0E 0F 0A FB FE 03 FE FE FC FC
+R 00 00 07 00
+T 8F 00 00 00
+R 00 00 07 00

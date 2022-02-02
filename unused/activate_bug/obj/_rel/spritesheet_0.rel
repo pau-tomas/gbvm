@@ -1,0 +1,91 @@
+XL3
+H A areas 11 global symbols
+M spritesheet_0
+O -mgbz80
+S ___bank_spritesheet_0 Def000005
+S .__.ABS. Def000000
+S ___bank_tileset_1 Ref000000
+S _tileset_1 Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size 9D flags 0 addr 0
+S _spritesheet_0_metasprite_0 Def000000
+S _spritesheet_0_metasprite_1 Def00000C
+S _spritesheet_0_metasprite_2 Def000018
+S _spritesheet_0_metasprite_3 Def000024
+S _spritesheet_0_metasprite_4 Def000030
+S _spritesheet_0_metasprite_5 Def00003C
+S _spritesheet_0_metasprite_6 Def000048
+S _spritesheet_0_metasprite_7 Def000054
+S _spritesheet_0 Def00008A
+S ___func_spritesheet_0 Def000000
+S _spritesheet_0_animations_lookup Def000088
+S _spritesheet_0_metasprites Def000060
+S _spritesheet_0_animations Def000078
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 00 08 06 00 00 F8 08 00 80 00 00 00
+R 00 00 07 00
+T 0C 00 00
+R 00 00 07 00
+T 0C 00 00 00 08 00 00 00 F8 02 00 80 00 00 00
+R 00 00 07 00
+T 18 00 00
+R 00 00 07 00
+T 18 00 00 00 08 04 00 00 F8 04 20 80 00 00 00
+R 00 00 07 00
+T 24 00 00
+R 00 00 07 00
+T 24 00 00 00 00 00 20 00 08 02 20 80 00 00 00
+R 00 00 07 00
+T 30 00 00
+R 00 00 07 00
+T 30 00 00 00 08 10 00 00 F8 12 00 80 00 00 00
+R 00 00 07 00
+T 3C 00 00
+R 00 00 07 00
+T 3C 00 00 00 08 0A 00 00 F8 0C 00 80 00 00 00
+R 00 00 07 00
+T 48 00 00
+R 00 00 07 00
+T 48 00 00 00 08 0E 00 00 F8 0E 20 80 00 00 00
+R 00 00 07 00
+T 54 00 00
+R 00 00 07 00
+T 54 00 00 00 00 0A 20 00 08 0C 20 80 00 00 00
+R 00 00 07 00
+T 60 00 00
+R 00 00 07 00
+T 60 00 00 00 00 0C 00 18 00
+R 00 00 07 00 00 03 07 00 00 05 07 00 00 07 07 00
+T 66 00 00 24 00 30 00 00 00
+R 00 00 07 00 00 03 07 00 00 05 07 00 00 07 07 00
+T 6C 00 00 3C 00 0C 00 48 00
+R 00 00 07 00 00 03 07 00 00 05 07 00 00 07 07 00
+T 72 00 00 18 00 54 00 24 00
+R 00 00 07 00 00 03 07 00 00 05 07 00 00 07 07 00
+T 78 00 00
+R 00 00 07 00
+T 78 00 00 00 00 01 01 02 02 03 03 04 05 06 07 08
+R 00 00 07 00
+T 85 00 00 09 0A 0B
+R 00 00 07 00
+T 88 00 00
+R 00 00 07 00
+T 88 00 00 00 00
+R 00 00 07 00
+T 8A 00 00
+R 00 00 07 00
+T 8A 00 00 0C 00 F0 60 00 78 00 88 00 00 0F 00 07
+R 00 00 07 00 00 06 07 00 00 08 07 00 00 0A 07 00
+T 97 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 03 02 00 02 06 03 00

@@ -1,0 +1,30 @@
+XL3
+H A areas 8 global symbols
+M scene_0_sprites
+O -mgbz80
+S ___bank_spritesheet_1 Ref000000
+S ___bank_spritesheet_2 Ref000000
+S ___bank_scene_0_sprites Def000005
+S .__.ABS. Def000000
+S _spritesheet_1 Ref000000
+S _spritesheet_2 Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size 6 flags 0 addr 0
+S _scene_0_sprites Def000000
+S ___func_scene_0_sprites Def000000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 03 00 00 02 06 04 00 0B 08 01 00
+T 04 00 00 00 00
+R 00 00 07 00 02 03 05 00

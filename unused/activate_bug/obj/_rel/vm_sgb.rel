@@ -1,0 +1,34 @@
+XL3
+H A areas 4 global symbols
+M vm_sgb
+O -mgbz80
+S .__.ABS. Def000000
+S _sgb_transfer Ref000000
+S __current_bank Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 4E flags 0 addr 0
+S _vm_sgb_transfer Def000000
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_2 size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 04 00
+T 00 00 00 3B F0 00 00 00 F8 00 77 F8 07 2A 4F 46
+R 00 00 04 00 0B 05 02 00
+T 0B 00 00 59 50 13 13 1A E0 00 00 00 1A EA 00 20
+R 00 00 04 00 0B 09 02 00
+T 16 00 00 69 60 2A 66 6F E5 CD 00 00 E1 69 60 2A
+R 00 00 04 00 02 0A 01 00
+T 23 00 00 66 6F 7E E6 03 5F 16 00 7B 87 CB 12 87
+R 00 00 04 00
+T 30 00 00 CB 12 87 CB 12 87 CB 12 85 5F 7A 8C 57
+R 00 00 04 00
+T 3D 00 00 7B 02 03 7A 02 F8 00 7E E0 00 00 00 11
+R 00 00 04 00 0B 0C 02 00
+T 48 00 00 00 20 7E 12 33 C9
+R 00 00 04 00
