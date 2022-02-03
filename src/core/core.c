@@ -181,13 +181,6 @@ void process_VM() {
 }
 
 void core_run() BANKED {
-#ifdef CGB
-    if (_cpu == CGB_TYPE) cpu_fast();
-#endif
-
-    memset(shadow_OAM2, 0, sizeof(shadow_OAM2));
-
-    data_init();
 #ifdef SGB
     for (UBYTE i = 4; i != 0; i--) wait_vbl_done(); // this delay is required for PAL SNES
     _is_SGB = sgb_check();
@@ -202,6 +195,14 @@ void core_run() BANKED {
 #endif
     // GBA features only available together with CGB
     _is_GBA = (_is_GBA && _is_CGB);
+
+#ifdef CGB
+    if (_is_CGB) cpu_fast();
+#endif
+
+    memset(shadow_OAM2, 0, sizeof(shadow_OAM2));
+
+    data_init();
 
     display_off();
     palette_init();
@@ -227,7 +228,7 @@ void core_run() BANKED {
 
         #ifdef CGB
             // CGB_VAL = 256 - ((256 - DMG_VAL) * 2)
-            TMA_REG = _cpu == CGB_TYPE ? 0x80u : 0xC0u;
+            TMA_REG = (_is_CGB) ? 0x80u : 0xC0u;
         #else
             TMA_REG = 0xC0u;
         #endif
