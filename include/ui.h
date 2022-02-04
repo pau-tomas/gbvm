@@ -62,7 +62,7 @@ extern UBYTE * text_scroll_addr;
 extern UBYTE text_scroll_width, text_scroll_height;
 extern UBYTE text_scroll_fill;
 
-extern UBYTE text_sound_frames, text_sound_ch;
+extern UBYTE text_sound_mask;
 extern UBYTE text_sound_bank; 
 extern const UBYTE * text_sound_data;
 

@@ -67,14 +67,19 @@ _script_input_2::
         ldh a, (0x47) ; BGP
         cpl
         ldh (0x47), a
-        ret        
+        ret
+102$:
+        ; sound effect test
+        .db 0x71, 0b11111000, 0x4c,0x81,0x43,0x73,0x86  ; play for 2 frames
+        .db 0x01, 0b00101000, 0x00,0xc0                 ; shut ch1
+        .db 0x01, 0b00000111                            ; stop
 101$:
 
 ; --- Text features various examples -----------------
         VM_SET_PRINT_DIR        .UI_PRINT_RIGHTTOLEFT
 
         VM_MUSIC_STOP
-        VM_SET_TEXT_SOUND       2, 1, 0x4c,0x81,0x43,0x73,0x86
+        VM_SET_TEXT_SOUND       ___bank_script_input_2, 102$, 0b00000001
 
         ; Text Dialogue
         VM_LOAD_TEXT            0

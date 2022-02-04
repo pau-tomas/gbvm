@@ -254,10 +254,9 @@ void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, UBYTE x, UBYTE y, UBYTE ba
     _map_tile_offset = 0;
 }
 
-void vm_set_text_sound(SCRIPT_CTX * THIS, UBYTE frames, UBYTE channel) OLDCALL BANKED {
-    text_sound_frames = frames;
-    text_sound_ch = channel; 
-    text_sound_bank = THIS->bank;  
-    text_sound_data = THIS->PC;
-    THIS->PC += ((channel == 3) ? 0x15 : 5); // skip regs and waveform, if playing on ch3
+void vm_set_text_sound(SCRIPT_CTX * THIS, UBYTE bank, UBYTE * offset, UBYTE channel_mask) OLDCALL BANKED {
+    THIS;
+    text_sound_bank = bank;  
+    text_sound_data = offset;
+    text_sound_mask = channel_mask; 
 }
