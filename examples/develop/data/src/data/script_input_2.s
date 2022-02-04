@@ -13,6 +13,9 @@ _script_input_2::
 
         VM_RANDOMIZE
 
+; --- VM_SFX_PLAY complex effect example
+        VM_SFX_PLAY             ___bank_sound_effect1, _sound_effect1, ___mute_mask_sound_effect1        
+
 ; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----
         VM_PUSH_CONST           128
         VM_LOAD_TILESET         .ARG0, ___bank_background_0, _background_0
@@ -23,6 +26,9 @@ _script_input_2::
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/
+
+; --- VM_SFX_PLAY waveform example
+        VM_SFX_PLAY             ___bank_wave_icq_message, _wave_icq_message, ___mute_mask_wave_icq_message        
 
 ; --- VM_SWITCH example ------------------------------
         VM_PUSH_CONST           10
