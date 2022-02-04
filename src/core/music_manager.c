@@ -21,6 +21,7 @@ uint8_t music_mute_flag, music_mute_mask;
 const TRACK_T * music_next_track;
 uint8_t music_play_isr_counter;
 uint8_t music_play_isr_pause;
+uint8_t music_global_mute_mask;
 
 #ifdef HUGE_TRACKER
 void hUGETrackerRoutine(unsigned char param, unsigned char ch, unsigned char tick) NONBANKED OLDCALL {
@@ -36,9 +37,10 @@ void music_init_driver() BANKED {
     music_init();
     music_sound_cut();
     music_current_track_bank = MUSIC_STOP_BANK;
-    music_mute_flag = 0, music_mute_mask = 0;
+    music_mute_flag = FALSE, music_mute_mask = 0;
     music_play_isr_counter = 0;
     music_play_isr_pause = FALSE;
+    music_global_mute_mask = 0;
 }
 
 void music_init_events(uint8_t preserve) BANKED {
@@ -81,16 +83,14 @@ uint8_t music_events_poll() BANKED {
 
 void music_play_isr() NONBANKED {
     if (sfx_play_bank != SFX_STOP_BANK) {
-        if (sfx_play_isr()) {
-            driver_set_mute_mask(music_mute_mask), music_mute_flag = TRUE; 
-        } else {
-            if (music_mute_flag) {
-                driver_set_mute_mask(0), driver_reset_wave(), music_mute_flag = FALSE;
-                #ifdef FORCE_CUT_SFX
-                music_sound_cut_mask(music_mute_mask);
-                #endif
-                music_mute_mask = 0; 
-            }
+        if (!music_mute_flag) driver_set_mute_mask(music_global_mute_mask | music_mute_mask), music_mute_flag = TRUE; 
+        if (!sfx_play_isr()) {
+            driver_set_mute_mask(music_global_mute_mask), driver_reset_wave(), music_mute_flag = FALSE;
+            #ifdef FORCE_CUT_SFX
+            music_sound_cut_mask(music_mute_mask);
+            #endif
+            music_mute_mask = music_global_mute_mask; 
+            sfx_play_bank = SFX_STOP_BANK;
         }
     }
     if (music_play_isr_pause) return;

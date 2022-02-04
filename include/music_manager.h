@@ -18,7 +18,7 @@ inline void driver_init(uint8_t bank, const TRACK_T * track, uint8_t loop) {
 }
 
 inline void driver_set_mute_mask(uint8_t mute_mask) {
-    mute_mask;
+    gbt_enable_channels(~mute_mask & 0x0f);
 }
 
 inline void music_setpos(UBYTE pattern, UBYTE row) {
@@ -57,6 +57,7 @@ extern script_event_t music_events[4];
 extern volatile uint8_t music_current_track_bank;
 extern uint8_t music_mute_mask;
 extern const TRACK_T * music_next_track;
+extern uint8_t music_global_mute_mask;
 
 inline void music_setup_timer() {
     TMA_REG = ((_cpu == CGB_TYPE) && (*(uint8_t *)0x0143 & 0x80)) ? 0x80u : 0xC0u;
