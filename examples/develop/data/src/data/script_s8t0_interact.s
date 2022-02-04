@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl _fade_frames_per_step, ___bank_scene_5, _scene_5
+.globl _fade_frames_per_step, ___bank_scene_platform, _scene_platform
 
 .area _CODE_255
 
@@ -27,7 +27,7 @@ _script_s8t0_interact::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_LEFT
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_5
+            IMPORT_FAR_PTR_DATA _scene_platform
 
         ; Stop Script
         VM_STOP

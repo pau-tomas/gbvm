@@ -15,9 +15,8 @@ _script_s0t13_interact::
 
         VM_RESERVE              4
 
-        ; Actor Show
+        ; Actor Activate
         VM_SET_CONST            .LOCAL_ACTOR, 9
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 0
         VM_ACTOR_ACTIVATE       .LOCAL_ACTOR
 
         ; Actor Set Active
@@ -111,9 +110,8 @@ _script_s0t13_interact::
         VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 9
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Variable Set To True

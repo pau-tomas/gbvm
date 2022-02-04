@@ -1,8 +1,8 @@
 {
     "name": "LinkCableTest",
     "author": "cmaltby",
-    "_version": "2.0.0",
-    "_release": "10",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "name": "Scene 1",
@@ -956,7 +956,7 @@
         }
     ],
     "settings": {
-        "startSceneId": "",
+        "startSceneId": "c860944a-2fd8-4d44-94e6-2480b4463283",
         "startX": 9,
         "startY": 9,
         "startMoveSpeed": 1,
@@ -992,9 +992,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            595,
-            192,
-            192
+            397,
+            127,
+            127
         ],
         "showNavigator": true,
         "defaultFontId": "",

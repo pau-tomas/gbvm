@@ -1,0 +1,18 @@
+#pragma bank 255
+
+// Background: house
+
+#include "gbs_types.h"
+#include "data/tileset_house.h"
+#include "data/bg_house_tilemap.h"
+
+BANKREF(bg_house)
+
+const struct background_t bg_house = {
+    .width = 20,
+    .height = 18,
+    .tileset = TO_FAR_PTR_T(tileset_house),
+    .cgb_tileset = { NULL, NULL },
+    .tilemap = TO_FAR_PTR_T(bg_house_tilemap),
+    .cgb_tilemap_attr = { NULL, NULL }
+};

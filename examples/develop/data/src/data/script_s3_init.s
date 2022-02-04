@@ -20,9 +20,8 @@ _script_s3_init::
 
         ; If Variable True
         VM_IF_CONST .GT         VAR_QUEST2, 0, 1$, 0
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 6
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         VM_JUMP                 2$

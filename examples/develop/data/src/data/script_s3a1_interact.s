@@ -116,9 +116,8 @@ _script_s3a1_interact::
         ; Variable Set To True
         VM_SET_CONST            VAR_QUEST2, 1
 
-        ; Actor Show
+        ; Actor Activate
         VM_SET_CONST            .LOCAL_ACTOR, 6
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 0
         VM_ACTOR_ACTIVATE       .LOCAL_ACTOR
 
         ; Actor Set Active

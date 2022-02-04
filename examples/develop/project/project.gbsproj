@@ -2,7 +2,7 @@
     "name": "Develop",
     "author": "gbvm",
     "_version": "3.0.0",
-    "_release": "1",
+    "_release": "2",
     "scenes": [
         {
             "id": "5e64882f-8ce6-423e-b582-70fdb2142ff6",
@@ -1408,7 +1408,7 @@
             "script": [
                 {
                     "id": "8343c54c-07a1-4d30-892c-91db234b8d9b",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -1498,7 +1498,7 @@
             "script": [
                 {
                     "id": "ff79b819-b435-4ef8-af20-07302038959f",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -2069,7 +2069,7 @@
                                                 },
                                                 {
                                                     "id": "271d582b-37a0-4ba2-b975-d2210c0b8ae5",
-                                                    "command": "EVENT_ACTOR_SHOW",
+                                                    "command": "EVENT_ACTOR_ACTIVATE",
                                                     "args": {
                                                         "actorId": "a65cba5e-5d01-4f02-b32c-ed99c9276ad3"
                                                     }
@@ -2213,7 +2213,7 @@
                                 "true": [
                                     {
                                         "id": "0a586506-2101-49ce-b244-cbe2df8b39a0",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "$self$"
                                         }
@@ -11436,7 +11436,7 @@
                                                 },
                                                 {
                                                     "id": "cec524f1-a5ac-4c1a-bdeb-314b15a508b1",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -11496,7 +11496,7 @@
                                             "true": [
                                                 {
                                                     "id": "ae86ba6a-86c1-4cfd-a2e7-319a2f88e517",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -14350,10 +14350,17 @@
                             "start"
                         ],
                         "__scriptTabs": "press",
-                        "__collapse": true
+                        "__collapse": false
                     },
                     "children": {
                         "true": [
+                            {
+                                "command": "EVENT_GBVM_SCRIPT",
+                                "args": {
+                                    "script": "\nVM_RANDOMIZE\n\n; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----\nVM_PUSH_CONST           128\nVM_LOAD_TILESET         .ARG0, ___bank_background_0, _background_0\nVM_OVERLAY_SET_MAP      .ARG0, 0, 0, ___bank_background_0, _background_0\nVM_POP                  1\n\nVM_OVERLAY_MOVE_TO      0, 0, .OVERLAY_IN_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_BTN_A)/\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/\n\n; --- VM_SWITCH example ------------------------------\nVM_PUSH_CONST           10\nVM_SWITCH               .ARG0, 3, 0\n    .dw 0,  11$\n    .dw 1,  12$\n    .dw 10, 13$\n\nVM_LOAD_TEXT            1\n    .dw .ARG0\n    .asciz \"Default; value: %d\"\nVM_JUMP                 10$\n11$:\nVM_LOAD_TEXT            1\n    .dw .ARG0\n    .asciz \"Zero; value: %d\"\nVM_JUMP                 10$\n12$:\nVM_LOAD_TEXT            1\n    .dw .ARG0\n    .asciz \"One; value: %d\"\nVM_JUMP                 10$\n13$:\nVM_LOAD_TEXT            1\n    .dw .ARG0\n    .asciz \"Ten; value: %d\"\nVM_JUMP                 10$\n10$:\nVM_POP                  1\n\nVM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/\nVM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/\n\n; --- VM_CALL_NATIVE example -------------------------\nVM_CALL_NATIVE          ___bank_script_input_2, 100$\nVM_JUMP                 101$\n100$:\nldh a, (0x47) ; BGP\ncpl\nldh (0x47), a\nret        \n101$:\n\n; --- Text features various examples -----------------\nVM_SET_PRINT_DIR        .UI_PRINT_RIGHTTOLEFT\n\nVM_MUSIC_STOP\nVM_SET_TEXT_SOUND       2, 1, 0x4c,0x81,0x43,0x73,0x86\n\n; Text Dialogue\nVM_LOAD_TEXT            0\n    .asciz \"\\002\\002\\343\\342 \\361\\367\\370\\357 \\371\\350 \\341\\351\\355\\n\\356\\340\\345\\353\\346\\341 \\345\\354\\364\\372\\362 \\356\\366\\340 \\347\\341\\370\\344\"\nVM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/\nVM_OVERLAY_MOVE_TO      0, 14, .OVERLAY_IN_SPEED\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/\n\nVM_SET_PRINT_DIR        .UI_PRINT_LEFTTORIGHT\n\n; Text Dialogue\nVM_LOAD_TEXT            0\n    .asciz \"\\002\\003\\321\\372\\345\\370\\374 \\345\\371\\270 \\375\\362\\350\\365 \\354\\377\\343\\352\\350\\365\\n\\364\\360\\340\\355\\366\\363\\347\\361\\352\\350\\365 \\341\\363\\353\\356\\352,\\n\\344\\340 \\342\\373\\357\\345\\351 \\367\\340\\376.\"\nVM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/\nVM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/\n\nVM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/\n    .DMG_PAL    3,2,1,0\n\nVM_PUSH_CONST           10\nVM_PUSH_CONST           ^/(.CAMERA_SHAKE_X | .CAMERA_SHAKE_Y)/\nVM_INVOKE       b_camera_shake_frames, _camera_shake_frames, 2, .ARG1\n\nVM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/\n    .DMG_PAL    0,1,2,3\n\n; --- VM_SGB_TRANSFER example ------------------------\nVM_PUSH_CONST           0\nVM_GET_INT8             .ARG0, __is_SGB \nVM_IF_CONST     .EQ     .ARG0, 0, 1$, 1 \nVM_SGB_TRANSFER   \n    .db ((0x04 << 3) | 1), 1, 0x07, ((0x01 << 4) | (0x02 << 2) | 0x03), 5,5, 10,10,  0, 0, 0, 0, 0, 0, 0, 0 ; ATTR_BLK packet\n1$:\n\n; --- RTC Clock example ------------------------------\nVM_RESERVE              6\nVM_RTC_START            .RTC_START\nVM_RTC_LATCH\nVM_RTC_GET              .ARG3, .RTC_SECONDS \nVM_RTC_GET              .ARG2, .RTC_MINUTES \nVM_RTC_GET              .ARG1, .RTC_HOURS \nVM_RTC_GET              .ARG0, .RTC_DAYS \n        \nVM_LOAD_TEXT            4\n    .dw .ARG0, .ARG1, .ARG2, .ARG3\n    .asciz \"\\002\\001DAY:%D8 TIME: %D2:%D2:%D2\"\nVM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_BLACK, 0\nVM_OVERLAY_MOVE_TO      0, 9, .OVERLAY_TEXT_IN_SPEED\nVM_DISPLAY_TEXT\nVM_OVERLAY_SHOW         0, 9, .UI_COLOR_BLACK, 0\n\n; --- VM_OVERLAY_SET_SUBMAP example ------------------\nVM_OVERLAY_SET_SUBMAP   2, 2, 6, 5, 8, 4\n\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\n; --- RPN Calculator example -------------------------\nVM_SET_CONST            .ARG5, 0\nVM_ACTOR_GET_POS        .ARG5\n\nVM_SET_CONST            .ARG2, 1\nVM_ACTOR_GET_POS        .ARG2\n\nVM_RPN\n    ; chebyshev distance\n    .R_REF      .ARG4\n    .R_REF      .ARG1\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_REF      .ARG3\n    .R_REF      .ARG0\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_OPERATOR .MAX\n    ; manhattan distance\n    .R_REF      .ARG4\n    .R_REF      .ARG1\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_REF      .ARG3\n    .R_REF      .ARG0\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_OPERATOR .ADD\n\n    .R_STOP\n\nVM_LOAD_TEXT            6\n    .dw .ARG6, .ARG5, .ARG3, .ARG2, .ARG1, .ARG0\n    .asciz \"\\001\\001\\002\\004@A\\nBC\\001\\003\\004\\001\\377\\002\\001x1=%d y1=%d\\nx2=%d y2=%d\\n\\004\\376\\001Chebyshev:\\002\\002%d\\n\\002\\001Manhattan:\\002\\002%d\\n\\002\\001\\007\\002This\\007\\001 is \\002\\002BOLD\\002\\001\\nOk!\"\nVM_OVERLAY_CLEAR        0, 0, 20, 9, .UI_COLOR_WHITE, .UI_DRAW_FRAME \nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_LOAD_TEXT            0\n    .asciz \"\\001\\001\\002\\004@A\\nBC\\001\\003\\004\\001\\377\\002\\001Hi, it's KOT speaking!\\nWhere's SLON?\\006\\377\\003\\022\\005\\001\\001\\002\\004DE\\nFG\\003\\006\\005\\001\\003\\002\\001Sorry, i have no idea\\nwhat're you mean!\"\nVM_OVERLAY_MOVE_TO      0, 11, .OVERLAY_TEXT_OUT_SPEED\nVM_OVERLAY_CLEAR        0, 0, 20, 7, .UI_COLOR_WHITE, .UI_DRAW_FRAME \nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_OVERLAY_CLEAR        0, 0, 20, 7, .UI_COLOR_WHITE, ^/(.UI_DRAW_FRAME | .UI_AUTO_SCROLL)/ \nVM_LOAD_TEXT            0\n    .asciz \"\\001\\005Terminal mode\\rLoading text...\\rText loaded!\\rLet's see how this text\\rscrolls...\\rOne more line...\\rYes, it does!\\rLet's type something\\relse...\\rI don't know what...\\rHello, world!\\rI think that is\\r\\002\\002ENOUGH\\002\\001.\"\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_TEXT_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/\n\nVM_POP                  ^/6 + 2/    ; 6 for local vars + 2 results of RPN calc\\001\\001\\002\\003DE\\nFG\\001\\003\\004\\001\\377\\002\\001\\001\\001\\002\\003@A\\nBC\\001\\003\\004\\001\\377\\002\\001\n\n; Stop Script\nVM_STOP\n"
+                                },
+                                "id": "088b0d8b-52f3-4460-a48f-15b654b420f8"
+                            },
                             {
                                 "id": "6251bef4-aea4-4d84-8fe4-e7c0be7b1947",
                                 "command": "EVENT_GBVM_SCRIPT",
@@ -46284,7 +46291,7 @@
                         "true": [
                             {
                                 "id": "ae86ba6a-86c1-4cfd-a2e7-319a2f88e517",
-                                "command": "EVENT_ACTOR_HIDE",
+                                "command": "EVENT_ACTOR_DEACTIVATE",
                                 "args": {
                                     "actorId": "0"
                                 }
@@ -46453,7 +46460,7 @@
                             },
                             {
                                 "id": "cec524f1-a5ac-4c1a-bdeb-314b15a508b1",
-                                "command": "EVENT_ACTOR_HIDE",
+                                "command": "EVENT_ACTOR_DEACTIVATE",
                                 "args": {
                                     "actorId": "0"
                                 }
@@ -46549,7 +46556,7 @@
                 },
                 {
                     "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "0"
                     }
@@ -47203,9 +47210,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            494,
-            157,
-            157
+            640,
+            198,
+            198
         ],
         "showNavigator": true,
         "defaultFontId": "cab2d91d-5c2b-47e4-867c-7006ef39f7c6",

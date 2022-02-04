@@ -23,7 +23,7 @@ _script_s7_init::
 
         ; Player Set Spritesheet
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_1, _spritesheet_1
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_player_ship, _sprite_player_ship
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
@@ -59,7 +59,7 @@ _script_s7_init::
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_0__Data, _music_track_0__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_fastpacespeedrace__Data, _track_rulz_fastpacespeedrace__Data, .MUSIC_LOOP
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0

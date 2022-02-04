@@ -23,7 +23,7 @@ _script_s7_p_hit1::
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Actor Emote
-        VM_ACTOR_EMOTE          .LOCAL_ACTOR, ___bank_emote_0, _emote_0
+        VM_ACTOR_EMOTE          .LOCAL_ACTOR, ___bank_emote_surprise, _emote_surprise
 
         ; Stop Script
         VM_STOP

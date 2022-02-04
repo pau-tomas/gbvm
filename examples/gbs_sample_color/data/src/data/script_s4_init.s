@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_10, _scene_10
+.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_path_to_sample_town, _scene_path_to_sample_town
 
 .area _CODE_255
 
@@ -21,11 +21,10 @@ _script_s4_init::
         VM_RESERVE              5
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_2__Data, _music_track_2__Data, .MUSIC_NO_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_intro__Data, _track_rulz_intro__Data, .MUSIC_NO_LOOP
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Wait N Frames
@@ -88,7 +87,7 @@ _script_s4_init::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_RIGHT
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_10
+            IMPORT_FAR_PTR_DATA _scene_path_to_sample_town
 
 4$:
 

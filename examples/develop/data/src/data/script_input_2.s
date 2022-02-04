@@ -18,8 +18,8 @@ _script_input_2::
 
 ; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----
         VM_PUSH_CONST           128
-        VM_LOAD_TILESET         .ARG0, ___bank_background_0, _background_0
-        VM_OVERLAY_SET_MAP      .ARG0, 0, 0, ___bank_background_0, _background_0
+        VM_LOAD_TILESET         .ARG0, ___bank_bg_cave, _bg_cave
+        VM_OVERLAY_SET_MAP      .ARG0, 0, 0, ___bank_bg_cave, _bg_cave
         VM_POP                  1
 
         VM_OVERLAY_MOVE_TO      0, 0, .OVERLAY_IN_SPEED

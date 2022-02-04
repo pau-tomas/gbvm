@@ -23,7 +23,7 @@ _script_timer_1::
 2$:
 
         VM_PUSH_CONST           0x10
-        VM_REPLACE_TILE         .ARG0, ___bank_tileset_4, _tileset_4 , VAR_S7_FLOWERSTATE, 1
+        VM_REPLACE_TILE         .ARG0, ___bank_tileset_outside, _tileset_outside , VAR_S7_FLOWERSTATE, 1
         VM_POP                  1
 
         ; Stop Script

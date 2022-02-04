@@ -58,6 +58,7 @@ void actors_init() BANKED {
 void player_init() BANKED {
     actor_set_anim_idle(&PLAYER);
     PLAYER.hidden = FALSE;
+    PLAYER.disabled = FALSE;
 }
 
 void actors_update() NONBANKED {
@@ -176,7 +177,7 @@ void activate_actor(actor_t *actor) BANKED {
         return;
     }
 #endif
-    if (actor->active) return;
+    if (actor->active || actor->disabled) return;
     actor->active = TRUE;
     actor_set_anim_idle(actor);
     DL_REMOVE_ITEM(actors_inactive_head, actor);
