@@ -1,0 +1,30 @@
+XL3
+H A areas 8 global symbols
+M background_0
+O -mgbz80
+S ___bank_background_0 Def000005
+S ___bank_tilemap_0 Ref000000
+S _tilemap_0 Ref000000
+S .__.ABS. Def000000
+S ___bank_tileset_0 Ref000000
+S _tileset_0 Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size E flags 0 addr 0
+S _background_0 Def000000
+S ___func_background_0 Def000000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 38 38 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 05 04 00 02 08 05 00 0B 0D 01 00
+T 09 00 00 00 00 00 00 00
+R 00 00 07 00 02 03 02 00

@@ -1,0 +1,154 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 4.1.6 #12539 (Mac OS X x86_64)
+                                      4 ;--------------------------------------------------------
+                                      5 	.module spritesheet_1
+                                      6 	.optsdcc -mgbz80
+                                      7 	
+                                      8 ;--------------------------------------------------------
+                                      9 ; Public variables in this module
+                                     10 ;--------------------------------------------------------
+                                     11 	.globl _spritesheet_1
+                                     12 	.globl _spritesheet_1_animations_lookup
+                                     13 	.globl _spritesheet_1_animations
+                                     14 	.globl _spritesheet_1_metasprites
+                                     15 	.globl _spritesheet_1_metasprite_3
+                                     16 	.globl _spritesheet_1_metasprite_2
+                                     17 	.globl _spritesheet_1_metasprite_1
+                                     18 	.globl _spritesheet_1_metasprite_0
+                                     19 	.globl b___func_spritesheet_1
+                                     20 	.globl ___func_spritesheet_1
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function registers
+                                     23 ;--------------------------------------------------------
+                                     24 ;--------------------------------------------------------
+                                     25 ; ram data
+                                     26 ;--------------------------------------------------------
+                                     27 	.area _DATA
+                                     28 ;--------------------------------------------------------
+                                     29 ; ram data
+                                     30 ;--------------------------------------------------------
+                                     31 	.area _INITIALIZED
+                                     32 ;--------------------------------------------------------
+                                     33 ; absolute external ram data
+                                     34 ;--------------------------------------------------------
+                                     35 	.area _DABS (ABS)
+                                     36 ;--------------------------------------------------------
+                                     37 ; global & static initialisations
+                                     38 ;--------------------------------------------------------
+                                     39 	.area _HOME
+                                     40 	.area _GSINIT
+                                     41 	.area _GSFINAL
+                                     42 	.area _GSINIT
+                                     43 ;--------------------------------------------------------
+                                     44 ; Home
+                                     45 ;--------------------------------------------------------
+                                     46 	.area _HOME
+                                     47 	.area _HOME
+                                     48 ;--------------------------------------------------------
+                                     49 ; code
+                                     50 ;--------------------------------------------------------
+                                     51 	.area _CODE_255
+                                     52 ;data/src/data/spritesheet_1.c:7: BANKREF(spritesheet_1)
+                                     53 ;	---------------------------------
+                                     54 ; Function __func_spritesheet_1
+                                     55 ; ---------------------------------
+                           0000FF    56 	b___func_spritesheet_1	= 255
+      000000                         57 ___func_spritesheet_1::
+                                     58 	.local b___func_spritesheet_1 
+                           0000FF    59 	___bank_spritesheet_1 = b___func_spritesheet_1 
+                                     60 	.globl ___bank_spritesheet_1 
+                                     61 	.area _CODE_255
+      000000                         62 _spritesheet_1_metasprite_0:
+      000000 00                      63 	.db #0x00	;  0
+      000001 08                      64 	.db #0x08	;  8
+      000002 08                      65 	.db #0x08	; 8
+      000003 00                      66 	.db #0x00	; 0
+      000004 00                      67 	.db #0x00	;  0
+      000005 F8                      68 	.db #0xf8	; -8
+      000006 04                      69 	.db #0x04	; 4
+      000007 60                      70 	.db #0x60	; 96
+      000008 80                      71 	.db #0x80	; -128
+      000009 00                      72 	.db #0x00	;  0
+      00000A 00                      73 	.db #0x00	; 0
+      00000B 00                      74 	.db #0x00	; 0
+      00000C                         75 _spritesheet_1_metasprite_1:
+      00000C 00                      76 	.db #0x00	;  0
+      00000D 08                      77 	.db #0x08	;  8
+      00000E 00                      78 	.db #0x00	; 0
+      00000F 00                      79 	.db #0x00	; 0
+      000010 00                      80 	.db #0x00	;  0
+      000011 F8                      81 	.db #0xf8	; -8
+      000012 02                      82 	.db #0x02	; 2
+      000013 00                      83 	.db #0x00	; 0
+      000014 80                      84 	.db #0x80	; -128
+      000015 00                      85 	.db #0x00	;  0
+      000016 00                      86 	.db #0x00	; 0
+      000017 00                      87 	.db #0x00	; 0
+      000018                         88 _spritesheet_1_metasprite_2:
+      000018 00                      89 	.db #0x00	;  0
+      000019 08                      90 	.db #0x08	;  8
+      00001A 04                      91 	.db #0x04	; 4
+      00001B 00                      92 	.db #0x00	; 0
+      00001C 00                      93 	.db #0x00	;  0
+      00001D F8                      94 	.db #0xf8	; -8
+      00001E 06                      95 	.db #0x06	; 6
+      00001F 00                      96 	.db #0x00	; 0
+      000020 80                      97 	.db #0x80	; -128
+      000021 00                      98 	.db #0x00	;  0
+      000022 00                      99 	.db #0x00	; 0
+      000023 00                     100 	.db #0x00	; 0
+      000024                        101 _spritesheet_1_metasprite_3:
+      000024 00                     102 	.db #0x00	;  0
+      000025 00                     103 	.db #0x00	;  0
+      000026 00                     104 	.db #0x00	; 0
+      000027 20                     105 	.db #0x20	; 32
+      000028 00                     106 	.db #0x00	;  0
+      000029 08                     107 	.db #0x08	;  8
+      00002A 02                     108 	.db #0x02	; 2
+      00002B 20                     109 	.db #0x20	; 32
+      00002C 80                     110 	.db #0x80	; -128
+      00002D 00                     111 	.db #0x00	;  0
+      00002E 00                     112 	.db #0x00	; 0
+      00002F 00                     113 	.db #0x00	; 0
+      000030                        114 _spritesheet_1_metasprites:
+      000030r00r00                  115 	.dw _spritesheet_1_metasprite_0
+      000032r0Cr00                  116 	.dw _spritesheet_1_metasprite_1
+      000034r18r00                  117 	.dw _spritesheet_1_metasprite_2
+      000036r24r00                  118 	.dw _spritesheet_1_metasprite_3
+      000038                        119 _spritesheet_1_animations:
+      000038 00                     120 	.db #0x00	; 0
+      000039 00                     121 	.db #0x00	; 0
+      00003A 01                     122 	.db #0x01	; 1
+      00003B 01                     123 	.db #0x01	; 1
+      00003C 02                     124 	.db #0x02	; 2
+      00003D 02                     125 	.db #0x02	; 2
+      00003E 03                     126 	.db #0x03	; 3
+      00003F 03                     127 	.db #0x03	; 3
+      000040 00                     128 	.db #0x00	; 0
+      000041 00                     129 	.db #0x00	; 0
+      000042 01                     130 	.db #0x01	; 1
+      000043 01                     131 	.db #0x01	; 1
+      000044 02                     132 	.db #0x02	; 2
+      000045 02                     133 	.db #0x02	; 2
+      000046 03                     134 	.db #0x03	; 3
+      000047 03                     135 	.db #0x03	; 3
+      000048                        136 _spritesheet_1_animations_lookup:
+      000048 00 00                  137 	.dw #0x0000
+      00004A                        138 _spritesheet_1:
+      00004A 04                     139 	.db #0x04	; 4
+      00004B 00                     140 	.db #0x00	;  0
+      00004C F0                     141 	.db #0xf0	; -16
+      00004Dr30r00                  142 	.dw _spritesheet_1_metasprites
+      00004Fr38r00                  143 	.dw _spritesheet_1_animations
+      000051r48r00                  144 	.dw _spritesheet_1_animations_lookup
+      000053 00                     145 	.db #0x00	;  0
+      000054 0F                     146 	.db #0x0f	;  15
+      000055 F8                     147 	.db #0xf8	; -8
+      000056 07                     148 	.db #0x07	;  7
+      000057r00                     149 	.byte ___bank_tileset_2
+      000058r00r00                  150 	.dw _tileset_2
+      00005A 00                     151 	.db #0x00	; 0
+      00005B 00 00                  152 	.dw #0x0000
+                                    153 	.area _INITIALIZER
+                                    154 	.area _CABS (ABS)

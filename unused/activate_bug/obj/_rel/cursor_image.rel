@@ -1,0 +1,26 @@
+XL3
+H A areas 4 global symbols
+M cursor_image
+O -mgbz80
+S ___bank_cursor_image Def000005
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size 10 flags 0 addr 0
+S _cursor_image Def000000
+S ___func_cursor_image Def000000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 00 00 3E 3E C1 C1 CE 8E CC 84 C4 84 F8
+R 00 00 07 00
+T 0D 00 00 F8 00 00
+R 00 00 07 00

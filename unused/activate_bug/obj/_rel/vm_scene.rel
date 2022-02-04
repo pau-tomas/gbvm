@@ -1,0 +1,74 @@
+XL3
+H A areas 12 global symbols
+M vm_scene
+O -mgbz80
+S b_vm_scene_stack_reset Def000002
+S _vm_exception_params_bank Ref000000
+S _current_scene Ref000000
+S _scene_stack_ptr Ref000000
+S b_vm_scene_pop_all Def000002
+S .__.ABS. Def000000
+S _scene_stack Ref000000
+S ___memcpy Ref000000
+S _vm_exception_code Ref000000
+S _actors Ref000000
+S b_vm_scene_push Def000002
+S _vm_exception_params_length Ref000000
+S _vm_exception_params_offset Ref000000
+S b_vm_scene_pop Def000002
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_2 size A7 flags 0 addr 0
+S _vm_scene_push Def000000
+S _vm_scene_pop Def000085
+S _vm_scene_stack_reset Def00009E
+S _vm_scene_pop_all Def000093
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 11 00 00 21 00 00 2A 4F 46 21 03 00 E5
+R 00 00 07 00 02 04 02 00 02 07 03 00
+T 0D 00 00 D5 C5 CD 00 00 E8 06 11 01 00 21 00 00
+R 00 00 07 00 02 06 07 00 02 0B 09 00 02 0E 03 00
+T 1A 00 00 2A 4F 46 03 03 03 21 04 00 E5 D5 C5 CD
+R 00 00 07 00
+T 27 00 00 00 00 E8 06 21 00 00 2A 4F 46 21 07 00
+R 00 00 07 00 02 03 07 00 02 08 03 00
+T 34 00 00 09 01 05 00 0A 77 21 00 00 7E C6 08 22
+R 00 00 07 00 02 05 09 00 02 0A 03 00
+T 41 00 00 7E CE 00 77 C9
+R 00 00 07 00
+T 46 00 00
+R 00 00 07 00
+T 46 00 00 21 00 00 36 02 21 00 00 36 03 21 00 00
+R 00 00 07 00 02 04 08 00 02 09 0B 00 02 0E 01 00
+T 53 00 00 36 01 21 00 00 2A 5F 56 7B 6A EA 00 00
+R 00 00 07 00 02 06 03 00 02 0E 0C 00
+T 60 00 00 7D EA 01 00 13 13 13 01 04 00 C5 D5 11
+R 00 00 07 00 02 05 0C 00
+T 6D 00 00 01 00 D5 CD 00 00 E8 06 01 05 00 21
+R 00 00 07 00 02 03 09 00 02 07 07 00 02 0C 09 00
+T 79 00 00 00 00 2A 5F 56 21 07 00 19 7E 02 C9
+R 00 00 07 00 02 03 03 00
+T 85 00 00
+R 00 00 07 00
+T 85 00 00 21 00 00 7E C6 F8 22 7E CE FF 77 C3
+R 00 00 07 00 02 04 03 00
+T 91 00 00 46 00
+R 00 00 07 00 00 03 07 00
+T 93 00 00
+R 00 00 07 00
+T 93 00 00 21 00 00 36 00 00 00 23 36 00 00 00 C3
+R 00 00 07 00 02 04 03 00 0B 07 06 00 8B 0C 06 00
+T 9C 00 00 46 00
+R 00 00 07 00 00 03 07 00
+T 9E 00 00
+R 00 00 07 00
+T 9E 00 00 21 00 00 36 00 00 00 23 36 00 00 00 C9
+R 00 00 07 00 02 04 03 00 0B 07 06 00 8B 0C 06 00

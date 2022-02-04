@@ -1,0 +1,50 @@
+XL3
+H A areas A global symbols
+M spritesheet_2
+O -mgbz80
+S ___bank_spritesheet_2 Def000005
+S .__.ABS. Def000000
+S ___bank_tileset_3 Ref000000
+S _tileset_3 Ref000000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _CODE_5 size 33 flags 0 addr 0
+S _spritesheet_2_metasprite_0 Def000000
+S _spritesheet_2 Def000020
+S ___func_spritesheet_2 Def000000
+S _spritesheet_2_animations_lookup Def00001E
+S _spritesheet_2_metasprites Def00000C
+S _spritesheet_2_animations Def00000E
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 07 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 00 08 00 00 00 F8 02 00 80 00 00 00
+R 00 00 07 00
+T 0C 00 00
+R 00 00 07 00
+T 0C 00 00 00 00
+R 00 00 07 00 00 03 07 00
+T 0E 00 00
+R 00 00 07 00
+T 0E 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00
+T 1B 00 00 00 00 00
+R 00 00 07 00
+T 1E 00 00
+R 00 00 07 00
+T 1E 00 00 00 00
+R 00 00 07 00
+T 20 00 00
+R 00 00 07 00
+T 20 00 00 01 00 F0 0C 00 0E 00 1E 00 00 0F F8 07
+R 00 00 07 00 00 06 07 00 00 08 07 00 00 0A 07 00
+T 2D 00 00 00 00 00 00 00 00 00 00
+R 00 00 07 00 0B 03 02 00 02 06 03 00
