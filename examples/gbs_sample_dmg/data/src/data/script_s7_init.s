@@ -18,9 +18,8 @@ _script_s7_init::
 
         VM_RESERVE              4
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; If Variable True

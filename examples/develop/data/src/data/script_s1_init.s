@@ -18,13 +18,12 @@ _script_s1_init::
 
         VM_RESERVE              4
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_0__Data, _music_track_0__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_dizzy__Data, _track_dizzy__Data, .MUSIC_LOOP
 
         ; Timer Start
         VM_TIMER_PREPARE        1, ___bank_script_timer_0, _script_timer_0

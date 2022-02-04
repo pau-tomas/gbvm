@@ -1,8 +1,8 @@
 {
     "name": "RTC Test",
     "author": "pautomas",
-    "_version": "2.0.0",
-    "_release": "13",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "name": "",
@@ -2338,9 +2338,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            454,
-            151,
-            151
+            391,
+            130,
+            130
         ],
         "showNavigator": true,
         "defaultFontId": "f5d870f9-5595-4737-8b56-d603df3dc78e",

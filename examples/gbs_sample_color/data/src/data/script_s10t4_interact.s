@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_8, _scene_8
+.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_player_s_house, _scene_player_s_house
 
 .area _CODE_255
 
@@ -50,7 +50,7 @@ _script_s10t4_interact::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_UP
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_8
+            IMPORT_FAR_PTR_DATA _scene_player_s_house
 
 2$:
 

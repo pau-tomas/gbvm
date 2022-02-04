@@ -7,26 +7,19 @@
 
 .area _CODE_255
 
+.LOCAL_TMP0_WAIT_ARGS = -1
 
 ___bank_script_input_0 = 255
 .globl ___bank_script_input_0
 
-.globl _pl_vel_y
-.globl _grounded
-
 _script_input_0::
+        VM_RESERVE              1
 
-        VM_PUSH_CONST           0
-        VM_GET_UINT8            .ARG0, _grounded
+        ; Sound Play Beep
+        VM_SOUND_PLAY           30, 4, 0x01, 0xF2, 0x2C, 0xC0, 0x00
+        ; Wait N Frames
+        VM_SET_CONST            .LOCAL_TMP0_WAIT_ARGS, 30
+        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP0_WAIT_ARGS
 
-        VM_IF_CONST             .EQ, .ARG0, 0, 1$, 1  
-
-;        pl_vel_y = -plat_jump_vel;
-        VM_SET_CONST_INT16      _pl_vel_y, -16384
-        
-;        grounded = FALSE;
-        VM_SET_CONST_UINT8      _grounded, 0
-
-1$:
         ; Stop Script
         VM_STOP

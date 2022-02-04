@@ -22,7 +22,7 @@ _script_s4_init::
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Actor Set Spritesheet
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_0, _spritesheet_0
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_dog, _sprite_dog
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 1

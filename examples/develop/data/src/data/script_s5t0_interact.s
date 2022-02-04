@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl _fade_frames_per_step, ___bank_scene_6, _scene_6
+.globl _fade_frames_per_step, ___bank_scene_deeper_underground, _scene_deeper_underground
 
 .area _CODE_255
 
@@ -35,7 +35,7 @@ _script_s5t0_interact::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_UP
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_6
+            IMPORT_FAR_PTR_DATA _scene_deeper_underground
 
         ; Stop Script
         VM_STOP

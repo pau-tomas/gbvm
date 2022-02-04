@@ -37,7 +37,7 @@ _script_s10_init::
         VM_CALL_FAR             ___bank_script_init_menu, _script_init_menu
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_4__Data, _music_track_4__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_outside__Data, _track_rulz_outside__Data, .MUSIC_LOOP
 
         ; Variable Set To Value
         VM_SET_CONST            VAR_TURNIP_COUNTER, 3

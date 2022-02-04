@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_9, _scene_9
+.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_menu_page_2, _scene_menu_page_2
 
 .area _CODE_255
 
@@ -97,13 +97,12 @@ _script_s6_init::
 
 12$:
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_5__Data, _music_track_5__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_pause_underground__Data, _track_rulz_pause_underground__Data, .MUSIC_LOOP
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 1
@@ -125,7 +124,7 @@ _script_s6_init::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_9
+            IMPORT_FAR_PTR_DATA _scene_menu_page_2
 
         ; Stop Script
         VM_STOP

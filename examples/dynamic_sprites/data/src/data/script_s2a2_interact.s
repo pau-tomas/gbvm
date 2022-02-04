@@ -19,7 +19,7 @@ _script_s2a2_interact::
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Actor Set Spritesheet
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_1, _spritesheet_1
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_player, _sprite_player
 
         ; Stop Script
         VM_STOP

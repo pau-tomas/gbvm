@@ -65,7 +65,7 @@ _script_turnip_collisions::
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_2_ACTOR
 
         ; Actor Set Spritesheet
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_0, _spritesheet_0
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_turnip_squash, _sprite_turnip_squash
 
         ; Player Bounce
         VM_SET_CONST_INT16      _pl_vel_y, -8192
@@ -74,9 +74,8 @@ _script_turnip_collisions::
         VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_2_ACTOR
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         VM_JUMP                 2$

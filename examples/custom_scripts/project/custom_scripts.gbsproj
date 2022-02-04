@@ -1,8 +1,8 @@
 {
     "name": "Custom Event Test",
     "author": "cmaltby",
-    "_version": "2.0.0",
-    "_release": "10",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "name": "Level 1",
@@ -1863,9 +1863,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            589,
-            195,
-            195
+            393,
+            129,
+            129
         ],
         "showNavigator": true,
         "defaultFontId": "",

@@ -1,8 +1,8 @@
 {
     "name": "GBS_Sample_Color",
     "author": "cmaltby",
-    "_version": "2.0.0",
-    "_release": "10",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "id": "94c18861-b352-4f49-a64d-52f2e3415077",
@@ -490,7 +490,7 @@
                     "startScript": [
                         {
                             "id": "2eb6780d-6ecb-4594-b200-0ee1933cbb2f",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -604,7 +604,7 @@
                     "script": [
                         {
                             "id": "c1b86b13-894a-4bf7-8af7-32e10521f049",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -622,7 +622,7 @@
                         },
                         {
                             "id": "cec5ef40-e937-475c-85eb-88c80b65d6be",
-                            "command": "EVENT_ACTOR_SHOW",
+                            "command": "EVENT_ACTOR_ACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -640,7 +640,7 @@
                     "script": [
                         {
                             "id": "f33f5e20-525b-4338-995b-f920438a118f",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -658,7 +658,7 @@
                         },
                         {
                             "id": "fae1c8d4-920e-43ae-9d77-12d52bbf5ff0",
-                            "command": "EVENT_ACTOR_SHOW",
+                            "command": "EVENT_ACTOR_ACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -1176,7 +1176,7 @@
                                 "true": [
                                     {
                                         "id": "22bb46dc-6c92-432a-a70c-d992849b4e04",
-                                        "command": "EVENT_ACTOR_SHOW",
+                                        "command": "EVENT_ACTOR_ACTIVATE",
                                         "args": {
                                             "actorId": "c4058748-207b-4686-9668-bff37e5bceea"
                                         }
@@ -1275,7 +1275,7 @@
                                     },
                                     {
                                         "id": "31ddde01-9911-4145-9cd6-4b35c2635136",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "c4058748-207b-4686-9668-bff37e5bceea"
                                         }
@@ -7807,7 +7807,9 @@
                                     {
                                         "id": "3bffb17d-feaa-4ecd-a795-836c7b032ae3",
                                         "command": "EVENT_SAVE_DATA",
-                                        "args": {},
+                                        "args": {
+                                            "saveSlot": 0
+                                        },
                                         "children": {
                                             "true": []
                                         }
@@ -10066,7 +10068,7 @@
             "script": [
                 {
                     "id": "8343c54c-07a1-4d30-892c-91db234b8d9b",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -10135,7 +10137,7 @@
                 },
                 {
                     "id": "ff79b819-b435-4ef8-af20-07302038959f",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -10193,13 +10195,17 @@
                                         {
                                             "id": "d2cd5812-f043-4aa5-b827-475dc79091e7",
                                             "command": "EVENT_IF_SAVED_DATA",
-                                            "args": {},
+                                            "args": {
+                                                "saveSlot": 0
+                                            },
                                             "children": {
                                                 "true": [
                                                     {
                                                         "id": "4a922761-48a9-410d-b603-00e7a7dd91ea",
                                                         "command": "EVENT_LOAD_DATA",
-                                                        "args": {}
+                                                        "args": {
+                                                            "saveSlot": 0
+                                                        }
                                                     }
                                                 ],
                                                 "false": [
@@ -10702,7 +10708,7 @@
                                                 },
                                                 {
                                                     "id": "271d582b-37a0-4ba2-b975-d2210c0b8ae5",
-                                                    "command": "EVENT_ACTOR_SHOW",
+                                                    "command": "EVENT_ACTOR_ACTIVATE",
                                                     "args": {
                                                         "actorId": "a65cba5e-5d01-4f02-b32c-ed99c9276ad3"
                                                     }
@@ -10846,7 +10852,7 @@
                                 "true": [
                                     {
                                         "id": "0a586506-2101-49ce-b244-cbe2df8b39a0",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "$self$"
                                         }
@@ -13379,7 +13385,7 @@
             "script": [
                 {
                     "id": "4238f3cb-81b4-4f62-882f-f9f03f16eb3e",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player",
                         "__collapse": false
@@ -22685,15 +22691,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -22774,7 +22783,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -22840,7 +22849,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -22899,15 +22908,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -22988,7 +23000,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -23054,7 +23066,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -23113,15 +23125,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -23202,7 +23217,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -23268,7 +23283,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -23327,15 +23342,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -23416,7 +23434,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -23482,7 +23500,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -23541,15 +23559,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -23630,7 +23651,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -23696,7 +23717,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -23755,15 +23776,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -23844,7 +23868,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -23910,7 +23934,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -23969,15 +23993,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -24058,7 +24085,7 @@
                         },
                         {
                             "id": "73fd8c30-95e0-4b2f-94ec-c65c5eb387d1",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -24124,7 +24151,7 @@
                                     },
                                     {
                                         "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24183,15 +24210,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -24281,7 +24311,7 @@
                                     },
                                     {
                                         "id": "254ae5fc-d95a-49c0-b21f-5deb8cad6b39",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24350,7 +24380,7 @@
                                     },
                                     {
                                         "id": "077ac96c-5976-4670-b645-cfc4f0d5d7c4",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24410,15 +24440,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -24508,7 +24541,7 @@
                                     },
                                     {
                                         "id": "80ac0bab-6fe9-4f90-8239-5f83d4b2fb01",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24577,7 +24610,7 @@
                                     },
                                     {
                                         "id": "e4272a85-fac5-462e-9dba-1c0b1a2721e1",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24637,15 +24670,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -24735,7 +24771,7 @@
                                     },
                                     {
                                         "id": "1bd56d61-443b-4f48-8e43-37e8cd156735",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24804,7 +24840,7 @@
                                     },
                                     {
                                         "id": "b0856f88-76ec-4c37-8144-0e2d60a498b7",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -24864,15 +24900,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -24962,7 +25001,7 @@
                                     },
                                     {
                                         "id": "432da625-bf49-45e9-a53d-8361dec5b646",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25031,7 +25070,7 @@
                                     },
                                     {
                                         "id": "8268b54a-ac37-4a25-89a6-99bb41ebac50",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25091,15 +25130,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -25189,7 +25231,7 @@
                                     },
                                     {
                                         "id": "be16aea5-5eb5-4a73-a435-5eaad366762e",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25258,7 +25300,7 @@
                                     },
                                     {
                                         "id": "f93f6332-696b-43b4-9285-a16f30cd551e",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25318,15 +25360,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -25416,7 +25461,7 @@
                                     },
                                     {
                                         "id": "579321a8-ebd1-4efe-8c0b-de9a6fd0171b",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25485,7 +25530,7 @@
                                     },
                                     {
                                         "id": "10154d01-9a94-47de-abc6-90c63d551b35",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25545,15 +25590,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -25643,7 +25691,7 @@
                                     },
                                     {
                                         "id": "64bad359-f4c1-40f5-a956-92824e58580d",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25712,7 +25760,7 @@
                                     },
                                     {
                                         "id": "89ea0dfa-ee75-40e8-ab53-dcef6ff72a23",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25772,15 +25820,18 @@
                                         "args": {
                                             "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                                             "actorId": "0",
-                                            "direction": {
-                                                "type": "direction",
-                                                "value": "left"
-                                            },
+                                            "direction": "left",
                                             "speed": 1,
                                             "collisionGroup": "1",
                                             "collisionMask": [
                                                 "player"
-                                            ]
+                                            ],
+                                            "animSpeed": 7,
+                                            "lifeTime": 1,
+                                            "directionType": "direction",
+                                            "angleVariable": "0",
+                                            "angle": 0,
+                                            "otherActorId": "$self$"
                                         }
                                     },
                                     {
@@ -25870,7 +25921,7 @@
                                     },
                                     {
                                         "id": "c93610f5-2b96-4c20-8270-f145550d6814",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -25939,7 +25990,7 @@
                                     },
                                     {
                                         "id": "d0e6913d-b971-4993-8971-4c6de679eba8",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "0"
                                         }
@@ -26004,16 +26055,19 @@
                                             "args": {
                                                 "spriteSheetId": "450a3571-cc76-41be-8c95-818d60b83c59",
                                                 "actorId": "player",
-                                                "direction": {
-                                                    "type": "direction",
-                                                    "value": "right"
-                                                },
+                                                "direction": "right",
                                                 "speed": 3,
                                                 "collisionGroup": "1",
                                                 "collisionMask": [
                                                     "1"
                                                 ],
-                                                "__collapse": false
+                                                "__collapse": false,
+                                                "animSpeed": 7,
+                                                "lifeTime": 1,
+                                                "directionType": "direction",
+                                                "angleVariable": "0",
+                                                "angle": 0,
+                                                "otherActorId": "$self$"
                                             }
                                         }
                                     ]
@@ -27398,7 +27452,7 @@
             "script": [
                 {
                     "id": "438493cd-01a3-4834-94bb-d54669adbfce",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -33414,7 +33468,7 @@
                                                 },
                                                 {
                                                     "id": "cec524f1-a5ac-4c1a-bdeb-314b15a508b1",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -33474,7 +33528,7 @@
                                             "true": [
                                                 {
                                                     "id": "ae86ba6a-86c1-4cfd-a2e7-319a2f88e517",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -33785,7 +33839,7 @@
                                                 },
                                                 {
                                                     "id": "cec524f1-a5ac-4c1a-bdeb-314b15a508b1",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -33845,7 +33899,7 @@
                                             "true": [
                                                 {
                                                     "id": "9b8886a5-d5fe-4f5a-abaa-12f8e05780f4",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -34022,7 +34076,7 @@
                                                 },
                                                 {
                                                     "id": "cec524f1-a5ac-4c1a-bdeb-314b15a508b1",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -34082,7 +34136,7 @@
                                             "true": [
                                                 {
                                                     "id": "a795aaf2-4f30-4954-bff7-7b419fcd696e",
-                                                    "command": "EVENT_ACTOR_HIDE",
+                                                    "command": "EVENT_ACTOR_DEACTIVATE",
                                                     "args": {
                                                         "actorId": "0"
                                                     }
@@ -34177,7 +34231,9 @@
                                     {
                                         "id": "3e99a702-de05-418b-b1c9-d4d05b8ec567",
                                         "command": "EVENT_SAVE_DATA",
-                                        "args": {},
+                                        "args": {
+                                            "saveSlot": 0
+                                        },
                                         "children": {
                                             "true": []
                                         }
@@ -35734,7 +35790,9 @@
                                     {
                                         "id": "7080f210-e6aa-4a5a-b104-1773cdd33438",
                                         "command": "EVENT_SAVE_DATA",
-                                        "args": {},
+                                        "args": {
+                                            "saveSlot": 0
+                                        },
                                         "children": {
                                             "true": []
                                         }
@@ -36599,7 +36657,7 @@
                     "startScript": [
                         {
                             "id": "4511a09b-f290-4c54-ac18-a3660278e369",
-                            "command": "EVENT_ACTOR_HIDE",
+                            "command": "EVENT_ACTOR_DEACTIVATE",
                             "args": {
                                 "actorId": "$self$"
                             }
@@ -36960,14 +37018,14 @@
                                     },
                                     {
                                         "id": "e551d045-0e7b-4dd6-9a17-11153376fcab",
-                                        "command": "EVENT_ACTOR_HIDE",
+                                        "command": "EVENT_ACTOR_DEACTIVATE",
                                         "args": {
                                             "actorId": "$self$"
                                         }
                                     },
                                     {
                                         "id": "17896c2f-c814-4090-9a46-a01171a18691",
-                                        "command": "EVENT_ACTOR_SHOW",
+                                        "command": "EVENT_ACTOR_ACTIVATE",
                                         "args": {
                                             "actorId": "0950d56c-866c-4d02-bd63-cd3fff4fe2bf"
                                         }
@@ -39243,7 +39301,7 @@
             "script": [
                 {
                     "id": "fe077452-bd5b-486a-8bcf-871c8bface15",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "$self$"
                     }
@@ -61348,16 +61406,19 @@
                                 "args": {
                                     "spriteSheetId": "450a3571-cc76-41be-8c95-818d60b83c59",
                                     "actorId": "player",
-                                    "direction": {
-                                        "type": "direction",
-                                        "value": "right"
-                                    },
+                                    "direction": "right",
                                     "speed": 3,
                                     "collisionGroup": "1",
                                     "collisionMask": [
                                         "1"
                                     ],
-                                    "__collapse": false
+                                    "__collapse": false,
+                                    "animSpeed": 7,
+                                    "lifeTime": 1,
+                                    "directionType": "direction",
+                                    "angleVariable": "0",
+                                    "angle": 0,
+                                    "otherActorId": "$self$"
                                 }
                             }
                         ]
@@ -61395,7 +61456,7 @@
                         "true": [
                             {
                                 "id": "ae86ba6a-86c1-4cfd-a2e7-319a2f88e517",
-                                "command": "EVENT_ACTOR_HIDE",
+                                "command": "EVENT_ACTOR_DEACTIVATE",
                                 "args": {
                                     "actorId": "0"
                                 }
@@ -61564,7 +61625,7 @@
                             },
                             {
                                 "id": "cec524f1-a5ac-4c1a-bdeb-314b15a508b1",
-                                "command": "EVENT_ACTOR_HIDE",
+                                "command": "EVENT_ACTOR_DEACTIVATE",
                                 "args": {
                                     "actorId": "0"
                                 }
@@ -61660,7 +61721,7 @@
                 },
                 {
                     "id": "71e2e1f2-a765-4644-8bcd-ac75c174fae7",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "0"
                     }
@@ -61734,15 +61795,18 @@
                     "args": {
                         "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                         "actorId": "0",
-                        "direction": {
-                            "type": "direction",
-                            "value": "left"
-                        },
+                        "direction": "left",
                         "speed": 1,
                         "collisionGroup": "1",
                         "collisionMask": [
                             "player"
-                        ]
+                        ],
+                        "animSpeed": 7,
+                        "lifeTime": 1,
+                        "directionType": "direction",
+                        "angleVariable": "0",
+                        "angle": 0,
+                        "otherActorId": "$self$"
                     }
                 },
                 {
@@ -61809,15 +61873,18 @@
                     "args": {
                         "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                         "actorId": "0",
-                        "direction": {
-                            "type": "direction",
-                            "value": "left"
-                        },
+                        "direction": "left",
                         "speed": 1,
                         "collisionGroup": "1",
                         "collisionMask": [
                             "player"
-                        ]
+                        ],
+                        "animSpeed": 7,
+                        "lifeTime": 1,
+                        "directionType": "direction",
+                        "angleVariable": "0",
+                        "angle": 0,
+                        "otherActorId": "$self$"
                     }
                 },
                 {
@@ -61884,15 +61951,18 @@
                     "args": {
                         "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                         "actorId": "0",
-                        "direction": {
-                            "type": "direction",
-                            "value": "left"
-                        },
+                        "direction": "left",
                         "speed": 1,
                         "collisionGroup": "1",
                         "collisionMask": [
                             "player"
-                        ]
+                        ],
+                        "animSpeed": 7,
+                        "lifeTime": 1,
+                        "directionType": "direction",
+                        "angleVariable": "0",
+                        "angle": 0,
+                        "otherActorId": "$self$"
                     }
                 },
                 {
@@ -61958,15 +62028,18 @@
                     "args": {
                         "spriteSheetId": "32c48a4d-6ce6-4aca-a23a-a6300b5c9e3b",
                         "actorId": "0",
-                        "direction": {
-                            "type": "direction",
-                            "value": "left"
-                        },
+                        "direction": "left",
                         "speed": 1,
                         "collisionGroup": "1",
                         "collisionMask": [
                             "player"
-                        ]
+                        ],
+                        "animSpeed": 7,
+                        "lifeTime": 1,
+                        "directionType": "direction",
+                        "angleVariable": "0",
+                        "angle": 0,
+                        "otherActorId": "$self$"
                     }
                 },
                 {
@@ -62223,9 +62296,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            591,
-            194,
-            194
+            393,
+            129,
+            129
         ],
         "showNavigator": true,
         "defaultFontId": "",

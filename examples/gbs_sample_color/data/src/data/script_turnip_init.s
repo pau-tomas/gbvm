@@ -20,9 +20,8 @@ _script_turnip_init::
         VM_IF_CONST .GT         .ARG0, 0, 1$, 1
         VM_JUMP                 2$
 1$:
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_1_ACTOR
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Actor Set Active

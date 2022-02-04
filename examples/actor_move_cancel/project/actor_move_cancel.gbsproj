@@ -2,7 +2,7 @@
     "name": "Actor Move Cancel",
     "author": "Justin",
     "_version": "3.0.0",
-    "_release": "1",
+    "_release": "2",
     "scenes": [
         {
             "name": "Scene 1",
@@ -1471,7 +1471,7 @@
         "startDirection": "up",
         "showCollisions": true,
         "showConnections": true,
-        "worldScrollX": 1379.3333740234375,
+        "worldScrollX": 1379,
         "worldScrollY": 1396,
         "zoom": 325,
         "customColorsEnabled": false,
@@ -1501,9 +1501,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            823,
-            247,
-            247
+            407,
+            122,
+            122
         ],
         "showNavigator": true,
         "defaultFontId": "4bd653f0-e08d-424e-9e5b-c1f3aaa21e47",

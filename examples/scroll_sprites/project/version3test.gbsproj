@@ -1,8 +1,8 @@
 {
     "name": "Version 3.0 Test",
     "author": "",
-    "_version": "2.0.0",
-    "_release": "10",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "name": "",
@@ -6839,9 +6839,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            284,
-            270,
-            425
+            189,
+            179,
+            283
         ],
         "showNavigator": true,
         "defaultFontId": "3d0dd0c9-b0e2-4a89-88d4-4089d14ec976",

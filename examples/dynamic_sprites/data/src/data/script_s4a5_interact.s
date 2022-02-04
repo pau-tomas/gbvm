@@ -19,7 +19,7 @@ _script_s4a5_interact::
         VM_SET_CONST            .LOCAL_ACTOR, 7
 
         ; Actor Set Spritesheet
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_3, _spritesheet_3
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_npc006, _sprite_npc006
 
         ; Stop Script
         VM_STOP

@@ -30,7 +30,7 @@ _script_s9_init::
         VM_MUSIC_ROUTINE        3, ___bank_script_music_0, _script_music_0
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_1__Data, _music_track_1__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_zilog_headbang_routine__Data, _track_zilog_headbang_routine__Data, .MUSIC_LOOP
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP0_WAIT_ARGS, 1

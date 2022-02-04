@@ -20,9 +20,8 @@ _script_s5_init::
 
         ; If Variable True
         VM_IF_CONST .GT         VAR_QUEST2, 0, 1$, 0
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 6
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         VM_JUMP                 2$
@@ -39,7 +38,7 @@ _script_s5_init::
         VM_CALL_FAR             ___bank_script_init_menu, _script_init_menu
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_7__Data, _music_track_7__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_undergroundcave__Data, _track_rulz_undergroundcave__Data, .MUSIC_LOOP
 
         ; If Variable True
         VM_IF_CONST .GT         VAR_PUSHED_ICE_BLOCK, 0, 3$, 0

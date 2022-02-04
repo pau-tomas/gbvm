@@ -22,11 +22,11 @@ _script_s8_init::
         VM_CALL_FAR             ___bank_script_init_menu, _script_init_menu
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_3__Data, _music_track_3__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_lightmood__Data, _track_rulz_lightmood__Data, .MUSIC_LOOP
 
         ; Player Set Spritesheet
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_5, _spritesheet_5
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_cursor, _sprite_cursor
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 1

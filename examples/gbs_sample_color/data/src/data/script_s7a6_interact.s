@@ -53,15 +53,14 @@ _script_s7a6_interact::
         VM_SET_CONST            .LOCAL_ACTOR, 7
 
         ; Actor Set Spritesheet
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_4, _spritesheet_4
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_fire, _sprite_fire
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP4_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP4_WAIT_ARGS
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 7
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Stop Script

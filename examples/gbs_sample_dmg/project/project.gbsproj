@@ -1,8 +1,8 @@
 {
     "name": "GBS_Sample_DMG",
     "author": "cmaltby",
-    "_version": "2.0.0",
-    "_release": "10",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "id": "94c18861-b352-4f49-a64d-52f2e3415077",
@@ -1733,7 +1733,9 @@
                                     {
                                         "id": "c967dfe8-e42d-4d80-a0be-36a772930f86",
                                         "command": "EVENT_SAVE_DATA",
-                                        "args": {},
+                                        "args": {
+                                            "saveSlot": 0
+                                        },
                                         "children": {
                                             "true": [
                                                 {
@@ -4508,7 +4510,7 @@
             "script": [
                 {
                     "id": "8343c54c-07a1-4d30-892c-91db234b8d9b",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -4569,7 +4571,7 @@
             "script": [
                 {
                     "id": "ff79b819-b435-4ef8-af20-07302038959f",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -4627,13 +4629,17 @@
                                         {
                                             "id": "d2cd5812-f043-4aa5-b827-475dc79091e7",
                                             "command": "EVENT_IF_SAVED_DATA",
-                                            "args": {},
+                                            "args": {
+                                                "saveSlot": 0
+                                            },
                                             "children": {
                                                 "true": [
                                                     {
                                                         "id": "4a922761-48a9-410d-b603-00e7a7dd91ea",
                                                         "command": "EVENT_LOAD_DATA",
-                                                        "args": {}
+                                                        "args": {
+                                                            "saveSlot": 0
+                                                        }
                                                     }
                                                 ],
                                                 "false": [
@@ -6151,7 +6157,7 @@
             "script": [
                 {
                     "id": "4238f3cb-81b4-4f62-882f-f9f03f16eb3e",
-                    "command": "EVENT_ACTOR_HIDE",
+                    "command": "EVENT_ACTOR_DEACTIVATE",
                     "args": {
                         "actorId": "player"
                     }
@@ -9734,9 +9740,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            605,
-            187,
-            187
+            403,
+            124,
+            124
         ],
         "showNavigator": true,
         "defaultFontId": "",
