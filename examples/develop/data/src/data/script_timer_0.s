@@ -38,20 +38,20 @@ _script_timer_0::
                     .R_OPERATOR .MOD
                     .R_STOP
         
-                VM_REPLACE_TILE_XY      12, 17, ___bank_tileset_1, _tileset_1, .ARG5
-                VM_REPLACE_TILE_XY      13, 17, ___bank_tileset_1, _tileset_1, .ARG4
-                VM_REPLACE_TILE_XY      15, 17, ___bank_tileset_1, _tileset_1, .ARG3
-                VM_REPLACE_TILE_XY      16, 17, ___bank_tileset_1, _tileset_1, .ARG2
-                VM_REPLACE_TILE_XY      18, 17, ___bank_tileset_1, _tileset_1, .ARG1
-                VM_REPLACE_TILE_XY      19, 17, ___bank_tileset_1, _tileset_1, .ARG0
+                VM_REPLACE_TILE_XY      12, 17, ___bank_tileset_digits, _tileset_digits, .ARG5
+                VM_REPLACE_TILE_XY      13, 17, ___bank_tileset_digits, _tileset_digits, .ARG4
+                VM_REPLACE_TILE_XY      15, 17, ___bank_tileset_digits, _tileset_digits, .ARG3
+                VM_REPLACE_TILE_XY      16, 17, ___bank_tileset_digits, _tileset_digits, .ARG2
+                VM_REPLACE_TILE_XY      18, 17, ___bank_tileset_digits, _tileset_digits, .ARG1
+                VM_REPLACE_TILE_XY      19, 17, ___bank_tileset_digits, _tileset_digits, .ARG0
         
                 VM_POP                  6       ; free results of rpn
         
                 VM_POP                  3
         
                 VM_PUSH_CONST           10
-                VM_REPLACE_TILE_XY      14, 17, ___bank_tileset_1, _tileset_1, .ARG0
-                VM_REPLACE_TILE_XY      17, 17, ___bank_tileset_1, _tileset_1, .ARG0
+                VM_REPLACE_TILE_XY      14, 17, ___bank_tileset_digits, _tileset_digits, .ARG0
+                VM_REPLACE_TILE_XY      17, 17, ___bank_tileset_digits, _tileset_digits, .ARG0
                 VM_POP                  1
         
                 VM_STOP

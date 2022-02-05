@@ -2,7 +2,7 @@
     "name": "Quaternity",
     "author": "Derek",
     "_version": "3.0.0",
-    "_release": "1",
+    "_release": "2",
     "scenes": [
         {
             "name": "Title",
@@ -1805,9 +1805,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            536,
-            137,
-            137
+            431,
+            110,
+            110
         ],
         "showNavigator": true,
         "defaultFontId": "4bd653f0-e08d-424e-9e5b-c1f3aaa21e47",

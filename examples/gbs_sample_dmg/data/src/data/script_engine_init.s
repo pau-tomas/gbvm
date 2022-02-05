@@ -12,13 +12,13 @@ _start_scene_y::
 _start_scene_dir:: 
         .db .DIR_RIGHT
 _start_scene::
-        IMPORT_FAR_PTR_DATA _scene_4
+        IMPORT_FAR_PTR_DATA _scene_logo
 _start_player_move_speed:: 
         .db 16
 _start_player_anim_tick:: 
         .db 15
 _ui_fonts:: 
-        IMPORT_FAR_PTR_DATA _font_0
+        IMPORT_FAR_PTR_DATA _font_gbs_mono
 
 
 ; define engine init VM routine which will be packed into some bank

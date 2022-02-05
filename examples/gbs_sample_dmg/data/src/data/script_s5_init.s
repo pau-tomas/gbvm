@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_0, _scene_0
+.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_outside, _scene_outside
 
 .area _CODE_255
 
@@ -20,9 +20,8 @@ _script_s5_init::
 
         VM_RESERVE              5
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Wait N Frames
@@ -85,7 +84,7 @@ _script_s5_init::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_LEFT
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_0
+            IMPORT_FAR_PTR_DATA _scene_outside
 
 4$:
 

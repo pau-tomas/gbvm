@@ -1,8 +1,8 @@
 {
     "name": "Sprite States",
     "author": "cmaltby",
-    "_version": "2.0.0",
-    "_release": "10",
+    "_version": "3.0.0",
+    "_release": "2",
     "scenes": [
         {
             "name": "Start",
@@ -2602,9 +2602,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            601,
-            189,
-            189
+            401,
+            125,
+            125
         ],
         "showNavigator": true,
         "defaultFontId": "",

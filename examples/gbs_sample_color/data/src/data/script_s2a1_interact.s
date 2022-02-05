@@ -15,7 +15,7 @@ _script_s2a1_interact::
         ; If Variable True
         VM_IF_CONST .GT         VAR_USED_RADIO, 0, 1$, 0
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_8__Data, _music_track_8__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_template__Data, _track_template__Data, .MUSIC_LOOP
 
         ; Variable Set To True
         VM_SET_CONST            VAR_USED_RADIO, 1

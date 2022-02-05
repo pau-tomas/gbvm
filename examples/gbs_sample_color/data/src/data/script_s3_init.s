@@ -4,14 +4,13 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_4, _scene_4
+.globl b_wait_frames, _wait_frames, _fade_frames_per_step, ___bank_scene_title_screen, _scene_title_screen
 
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
 .LOCAL_TMP1_WAIT_ARGS = -5
 .LOCAL_TMP2_WAIT_ARGS = -5
-.LOCAL_TMP3_WAIT_ARGS = -5
 
 ___bank_script_s3_init = 255
 .globl ___bank_script_s3_init
@@ -21,9 +20,8 @@ _script_s3_init::
 
         VM_RESERVE              5
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         ; Overlay Show
@@ -42,12 +40,8 @@ _script_s3_init::
         VM_OVERLAY_WAIT         .UI_MODAL, .UI_WAIT_WINDOW
 
         ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 60
+        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 120
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
-
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
 
         ; Load Scene
         VM_SET_CONST_INT8       _fade_frames_per_step, 3
@@ -58,7 +52,7 @@ _script_s3_init::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_DOWN
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_4
+            IMPORT_FAR_PTR_DATA _scene_title_screen
 
         ; Stop Script
         VM_STOP

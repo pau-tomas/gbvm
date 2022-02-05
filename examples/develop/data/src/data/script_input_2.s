@@ -13,16 +13,22 @@ _script_input_2::
 
         VM_RANDOMIZE
 
+; --- VM_SFX_PLAY complex effect example
+        VM_SFX_PLAY             ___bank_sound_effect1, _sound_effect1, ___mute_mask_sound_effect1        
+
 ; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----
         VM_PUSH_CONST           128
-        VM_LOAD_TILESET         .ARG0, ___bank_background_0, _background_0
-        VM_OVERLAY_SET_MAP      .ARG0, 0, 0, ___bank_background_0, _background_0
+        VM_LOAD_TILESET         .ARG0, ___bank_bg_cave, _bg_cave
+        VM_OVERLAY_SET_MAP      .ARG0, 0, 0, ___bank_bg_cave, _bg_cave
         VM_POP                  1
 
         VM_OVERLAY_MOVE_TO      0, 0, .OVERLAY_IN_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/
+
+; --- VM_SFX_PLAY waveform example
+        VM_SFX_PLAY             ___bank_wave_icq_message, _wave_icq_message, ___mute_mask_wave_icq_message        
 
 ; --- VM_SWITCH example ------------------------------
         VM_PUSH_CONST           10
@@ -67,14 +73,19 @@ _script_input_2::
         ldh a, (0x47) ; BGP
         cpl
         ldh (0x47), a
-        ret        
+        ret
+102$:
+        ; sound effect test
+        .db 0x71, 0b11111000, 0x4c,0x81,0x43,0x73,0x86  ; play for 2 frames
+        .db 0x01, 0b00101000, 0x00,0xc0                 ; shut ch1
+        .db 0x01, 0b00000111                            ; stop
 101$:
 
 ; --- Text features various examples -----------------
         VM_SET_PRINT_DIR        .UI_PRINT_RIGHTTOLEFT
 
         VM_MUSIC_STOP
-        VM_SET_TEXT_SOUND       2, 1, 0x4c,0x81,0x43,0x73,0x86
+        VM_SET_TEXT_SOUND       ___bank_script_input_2, 102$, 0b00000001
 
         ; Text Dialogue
         VM_LOAD_TEXT            0

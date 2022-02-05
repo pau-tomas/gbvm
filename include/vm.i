@@ -824,23 +824,16 @@ OP_VM_SOUND_MASTERVOL   = 0x63
         .db OP_VM_SOUND_MASTERVOL, #<VOL
 .endm
 
-; Plays sound effect
-OP_VM_SOUND_PLAY        = 0x64
-.macro VM_SOUND_PLAY FRAMES, CH, A, B, C, D, E
-        .db OP_VM_SOUND_PLAY, #<CH, #<FRAMES
-        .db #<A, #<B, #<C, #<D, #<E    
-.endm
-
 ; Attach script to music event
 OP_VM_MUSIC_ROUTINE     = 0x65
 .macro VM_MUSIC_ROUTINE ROUTINE, BANK, ADDR
         .db OP_VM_MUSIC_ROUTINE, #>ADDR, #<ADDR, #<BANK, #<ROUTINE
 .endm
 
-; Plays waveform record
-OP_VM_WAVE_PLAY         = 0x66
-.macro VM_WAVE_PLAY FRAMES, BANK, ADDR, SIZE
-        .db OP_VM_WAVE_PLAY, #>SIZE, #<SIZE, #>ADDR, #<ADDR, #<BANK, #<FRAMES
+; Plays SFX
+OP_VM_SFX_PLAY          = 0x66
+.macro VM_SFX_PLAY BANK, ADDR, MASK
+        .db OP_VM_SFX_PLAY, #<MASK, #>ADDR, #<ADDR, #<BANK
 .endm
 
 ; Sets music playback position
@@ -997,8 +990,6 @@ OP_VM_COS_SCALE         = 0x8A
 
 ; Set sound effect for text 
 OP_VM_SET_TEXT_SOUND    = 0x8B
-.macro VM_SET_TEXT_SOUND FRAMES, CH, A, B, C, D, E
-        .db OP_VM_SET_TEXT_SOUND, #<CH, #<FRAMES
-        .db #<A, #<B, #<C, #<D, #<E    
+.macro VM_SET_TEXT_SOUND BANK, ADDR, MASK
+        .db OP_VM_SET_TEXT_SOUND, #<MASK, #>ADDR, #<ADDR, #<BANK
 .endm
-

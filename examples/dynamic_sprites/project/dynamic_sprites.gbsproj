@@ -2,7 +2,7 @@
     "name": "Dynamic Sprites",
     "author": "cmaltby",
     "_version": "3.0.0",
-    "_release": "1",
+    "_release": "2",
     "scenes": [
         {
             "name": "Start",
@@ -6680,9 +6680,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            595,
-            192,
-            192
+            397,
+            127,
+            127
         ],
         "showNavigator": true,
         "defaultFontId": "",

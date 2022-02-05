@@ -28,7 +28,7 @@ _script_s11_init::
         VM_CALL_FAR             ___bank_script_init_menu, _script_init_menu
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_1__Data, _music_track_1__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_gonaspace__Data, _track_rulz_gonaspace__Data, .MUSIC_LOOP
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 1

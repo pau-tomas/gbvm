@@ -126,9 +126,9 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_music_stop,             0}, // 0x61
     {vm_music_mute,             1}, // 0x62
     {vm_sound_mastervol,        1}, // 0x63
-    {vm_sound_play,             2}, // 0x64
+    {0, 0},
     {vm_music_routine,          4}, // 0x65
-    {vm_wave_play,              6}, // 0x66
+    {vm_sfx_play,               4}, // 0x66
     {vm_music_setpos,           2}, // 0x67
     // scene stack instructions
     {vm_scene_push,             0}, // 0x68
@@ -181,5 +181,5 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_sin_scale,              5}, // 0x89 
     {vm_cos_scale,              5}, // 0x8A
 
-    {vm_set_text_sound,         2}  // 0x8B
+    {vm_set_text_sound,         4}  // 0x8B
 };

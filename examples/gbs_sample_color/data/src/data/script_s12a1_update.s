@@ -11,18 +11,13 @@
 .LOCAL_TMP1_WAIT_ARGS = -5
 .LOCAL_TMP2_WAIT_ARGS = -5
 .LOCAL_TMP3_WAIT_ARGS = -5
-.LOCAL_TMP4_WAIT_ARGS = -5
-.LOCAL_TMP5_WAIT_ARGS = -5
-.LOCAL_TMP6_WAIT_ARGS = -5
-.LOCAL_TMP7_WAIT_ARGS = -5
-.LOCAL_TMP8_WAIT_ARGS = -5
-.LOCAL_TMP9_WAIT_ARGS = -13
+.LOCAL_TMP4_WAIT_ARGS = -8
 
 ___bank_script_s12a1_update = 255
 .globl ___bank_script_s12a1_update
 
 _script_s12a1_update::
-        VM_RESERVE              13
+        VM_RESERVE              8
 
 1$:
         ; Actor Set Active
@@ -41,12 +36,8 @@ _script_s12a1_update::
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_UP
 
         ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 60
+        VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 120
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP1_WAIT_ARGS
-
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 2
@@ -64,12 +55,8 @@ _script_s12a1_update::
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_UP
 
         ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
-
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP4_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP4_WAIT_ARGS
+        VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 120
+        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 2
@@ -87,20 +74,8 @@ _script_s12a1_update::
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_UP
 
         ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP5_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP5_WAIT_ARGS
-
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP6_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP6_WAIT_ARGS
-
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP7_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP7_WAIT_ARGS
-
-        ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP8_WAIT_ARGS, 60
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP8_WAIT_ARGS
+        VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 240
+        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 2
@@ -112,8 +87,8 @@ _script_s12a1_update::
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
         ; Wait N Frames
-        VM_SET_CONST            .LOCAL_TMP9_WAIT_ARGS, 1
-        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP9_WAIT_ARGS
+        VM_SET_CONST            .LOCAL_TMP4_WAIT_ARGS, 1
+        VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP4_WAIT_ARGS
 
         VM_JUMP                 1$
         ; Stop Script

@@ -35,7 +35,7 @@ _script_enemy_ship_destroy::
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
 
         ; Actor Set Spritesheet
-        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_spritesheet_3, _spritesheet_3
+        VM_ACTOR_SET_SPRITESHEET .LOCAL_ACTOR, ___bank_sprite_explode, _sprite_explode
 
         ; Actor Set Active
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
@@ -44,9 +44,8 @@ _script_enemy_ship_destroy::
         VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP1_WAIT_ARGS
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
         VM_RESERVE              -5

@@ -21,7 +21,7 @@ _script_s2_init::
         VM_CALL_FAR             ___bank_script_init_menu, _script_init_menu
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_3__Data, _music_track_3__Data, .MUSIC_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_lightmood__Data, _track_rulz_lightmood__Data, .MUSIC_LOOP
 
         ; Wait N Frames
         VM_SET_CONST            .LOCAL_TMP0_WAIT_ARGS, 1

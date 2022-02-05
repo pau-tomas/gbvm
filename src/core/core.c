@@ -47,7 +47,7 @@ void core_reset() BANKED {
     SIO_init();
     input_init();
     load_init();
-    sound_init();
+    music_init_driver();
     parallax_init();
     scroll_init();
     fade_init();
@@ -56,7 +56,7 @@ void core_reset() BANKED {
     ui_init();
     events_init(FALSE);
     timers_init(FALSE);
-    music_init(FALSE);
+    music_init_events(FALSE);
 }
 
 void process_VM() {
@@ -123,7 +123,7 @@ void process_VM() {
                         // reset input events on scene change
                         events_init(FALSE);
                         // reset music events
-                        music_init(FALSE);
+                        music_init_events(FALSE);
                         // load scene
                         far_ptr_t scene;
                         ReadBankedFarPtr(&scene, vm_exception_params_offset, vm_exception_params_bank);
@@ -226,13 +226,7 @@ void core_run() BANKED {
         add_VBL(VBL_isr);
         STAT_REG |= STATF_LYC; 
 
-        #ifdef CGB
-            // CGB_VAL = 256 - ((256 - DMG_VAL) * 2)
-            TMA_REG = (_is_CGB) ? 0x80u : 0xC0u;
-        #else
-            TMA_REG = 0xC0u;
-        #endif
-        TAC_REG = 0x07u;
+        music_setup_timer();
         IE_REG |= (TIM_IFLAG | LCD_IFLAG | SIO_IFLAG);
     }
     DISPLAY_ON;

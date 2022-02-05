@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl b_wait_frames, _wait_frames, b_camera_shake_frames, _camera_shake_frames, _fade_frames_per_step, ___bank_scene_7, _scene_7
+.globl b_wait_frames, _wait_frames, b_camera_shake_frames, _camera_shake_frames, _fade_frames_per_step, ___bank_scene_space_battle, _scene_space_battle
 
 .area _CODE_255
 
@@ -39,16 +39,14 @@ _script_s12t1_interact::
         VM_IF_CONST .EQ         .ARG0, 0, 1$, 1
 
         ; Music Play
-        VM_MUSIC_PLAY           ___bank_music_track_6__Data, _music_track_6__Data, .MUSIC_NO_LOOP
+        VM_MUSIC_PLAY           ___bank_track_rulz_spaceemergency__Data, _track_rulz_spaceemergency__Data, .MUSIC_NO_LOOP
 
-        ; Actor Hide
+        ; Actor Deactivate
         VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
         VM_ACTOR_DEACTIVATE     .LOCAL_ACTOR
 
-        ; Actor Show
+        ; Actor Activate
         VM_SET_CONST            .LOCAL_ACTOR, 1
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 0
         VM_ACTOR_ACTIVATE       .LOCAL_ACTOR
 
         ; Wait N Frames
@@ -94,7 +92,7 @@ _script_s12t1_interact::
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_RIGHT
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
-            IMPORT_FAR_PTR_DATA _scene_7
+            IMPORT_FAR_PTR_DATA _scene_space_battle
 
         VM_JUMP                 2$
 1$:

@@ -2,7 +2,7 @@
     "name": "sokoban",
     "author": "cmaltby",
     "_version": "3.0.0",
-    "_release": "1",
+    "_release": "2",
     "scenes": [
         {
             "name": "Level 1",
@@ -1987,7 +1987,7 @@
         "startDirection": "down",
         "showCollisions": true,
         "showConnections": true,
-        "worldScrollX": 0,
+        "worldScrollX": 40,
         "worldScrollY": 136,
         "zoom": 200,
         "customColorsEnabled": true,
@@ -2015,9 +2015,9 @@
         "defaultUIPaletteId": "default-ui",
         "playerPaletteId": "",
         "navigatorSplitSizes": [
-            731,
-            241,
-            241
+            393,
+            129,
+            129
         ],
         "showNavigator": true,
         "defaultFontId": "",

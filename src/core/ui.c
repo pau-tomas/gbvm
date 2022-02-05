@@ -70,7 +70,7 @@ UBYTE * text_scroll_addr;
 UBYTE text_scroll_width, text_scroll_height;
 UBYTE text_scroll_fill;
 
-UBYTE text_sound_frames, text_sound_ch;
+UBYTE text_sound_mask;
 UBYTE text_sound_bank; 
 const UBYTE * text_sound_data;
 
@@ -110,8 +110,7 @@ void ui_init() BANKED {
     text_scroll_height          = 8;
     text_scroll_fill            = ui_while_tile;
 
-    text_sound_frames           = 0;
-    text_sound_ch               = 0;
+    text_sound_bank             = SFX_STOP_BANK;
 
     ui_load_tiles();
 }
@@ -440,7 +439,7 @@ void ui_update() NONBANKED {
         letter_drawn = ui_draw_text_buffer_char();
     } while (((text_ff) || (text_draw_speed == 0)) && (!text_drawn));
     // play sound
-    if ((letter_drawn) && (text_sound_frames != 0)) sound_play(text_sound_frames, text_sound_ch, text_sound_bank, text_sound_data);
+    if ((letter_drawn) && (text_sound_bank != SFX_STOP_BANK)) music_play_sfx(text_sound_bank, text_sound_data, text_sound_mask);
 }
 
 UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE count) BANKED {
