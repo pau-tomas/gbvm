@@ -221,6 +221,10 @@ OP_VM_RPN          = 0x15
         .db -4
         .dw #ARG0
 .endm
+.macro .R_REF_SET ARG0
+        .db -5
+        .dw #ARG0
+.endm
 .macro .R_OPERATOR ARG0
         .db ARG0
 .endm
