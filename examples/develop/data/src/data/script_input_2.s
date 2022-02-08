@@ -17,10 +17,12 @@ _script_input_2::
         VM_SFX_PLAY             ___bank_sound_effect1, _sound_effect1, ___mute_mask_sound_effect1        
 
 ; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----
+        VM_PUSH_CONST           0       ; Y coord
+        VM_PUSH_CONST           0       ; X coord
         VM_PUSH_CONST           128
         VM_LOAD_TILESET         .ARG0, ___bank_bg_cave, _bg_cave
-        VM_OVERLAY_SET_MAP      .ARG0, 0, 0, ___bank_bg_cave, _bg_cave
-        VM_POP                  1
+        VM_OVERLAY_SET_MAP      .ARG0, .ARG1, .ARG2, ___bank_bg_cave, _bg_cave
+        VM_POP                  3
 
         VM_OVERLAY_MOVE_TO      0, 0, .OVERLAY_IN_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_BTN_A)/
@@ -145,8 +147,11 @@ _script_input_2::
         VM_OVERLAY_SHOW         0, 9, .UI_COLOR_BLACK, 0
         
 ; --- VM_OVERLAY_SET_SUBMAP example ------------------
-        VM_OVERLAY_SET_SUBMAP   2, 2, 6, 5, 8, 4
-        
+        VM_PUSH_CONST           2       ; Y coord
+        VM_PUSH_CONST           2       ; X coord
+        VM_OVERLAY_SET_SUBMAP   .ARG0, .ARG1, 6, 5, 8, 4
+        VM_POP                  2
+
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/
         
 ; --- RPN Calculator example -------------------------

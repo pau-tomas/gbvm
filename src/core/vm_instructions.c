@@ -101,7 +101,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_set_print_dir,          1}, // 0x4C
     {vm_overlay_scroll,         5}, // 0x4D
     {vm_overlay_set_scroll,     5}, // 0x4E
-    {vm_overlay_set_submap,     6}, // 0x4F
+    {vm_overlay_set_submap,     8}, // 0x4F
 
     // gameboy features instructions section
     {vm_load_tileset,           5}, // 0x50
@@ -110,7 +110,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_input_attach,           2}, // 0x53
     {vm_input_get,              3}, // 0x54
     {vm_context_prepare,        4}, // 0x55
-    {vm_overlay_set_map,        7}, // 0x56
+    {vm_overlay_set_map,        9}, // 0x56
     {vm_fade,                   1}, // 0x57
     {vm_timer_prepare,          4}, // 0x58
     {vm_timer_set,              2}, // 0x59

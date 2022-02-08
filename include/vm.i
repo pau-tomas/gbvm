@@ -665,8 +665,8 @@ OP_VM_OVERLAY_SET_SCROLL = 0x4E
 .endm
 
 OP_VM_OVERLAY_SET_SUBMAP = 0x4F
-.macro VM_OVERLAY_SET_SUBMAP X, Y, W, H, SX, SY
-        .db OP_VM_OVERLAY_SET_SUBMAP, #<SY, #<SX, #<H, #<W, #<Y, #<X 
+.macro VM_OVERLAY_SET_SUBMAP X_IDX, Y_IDX, W, H, SX, SY
+        .db OP_VM_OVERLAY_SET_SUBMAP, #<SY, #<SX, #<H, #<W, #>Y_IDX, #<Y_IDX, #>X_IDX, #<X_IDX 
 .endm
 
 ; --- GAMEBOY ------------------------------------------
@@ -716,8 +716,8 @@ OP_VM_CONTEXT_PREPARE   = 0x55
 .endm
 
 OP_VM_OVERLAY_SET_MAP   = 0x56
-.macro VM_OVERLAY_SET_MAP IDX, X, Y, BANK, BKG
-        .db OP_VM_OVERLAY_SET_MAP, #>BKG, #<BKG, #<BANK, #<Y, #<X, #>IDX, #<IDX
+.macro VM_OVERLAY_SET_MAP IDX, X_IDX, Y_IDX, BANK, BKG
+        .db OP_VM_OVERLAY_SET_MAP, #>BKG, #<BKG, #<BANK, #>Y_IDX, #<Y_IDX, #>X_IDX, #<X_IDX, #>IDX, #<IDX
 .endm
 
 OP_VM_FADE              = 0x57

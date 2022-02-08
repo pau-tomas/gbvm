@@ -221,9 +221,10 @@ void vm_overlay_scroll(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UB
 
 void set_xy_win_submap(const UBYTE * source, UBYTE bank, UBYTE width, UBYTE x, UBYTE y, UBYTE w, UBYTE h) OLDCALL;
 
-void vm_overlay_set_submap(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UBYTE scene_x, UBYTE scene_y) OLDCALL BANKED {
-    THIS;
+void vm_overlay_set_submap(SCRIPT_CTX * THIS, INT16 x_idx, INT16 y_idx, UBYTE w, UBYTE h, UBYTE scene_x, UBYTE scene_y) OLDCALL BANKED {
     UWORD offset = (scene_y * image_tile_width) + scene_x;
+    UBYTE x = *((x_idx < 0) ? THIS->stack_ptr + x_idx : script_memory + x_idx);
+    UBYTE y = *((y_idx < 0) ? THIS->stack_ptr + y_idx : script_memory + y_idx);
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
@@ -234,8 +235,10 @@ void vm_overlay_set_submap(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h
     set_xy_win_submap(image_ptr + offset, image_bank, image_tile_width, x, y, w, h);
 }
 
-void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, UBYTE x, UBYTE y, UBYTE bank, const background_t * background) OLDCALL BANKED {
+void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, INT16 x_idx, INT16 y_idx, UBYTE bank, const background_t * background) OLDCALL BANKED {
     far_ptr_t tilemap;
+    UBYTE x = *((x_idx < 0) ? THIS->stack_ptr + x_idx : script_memory + x_idx);
+    UBYTE y = *((y_idx < 0) ? THIS->stack_ptr + y_idx : script_memory + y_idx);
     UBYTE w = ReadBankedUBYTE((void *)&(background->width), bank);
     UBYTE h = ReadBankedUBYTE((void *)&(background->height), bank);
     _map_tile_offset = *(INT16 *)(VM_REF_TO_PTR(idx));
