@@ -77,18 +77,18 @@ OP_VM_RET          = 0x05
         .db OP_VM_RET, 0 
 .endm
 
-; return from near call and clear n arguments on stack
-.macro VM_RET_N ARG0
-        .db OP_VM_RET, #<ARG0 
+; return from near call and remove N arguments on stack
+.macro VM_RET_N N
+        .db OP_VM_RET, #<N 
 .endm
 
-; loop by near address, counter is on stack, counter is removed on exit
+; loop by near address, IDX is a counter, remove N arguments on stack
 OP_VM_LOOP         = 0x07
-.macro VM_LOOP IDX, LABEL, NPOP
-        .db OP_VM_LOOP, #<NPOP, #>LABEL, #<LABEL, #>IDX, #<IDX
+.macro VM_LOOP IDX, LABEL, N
+        .db OP_VM_LOOP, #<N, #>LABEL, #<LABEL, #>IDX, #<IDX
 .endm
 
-; switch table
+; switch table IDX is a variable, SIZE is a size of a table, remove N arguments on stack 
 OP_VM_SWITCH       = 0x08
 .macro VM_SWITCH IDX, SIZE, N
         .db OP_VM_SWITCH, #<N, #<SIZE, #>IDX, #<IDX
@@ -106,21 +106,15 @@ OP_VM_CALL_FAR     = 0x0A
         .db OP_VM_CALL_FAR, #>ARG1, #<ARG1, #<ARG0
 .endm
 
-; rerurn from far call and clear n arguments on stack
+; rerurn from far call
 OP_VM_RET_FAR      = 0x0B
 .macro VM_RET_FAR
         .db OP_VM_RET_FAR, 0 
 .endm
 
-; rerurn from far call and clear n arguments on stack
-.macro VM_RET_FAR_N ARG0
-        .db OP_VM_RET_FAR, #<ARG0 
-.endm
-
-; returns game boy system time on VM stack
-OP_VM_GET_SYSTIME  = 0x0C
-.macro VM_GET_SYSTIME IDX
-        .db OP_VM_GET_SYSTIME, #>IDX, #<IDX
+; rerurn from far call and remove N arguments on stack
+.macro VM_RET_FAR_N N
+        .db OP_VM_RET_FAR, #<N 
 .endm
 
 ; invokes <bank>:<address> C function until it returns true

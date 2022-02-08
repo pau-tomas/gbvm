@@ -118,13 +118,6 @@ void vm_jump(SCRIPT_CTX * THIS, UBYTE * pc) OLDCALL BANKED {
     THIS->PC = pc;    
 }
 
-// returns systime 
-void vm_systime(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
-    UWORD * A;
-    if (idx < 0) A = THIS->stack_ptr + idx; else A = script_memory + idx;
-    *A = sys_time;
-} 
-
 UBYTE wait_frames(void * THIS, UBYTE start, UWORD * stack_frame) OLDCALL BANKED {
     // we allocate one local variable (just write ahead of VM stack pointer, we have no interrupts, our local variables won't get spoiled)
     if (start) *((SCRIPT_CTX *)THIS)->stack_ptr = sys_time;

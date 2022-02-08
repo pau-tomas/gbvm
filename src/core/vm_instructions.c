@@ -29,7 +29,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_jump,                   2}, // 0x09
     {vm_call_far,               3}, // 0x0A
     {vm_ret_far,                1}, // 0x0B
-    {vm_systime,                2}, // 0x0C
+    {0, 0},
     {vm_invoke,                 6}, // 0x0D
     {vm_beginthread,            6}, // 0x0E
     {vm_if,                     8}, // 0x0F
