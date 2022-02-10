@@ -23,7 +23,7 @@ $(OBJ_DIR)/%.o:	%.s
 	$(CC) -c -o $@ $<
 
 $(TARGET): $(OBJS)
-	$(SDAR) q $@ $(OBJS)
+	$(SDAR) -ru $@ $(OBJS)
 
 clean:
 	@echo "CLEANUP..."

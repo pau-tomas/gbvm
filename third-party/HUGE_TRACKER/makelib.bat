@@ -10,7 +10,7 @@
 
 %RRGBDS%\rgbasm -DGBDK -ohUGEDriver.obj hUGEDriver.asm
 %RGB2SDAS%\rgb2sdas %CVTFLAGS% hUGEDriver.obj
-%GBDK%\sdar q hUGEDriver.lib hUGEDriver.obj.o
+%GBDK%\sdar -ru hUGEDriver.lib hUGEDriver.obj.o
 
 @del /Q *.obj
 @del /Q *.o
