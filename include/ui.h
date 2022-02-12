@@ -69,7 +69,7 @@ extern const UBYTE * text_sound_data;
 extern const UBYTE ui_time_masks[];
 
 #ifdef CGB
-extern UBYTE overlay_priotiry;
+extern UBYTE overlay_priority;
 #endif
 
 void ui_init() BANKED;
