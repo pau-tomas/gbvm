@@ -95,8 +95,8 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_overlay_show,           4}, // 0x46
     {vm_overlay_clear,          6}, // 0x47
     {vm_choice,                 4}, // 0x48
-    {vm_load_frame,             3}, // 0x49
-    {vm_load_cursor,            3}, // 0x4A
+    {vm_load_tiles,             5}, // 0x49
+    {0, 0},
     {vm_set_font,               1}, // 0x4B
     {vm_set_print_dir,          1}, // 0x4C
     {vm_overlay_scroll,         5}, // 0x4D

@@ -124,8 +124,10 @@ void ui_init() BANKED {
 }
 
 void ui_load_tiles() BANKED {
-    ui_load_frame_tiles(frame_image, BANK(frame_image));
-    ui_load_cursor_tile(cursor_image, BANK(cursor_image));
+    // load frame
+    SetBankedBkgData(ui_frame_tl_tiles, 9, frame_image, BANK(frame_image));
+    // load cursor
+    SetBankedBkgData(ui_cursor_tile, 1, cursor_image, BANK(cursor_image));
 
     memset(vwf_tile_data, TEXT_BKG_FILL_W, 16);
     set_bkg_data(ui_while_tile, 1, vwf_tile_data);

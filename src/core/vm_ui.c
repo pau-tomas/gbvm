@@ -185,16 +185,6 @@ void vm_choice(SCRIPT_CTX * THIS, INT16 idx, UBYTE options, UBYTE count) OLDCALL
     THIS->PC += sizeof(menu_item_t) * count;
 }
 
-void vm_load_frame(SCRIPT_CTX * THIS, UBYTE bank, UBYTE * offset) OLDCALL BANKED {
-    THIS;
-    ui_load_frame_tiles(offset, bank);
-}
-
-void vm_load_cursor(SCRIPT_CTX * THIS, UBYTE bank, UBYTE * offset) OLDCALL BANKED {
-    THIS;
-    ui_load_cursor_tile(offset, bank);
-}
-
 void vm_set_font(SCRIPT_CTX * THIS, UBYTE font_index) OLDCALL BANKED {
     THIS;
     vwf_current_font_bank = ui_fonts[font_index].bank;

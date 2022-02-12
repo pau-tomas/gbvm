@@ -105,12 +105,4 @@ inline void ui_move_to(UBYTE x, UBYTE y, BYTE speed) {
 
 UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE count) BANKED;
 
-inline void ui_load_frame_tiles(const UBYTE * offset, UBYTE bank) {
-    SetBankedBkgData(192, 9, offset, bank);
-}
-
-inline void ui_load_cursor_tile(const UBYTE * offset, UBYTE bank) {
-    SetBankedBkgData(ui_cursor_tile, 1, offset, bank);
-}
-
 #endif

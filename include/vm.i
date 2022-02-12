@@ -626,16 +626,6 @@ OP_VM_CHOICE            = 0x48
         .db #<X, #<Y, #<iL, #<iR, #<iU, #<iD
 .endm
 
-OP_VM_LOAD_FRAME        = 0x49
-.macro VM_LOAD_FRAME BANK, ADDR
-        .db OP_VM_LOAD_FRAME, #>ADDR, #<ADDR, #<BANK
-.endm
-
-OP_VM_LOAD_CURSOR       = 0x4A
-.macro VM_LOAD_CURSOR BANK, ADDR
-        .db OP_VM_LOAD_CURSOR, #>ADDR, #<ADDR, #<BANK
-.endm
-
 OP_VM_SET_FONT          = 0x4B
 .macro VM_SET_FONT FONT_INDEX
         .db OP_VM_SET_FONT, #<FONT_INDEX
@@ -664,6 +654,15 @@ OP_VM_OVERLAY_SET_SUBMAP = 0x4F
 .endm
 
 ; --- GAMEBOY ------------------------------------------
+
+OP_VM_LOAD_TILES        = 0x49
+.FRAME_TILE_ID          = 0xC0
+.FRAME_LENGTH           = 9
+.CURSOR_TILE_ID         = 0xCB
+.CURSOR_LENGTH          = 1
+.macro VM_LOAD_TILES ID, LEN, BANK, ADDR
+        .db OP_VM_LOAD_TILES, #>ADDR, #<ADDR, #<BANK, #<LEN, #<ID
+.endm
 
 OP_VM_LOAD_TILESET      = 0x50
 .macro VM_LOAD_TILESET IDX, BANK, BKG
