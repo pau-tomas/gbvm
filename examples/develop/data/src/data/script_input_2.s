@@ -61,8 +61,8 @@ _script_input_2::
 10$:
         VM_POP                  1
 
-        VM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
-        VM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED
+        VM_OVERLAY_CLEAR        0, 0, 20, 8, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
+        VM_OVERLAY_MOVE_TO      2, 10, .OVERLAY_IN_SPEED
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -111,15 +111,15 @@ _script_input_2::
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
 
-        VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/
-            .DMG_PAL    3,2,1,0
+;        VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/
+;            .DMG_PAL    3,2,1,0
         
         VM_PUSH_CONST           10
         VM_PUSH_CONST           ^/(.CAMERA_SHAKE_X | .CAMERA_SHAKE_Y)/
         VM_INVOKE       b_camera_shake_frames, _camera_shake_frames, 2, .ARG1
         
-        VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/
-            .DMG_PAL    0,1,2,3
+;        VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/
+;            .DMG_PAL    0,1,2,3
         
 ; --- VM_SGB_TRANSFER example ------------------------
         VM_PUSH_CONST           0

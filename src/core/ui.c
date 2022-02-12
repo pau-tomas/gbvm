@@ -74,6 +74,10 @@ UBYTE text_sound_mask;
 UBYTE text_sound_bank; 
 const UBYTE * text_sound_data;
 
+#ifdef CGB
+UBYTE overlay_priotiry;
+#endif
+
 void ui_init() BANKED {
     vwf_direction               = UI_PRINT_LEFTTORIGHT;
     vwf_current_font_idx        = 0;
@@ -113,6 +117,10 @@ void ui_init() BANKED {
     text_sound_bank             = SFX_STOP_BANK;
 
     ui_load_tiles();
+
+#ifdef CGB
+    overlay_priotiry            = S_PRIORITY;
+#endif
 }
 
 void ui_load_tiles() BANKED {
@@ -132,7 +140,7 @@ void ui_draw_frame(UBYTE x, UBYTE y, UBYTE width, UBYTE height) BANKED {
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        fill_win_rect(x, y, width, height, (UI_PALETTE & 0x07u));        
+        fill_win_rect(x, y, width, height, overlay_priotiry | (UI_PALETTE & 0x07u));        
         VBK_REG = 0;
     }
 #endif
@@ -249,7 +257,7 @@ inline void ui_set_tile(UBYTE * addr, UBYTE tile, UBYTE bank) {
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;        
-        SetTile(addr, (bank) ? ((UI_PALETTE & 0x07u) | 0x08u) : (UI_PALETTE & 0x07u));
+        SetTile(addr, overlay_priotiry | ((bank) ? ((UI_PALETTE & 0x07u) | 0x08u) : (UI_PALETTE & 0x07u)));
         VBK_REG = 0;
     }
 #else
@@ -374,7 +382,7 @@ UBYTE ui_draw_text_buffer_char() BANKED {
 #ifdef CGB
                     if (_is_CGB) {
                         VBK_REG = 1;
-                        scroll_rect(text_scroll_addr, text_scroll_width, text_scroll_height, (UI_PALETTE & 0x07u));
+                        scroll_rect(text_scroll_addr, text_scroll_width, text_scroll_height, overlay_priotiry | (UI_PALETTE & 0x07u));
                         VBK_REG = 0;
                     }
 #endif
@@ -452,7 +460,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        set_win_tile_xy(current_menu_item.X, current_menu_item.Y, (UI_PALETTE & 0x07u));        
+        set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priotiry | (UI_PALETTE & 0x07u));        
         VBK_REG = 0;
     }
 #endif
@@ -495,7 +503,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 #ifdef CGB
         if (_is_CGB) {
             VBK_REG = 1;
-            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, (UI_PALETTE & 0x07u));        
+            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priotiry | (UI_PALETTE & 0x07u));        
             VBK_REG = 0;
         }
 #endif
@@ -506,7 +514,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 #ifdef CGB
         if (_is_CGB) {
             VBK_REG = 1;
-            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, (UI_PALETTE & 0x07u));        
+            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priotiry | (UI_PALETTE & 0x07u));        
             VBK_REG = 0;
         }
 #endif

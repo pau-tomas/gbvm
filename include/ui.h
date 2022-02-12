@@ -68,6 +68,10 @@ extern const UBYTE * text_sound_data;
 
 extern const UBYTE ui_time_masks[];
 
+#ifdef CGB
+extern UBYTE overlay_priotiry;
+#endif
+
 void ui_init() BANKED;
 void ui_update() NONBANKED;  // critical path, NONBANKED for speed
 
