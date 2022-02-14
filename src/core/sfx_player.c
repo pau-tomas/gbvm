@@ -7,13 +7,11 @@
 
 uint8_t sfx_play_bank;
 const uint8_t * sfx_play_sample;
-uint16_t sfx_frame_count;
 uint8_t sfx_frame_skip;
 
 void sfx_reset_player() BANKED {
     sfx_play_bank = SFX_STOP_BANK;
     sfx_play_sample = NULL;
-    sfx_frame_count = 0;
 }
 
 uint8_t sfx_play_isr() NONBANKED NAKED OLDCALL {
