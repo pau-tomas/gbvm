@@ -1,7 +1,6 @@
 @set RRGBDS=..\..\..\rgbds\
-mkdir build
-del build\*.obj
-%RRGBDS%\rgbasm -E -obuild\hUGEDriver.obj hUGEDriver.asm
-%RRGBDS%\rgbasm -obuild\player.obj player.asm
-%RRGBDS%\rgblink -opreview.gb -npreview.sym build\player.obj build\hUGEDriver.obj sample_song\song.obj
+%RRGBDS%\rgbasm -E -ohUGEDriver.obj hUGEDriver.asm
+%RRGBDS%\rgbasm -oplayer.obj player.asm
+%RRGBDS%\rgblink -opreview.gb -npreview.sym player.obj hUGEDriver.obj sample_song\song.obj
 %RRGBDS%\rgbfix -v preview.gb
+@del /Q *.obj

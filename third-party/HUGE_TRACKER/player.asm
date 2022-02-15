@@ -134,10 +134,12 @@ isr_serial:
         ; set new position
         ld a, [new_row]
         ld [row], a
+        
+        ld hl, current_order
         ld a, [new_order]
+        cp [hl]
+        ld [hl], a
         ld c, a
-        ld a, [current_order]
-        cp c
         call nz, load_patterns
 
         xor a
@@ -207,12 +209,18 @@ _main::
             ld [rSTAT], a
             xor a ; ld a, 0
             ld [rLYC], a
-            ld a, IEF_LCDC | IEF_SERIAL
-        else 
+            ; LCD for music, TIMER for SFX, SERIAL for pausing
+            ld a, IEF_LCDC | IEF_TIMER | IEF_SERIAL
+        else
+            ; TIMER for music and SFX, SERIAL for pausing
             ld a, IEF_TIMER | IEF_SERIAL
         ENDC
         
         ld [rIE], a
+        ; enter paused state immediately
+        and IEF_SERIAL
+        ld [rIF], a
+        ; enable interrupts
         ei
         ; loop forever, do nothing
 .init01:
