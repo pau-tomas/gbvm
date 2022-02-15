@@ -3,11 +3,17 @@ GBDKLIB = $(GBDK)/lib/small/asxxxx
 CC = $(GBDK)/bin/lcc
 SDAR = $(GBDK)/bin/sdar
 
+RRGBDS = ../../../rgbds
+RGBASM = $(RRGBDS)/rgbasm
+RGB2SDAS = ../../../rgb2sdas/rgb2sdas
+
 BUILD_DIR = ./build
 OBJ_DIR = ./obj
 
-TARGET = $(BUILD_DIR)/gbt_player.lib
-OBJS = $(OBJ_DIR)/gbt_player.o $(OBJ_DIR)/gbt_player_bank1.o
+CVTFLAGS = -b0
+
+TARGET = $(BUILD_DIR)/hUGEDriver.lib
+OBJS = $(OBJ_DIR)/hUGEDriver.obj.o
 
 all: directories $(TARGET)
 
@@ -19,8 +25,11 @@ $(OBJ_DIR):
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-$(OBJ_DIR)/%.o:	%.s
-	$(CC) -c -o $@ $<
+$(OBJ_DIR)/%.obj:	%.asm
+	$(RGBASM) -DGBDK -o$@ $<
+
+$(OBJ_DIR)/%.obj.o:	$(OBJ_DIR)/%.obj
+	$(RGB2SDAS) $(CVTFLAGS) $<
 
 $(TARGET): $(OBJS)
 	$(SDAR) -ru $@ $^
