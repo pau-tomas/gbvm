@@ -128,7 +128,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_sound_mastervol,        1}, // 0x63
     {0, 0},
     {vm_music_routine,          4}, // 0x65
-    {vm_sfx_play,               4}, // 0x66
+    {vm_sfx_play,               5}, // 0x66
     {vm_music_setpos,           2}, // 0x67
     // scene stack instructions
     {vm_scene_push,             0}, // 0x68

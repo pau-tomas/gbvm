@@ -40,7 +40,7 @@ void vm_sound_mastervol(SCRIPT_CTX * THIS, UBYTE volume) OLDCALL BANKED {
     NR50_REG = volume;
 }
 
-void vm_sfx_play(SCRIPT_CTX * THIS, UBYTE bank, UBYTE * offset, UBYTE channel_mask) OLDCALL BANKED {
+void vm_sfx_play(SCRIPT_CTX * THIS, UBYTE bank, UBYTE * offset, UBYTE channel_mask, UBYTE priority) OLDCALL BANKED {
     THIS;
-    music_play_sfx(bank, offset, channel_mask);
+    music_play_sfx(bank, offset, channel_mask, priority);
 }

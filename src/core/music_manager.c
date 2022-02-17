@@ -22,6 +22,7 @@ const TRACK_T * music_next_track;
 uint8_t music_play_isr_counter;
 uint8_t music_play_isr_pause;
 uint8_t music_global_mute_mask;
+uint8_t music_sfx_priority;
 
 #ifdef HUGE_TRACKER
 void hUGETrackerRoutine(unsigned char param, unsigned char ch, unsigned char tick) NONBANKED OLDCALL {
@@ -37,10 +38,11 @@ void music_init_driver() BANKED {
     music_init();
     music_sound_cut();
     music_current_track_bank = MUSIC_STOP_BANK;
-    music_mute_flag = FALSE, music_mute_mask = 0;
+    music_mute_flag = FALSE, music_mute_mask = MUTE_MASK_NONE;
     music_play_isr_counter = 0;
     music_play_isr_pause = FALSE;
-    music_global_mute_mask = 0;
+    music_global_mute_mask = MUTE_MASK_NONE;
+    music_sfx_priority = MUSIC_SFX_PRIORITY_MINIMAL;
 }
 
 void music_init_events(uint8_t preserve) BANKED {
@@ -89,7 +91,8 @@ void music_play_isr() NONBANKED {
             #ifdef FORCE_CUT_SFX
             music_sound_cut_mask(music_mute_mask);
             #endif
-            music_mute_mask = music_global_mute_mask; 
+            music_mute_mask = music_global_mute_mask;
+            music_sfx_priority = MUSIC_SFX_PRIORITY_MINIMAL; 
             sfx_play_bank = SFX_STOP_BANK;
         }
     }

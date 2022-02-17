@@ -829,8 +829,11 @@ OP_VM_MUSIC_ROUTINE     = 0x65
 
 ; Plays SFX
 OP_VM_SFX_PLAY          = 0x66
-.macro VM_SFX_PLAY BANK, ADDR, MASK
-        .db OP_VM_SFX_PLAY, #<MASK, #>ADDR, #<ADDR, #<BANK
+.SFX_PRIORITY_MINIMAL   = 0
+.SFX_PRIORITY_NORMAL    = 4
+.SFX_PRIORITY_HIGH      = 8
+.macro VM_SFX_PLAY BANK, ADDR, MASK, PRIO
+        .db OP_VM_SFX_PLAY, #<PRIO, #<MASK, #>ADDR, #<ADDR, #<BANK
 .endm
 
 ; Sets music playback position
