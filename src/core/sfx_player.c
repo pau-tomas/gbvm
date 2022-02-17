@@ -5,7 +5,7 @@
 
 #include "sfx_player.h"
 
-uint8_t sfx_play_bank;
+volatile uint8_t sfx_play_bank;
 const uint8_t * sfx_play_sample;
 uint8_t sfx_frame_skip;
 
