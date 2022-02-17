@@ -9,11 +9,6 @@ volatile uint8_t sfx_play_bank;
 const uint8_t * sfx_play_sample;
 uint8_t sfx_frame_skip;
 
-void sfx_reset_player() BANKED {
-    sfx_play_bank = SFX_STOP_BANK;
-    sfx_play_sample = NULL;
-}
-
 uint8_t sfx_play_isr() NONBANKED NAKED OLDCALL {
 #if defined(__SDCC) && defined(NINTENDO) 
 __asm

@@ -64,15 +64,6 @@ extern const TRACK_T * music_next_track;
 extern uint8_t music_global_mute_mask;
 extern uint8_t music_sfx_priority;
 
-inline void music_setup_timer() {
-    TMA_REG = ((_cpu == CGB_TYPE) && (*(uint8_t *)0x0143 & 0x80)) ? 0x80u : 0xC0u;
-    TAC_REG = 0x07u;
-}
-
-inline void music_init() {
-    sfx_sound_init();
-}
-
 void music_init_driver() BANKED;
 
 void music_init_events(uint8_t preserve) BANKED;
@@ -103,6 +94,18 @@ void music_pause(uint8_t pause);
 
 inline void music_stop() {
     music_current_track_bank = MUSIC_STOP_BANK, music_sound_cut();
+}
+
+inline void music_setup_timer() {
+    TMA_REG = ((_cpu == CGB_TYPE) && (*(uint8_t *)0x0143 & 0x80)) ? 0x80u : 0xC0u;
+    TAC_REG = 0x07u;
+}
+
+inline void music_init() {
+    music_current_track_bank = MUSIC_STOP_BANK;
+    sfx_reset_sample();
+    sfx_sound_init();
+    music_sound_cut();
 }
 
 #define MUTE_MASK_NONE 0

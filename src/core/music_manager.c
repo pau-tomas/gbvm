@@ -36,8 +36,6 @@ void hUGETrackerRoutine(unsigned char param, unsigned char ch, unsigned char tic
 
 void music_init_driver() BANKED {
     music_init();
-    music_sound_cut();
-    music_current_track_bank = MUSIC_STOP_BANK;
     music_mute_flag = FALSE, music_mute_mask = MUTE_MASK_NONE;
     music_play_isr_counter = 0;
     music_play_isr_pause = FALSE;
@@ -104,7 +102,7 @@ void music_play_isr() NONBANKED {
     if (music_next_track) {
         music_sound_cut();
         driver_init(music_current_track_bank, music_next_track, TRUE);
-        music_next_track = 0;
+        music_next_track = NULL;
     } else driver_update();
     SWITCH_ROM(save_bank);
 }

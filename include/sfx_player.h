@@ -18,8 +18,6 @@ inline void sfx_sound_init() {
     NR52_REG = SFX_CH_ENABLE, NR51_REG = 0xFF, NR50_REG = 0x77;  // enable sound
 }
 
-void sfx_reset_player() BANKED;
-
 inline void sfx_sound_cut() {
     NR12_REG = NR22_REG = NR32_REG = NR42_REG = 0;
     NR14_REG = NR24_REG = NR44_REG = SFX_CH_RETRIGGER;
@@ -37,6 +35,10 @@ inline void sfx_sound_cut_mask(uint8_t mask) {
     if (mask & SFX_CH_3) NR32_REG = 0; 
     if (mask & SFX_CH_4) NR42_REG = 0, NR44_REG = SFX_CH_RETRIGGER;
     NR51_REG = 0xFF;
+}
+
+inline void sfx_reset_sample() {
+    sfx_play_bank = SFX_STOP_BANK, sfx_play_sample = NULL;
 }
 
 inline void sfx_set_sample(uint8_t bank, const uint8_t * sample) {
