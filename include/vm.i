@@ -82,6 +82,14 @@ OP_VM_RET          = 0x05
         .db OP_VM_RET, #<N 
 .endm
 
+; get byte or word by far pointer into variable
+OP_VM_GET_FAR      = 0x06
+.GET_BYTE          = 0
+.GET_WORD          = 1
+.macro VM_GET_FAR IDX, SIZE, BANK, ADDR
+        .db OP_VM_GET_FAR, #>ADDR, #<ADDR, #<BANK, #<SIZE, #>IDX, #<IDX
+.endm
+
 ; loop by near address, IDX is a counter, remove N arguments on stack
 OP_VM_LOOP         = 0x07
 .macro VM_LOOP IDX, LABEL, N

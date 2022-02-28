@@ -23,7 +23,7 @@ const SCRIPT_CMD script_cmds[] = {
     {0, 0},
     {vm_call,                   2}, // 0x04
     {vm_ret,                    1}, // 0x05
-    {0, 0},
+    {vm_get_far,                6}, // 0x06
     {vm_loop,                   5}, // 0x07
     {vm_switch,                 4}, // 0x08
     {vm_jump,                   2}, // 0x09

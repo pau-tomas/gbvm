@@ -355,23 +355,33 @@ void vm_idle(SCRIPT_CTX * THIS) OLDCALL BANKED {
     THIS->waitable = TRUE;
 }
 
-// gets unsigned int8 from RAM by address
+// gets unsigned int8 by address
 void vm_get_uint8(SCRIPT_CTX * THIS, INT16 idxA, UINT8 * addr) OLDCALL BANKED {
     INT16 * A;
     if (idxA < 0) A = THIS->stack_ptr + idxA; else A = script_memory + idxA;
     *A = *addr;
 }
-// gets int8 from RAM by address
+// gets int8 by address
 void vm_get_int8(SCRIPT_CTX * THIS, INT16 idxA, INT8 * addr) OLDCALL BANKED {
     INT16 * A;
     if (idxA < 0) A = THIS->stack_ptr + idxA; else A = script_memory + idxA;
     *A = *addr;
 }
-// gets int16 from RAM by address
+// gets int16 by address
 void vm_get_int16(SCRIPT_CTX * THIS, INT16 idxA, INT16 * addr) OLDCALL BANKED {
     INT16 * A;
     if (idxA < 0) A = THIS->stack_ptr + idxA; else A = script_memory + idxA;
     *A = *addr;
+}
+// gets int8 or int16 by far address
+void vm_get_far(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, INT16 idxA, UBYTE size, UBYTE bank, UBYTE * addr) OLDCALL NONBANKED {
+    dummy0; dummy1;
+    UINT16 * A;
+    if (idxA < 0) A = THIS->stack_ptr + idxA; else A = script_memory + idxA;
+    UBYTE _save = _current_bank;        // we must preserve current bank, 
+    SWITCH_ROM(bank);             // then switch to bytecode bank
+    *A = (size == 0) ? *((UBYTE *)addr) : *((UINT16 *)addr);
+    SWITCH_ROM(_save);
 }
 // sets unsigned int8 in RAM by address
 void vm_set_uint8(SCRIPT_CTX * THIS, UINT8 * addr, INT16 idxA) OLDCALL BANKED {
