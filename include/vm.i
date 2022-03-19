@@ -581,9 +581,9 @@ OP_VM_OVERLAY_SETPOS    = 0x42
         .db OP_VM_OVERLAY_SETPOS, #<Y, #<X
 .endm
 
-OP_VM_OVERLAY_HIDE      = 0x43
+.MENU_CLOSED_Y          = 0x12
 .macro VM_OVERLAY_HIDE
-        .db OP_VM_OVERLAY_HIDE
+        VM_OVERLAY_SETPOS 0, .MENU_CLOSED_Y
 .endm
 
 OP_VM_OVERLAY_WAIT      = 0x44
@@ -639,11 +639,10 @@ OP_VM_SET_FONT          = 0x4B
         .db OP_VM_SET_FONT, #<FONT_INDEX
 .endm
 
-OP_VM_SET_PRINT_DIR     = 0x4C
 .UI_PRINT_LEFTTORIGHT   = 0
 .UI_PRINT_RIGHTTOLEFT   = 1
 .macro VM_SET_PRINT_DIR DIRECTION
-        .db OP_VM_SET_PRINT_DIR, #<DIRECTION
+        VM_SET_CONST_UINT8 _vwf_direction, ^/DIRECTION & 1/
 .endm
 
 OP_VM_OVERLAY_SCROLL    = 0x4D

@@ -103,11 +103,6 @@ void vm_overlay_setpos(SCRIPT_CTX * THIS, UBYTE pos_x, UBYTE pos_y) OLDCALL BANK
     ui_set_pos(pos_x << 3, pos_y << 3);
 }
 
-// hides overlayed window
-void vm_overlay_hide() OLDCALL BANKED {
-    ui_set_pos(0, MENU_CLOSED_Y);
-}
-
 // wait until overlay window reaches destination
 void vm_overlay_wait(SCRIPT_CTX * THIS, UBYTE is_modal, UBYTE wait_flags) OLDCALL BANKED {
     if (is_modal) {
@@ -189,11 +184,6 @@ void vm_set_font(SCRIPT_CTX * THIS, UBYTE font_index) OLDCALL BANKED {
     THIS;
     vwf_current_font_bank = ui_fonts[font_index].bank;
     MemcpyBanked(&vwf_current_font_desc, ui_fonts[font_index].ptr, sizeof(font_desc_t), vwf_current_font_bank);
-}
-
-void vm_set_print_dir(SCRIPT_CTX * THIS, UBYTE print_dir) OLDCALL BANKED {
-    THIS;
-    vwf_direction = print_dir & 1;
 }
 
 void vm_overlay_scroll(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UBYTE color) OLDCALL BANKED {

@@ -89,7 +89,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_load_text,              1}, // 0x40
     {vm_display_text,           0}, // 0x41
     {vm_overlay_setpos,         2}, // 0x42
-    {vm_overlay_hide,           0}, // 0x43
+    {0, 0},
     {vm_overlay_wait,           2}, // 0x44
     {vm_overlay_move_to,        3}, // 0x45
     {vm_overlay_show,           4}, // 0x46
@@ -98,7 +98,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_load_tiles,             5}, // 0x49
     {0, 0},
     {vm_set_font,               1}, // 0x4B
-    {vm_set_print_dir,          1}, // 0x4C
+    {0, 0},
     {vm_overlay_scroll,         5}, // 0x4D
     {vm_overlay_set_scroll,     5}, // 0x4E
     {vm_overlay_set_submap,     8}, // 0x4F
