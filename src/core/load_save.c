@@ -124,7 +124,7 @@ void data_clear(UBYTE slot) BANKED {
 #endif
 }
 
-UBYTE data_peek(UBYTE slot, UINT16 idx, UBYTE count, UINT16 * dest) BANKED {
+UBYTE data_peek(UBYTE slot, UINT16 idx, UWORD count, UINT16 * dest) BANKED {
     UBYTE data_bank, *save_data = data_slot_address(slot, &data_bank);
     if (save_data == NULL) return FALSE;
     SWITCH_RAM(data_bank);

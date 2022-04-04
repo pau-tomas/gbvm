@@ -64,7 +64,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_push_reference,         2}, // 0x2C 
     {vm_call_native,            3}, // 0x2D
     // load/save instrunctions section
-    {vm_save_peek,              8}, // 0x2E
+    {vm_save_peek,              9}, // 0x2E
     {vm_save_clear,             1}, // 0x2F
 
     // actor instructions section

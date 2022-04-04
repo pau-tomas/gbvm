@@ -423,7 +423,7 @@ OP_VM_MEMCPY          = 0x77
 ; Reads count variables from save slot into dest and puts result of the operation into res
 OP_VM_SAVE_PEEK         = 0x2E
 .macro VM_SAVE_PEEK RES, DEST, SOUR, COUNT, SLOT
-        .db OP_VM_SAVE_PEEK, #<SLOT, #<COUNT, #>SOUR, #<SOUR, #>DEST, #<DEST, #>RES, #<RES
+        .db OP_VM_SAVE_PEEK, #<SLOT, #>COUNT, #<COUNT, #>SOUR, #<SOUR, #>DEST, #<DEST, #>RES, #<RES
 .endm
 
 ; Erases data in save slot
