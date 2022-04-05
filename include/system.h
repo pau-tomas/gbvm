@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-// System fieldsB
+// System fields
 extern UBYTE _is_CGB;
 extern UBYTE _is_SGB;
 
