@@ -189,7 +189,6 @@ void vm_set_font(SCRIPT_CTX * THIS, UBYTE font_index) OLDCALL BANKED {
 void vm_overlay_scroll(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UBYTE color) OLDCALL BANKED {
     THIS;
     UBYTE * base_addr = GetWinAddr() + (y << 5) + x;
-    scroll_rect(base_addr, w, h, ((color) ? ui_while_tile : ui_black_tile));
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
@@ -197,6 +196,7 @@ void vm_overlay_scroll(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UB
         VBK_REG = 0;
     }
 #endif
+    scroll_rect(base_addr, w, h, ((color) ? ui_while_tile : ui_black_tile));
 }
 
 void set_xy_win_submap(const UBYTE * source, UBYTE bank, UBYTE width, UBYTE x, UBYTE y, UBYTE w, UBYTE h) OLDCALL;
@@ -208,7 +208,7 @@ void vm_overlay_set_submap(SCRIPT_CTX * THIS, INT16 x_idx, INT16 y_idx, UBYTE w,
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        set_xy_win_submap(image_attr_ptr + offset, image_bank, image_tile_width, x, y, w, h);
+        set_xy_win_submap(image_attr_ptr + offset, image_attr_bank, image_tile_width, x, y, w, h);
         VBK_REG = 0;
     }
 #endif
