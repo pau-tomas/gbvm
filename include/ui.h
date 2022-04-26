@@ -7,7 +7,8 @@
 #include "bankdata.h"
 
 #define MENU_CANCEL_LAST 1
-#define MENU_CANCEL_B 2
+#define MENU_CANCEL_B    2
+#define MENU_SET_START   4
 
 #define TEXT_BUFFER_START 0xCCu
 #define TEXT_BUFFER_START_BANK1 0xC0u

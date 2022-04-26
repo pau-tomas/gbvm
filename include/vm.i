@@ -627,6 +627,7 @@ OP_VM_CHOICE            = 0x48
 .UI_MENU_STANDARD       = 0
 .UI_MENU_LAST_0         = 1
 .UI_MENU_CANCEL_B       = 2
+.UI_MENU_SET_START      = 4
 .macro VM_CHOICE IDX, OPTIONS, COUNT
         .db OP_VM_CHOICE, #<COUNT, #<OPTIONS, #>IDX, #<IDX
 .endm
