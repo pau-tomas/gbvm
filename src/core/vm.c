@@ -530,7 +530,7 @@ __asm
 
         ld a, e
         ldh (__current_bank), a
-        ld (0x2000), a          ; switch bank with vm code
+        ld (_rROMB0), a         ; switch bank with vm code
         
         ld a, (hl+)             ; load current command and return if terminator
         ld e, a
@@ -599,7 +599,7 @@ __asm
 
         ld a, #<b_vm_call       ; a = script_bank (all script functions in one bank: take any complimantary symbol)
         ldh (__current_bank), a
-        ld (0x2000), a          ; switch bank with functions
+        ld (_rROMB0), a         ; switch bank with functions
 
         rst 0x20                ; call hl
 
@@ -614,7 +614,7 @@ __asm
 3$:     
         pop af
         ldh (__current_bank), a
-        ld (0x2000), a          ; restore bank
+        ld (_rROMB0), a         ; restore bank
 
         ret
 __endasm;

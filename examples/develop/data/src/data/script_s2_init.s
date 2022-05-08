@@ -38,12 +38,13 @@ _script_s2_init::
 2$:
         ; Text Multiple Choice
         VM_LOAD_TEXT            0
-        .asciz "\001\001\003\003\002New Game\n\003\003\003Continue"
+            .asciz "\001\001\003\003\002New Game\n\003\003\003Continue"
         VM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
         VM_OVERLAY_MOVE_TO      0, 14, .OVERLAY_IN_SPEED
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
-        VM_CHOICE               VAR_S2_MENU_CHOICE, ^/(.UI_MENU_LAST_0 | .UI_MENU_CANCEL_B)/, 2
+        VM_SET_CONST            VAR_S2_MENU_CHOICE, 1
+        VM_CHOICE               VAR_S2_MENU_CHOICE, ^/(.UI_MENU_LAST_0 | .UI_MENU_CANCEL_B | .UI_MENU_SET_START)/, 2
             .MENUITEM           1, 1, 0, 0, 0, 2
             .MENUITEM           1, 2, 0, 0, 1, 0
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -57,7 +58,7 @@ _script_s2_init::
 
         ; Text Dialogue
         VM_LOAD_TEXT            0
-        .asciz "No Save Data\nFound..."
+            .asciz "No Save Data\nFound..."
         VM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
         VM_OVERLAY_MOVE_TO      0, 14, .OVERLAY_IN_SPEED
         VM_DISPLAY_TEXT
