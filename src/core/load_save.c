@@ -4,6 +4,7 @@
 
 #include "load_save.h"
 
+#include "system.h"
 #include "actor.h"
 #include "vm.h"
 #include "events.h"
@@ -58,6 +59,7 @@ size_t save_blob_size;
 
 void data_init() BANKED {
     ENABLE_RAM_MBC5;
+    SWITCH_RAM_BANK(0, RAM_BANKS_ONLY);
     // calculate save blob size
     save_blob_size = sizeof(save_signature);
     for(const save_point_t * point = save_points; (point->target); point++) {
@@ -85,7 +87,7 @@ UBYTE * data_slot_address(UBYTE slot, UBYTE *bank) {
 void data_save(UBYTE slot) BANKED {
     UBYTE data_bank, *save_data = data_slot_address(slot, &data_bank);
     if (save_data == NULL) return;
-    SWITCH_RAM(data_bank);
+    SWITCH_RAM_BANK(data_bank, RAM_BANKS_ONLY);
 
     SIGN_BY_PTR(save_data) = save_signature; 
     save_data += sizeof(save_signature);    
@@ -102,7 +104,7 @@ void data_save(UBYTE slot) BANKED {
 UBYTE data_load(UBYTE slot) BANKED {
     UBYTE data_bank, *save_data = data_slot_address(slot, &data_bank);
     if (save_data == NULL) return FALSE;
-    SWITCH_RAM(data_bank);
+    SWITCH_RAM_BANK(data_bank, RAM_BANKS_ONLY);
     if (SIGN_BY_PTR(save_data) != save_signature) return FALSE;
     save_data += sizeof(save_signature);
 
@@ -116,7 +118,7 @@ UBYTE data_load(UBYTE slot) BANKED {
 void data_clear(UBYTE slot) BANKED {
     UBYTE data_bank, *save_data = data_slot_address(slot, &data_bank);
     if (save_data == NULL) return;
-    SWITCH_RAM(data_bank);
+    SWITCH_RAM_BANK(data_bank, RAM_BANKS_ONLY);
     SIGN_BY_PTR(save_data) = 0;    
 #ifdef BATTERYLESS
     // save to FLASH ROM
@@ -124,10 +126,10 @@ void data_clear(UBYTE slot) BANKED {
 #endif
 }
 
-UBYTE data_peek(UBYTE slot, UINT16 idx, UBYTE count, UINT16 * dest) BANKED {
+UBYTE data_peek(UBYTE slot, UINT16 idx, UWORD count, UINT16 * dest) BANKED {
     UBYTE data_bank, *save_data = data_slot_address(slot, &data_bank);
     if (save_data == NULL) return FALSE;
-    SWITCH_RAM(data_bank);
+    SWITCH_RAM_BANK(data_bank, RAM_BANKS_ONLY);
     if (SIGN_BY_PTR(save_data) != save_signature) return FALSE;
 
     if (count) memcpy(dest, save_data + sizeof(save_signature) + (idx << 1), count << 1);

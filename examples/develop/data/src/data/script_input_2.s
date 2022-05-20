@@ -13,7 +13,11 @@ _script_input_2::
 
         VM_RANDOMIZE
 
-; --- VM_SFX_PLAY complex effect example
+; -- overlay cut scanline example --------------------
+
+        VM_SET_CONST_UINT8      _overlay_cut_scanline, 127
+
+; --- VM_SFX_PLAY complex effect example -------------
         VM_SFX_PLAY             ___bank_sound_effect1, _sound_effect1, ___mute_mask_sound_effect1, .SFX_PRIORITY_NORMAL
 
 ; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----
@@ -93,7 +97,7 @@ _script_input_2::
         VM_LOAD_TEXT            0
             .asciz "\002\002\343\342 \361\367\370\357 \371\350 \341\351\355\n\356\340\345\353\346\341 \345\354\364\372\362 \356\366\340 \347\341\370\344"
         VM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
-        VM_OVERLAY_MOVE_TO      0, 14, .OVERLAY_IN_SPEED
+        VM_OVERLAY_MOVE_TO      0, 12, .OVERLAY_IN_SPEED
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -116,7 +120,7 @@ _script_input_2::
         
         VM_PUSH_CONST           10
         VM_PUSH_CONST           ^/(.CAMERA_SHAKE_X | .CAMERA_SHAKE_Y)/
-        VM_INVOKE       b_camera_shake_frames, _camera_shake_frames, 2, .ARG1
+        VM_INVOKE               b_camera_shake_frames, _camera_shake_frames, 2, .ARG1
         
 ;        VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/
 ;            .DMG_PAL    0,1,2,3
@@ -148,7 +152,7 @@ _script_input_2::
         
 ; --- VM_OVERLAY_SET_SUBMAP example ------------------
         VM_PUSH_CONST           2       ; Y coord
-        VM_PUSH_CONST           2       ; X coord
+        VM_PUSH_CONST           4       ; X coord
         VM_OVERLAY_SET_SUBMAP   .ARG0, .ARG1, 6, 5, 8, 4
         VM_POP                  2
 
@@ -208,7 +212,7 @@ _script_input_2::
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_TEXT_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/
         
-        VM_POP                  ^/6 + 2/    ; 6 for local vars + 2 results of RPN calc\001\001\002\003DE\nFG\001\003\004\001\377\002\001\001\001\002\003@A\nBC\001\003\004\001\377\002\001
+        VM_POP                  ^/6 + 2/    ; 6 for local vars + 2 results of RPN calc
 
         ; Stop Script
         VM_STOP
