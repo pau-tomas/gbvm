@@ -38,7 +38,9 @@ const save_point_t save_points[] = {
     SAVEPOINT(input_events), SAVEPOINT(input_slots), 
     // timers
     SAVEPOINT(timer_events), SAVEPOINT(timer_values),
-    // music events
+    // music
+    SAVEPOINT(music_current_track_bank),
+    SAVEPOINT(music_current_track),
     SAVEPOINT(music_events),
     // scene
     SAVEPOINT(current_scene),
@@ -111,7 +113,13 @@ UBYTE data_load(UBYTE slot) BANKED {
     for(const save_point_t * point = save_points; (point->target); point++) {
         memcpy(point->target, save_data, point->size);    
         save_data += point->size;  
-    }   
+    }
+    // Restart music
+    if (music_current_track_bank != MUSIC_STOP_BANK) {
+        music_next_track = music_current_track;
+    } else {
+        music_sound_cut();
+    }
     return TRUE;
 }
 
