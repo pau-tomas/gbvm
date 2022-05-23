@@ -87,7 +87,7 @@ const SCRIPT_CMD script_cmds[] = {
 
     // user interface instructions section
     {vm_load_text,              1}, // 0x40
-    {vm_display_text,           0}, // 0x41
+    {vm_display_text,           1}, // 0x41
     {vm_overlay_setpos,         2}, // 0x42
     {0, 0},
     {vm_overlay_wait,           2}, // 0x44
