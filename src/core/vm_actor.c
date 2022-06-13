@@ -56,6 +56,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     if (THIS->flags == 0) {
         THIS->flags = MOVE_ACTIVE;
         actor->movement_interrupt = FALSE;
+        
         // Switch to moving animation frames
         actor_set_anim_moving(actor);
 
