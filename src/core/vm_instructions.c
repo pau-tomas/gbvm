@@ -98,10 +98,10 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_load_tiles,             5}, // 0x49
     {0, 0},
     {vm_set_font,               1}, // 0x4B
-    {0, 0},
+    {vm_overlay_set_submap_ex,  2}, // 0x4C
     {vm_overlay_scroll,         5}, // 0x4D
     {vm_overlay_set_scroll,     5}, // 0x4E
-    {vm_overlay_set_submap,     8}, // 0x4F
+    {vm_overlay_set_submap,     6}, // 0x4F
 
     // gameboy features instructions section
     {vm_load_tileset,           5}, // 0x50

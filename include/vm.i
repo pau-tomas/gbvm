@@ -651,6 +651,11 @@ OP_VM_SET_FONT          = 0x4B
         VM_SET_CONST_UINT8 _vwf_direction, ^/DIRECTION & 1/
 .endm
 
+OP_VM_OVERLAY_SET_SUBMAP_EX = 0x4C
+.macro VM_OVERLAY_SET_SUBMAP_EX PARAMS_IDX
+        .db OP_VM_OVERLAY_SET_SUBMAP_EX, #>PARAMS_IDX, #<PARAMS_IDX 
+.endm
+
 OP_VM_OVERLAY_SCROLL    = 0x4D
 .macro VM_OVERLAY_SCROLL X, Y, W, H, COLOR
         .db OP_VM_OVERLAY_SCROLL, #<COLOR, #<H, #<W, #<Y, #<X 
@@ -662,8 +667,8 @@ OP_VM_OVERLAY_SET_SCROLL = 0x4E
 .endm
 
 OP_VM_OVERLAY_SET_SUBMAP = 0x4F
-.macro VM_OVERLAY_SET_SUBMAP X_IDX, Y_IDX, W, H, SX, SY
-        .db OP_VM_OVERLAY_SET_SUBMAP, #<SY, #<SX, #<H, #<W, #>Y_IDX, #<Y_IDX, #>X_IDX, #<X_IDX 
+.macro VM_OVERLAY_SET_SUBMAP X, Y, W, H, SX, SY
+        .db OP_VM_OVERLAY_SET_SUBMAP, #<SY, #<SX, #<H, #<W, #<Y, #<X 
 .endm
 
 ; --- GAMEBOY ------------------------------------------

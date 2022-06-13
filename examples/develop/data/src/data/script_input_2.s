@@ -150,11 +150,17 @@ _script_input_2::
         VM_DISPLAY_TEXT
         VM_OVERLAY_SHOW         0, 9, .UI_COLOR_BLACK, 0
         
-; --- VM_OVERLAY_SET_SUBMAP example ------------------
-        VM_PUSH_CONST           2       ; Y coord
-        VM_PUSH_CONST           4       ; X coord
-        VM_OVERLAY_SET_SUBMAP   .ARG0, .ARG1, 6, 5, 8, 4
-        VM_POP                  2
+; --- VM_OVERLAY_SET_SUBMAP_EX example ---------------
+        VM_RPN
+            .R_INT8     4               ; X coord
+            .R_INT8     2               ; Y coord
+            .R_INT8     6               ; Width
+            .R_INT8     5               ; Height
+            .R_INT8     8               ; Scene X coord
+            .R_INT8     4               ; Scene Y coord
+            .R_STOP
+        VM_OVERLAY_SET_SUBMAP_EX        .ARG5
+        VM_POP                  6       ; dispose parameters
 
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/
         
@@ -212,7 +218,7 @@ _script_input_2::
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_TEXT_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/
         
-        VM_POP                  ^/6 + 2/    ; 6 for local vars + 2 results of RPN calc
+        VM_POP                  ^/(6 + 2)/    ; 6 for local vars + 2 results of RPN calc
 
         ; Stop Script
         VM_STOP
