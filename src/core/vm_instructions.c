@@ -13,6 +13,7 @@
 #include "vm_sgb.h"
 #include "vm_sio.h"
 #include "vm_load_save.h"
+#include "vm_gbprinter.h"
 
 // here we define all VM instructions: their handlers and parameter lengths in bytes
 // this array must be nonbanked as well as STEP_VM()
@@ -181,5 +182,9 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_sin_scale,              5}, // 0x89 
     {vm_cos_scale,              5}, // 0x8A
 
-    {vm_set_text_sound,         4}  // 0x8B
+    {vm_set_text_sound,         4}, // 0x8B
+
+    // GBPrinter functions
+    {vm_print_detect,           3}, // 0x8C
+    {vm_print_overlay,          3}  // 0x8D
 };

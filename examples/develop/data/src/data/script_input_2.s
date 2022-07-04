@@ -108,10 +108,18 @@ _script_input_2::
         ; Text Dialogue
         VM_LOAD_TEXT            0
             .asciz "\002\003\321\372\345\370\374 \345\371\270 \375\362\350\365 \354\377\343\352\350\365\n\364\360\340\355\366\363\347\361\352\350\365 \341\363\353\356\352,\n\344\340 \342\373\357\345\351 \367\340\376."
-        VM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
-        VM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED
+        VM_OVERLAY_CLEAR        0, 0, 20, 6, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
+        VM_OVERLAY_MOVE_TO      0, 12, .OVERLAY_IN_SPEED
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
+
+        ; Print 
+        VM_PUSH_CONST           0
+        VM_PRINTER_DETECT       .ARG0, 30
+        VM_PRINT_OVERLAY        .ARG0, 6
+        VM_POP                  1
+
+
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
 

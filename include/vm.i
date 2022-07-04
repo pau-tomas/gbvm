@@ -1011,3 +1011,17 @@ OP_VM_SET_TEXT_SOUND    = 0x8B
 .macro VM_SET_TEXT_SOUND BANK, ADDR, MASK
         .db OP_VM_SET_TEXT_SOUND, #<MASK, #>ADDR, #<ADDR, #<BANK
 .endm
+
+; --- GB PRINTER -------------------------------------
+
+; Detect printer
+OP_VM_PRINTER_DETECT    = 0x8C
+.macro VM_PRINTER_DETECT ERROR, DELAY
+        .db OP_VM_PRINTER_DETECT, #<DELAY, #>ERROR, #<ERROR
+.endm
+
+; Print up to HEIGHT rows of the overlay window (must be multiple of 2)
+OP_VM_PRINT_OVERLAY     = 0x8D
+.macro VM_PRINT_OVERLAY ERROR, HEIGHT
+        .db OP_VM_PRINT_OVERLAY, #<HEIGHT, #>ERROR, #<ERROR
+.endm
