@@ -33,7 +33,7 @@ _script_input_2::
 
         ; Print 
         VM_PUSH_CONST           0
-        VM_PRINTER_DETECT       .ARG0, 30
+        VM_PRINTER_DETECT       .ARG0, 10
         VM_PRINT_OVERLAY        .ARG0, 0, 18
         VM_POP                  1
 
@@ -122,7 +122,7 @@ _script_input_2::
 
         ; Print 
         VM_PUSH_CONST           0
-        VM_PRINTER_DETECT       .ARG0, 30
+        VM_PRINTER_DETECT       .ARG0, 10
         VM_PRINT_OVERLAY        .ARG0, 0, 6
         VM_POP                  1
 

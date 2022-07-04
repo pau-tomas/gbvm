@@ -70,7 +70,8 @@ inline void printer_init() {
 uint8_t printer_wait(uint16_t timeout, uint8_t mask, uint8_t value) {
     uint8_t error;
     while (((error = printer_send_command(PRINTER_STATUS)) & mask) != value) {
-        if (--timeout == 0) return STATUS_MASK_ERRORS;
+        if (timeout-- == 0) return STATUS_MASK_ERRORS;
+        if (error & STATUS_MASK_ERRORS) break;
         wait_vbl_done();
     }
     return error;
@@ -91,8 +92,10 @@ uint8_t gbprinter_print_overlay(uint8_t start, uint8_t rows) BANKED {
         for (uint8_t x = 0, *row = map; x != 20; x++, row++) {
             uint8_t tileno = get_vram_byte(row);
 #ifdef CGB
-            VBK_REG = 1;
-            VBK_REG = ((_is_CGB) && (get_vram_byte(row) & 0x08u)) ? 1 : 0;
+            if (_is_CGB) {
+                VBK_REG = 1;
+                VBK_REG = ((_is_CGB) && (get_vram_byte(row) & 0x08u)) ? 1 : 0;
+            }
             get_win_data(tileno, 1, tile_data);
             VBK_REG = 0;
 #else 
