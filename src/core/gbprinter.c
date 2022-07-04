@@ -10,7 +10,6 @@ const uint8_t PRINTER_INIT[]    = { sizeof(PRINTER_INIT) - 1,  0x88,0x33,0x01,0x
 const uint8_t PRINTER_STATUS[]  = { sizeof(PRINTER_STATUS) - 1,0x88,0x33,0x0F,0x00,0x00,0x00,0x0F,0x00,0x00,0x00 };
 const uint8_t PRINTER_EOF[]     = { sizeof(PRINTER_EOF) - 1,   0x88,0x33,0x04,0x00,0x00,0x00,0x04,0x00,0x00,0x00 };
 const uint8_t PRINTER_START[]   = { sizeof(PRINTER_START) - 1, 0x88,0x33,0x02,0x00,0x04,0x00,0x01,0x03,0xE4,0x7F,0x6D,0x01,0x00,0x00 };
-const uint8_t PRINTER_LINE[]    = { sizeof(PRINTER_LINE) - 1,  0x88,0x33,0x02,0x00,0x04,0x00,0x01,0x00,0xE4,0x7F,0x6A,0x01,0x00,0x00 };
 
 uint16_t printer_status;
 uint8_t printer_tile_num, printer_packet_num;
@@ -26,7 +25,7 @@ uint8_t printer_send_byte(uint8_t b) {
     return (uint8_t)(printer_status = ((printer_status << 8) | printer_send_receive(b)));
 }
 
-uint8_t printer_send_command(uint8_t *command) {
+uint8_t printer_send_command(const uint8_t *command) {
     uint8_t index = 0, length = *command++;
     while (index++ < length) printer_send_byte(*command++);
     return ((uint8_t)(printer_status >> 8) == 0x81) ? (uint8_t) printer_status : STATUS_MASK_ERRORS;
@@ -36,7 +35,8 @@ uint8_t printer_print_tile(const uint8_t *tiledata, uint8_t num_packets) {
     static const uint8_t PRINT_TILE[] = { 0x88,0x33,0x04,0x00,0x80,0x02 };
     static uint16_t printer_CRC;
     if (printer_tile_num == 0) {
-        for (uint8_t i = sizeof(PRINT_TILE), *data = (uint8_t *)PRINT_TILE; i != 0; i--, data++) printer_send_receive(*data);
+        const uint8_t * data = PRINT_TILE;
+        for (uint8_t i = sizeof(PRINT_TILE); i != 0; i--) printer_send_receive(*data++);
         printer_CRC = 0x04 + 0x80 + 0x02;
     }          
 
@@ -82,10 +82,12 @@ uint8_t gbprinter_detect(uint8_t delay) BANKED {
 }
 
 uint8_t gbprinter_print_overlay(uint8_t rows) BANKED {
-    uint8_t error, tile_data[16];
+    uint8_t tile_data[16], error, packets;
+    if ((packets = rows >> 1) == 0) return STATUS_OK;
+
     uint8_t * map = GetWinAddr();
     printer_tile_num = printer_packet_num = 0;
-    for (uint8_t y = 0; y != rows; y++, map += 0x20) {
+    for (uint8_t y = packets << 1; y != 0; y--, map += 0x20) {
         for (uint8_t x = 0, *row = map; x != 20; x++, row++) {
             uint8_t tileno = get_vram_byte(row);
 #ifdef CGB
@@ -96,7 +98,7 @@ uint8_t gbprinter_print_overlay(uint8_t rows) BANKED {
 #else 
             get_win_data(tileno, 1, tile_data);
 #endif
-            if ((error = printer_print_tile(tile_data, rows >> 1)) & STATUS_MASK_ERRORS) return error;
+            if ((error = printer_print_tile(tile_data, packets)) & STATUS_MASK_ERRORS) return error;
         }
     }
     if ((error = printer_wait(SECONDS(1), STATUS_BUSY, STATUS_BUSY)) & STATUS_MASK_ERRORS) return error;
