@@ -186,5 +186,5 @@ const SCRIPT_CMD script_cmds[] = {
 
     // GBPrinter functions
     {vm_print_detect,           3}, // 0x8C
-    {vm_print_overlay,          3}  // 0x8D
+    {vm_print_overlay,          4}  // 0x8D
 };

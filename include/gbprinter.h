@@ -33,6 +33,6 @@
 #define STATUS_MASK_ANY     0xFF
 
 uint8_t gbprinter_detect(uint8_t delay) BANKED;
-uint8_t gbprinter_print_overlay(uint8_t rows) BANKED;
+uint8_t gbprinter_print_overlay(uint8_t start, uint8_t rows) BANKED;
 
 #endif
