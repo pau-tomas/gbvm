@@ -34,7 +34,9 @@ _script_input_2::
         ; Print 
         VM_PUSH_CONST           0
         VM_PRINTER_DETECT       .ARG0, 10
+        VM_IF_CONST     .NE     .ARG0, 0, 103$, 0 
         VM_PRINT_OVERLAY        .ARG0, 0, 18
+103$:
         VM_POP                  1
 
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -80,13 +82,10 @@ _script_input_2::
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
 
 ; --- VM_CALL_NATIVE example -------------------------
-        VM_CALL_NATIVE          ___bank_script_input_2, 100$
+        VM_PUSH_CONST           10
+        VM_CALL_NATIVE          b_my_native_function, _my_native_function
+        VM_POP                  1
         VM_JUMP                 101$
-100$:
-        ldh a, (0x47) ; BGP
-        cpl
-        ldh (0x47), a
-        ret
 102$:
         ; sound effect test
         .db 0x71, 0b11111000, 0x4c,0x81,0x43,0x73,0x86  ; play for 2 frames
@@ -123,7 +122,9 @@ _script_input_2::
         ; Print 
         VM_PUSH_CONST           0
         VM_PRINTER_DETECT       .ARG0, 10
+        VM_IF_CONST     .NE     .ARG0, 0, 104$, 0 
         VM_PRINT_OVERLAY        .ARG0, 0, 6
+104$:
         VM_POP                  1
 
 
