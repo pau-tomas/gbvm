@@ -35,7 +35,7 @@ const struct actor_t scene_scene_1_actors[] = {
         .collision_enabled = TRUE,
         .script_update = TO_FAR_PTR_T(actor_0_update),
         .reserve_tiles = 0,
-        // .persistent = TRUE
+        .persistent = TRUE
     },
     {
         // Actor 2,
@@ -58,7 +58,7 @@ const struct actor_t scene_scene_1_actors[] = {
         .collision_enabled = TRUE,
         .script_update = TO_FAR_PTR_T(actor_1_update),
         .reserve_tiles = 0,
-        // .persistent = TRUE
+        .persistent = TRUE
     },
     {
         // Actor 3,
@@ -81,6 +81,6 @@ const struct actor_t scene_scene_1_actors[] = {
         .collision_enabled = TRUE,
         .script_update = TO_FAR_PTR_T(actor_2_update),
         .reserve_tiles = 0,
-        // .persistent = TRUE
+        .persistent = TRUE
     }
 };
