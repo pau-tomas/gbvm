@@ -242,8 +242,7 @@ void vm_actor_begin_update(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     act_set_pos_t * params = VM_REF_TO_PTR(idx);
     actor = actors + (UBYTE)(params->ID);
 
-    actor->hscript_update = SCRIPT_TERMINATED;
-    if (actor->script_update.bank) {
+    if (actor->script_update.bank && (actor->hscript_update & SCRIPT_TERMINATED)) {
         script_execute(actor->script_update.bank, actor->script_update.ptr, &(actor->hscript_update), 0);
     }
 }
