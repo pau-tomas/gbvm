@@ -27,11 +27,11 @@
 
 #define BANK_EMOTE_METASPRITE 1
 
-#ifdef CGB 
+#ifdef CGB
 #define NO_OVERLAY_PRIORITY ((!_is_CGB) && ((overlay_priority & S_PRIORITY) == 0))
 #else
 #define NO_OVERLAY_PRIORITY (TRUE)
-#endif 
+#endif
 
 
 const BYTE emote_offsets[] = {2, 1, 0, -1, -2, -3, -4, -5, -6, -5, -4, -3, -2, -1, 0};
@@ -84,21 +84,21 @@ void actors_update() NONBANKED {
         SWITCH_ROM(BANK_EMOTE_METASPRITE); // bank of emote_offsets[] and emote_metasprite[]
         if (emote_timer < EMOTE_BOUNCE_FRAMES) {
             screen_y += emote_offsets[emote_timer];
-        }             
+        }
         allocated_hardware_sprites += move_metasprite(
             emote_metasprite,
             EMOTE_TILE,
             allocated_hardware_sprites,
             screen_x,
             screen_y
-        );        
+        );
     }
 
     actor = actors_active_tail;
     while (actor) {
-        if (actor->pinned) 
+        if (actor->pinned)
             screen_x = (actor->pos.x >> 4) + 8, screen_y = (actor->pos.y >> 4) + 8;
-        else 
+        else
             screen_x = (actor->pos.x >> 4) - draw_scroll_x + 8, screen_y = (actor->pos.y >> 4) - draw_scroll_y + 8;
 
         if (
@@ -118,7 +118,7 @@ void actors_update() NONBANKED {
             continue;
         } else if (actor->hidden) {
             actor = actor->prev;
-            continue;            
+            continue;
         }
 
         // Check reached animation tick frame
@@ -136,7 +136,7 @@ void actors_update() NONBANKED {
 
         SWITCH_ROM(actor->sprite.bank);
         spritesheet_t *sprite = actor->sprite.ptr;
-        
+
         allocated_hardware_sprites += move_metasprite(
             *(sprite->metasprites + actor->frame),
             actor->base_tile,
@@ -172,6 +172,9 @@ void deactivate_actor(actor_t *actor) BANKED {
     if ((actor->hscript_update & SCRIPT_TERMINATED) == 0) {
         script_terminate(actor->hscript_update);
     }
+    if ((actor->hscript_hit & SCRIPT_TERMINATED) == 0) {
+        script_detach_hthread(actor->hscript_hit);
+    }
 }
 
 void activate_actor(actor_t *actor) BANKED {
@@ -196,6 +199,7 @@ void activate_actor(actor_t *actor) BANKED {
     if (actor->script_update.bank) {
         script_execute(actor->script_update.bank, actor->script_update.ptr, &(actor->hscript_update), 0);
     }
+    actor->hscript_hit = SCRIPT_TERMINATED;
 }
 
 void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
@@ -214,7 +218,7 @@ void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
             }
         }
         actor = actor->next;
-    }    
+    }
 }
 
 void activate_actors_in_col(UBYTE x, UBYTE y) BANKED {
@@ -344,7 +348,7 @@ void actors_handle_player_collision() BANKED {
     } else if (player_iframes != 0) {
         player_iframes--;
     }
-    player_collision_actor = NULL; 
+    player_collision_actor = NULL;
 }
 
 UWORD check_collision_in_direction(UWORD start_x, UWORD start_y, bounding_box_t *bounds, UWORD end_pos, col_check_dir_e check_dir) BANKED {
