@@ -55,6 +55,8 @@ void projectiles_update() NONBANKED {
             if (projectile->frame == projectile->frame_end) {
                 if (!projectile->anim_noloop) {
                     projectile->frame = projectile->frame_start;
+                } else {
+                    projectile->frame--;
                 }
             }
         }
