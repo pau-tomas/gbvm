@@ -119,7 +119,7 @@ void actors_update() NONBANKED {
 
         // Bottom right coordinate of actor in 16px tile coordinates
         // Subtract bounding box estimate width/height
-        // and offset by 64 to allow signed comparisons with screen tiles 
+        // and offset by 64 to allow signed comparisons with screen tiles
         actor_tile16_x = (actor->pos.x >> 8) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
         actor_tile16_y = (actor->pos.y >> 8) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
 
@@ -127,7 +127,7 @@ void actors_update() NONBANKED {
             // Actor right edge < screen left edge
             (actor_tile16_x < screen_tile16_x) ||
             // Actor left edge > screen right edge
-            (actor_tile16_x - ACTOR_BOUNDS_TILE16 - SCREEN_TILE16_W > screen_tile16_x) || 
+            (actor_tile16_x - ACTOR_BOUNDS_TILE16 - SCREEN_TILE16_W > screen_tile16_x) ||
             // Actor bottom edge < screen top edge
             (actor_tile16_y < screen_tile16_y) ||
             // Actor top edge > screen bottom edge
@@ -135,7 +135,7 @@ void actors_update() NONBANKED {
         ) {
             if (actor->persistent) {
                 actor = actor->prev;
-                continue;            
+                continue;
             }
             // Deactivate if offscreen
             actor_t * prev = actor->prev;
@@ -157,7 +157,8 @@ void actors_update() NONBANKED {
             // Check reached end of animation
             if (actor->frame == actor->frame_end) {
                 if (actor->anim_noloop) {
-                    // TODO: execute onAnimationEnd here
+                    actor->frame--;
+                    // TODO: execute onAnimationEnd here + set to ANIM_PAUSED?
                 } else {
                     actor->frame = actor->frame_start;
                 }
