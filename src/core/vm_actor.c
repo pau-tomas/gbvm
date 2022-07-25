@@ -26,8 +26,7 @@
 
 
 typedef struct act_move_to_t {
-    UBYTE ID;
-    UBYTE _pad0;
+    INT16 ID;
     INT16 X, Y;
     UBYTE ATTR;
 } act_move_to_t;
@@ -43,8 +42,7 @@ typedef struct act_set_frame_t {
 } act_set_frame_t;
 
 typedef struct gbs_farptr_t {
-    UBYTE BANK;
-    UBYTE _pad0;
+    INT16 BANK;
     const void * DATA;
 } gbs_farptr_t;
 
@@ -56,7 +54,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     THIS->waitable = 1;
 
     act_move_to_t * params = VM_REF_TO_PTR(idx);
-    actor = actors + params->ID;
+    actor = actors + (UBYTE)(params->ID);
 
     if (THIS->flags == 0) {
         actor->movement_interrupt = FALSE;
@@ -392,7 +390,7 @@ void vm_actor_set_anim_frame(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     actor_t *actor;
 
     act_set_frame_t * params = VM_REF_TO_PTR(idx);
-    actor = actors + params->ID;
+    actor = actors + (UBYTE)(params->ID);
 
     actor_set_frame_offset(actor, params->FRAME);
 }
@@ -401,7 +399,7 @@ void vm_actor_get_anim_frame(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     actor_t *actor;
 
     act_set_frame_t * params = VM_REF_TO_PTR(idx);
-    actor = actors + params->ID;
+    actor = actors + (UBYTE)(params->ID);
 
     params->FRAME = actor_get_frame_offset(actor);
 }
@@ -420,7 +418,7 @@ void vm_actor_set_spritesheet_by_ref(SCRIPT_CTX * THIS, INT16 idxA, INT16 idxB) 
     actor = actors + *n_actor;
 
     gbs_farptr_t * params = VM_REF_TO_PTR(idxB);
-    UBYTE spritesheet_bank = params->BANK;
+    UBYTE spritesheet_bank = (UBYTE)(params->BANK);
     const spritesheet_t *spritesheet = params->DATA;
 
     load_sprite(actor->base_tile, spritesheet, spritesheet_bank);
