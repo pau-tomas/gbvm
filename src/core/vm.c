@@ -326,6 +326,7 @@ void vm_rpn(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCALL NONBANK
                 // funcs
                 case 'm': *A = (*A < *B) ? *A : *B; break;  // min
                 case 'M': *A = (*A > *B) ? *A : *B; break;  // max
+                case 'T': *A = atan2((WORD)*A, (WORD)*B); break;
                 // unary
                 case '@': *B = abs(*B); continue;
                 case '~': *B = ~(*B);   continue;
