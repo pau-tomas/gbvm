@@ -5,6 +5,9 @@
 
 #include "system.h"
 #include "vm.h"
+
+#include "vm_ui.h"
+
 #include "ui.h"
 #include "input.h"
 #include "scroll.h"
@@ -12,6 +15,8 @@
 #include "bankdata.h"
 #include "data_manager.h"
 #include "data/data_bootstrap.h"
+
+BANKREF(VM_UI)
 
 typedef struct set_submap_params_t {
     UBYTE x;

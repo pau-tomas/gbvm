@@ -6,6 +6,8 @@
 #include "data_manager.h"
 #include "actor.h"
 
+BANKREF(VM_PROJECTILE)
+
 typedef struct projectile_launch_t {
     upoint16_t pos;
     uint16_t angle;
