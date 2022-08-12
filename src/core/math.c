@@ -77,18 +77,11 @@ uint8_t atan2(int16_t y, int16_t x) NONBANKED {
     x = (x > 19) ? 19 : x;
     y = (y > 17) ? 17 : y;
 
-    if (x == 0) {
-        return (y > 0) ? 128 : 0;
-    }
-    if (y == 0) {
-        return (x > 0) ? 64 : 192;
-    }
-
-    if (x > 0 && y < 0) {
+    if (x >= 0 && y <= 0) {
         return 64 - atan2_table[x][y * -1];
-    } else if (x > 0 && y > 0) {
+    } else if (x >= 0 && y >= 0) {
         return 64 + atan2_table[x][y];
-    } else if (x < 0 && y > 0) {
+    } else if (x <= 0 && y >= 0) {
         return 192 - atan2_table[x * -1][y];
     } else {
         return 192 + atan2_table[x * -1][y * -1];
