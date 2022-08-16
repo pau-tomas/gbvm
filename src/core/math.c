@@ -74,8 +74,8 @@ UBYTE isqrt(uint16_t x) NONBANKED {
 }
 
 uint8_t atan2(int16_t y, int16_t x) NONBANKED {
-    x = (x > 19) ? 19 : x;
-    y = (y > 17) ? 17 : y;
+    x = CLAMP(x, -19, 19);
+    y = CLAMP(y, -17, 17);
 
     if (x >= 0 && y <= 0) {
         return 64 - atan2_table[x][y * -1];
