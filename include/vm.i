@@ -1041,6 +1041,6 @@ OP_VM_PRINTER_DETECT    = 0x8C
 
 ; Print up to HEIGHT rows of the overlay window (must be multiple of 2)
 OP_VM_PRINT_OVERLAY     = 0x8D
-.macro VM_PRINT_OVERLAY ERROR, START, HEIGHT
-        .db OP_VM_PRINT_OVERLAY, #<HEIGHT, #<START, #>ERROR, #<ERROR
+.macro VM_PRINT_OVERLAY ERROR, START, HEIGHT, MARGIN
+        .db OP_VM_PRINT_OVERLAY, #<MARGIN, #<HEIGHT, #<START, #>ERROR, #<ERROR
 .endm

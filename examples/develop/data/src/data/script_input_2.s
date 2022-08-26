@@ -35,7 +35,7 @@ _script_input_2::
         VM_PUSH_CONST           0
         VM_PRINTER_DETECT       .ARG0, 10
         VM_IF_CONST     .NE     .ARG0, 0, 103$, 0
-        VM_PRINT_OVERLAY        .ARG0, 0, 18
+        VM_PRINT_OVERLAY        .ARG0, 0, 18, 3
 103$:
         VM_POP                  1
 
@@ -123,7 +123,7 @@ _script_input_2::
         VM_PUSH_CONST           0
         VM_PRINTER_DETECT       .ARG0, 10
         VM_IF_CONST     .NE     .ARG0, 0, 104$, 0
-        VM_PRINT_OVERLAY        .ARG0, 0, 6
+        VM_PRINT_OVERLAY        .ARG0, 0, 6, 3
 104$:
         VM_POP                  1
 
