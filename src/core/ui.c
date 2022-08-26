@@ -51,11 +51,11 @@ unsigned char ui_text_data[TEXT_MAX_LENGTH];
 static UBYTE * ui_text_ptr;
 static UBYTE * ui_dest_ptr;
 static UBYTE * ui_dest_base;
-UBYTE ui_current_tile;
-UBYTE ui_current_tile_bank;
-UBYTE ui_prev_tile;
-UBYTE ui_prev_tile_bank;
-UBYTE vwf_current_offset;
+static UBYTE ui_current_tile;
+static UBYTE ui_current_tile_bank;
+static UBYTE ui_prev_tile;
+static UBYTE ui_prev_tile_bank;
+static UBYTE vwf_current_offset;
 //UBYTE vwf_tile_data[16 * 2]; // moved into absolute.c to free 64 bytes of WRAM (move after shadow_OAM[] which is 256-boundary aligned)
 UBYTE vwf_current_mask;
 UBYTE vwf_current_rotate;
