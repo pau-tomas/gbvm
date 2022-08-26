@@ -111,7 +111,7 @@ void vm_display_text(SCRIPT_CTX * THIS, UBYTE options, UBYTE start_tile) OLDCALL
     text_options = options;
     text_drawn = text_wait = text_ff = FALSE;
 
-    if (start_tile) ui_set_start_tile(start_tile);
+    if (start_tile >= TEXT_BUFFER_START) ui_set_start_tile(start_tile);
 }
 
 // switch text rendering to window or background
