@@ -201,9 +201,9 @@ void ui_print_reset() {
     memset(vwf_tile_data, text_bkg_fill, sizeof(vwf_tile_data));
 }
 
-void ui_set_start_tile(UBYTE start_tile) BANKED {
+void ui_set_start_tile(UBYTE start_tile, UBYTE start_tile_bank) BANKED {
     ui_prev_tile = ui_current_tile = start_tile;
-    ui_prev_tile_bank = ui_current_tile_bank = 0;
+    ui_prev_tile_bank = ui_current_tile_bank = start_tile_bank;
     vwf_current_offset = 0;
     memset(vwf_tile_data, text_bkg_fill, sizeof(vwf_tile_data));
 }

@@ -111,7 +111,22 @@ void vm_display_text(SCRIPT_CTX * THIS, UBYTE options, UBYTE start_tile) OLDCALL
     text_options = options;
     text_drawn = text_wait = text_ff = FALSE;
 
-    if (start_tile >= TEXT_BUFFER_START) ui_set_start_tile(start_tile);
+#ifdef CGB
+        if (_is_CGB) {
+            if (start_tile > (UBYTE)((0x100 - TEXT_BUFFER_START) + (0x100 - TEXT_BUFFER_START_BANK1))) {
+                return;
+            } else if (start_tile > (UBYTE)(0x100 - TEXT_BUFFER_START)) {
+                ui_set_start_tile(TEXT_BUFFER_START_BANK1 + (start_tile - (UBYTE)(0x100 - TEXT_BUFFER_START)), 1);
+            } else {
+                ui_set_start_tile(TEXT_BUFFER_START + start_tile, 0);
+            }
+        } else {
+#endif
+            if (start_tile > (UBYTE)(0x100 - TEXT_BUFFER_START)) ui_set_start_tile(TEXT_BUFFER_START + start_tile, 0);
+#ifdef CGB
+        }
+#endif
+
 }
 
 // switch text rendering to window or background

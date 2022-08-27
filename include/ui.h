@@ -83,7 +83,7 @@ void ui_update() NONBANKED;  // critical path, NONBANKED for speed
 
 void ui_load_tiles() BANKED;
 
-void ui_set_start_tile(UBYTE start_tile) BANKED;
+void ui_set_start_tile(UBYTE start_tile, UBYTE start_tile_bank) BANKED;
 
 #define UI_WAIT_WINDOW  1
 #define UI_WAIT_TEXT    2
