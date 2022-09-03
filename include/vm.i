@@ -180,7 +180,7 @@ OP_VM_RESERVE      = 0x12
         .db OP_VM_RESERVE, #<ARG0
 .endm
 
-; Assigns a value on VM stack or a global to a value on VM stack or a global 
+; Assigns a value on VM stack or a global to a value on VM stack or a global
 OP_VM_SET         = 0x13
 .macro VM_SET IDXA, IDXB
         .db OP_VM_SET, #>IDXB, #<IDXB, #>IDXA, #<IDXA
@@ -369,20 +369,20 @@ OP_VM_UNLOCK          = 0x26
         .db OP_VM_UNLOCK
 .endm
 
-; Raises an exception `CODE`. 
+; Raises an exception `CODE`.
 ;
 ; Valid values for `CODE` are:
 ;
 ; * `EXCEPTION_RESET`: Resets the device. Always called with `SIZE` equal to `0`.
-; * `EXCEPTION_CHANGE_SCENE`: Changes to a new scene. See [Scene](#SCENE) for more details. 
-; * `EXCEPTION_SAVE`: Saves the state of the game. See [Save State](#SAVE-STATE) for more details. 
-; * `EXCEPTION_LOAD`: Loads the saved state of the game. See [Save State](#SAVE-STATE) for more details. 
+; * `EXCEPTION_CHANGE_SCENE`: Changes to a new scene. See [Scene](#SCENE) for more details.
+; * `EXCEPTION_SAVE`: Saves the state of the game. See [Save State](#SAVE-STATE) for more details.
+; * `EXCEPTION_LOAD`: Loads the saved state of the game. See [Save State](#SAVE-STATE) for more details.
 OP_VM_RAISE           = 0x27
 .macro VM_RAISE CODE, SIZE
         .db OP_VM_RAISE, #<SIZE, #<CODE
 .endm
 
-; Assigns a value on VM stack or a global indirectly to a value on VM stack ar a global  
+; Assigns a value on VM stack or a global indirectly to a value on VM stack ar a global
 OP_VM_SET_INDIRECT    = 0x28
 .macro VM_SET_INDIRECT IDXA, IDXB
         .db OP_VM_SET_INDIRECT, #>IDXB, #<IDXB, #>IDXA, #<IDXA
@@ -408,13 +408,13 @@ OP_VM_POLL_LOADED     = 0x2B
 .endm
 
 ; Translates `IDX` into absolute index and pushes result to VM stack
-OP_VM_PUSH_REFERENCE  = 0x2C 
+OP_VM_PUSH_REFERENCE  = 0x2C
 .macro VM_PUSH_REFERENCE IDX
         .db OP_VM_PUSH_REFERENCE, #>IDX, #<IDX
 .endm
 
 ; Calls native code by far pointer.
-OP_VM_CALL_NATIVE     = 0x2D 
+OP_VM_CALL_NATIVE     = 0x2D
 .macro VM_CALL_NATIVE BANK, PTR
         .db OP_VM_CALL_NATIVE, #>PTR, #<PTR, #<BANK
 .endm
@@ -434,7 +434,7 @@ OP_VM_MEMCPY          = 0x77
 ; --- engine-specific instructions ------------------------------------------
 
 ; --- LOAD/SAVE --------------------------------------
-; To save or load the state of the game an `EXCEPTION_SAVE` or `EXCEPTION_LOAD` exception should be raised using `VM_RAISE`. 
+; To save or load the state of the game an `EXCEPTION_SAVE` or `EXCEPTION_LOAD` exception should be raised using `VM_RAISE`.
 
 ; There's three save slots (`0`, `1` and `2`) available to save. `.SAVE_SLOT n` is used to set which one will be used.
 
@@ -605,14 +605,7 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 
 ; --- UI ------------------------------------------
 
-; * `_text_draw_speed`: Defines the global draw speed for text fields. The value range is `0` to `7`. A value of`0` will render the text as fast as possible. Any other value will be the number of frames between each character rendering.
-; * `_text_in_speed`: Defines the speed at which the dialogue window will exit the screen. The value ranges is `0` to `7`. A value of `0` will make the dialogue to move at `2px` per frame. Any other value will be number of pixels per frame. 
-; * `_text_out_speed`: Defines the speed at which the dialogue window will exit the screen. The value ranges is `0` to `7`. A value of `0` will make the dialogue to move at `2px` per frame. Any other value will be number of pixels per frame. 
-; * `_text_ff_joypad`: When set to `1` the dialogue text will be fast forwarded if any button is pressed.
-;
-; Those fields can be set using `VM_SET_CONST_INT8`.
-
-; Loads a text in memory that contains `N` variables.
+;-- Loads a text in memory that contains `N` variables.
 ;
 ; The text string is defined using the `.asciz` command:
 ;
@@ -622,7 +615,7 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 ; ```
 ;
 ; #### Displaying variables:
-; The following format specifiers allow to render variables as part of the text: 
+; The following format specifiers allow to render variables as part of the text:
 ; * `%d`  Render a variable value
 ; * `%Dn` Render a variable value with `n` length
 ; * `%c`  Render a character based on the variable value
@@ -644,7 +637,7 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 ; * `\003\x\y` Sets the position for the next character
 ; * `\004\x\y` Sets the position for the next character relative to the last character
 ; * `\005\` TBD
-; * `\006\mask` Wait for input to continue to the next character. 
+; * `\006\mask` Wait for input to continue to the next character.
 ; * `\007\n` Inverts the colors of the following characters.
 ; * `\n` Next line
 ; * `\r` Scroll text one line up
@@ -653,36 +646,44 @@ OP_VM_LOAD_TEXT         = 0x40
         .db OP_VM_LOAD_TEXT, #<ARG0
 .endm
 
-; Renders the text in the defined layer (overlay, by default)
 OP_VM_DISPLAY_TEXT      = 0x41
 .DISPLAY_DEFAULT        = 0
 .DISPLAY_PRESERVE_POS   = 1
 .TEXT_TILE_CONTINUE     = 0xFF
+;-- Renders the text in the defined layer (overlay, by default)
+; @param OPTIONS Text rendering options:
+;   .DISPLAY_DEFAULT      - default behavior
+;   .DISPLAY_PRESERVE_POS - preserve text position
+; @param START_TILE Tile number within the text rendering area to be rendered from; use .TEXT_TILE_CONTINUE to proceed from the current position
 .macro VM_DISPLAY_TEXT_EX OPTIONS, START_TILE
         .db OP_VM_DISPLAY_TEXT, #<START_TILE, #<OPTIONS
 .endm
+;-- Renders the text in the defined layer (obsolete)
 .macro VM_DISPLAY_TEXT
         VM_DISPLAY_TEXT_EX .DISPLAY_DEFAULT, .TEXT_TILE_CONTINUE
 .endm
 
-; Changes the `LAYER` where the text will be rendered.
 OP_VM_SWITCH_TEXT_LAYER = 0x85
 .TEXT_LAYER_BKG         = 0
 .TEXT_LAYER_WIN         = 1
+;-- Changes the `LAYER` where the text will be rendered.
 ; @param LAYER
-;   .TEXT_LAYER_BKG         = 0 - Render text in the background layer
-;   .TEXT_LAYER_WIN         = 1 - Render text in the overlay layer
+;   .TEXT_LAYER_BKG    - Render text in the background layer
+;   .TEXT_LAYER_WIN    - Render text in the overlay layer
 .macro VM_SWITCH_TEXT_LAYER LAYER
         .db OP_VM_SWITCH_TEXT_LAYER, #<LAYER
 .endm
 
-
 OP_VM_OVERLAY_SETPOS    = 0x42
+;-- Set position of the overlay window in tiles
+; @param X X-coordinate of the overlay window in tiles
+; @param Y Y-coordinate of the overlay window in tiles
 .macro VM_OVERLAY_SETPOS X, Y
         .db OP_VM_OVERLAY_SETPOS, #<Y, #<X
 .endm
 
 .MENU_CLOSED_Y          = 0x12
+;-- Hide the overlay window
 .macro VM_OVERLAY_HIDE
         VM_OVERLAY_SETPOS 0, .MENU_CLOSED_Y
 .endm
@@ -696,16 +697,15 @@ OP_VM_OVERLAY_WAIT      = 0x44
 .UI_WAIT_BTN_A          = 4
 .UI_WAIT_BTN_B          = 8
 .UI_WAIT_BTN_ANY        = 16
-; @param IS_MODAL
-;   .UI_NONMODAL              = 0
-;   .UI_MODAL                 = 1
-; @param WAIT_FLAGS
-;   .UI_WAIT_NONE             =  0 - No wait
-;   .UI_WAIT_WINDOW           =  1 - Wait until the window moved to its final position
-;   .UI_WAIT_TEXT             =  2 - Wait until all the text finished rendering
-;   .UI_WAIT_BTN_A            =  4 - Wait until "A" is pressed
-;   .UI_WAIT_BTN_B            =  8 - Wait until "B" is pressed
-;   .UI_WAIT_BTN_ANY          = 16 - Wait until any button is pressed
+;-- Wait for the UI operation(s) completion
+; @param IS_MODAL indicates whether the operation is modal: .UI_MODAL, or not: .UI_NONMODAL
+; @param WAIT_FLAGS bit field, set of events to be waited for:
+;   .UI_WAIT_NONE     - No wait
+;   .UI_WAIT_WINDOW   - Wait until the window moved to its final position
+;   .UI_WAIT_TEXT     - Wait until all the text finished rendering
+;   .UI_WAIT_BTN_A    - Wait until "A" is pressed
+;   .UI_WAIT_BTN_B    - Wait until "B" is pressed
+;   .UI_WAIT_BTN_ANY  - Wait until any button is pressed
 .macro VM_OVERLAY_WAIT IS_MODAL, WAIT_FLAGS
         .db OP_VM_OVERLAY_WAIT, #<WAIT_FLAGS, #<IS_MODAL
 .endm
@@ -716,6 +716,13 @@ OP_VM_OVERLAY_MOVE_TO   = 0x45
 .OVERLAY_OUT_SPEED      = -2
 .OVERLAY_TEXT_OUT_SPEED = -2    ; obsolete
 .OVERLAY_SPEED_INSTANT  = -3
+;-- Animated move of the overlay window to the new position
+; @param X X-coordinate of the new position
+; @param Y Y-coordinate of the new position
+; @param SPEED speed of the movement:
+;   .OVERLAY_IN_SPEED       - default speed for appearing of the overlay
+;   .OVERLAY_OUT_SPEED      - default speed for disappearing of the overlay
+;   .OVERLAY_SPEED_INSTANT  - instant movement
 .macro VM_OVERLAY_MOVE_TO X, Y, SPEED
         .db OP_VM_OVERLAY_MOVE_TO, #<SPEED, #<Y, #<X
 .endm
@@ -725,11 +732,31 @@ OP_VM_OVERLAY_SHOW      = 0x46
 .UI_COLOR_WHITE         = 1
 .UI_DRAW_FRAME          = 1
 .UI_AUTO_SCROLL         = 2
+;-- Show the overlay window
+; @param X X-coordinate of the new position
+; @param Y Y-coordinate of the new position
+; @param COLOR initial color of the overlay window:
+;   .UI_COLOR_BLACK     - black overlay window
+;   .UI_COLOR_WHITE     - white overlay window
+; @param OPTIONS display options:
+;   .UI_DRAW_FRAME      - draw overlay frame
+;   .UI_AUTO_SCROLL     - set automatic text scroll area; text will be scrolled up when printing more lines than the overlay height.
 .macro VM_OVERLAY_SHOW X, Y, COLOR, OPTIONS
         .db OP_VM_OVERLAY_SHOW, #<OPTIONS, #<COLOR, #<Y, #<X
 .endm
 
 OP_VM_OVERLAY_CLEAR     = 0x47
+;-- Clear the rectangle area of the overlay window
+; @param X X-Coordinate in tiles of the upper left corner
+; @param Y Y-Coordinate in tiles of the upper left corner
+; @param W Width in tiles of the rectangle area
+; @param H Height in tiles of the rectangle area
+; @param COLOR initial color of the overlay window:
+;   .UI_COLOR_BLACK     - black overlay window
+;   .UI_COLOR_WHITE     - white overlay window
+; @param OPTIONS display options:
+;   .UI_DRAW_FRAME      - draw overlay frame
+;   .UI_AUTO_SCROLL     - set automatic text scroll area; text will be scrolled up when printing more lines than the overlay height.
 .macro VM_OVERLAY_CLEAR X, Y, W, H, COLOR, OPTIONS
         .db OP_VM_OVERLAY_CLEAR, #<OPTIONS, #<COLOR, #<H, #<W, #<Y, #<X
 .endm
@@ -739,44 +766,92 @@ OP_VM_CHOICE            = 0x48
 .UI_MENU_LAST_0         = 1
 .UI_MENU_CANCEL_B       = 2
 .UI_MENU_SET_START      = 4
-.macro VM_CHOICE IDX, OPTIONS, COUNT
-        .db OP_VM_CHOICE, #<COUNT, #<OPTIONS, #>IDX, #<IDX
-.endm
 .macro .MENUITEM X, Y, iL, iR, iU, iD
         .db #<X, #<Y, #<iL, #<iR, #<iU, #<iD
 .endm
+;-- Execute menu
+; @param IDX Variable that receive the result of the menu execution
+; @param OPTIONS bit field, set of the possible menu options:
+;   .UI_MENU_STANDARD    - default menu behavior
+;   .UI_MENU_LAST_0      - last item return result of 0
+;   .UI_MENU_CANCEL_B    - B button cancels the menu execution
+;   .UI_MENU_SET_START   - if set IDX may contain the initial item index
+; @param COUNT number of menu items
+;
+; instruction must be followed by the COUNT of .MENUITEM definitions:
+; .MENUITEM X, Y, iL, iR, iU, iD
+; where:
+;   X - X-Coordinate of the cursor pointer in tiles
+;   Y - Y-Coordinate of the cursor pointer in tiles
+;   iL - menu item number, where the cursor must move, when you press LEFT
+;   iR - menu item number, where the cursor must move, when you press RIGHT
+;   iU - menu item number, where the cursor must move, when you press UP
+;   iD - menu item number, where the cursor must move, when you press DOWN
+.macro VM_CHOICE IDX, OPTIONS, COUNT
+        .db OP_VM_CHOICE, #<COUNT, #<OPTIONS, #>IDX, #<IDX
+.endm
 
 OP_VM_SET_FONT          = 0x4B
+;-- Sets active font
+; @param FONT_INDEX the index of the font to be activated
 .macro VM_SET_FONT FONT_INDEX
         .db OP_VM_SET_FONT, #<FONT_INDEX
 .endm
 
 .UI_PRINT_LEFTTORIGHT   = 0
 .UI_PRINT_RIGHTTOLEFT   = 1
+;-- Sets print direction
+; @param DIRECTION direction of the text rendering:
+;   .UI_PRINT_LEFTTORIGHT  - text is rendered from left to right (left justify)
+;   .UI_PRINT_RIGHTTOLEFT  - text is rendered from right to left (right justify)
 .macro VM_SET_PRINT_DIR DIRECTION
         VM_SET_CONST_UINT8 _vwf_direction, ^/DIRECTION & 1/
 .endm
 
 OP_VM_OVERLAY_SET_SUBMAP_EX = 0x4C
+;-- Copies rectange area of the background map onto the overlay window
+; @param PARAMS_IDX points to the beginning of the pseudo-structure that contains these members:
+;    x       - X-Coordinate within the overlay window in tiles
+;    y       - Y-Coordinate tithin the overlay window in tiles
+;    w       - Width of the copied area in tiles
+;    h       - Height of the copied area in tiles
+;    scene_x - X-Coordinate within the background map in tiles
+;    scene_y - Y-Coordinate within the background map in tiles
 .macro VM_OVERLAY_SET_SUBMAP_EX PARAMS_IDX
         .db OP_VM_OVERLAY_SET_SUBMAP_EX, #>PARAMS_IDX, #<PARAMS_IDX
 .endm
 
-; Scrolls the rectangle area defined by `X`, `Y`, `W` and `H` up by one row and fills the lower row with `COLOR`.
 OP_VM_OVERLAY_SCROLL    = 0x4D
+;-- Scrolls the rectangle area
+; @param X X-Coordinate of the upper left corner in tiles
+; @param Y Y-Coordinate of the upper left corner in tiles
+; @param W Width of the area in tiles
+; @param H Height of the area in tiles
+; @param COLOR Color of the empty row of tiles that appear at the bottom of the scroll area
 .macro VM_OVERLAY_SCROLL X, Y, W, H, COLOR
         .db OP_VM_OVERLAY_SCROLL, #<COLOR, #<H, #<W, #<Y, #<X
 .endm
 
-; Defines the scrollable area (in tiles, using `X`, `Y`, `W` and `H`) for the overlay. When the text overflows that area it'll scroll up by 1 row and fill the lower row with `COLOR`. 
-; Using `.UI_AUTO_SCROLL` in `VM_OVERLAY_SHOW` sets the scrollable area to the whole overlay.
 OP_VM_OVERLAY_SET_SCROLL = 0x4E
+;-- Defines the scroll area for the overlay
+; When the text overflows that area it'll scroll up by 1 row
+; @param X X-Coordinate of the upper left corner in tiles
+; @param Y Y-Coordinate of the upper left corner in tiles
+; @param W Width of the area in tiles
+; @param H Height of the area in tiles
+; @param COLOR Color of the empty row of tiles that appear at the bottom of the scroll area
 .macro VM_OVERLAY_SET_SCROLL X, Y, W, H, COLOR
         .db OP_VM_OVERLAY_SET_SCROLL, #<COLOR, #<H, #<W, #<Y, #<X
 .endm
 
-; Copies a section of tiles from the scene background (in tiles, using `SX`, `SY`) to the given overlay coordinates (in tiles, using `X_IDX`, `Y_IDX`, `W` and `H`). 
 OP_VM_OVERLAY_SET_SUBMAP = 0x4F
+;-- Copies a rectange area of tiles from the scene background
+; @param X X-Coordinate within the overlay window of the upper left corner in tiles
+; @param Y Y-Coordinate within the overlay window of the upper left corner in tiles
+; @param W Width of the area in tiles
+; @param H Height of the area in tiles
+; @param SX X-Coordinate within the level background map
+; @param SY Y-Coordinate within the level background map
 .macro VM_OVERLAY_SET_SUBMAP X, Y, W, H, SX, SY
         .db OP_VM_OVERLAY_SET_SUBMAP, #<SY, #<SX, #<H, #<W, #<Y, #<X
 .endm
@@ -938,7 +1013,7 @@ OP_VM_MUSIC_STOP        = 0x61
         .db OP_VM_MUSIC_STOP
 .endm
 
-; Mutes/unmutes channels using `MASK`. The 4 lower bits of the mask represent the 4 audio channels. 
+; Mutes/unmutes channels using `MASK`. The 4 lower bits of the mask represent the 4 audio channels.
 
 ; | `Mask`   | Channel 1 | Channel 2 | Channel 3 | Channel 4 |
 ; | -------- | --------- | --------- | --------- | --------- |
@@ -992,7 +1067,7 @@ OP_VM_MUSIC_SETPOS      = 0x67
 
 ; --- SCENES -------------------------------
 
-; To load a new scene raise a `EXCEPTION_CHANGE_SCENE` exception using `VM_RAISE`. 
+; To load a new scene raise a `EXCEPTION_CHANGE_SCENE` exception using `VM_RAISE`.
 
 ; The scene to load is defined using `IMPORT_FAR_PTR_DATA` followed by the scene symbol.
 
@@ -1121,7 +1196,7 @@ OP_VM_LOAD_PALETTE       = 0x7C
 ; Transfers SGB packet(s). Data of variable length is placed after this instruction, for example:
 ;
 ; ```
-; VM_SGB_TRANSFER   
+; VM_SGB_TRANSFER
 ;     .db ((0x04 << 3) | 1), 1, 0x07, ((0x01 << 4) | (0x02 << 2) | 0x03), 5,5, 10,10,  0, 0, 0, 0, 0, 0, 0, 0 ; ATTR_BLK packet
 ; ```
 ;
@@ -1167,7 +1242,7 @@ OP_VM_COS_SCALE         = 0x8A
 
 ; --- TEXT SOUND -------------------------------------
 
-; Set sound effect asset for text  
+; Set sound effect asset for text
 OP_VM_SET_TEXT_SOUND    = 0x8B
 .macro VM_SET_TEXT_SOUND BANK, ADDR, MASK
         .db OP_VM_SET_TEXT_SOUND, #<MASK, #>ADDR, #<ADDR, #<BANK
