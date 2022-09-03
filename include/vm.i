@@ -47,108 +47,131 @@ EXCEPTION_LOAD          = 4
 .PARAM16 = -19
 
 
-; Stops execution of context
 OP_VM_STOP         = 0x00
+;-- Stops execution of context
 .macro VM_STOP
         .db OP_VM_STOP
 .endm
 
-; Pushes immediate value `VAL` to the top of the VM stack.
 OP_VM_PUSH_CONST   = 0x01
+;-- Pushes immediate value to the top of the VM stack
+; @param ARG0 immediate value to be pushed
 .macro VM_PUSH_CONST ARG0
         .db OP_VM_PUSH_CONST, #>ARG0, #<ARG0
 .endm
 
-; Removes the top `ARG0` values from VM stack.
 OP_VM_POP          = 0x02
+;-- Removes the top values from the VM stack
+; @param ARG0 number of values to be removed from the stack
 .macro VM_POP ARG0
         .db OP_VM_POP, #ARG0
 .endm
 
-; Calls by near address.
 OP_VM_CALL         = 0x04
+;-- Call script by near address
+; @param ARG0 address of the script subroutine
 .macro VM_CALL ARG0
         .db OP_VM_CALL, #>ARG0, #<ARG0
 .endm
 
-; Returns from relative or near call.
 OP_VM_RET          = 0x05
+;-- Returns from the near call
 .macro VM_RET
         .db OP_VM_RET, 0
 .endm
 
-; Returns from relative or near call and clear `ARG0` arguments on stack.
+;-- Returns from the near call and clear N arguments on stack
+; @param N number of arguments to be removed from the stack
 .macro VM_RET_N N
         .db OP_VM_RET, #<N
 .endm
 
-; get byte or word by far pointer into variable
 OP_VM_GET_FAR      = 0x06
 .GET_BYTE          = 0
 .GET_WORD          = 1
+;-- Get byte or word by the far pointer into variable
+; @param IDX Target variable
+; @param SIZE Size of the ojject to be acquired:
+;   .GET_BYTE  - get 8-bit value
+;   .GET_WORD  - get 16-bit value
+; @param BANK Bank number of the object
+; @param ADDR Address of the object
 .macro VM_GET_FAR IDX, SIZE, BANK, ADDR
         .db OP_VM_GET_FAR, #>ADDR, #<ADDR, #<BANK, #<SIZE, #>IDX, #<IDX
 .endm
 
-; Loops by near address, counter is on stack, counter is removed on exit.
 OP_VM_LOOP         = 0x07
+;-- Loops while variable is not zero, by the near address
+; @param IDX Loop counter variable
+; @param LABEL Jump label for the next iteration
+; @param N amount of values to be removed from stack on exit
 .macro VM_LOOP IDX, LABEL, N
         .db OP_VM_LOOP, #<N, #>LABEL, #<LABEL, #>IDX, #<IDX
 .endm
 
-; Compares a variable or value on stack (`IDX`) with a set of values, and if equal jump to the specified label. Then, clear `N` arguments from stack.
-; `SIZE` sets the number of values to compare, and each of the values are defined with:
-;
-;```
-;  .dw A, LABEL
-;```
-;
-; Where `A` is the value and `LABEL` the label to jump to.
 OP_VM_SWITCH       = 0x08
+.macro .CASE VAL, LBL
+        .dw #VAL, #LBL
+.endm
+;-- Compares variable with a set of values, and if equal jump to the specified label.
+; values for testing may be defined with the .CASE macro, where VAL parameter is a value for testing and LBL is a jump label
+; @param IDX variable for compare
+; @param SIZE amount of entries for test.
+; @param N amount of values to de cleaned from stack on exit
 .macro VM_SWITCH IDX, SIZE, N
         .db OP_VM_SWITCH, #<N, #<SIZE, #>IDX, #<IDX
 .endm
 
-; Jumps to near address.
 OP_VM_JUMP         = 0x09
+;-- Jumps to near address
+; @param ARG0 jump label
 .macro VM_JUMP ARG0
         .db OP_VM_JUMP, #>ARG0, #<ARG0
 .endm
 
-; call far (inter-bank call)
 OP_VM_CALL_FAR     = 0x0A
+;-- Call far routine (inter-bank call)
+; @param ARG0 Bank number of the routine
+; @param ARG1 Address of the routine
 .macro VM_CALL_FAR ARG0, ARG1
         .db OP_VM_CALL_FAR, #>ARG1, #<ARG1, #<ARG0
 .endm
 
-; rerurn from far call
 OP_VM_RET_FAR      = 0x0B
+;-- Rerurn from the far call
 .macro VM_RET_FAR
         .db OP_VM_RET_FAR, 0
 .endm
 
-; rerurn from far call and remove N arguments on stack
+;-- Rerurn from the far call and remove N arguments from stack
+; @param N Number of arguments to be removed from stack
 .macro VM_RET_FAR_N N
         .db OP_VM_RET_FAR, #<N
 .endm
 
-; Invokes `BANK:ADDR` C function until it returns true.
-; Valid functions are:
-;  * `_wait_frames`
-;  * `_camera_shake`
 OP_VM_INVOKE       = 0x0D
+;-- Invokes C function until it returns true.
+; @param ARG0 Bank number of the function
+; @param ARG1 Address of the function, currently 2 functions are implemented:
+;   _wait_frames   - wait for N vblank intervals
+;   _camera_shake  - shake camera N times
+; @param ARG2 Number of arguments to be removed from stack on return
+; @param ARG3 Points the first parameter to be passed into the C function
 .macro VM_INVOKE ARG0, ARG1, ARG2, ARG3
         .db OP_VM_INVOKE, #>ARG3, #<ARG3, #<ARG2, #>ARG1, #<ARG1, #<ARG0
 .endm
 
-; Spawns a thread in a separate context
 OP_VM_BEGINTHREAD  = 0x0E
+;-- Spawns a thread in a separate context
+; @param BANK Bank number of a thread function
+; @param THREADPROC Address of a thread function
+; @param HTHREAD Variable that receives the thread handle
+; @param NARGS Amount of values from the stack to be copied into the stack of the new context
 .macro VM_BEGINTHREAD BANK, THREADPROC, HTHREAD, NARGS
         .db OP_VM_BEGINTHREAD, #<NARGS, #>HTHREAD, #<HTHREAD, #>THREADPROC, #<THREADPROC, #<BANK
 .endm
 
 
-; Compares two variables or values on stack (`IDXA` and `IDXB`) using a `CONDITION`. If the comparision is true the execution will jump to `LABEL`, if false continue execution. Then, clear `N` arguments from stack.
 OP_VM_IF           = 0x0F
 .EQ                = 1
 .LT                = 2
@@ -156,43 +179,59 @@ OP_VM_IF           = 0x0F
 .GT                = 4
 .GTE               = 5
 .NE                = 6
-.AND               = 7
-.OR                = 8
+;-- Compares two variables using for condition.
+; @param CONDITION Condition for test:
+;   .EQ   - variables are equal
+;   .LT   - A is lower than B
+;   .LTE  - A is lower or equal than B
+;   .GT   - A is greater than B
+;   .GTE  - A is greater or equal than B
+;   .NE   - A is not equal to B
+; @param IDXA A variable
+; @param IDXB B variable
+; @param LABEL Jump label when result is TRUE
+; @param N Number of values to be removed from stack if the result is true
 .macro VM_IF CONDITION, IDXA, IDXB, LABEL, N
         .db OP_VM_IF, #<N, #>LABEL, #<LABEL, #>IDXB, #<IDXB, #>IDXA, #<IDXA, #<CONDITION
 .endm
 
-; Pushes a value on VM stack or a global indirectly from an index in the variable on VM stack or in a global onto VM stack
 OP_VM_PUSH_VALUE_IND = 0x10
+;-- Pushes a value on VM stack or a global indirectly from an index in the variable
+; @param ARG0 variable that contains the index of the variable to be pushed on stack
 .macro VM_PUSH_VALUE_IND ARG0
         .db OP_VM_PUSH_VALUE_IND, #>ARG0, #<ARG0
 .endm
 
-; pushes a value on VM stack or a global onto VM stack
 OP_VM_PUSH_VALUE   = 0x11
+;-- Pushes a value of the variable onto stack
+; @param ARG0 variable to be pushed
 .macro VM_PUSH_VALUE ARG0
         .db OP_VM_PUSH_VALUE, #>ARG0, #<ARG0
 .endm
 
-; Similar to pop
 OP_VM_RESERVE      = 0x12
+;-- Reserves or disposes amount of values on stack
+; @param ARG0 positive value - amount of variables to be reserved on stack, negative value - amount of variables to be popped from stack
 .macro VM_RESERVE ARG0
         .db OP_VM_RESERVE, #<ARG0
 .endm
 
-; Assigns a value on VM stack or a global to a value on VM stack or a global
 OP_VM_SET         = 0x13
+;-- Assigns variable B to variable A
+; @param IDXA Variable A
+; @param IDXB Variable B
 .macro VM_SET IDXA, IDXB
         .db OP_VM_SET, #>IDXB, #<IDXB, #>IDXA, #<IDXA
 .endm
 
-; Assigns a constant value `VAL` to a variable in the stack. A non-negative index `IDX` points to a global variable. A negative index points to the variable in the position relative to the top of the stack.
 OP_VM_SET_CONST   = 0x14
+;-- Assigns immediate value to the variable
+; @param IDX Target variable
+; @param VAL Source immediate value
 .macro VM_SET_CONST IDX, VAL
         .db OP_VM_SET_CONST, #>VAL, #<VAL, #>IDX, #<IDX
 .endm
 
-; rpn calculator, returns result on VM stack
 OP_VM_RPN          = 0x15
 .ADD               = '+'
 .SUB               = '-'
@@ -213,9 +252,10 @@ OP_VM_RPN          = 0x15
 ;.GT                = 4
 ;.GTE               = 5
 ;.NE                = 6
-;.AND               = 7
-;.OR                = 8
+.AND               = 7
+.OR                = 8
 .NOT               = 9
+;-- Reverse Polish Notation (RPN) calculator, returns result(s) on the VM stack
 .macro VM_RPN
         .db OP_VM_RPN
 .endm
@@ -245,96 +285,130 @@ OP_VM_RPN          = 0x15
         .db 0
 .endm
 
-; Joins a thread
 OP_VM_JOIN       = 0x16
+;-- Joins a thread
+; @param IDX Thread handle for joining
 .macro VM_JOIN IDX
         .db OP_VM_JOIN, #>IDX, #<IDX
 .endm
 
-; Kills a thread
 OP_VM_TERMINATE  = 0x17
+;-- Kills a thread
+; @param IDX Thread handle for killing
 .macro VM_TERMINATE IDX
         .db OP_VM_TERMINATE, #>IDX, #<IDX
 .endm
 
-; Signals runner that context is in a waitable state
 OP_VM_IDLE      = 0x18
+;-- Signals thread runner, that context is in a waitable state
 .macro VM_IDLE
         .db OP_VM_IDLE
 .endm
 
-; Gets thread local variable. Non-negative index of `IDXB` points to a thread local variable (parameters passed into thread).
 OP_VM_GET_TLOCAL= 0x19
+;-- Gets thread local variable.
+; @param IDXA Target variable
+; @param IDXB Thread local variable index
 .macro VM_GET_TLOCAL IDXA, IDXB
         .db OP_VM_GET_TLOCAL, #>IDXB, #<IDXB, #>IDXA, #<IDXA
 .endm
 
-; Compares a variable or value on stack (`IDXA`) with a constant (`B`) using a `CONDITION`. If the comparision is true the execution will jump to `LABEL`, if false continue execution. Then, clear `N` arguments from stack.
 OP_VM_IF_CONST  = 0x1A
+;-- Compares a variable to an immediate value
+; @param CONDITION Condition for test:
+;   .EQ   - variables are equal
+;   .LT   - A is lower than B
+;   .LTE  - A is lower or equal than B
+;   .GT   - A is greater than B
+;   .GTE  - A is greater or equal than B
+;   .NE   - A is not equal to B
+; @param IDXA A variable
+; @param B immediate value to be compared with
+; @param LABEL Jump label when result is TRUE
+; @param N Number of values to be removed from stack if the result is true
 .macro VM_IF_CONST CONDITION, IDXA, B, LABEL, N
         .db OP_VM_IF_CONST, #<N, #>LABEL, #<LABEL, #>B, #<B, #>IDXA, #<IDXA, #<CONDITION
 .endm
 
-; Gets unsigned int8 from WRAM. `ADDR` is an address of unsigned int8
 OP_VM_GET_UINT8 = 0x1B
+;-- Gets unsigned int8 from WRAM
+; @param IDXA Target variable
+; @param ADDR Address of the unsigned 8-bit value in WRAM
 .macro VM_GET_UINT8 IDXA, ADDR
         .db OP_VM_GET_UINT8, #>ADDR, #<ADDR, #>IDXA, #<IDXA
 .endm
 
-; Gets int8 from WRAM. `ADDR` is an address of int8
 OP_VM_GET_INT8  = 0x1C
+;-- Gets signed int8 from WRAM
+; @param IDXA Target variable
+; @param ADDR Address of the signed 8-bit value in WRAM
 .macro VM_GET_INT8 IDXA, ADDR
         .db OP_VM_GET_INT8, #>ADDR, #<ADDR, #>IDXA, #<IDXA
 .endm
 
-; Gets int16 from WRAM. `ADDR` is an address of int16
 OP_VM_GET_INT16  = 0x1D
+;-- Gets signed int16 from WRAM
+; @param IDXA Target variable
+; @param ADDR Address of the signed 16-bit value in WRAM
 .macro VM_GET_INT16 IDXA, ADDR
         .db OP_VM_GET_INT16, #>ADDR, #<ADDR, #>IDXA, #<IDXA
 .endm
 
-; Sets unsigned int8 in WRAM. `ADDR` is an address of unsigned int8
 OP_VM_SET_UINT8 = 0x1E
+;-- Sets unsigned int8 in WRAM from variable
+; @param ADDR Address of the unsigned 8-bit value in WRAM
+; @param IDXA Source variable
 .macro VM_SET_UINT8 ADDR, IDXA
         .db OP_VM_SET_UINT8, #>IDXA, #<IDXA, #>ADDR, #<ADDR
 .endm
 
-; Sets int8 in WRAM. `ADDR` is an address of int8
 OP_VM_SET_INT8  = 0x1F
+;-- Sets signed int8 in WRAM from variable
+; @param ADDR Address of the signed 8-bit value in WRAM
+; @param IDXA Source variable
 .macro VM_SET_INT8 ADDR, IDXA
         .db OP_VM_SET_INT8, #>IDXA, #<IDXA, #>ADDR, #<ADDR
 .endm
 
-; Sets int8 in WRAM. `ADDR` is an address of int16
 OP_VM_SET_INT16  = 0x20
+;-- Sets signed int16 in WRAM from variable
+; @param ADDR Address of the signed 16-bit value in WRAM
+; @param IDXA Source variable
 .macro VM_SET_INT16 ADDR, IDXA
         .db OP_VM_SET_INT16, #>IDXA, #<IDXA, #>ADDR, #<ADDR
 .endm
 
-; Sets int8 in WRAM. `ADDR` is an address of int8
 OP_VM_SET_CONST_INT8 = 0x21
+;-- Sets signed int8 in WRAM to the immediate value
+; @param ADDR Address of the signed 8-bit value in WRAM
+; @param V Immediate value
 .macro VM_SET_CONST_INT8 ADDR, V
         .db OP_VM_SET_CONST_INT8, #<V, #>ADDR, #<ADDR
 .endm
 
-; Sets unsigned int8 in WRAM. `ADDR` is an address of int8
+;-- Sets unsigned int8 in WRAM to the immediate value
+; @param ADDR Address of the unsigned 8-bit value in WRAM
+; @param V Immediate value
 .macro VM_SET_CONST_UINT8 ADDR, V
         .db OP_VM_SET_CONST_INT8, #<V, #>ADDR, #<ADDR
 .endm
 
-; Sets int16 in WRAM. `ADDR` is an address of int16
 OP_VM_SET_CONST_INT16 = 0x22
+;-- Sets signed int16 in WRAM to the immediate value
+; @param ADDR Address of the signed 16-bit value in WRAM
+; @param V Immediate value
 .macro VM_SET_CONST_INT16 ADDR, V
         .db OP_VM_SET_CONST_INT16, #>V, #<V, #>ADDR, #<ADDR
 .endm
 
-; Initializes RNG seed
 OP_VM_INIT_RNG        = 0x23
+;-- Initializes RNG seed with the value from the variable
+; @param IDX Seed value
 .macro VM_INIT_RNG IDX
         .db OP_VM_INIT_RNG, #>IDX, #<IDX
 .endm
 
-; Initializes RNG seed
+;-- Initializes RNG seed
 .macro VM_RANDOMIZE
         VM_RESERVE      2
         VM_GET_UINT8    .ARG0, _DIV_REG
@@ -348,8 +422,11 @@ OP_VM_INIT_RNG        = 0x23
         VM_POP          1
 .endm
 
-; Returns random value between `MIN` and `MIN` + `LIMIT`
 OP_VM_RAND            = 0x24
+;-- Returns random value between MIN and MIN + LIMIT
+; @param IDX Target variable
+; @param MIN Minimal random value
+; @param LIMIT range of the random values
 .macro VM_RAND IDX, MIN, LIMIT
         .db OP_VM_RAND
         .db #>(LIMIT | (LIMIT >> 1) | (LIMIT >> 2) | (LIMIT >> 3) | (LIMIT >> 4) | (LIMIT >> 5) | (LIMIT >> 6) | (LIMIT >> 7) | (LIMIT >> 8) | (LIMIT >> 9) | (LIMIT >> 10) | (LIMIT >> 11) | (LIMIT >> 12) | (LIMIT >> 13) | (LIMIT >> 14) | (LIMIT >> 15))
@@ -357,76 +434,91 @@ OP_VM_RAND            = 0x24
         .db #>LIMIT, #<LIMIT, #>MIN, #<MIN, #>IDX, #<IDX
 .endm
 
-; Locks VM
 OP_VM_LOCK            = 0x25
+;-- Disable switching of VM threads
 .macro VM_LOCK
         .db OP_VM_LOCK
 .endm
 
-; Unlocks VM
 OP_VM_UNLOCK          = 0x26
+;-- Enable switching of VM threads
 .macro VM_UNLOCK
         .db OP_VM_UNLOCK
 .endm
 
-; Raises an exception `CODE`.
-;
-; Valid values for `CODE` are:
-;
-; * `EXCEPTION_RESET`: Resets the device. Always called with `SIZE` equal to `0`.
-; * `EXCEPTION_CHANGE_SCENE`: Changes to a new scene. See [Scene](#SCENE) for more details.
-; * `EXCEPTION_SAVE`: Saves the state of the game. See [Save State](#SAVE-STATE) for more details.
-; * `EXCEPTION_LOAD`: Loads the saved state of the game. See [Save State](#SAVE-STATE) for more details.
+;-- Raises an exception
+; @param CODE Exception code:
+;   EXCEPTION_RESET        - Resets the device.
+;   EXCEPTION_CHANGE_SCENE - Changes to a new scene.
+;   EXCEPTION_SAVE         - Saves the state of the game.
+;   EXCEPTION_LOAD         - Loads the saved state of the game.
+; @param SIZE Length of the parameters to be passed into the exception handler
 OP_VM_RAISE           = 0x27
 .macro VM_RAISE CODE, SIZE
         .db OP_VM_RAISE, #<SIZE, #<CODE
 .endm
 
-; Assigns a value on VM stack or a global indirectly to a value on VM stack ar a global
 OP_VM_SET_INDIRECT    = 0x28
+;-- Assigns variable that is addressed indirectly to the other variable
+; @param IDXA Variable that contains the index of the target variable
+; @param IDXB Source variable that contains the value to be assigned
 .macro VM_SET_INDIRECT IDXA, IDXB
         .db OP_VM_SET_INDIRECT, #>IDXB, #<IDXB, #>IDXA, #<IDXA
 .endm
 
-; Assigns a value on VM stack or a global to a value on VM stack ar a global indirectly
 OP_VM_GET_INDIRECT    = 0x29
+;-- Assigns a variable to the value of variable that is addressed indirectly
+; @param IDXA Target variable
+; @param IDXB Variable that contains the index of the source variable
 .macro VM_GET_INDIRECT IDXA, IDXB
         .db OP_VM_GET_INDIRECT, #>IDXB, #<IDXB, #>IDXA, #<IDXA
 .endm
 
-; Terminates unit-testing immediately
 OP_VM_TEST_TERMINATE  = 0x2A
 .TEST_WAIT_VBL        = 1
+;-- Terminates unit-testing immediately
+; @param FLAGS terminate flags:
+;   .TEST_WAIT_VBL wait for VBlank before terminating
 .macro VM_TEST_TERMINATE FLAGS
         .db OP_VM_TEST_TERMINATE, #<FLAGS
 .endm
 
-; Checks that VM state was restored and reset the restore flag
 OP_VM_POLL_LOADED     = 0x2B
+;-- Checks that VM state was restored and reset the restore flag
+; @param IDX Target result variable
 .macro VM_POLL_LOADED IDX
         .db OP_VM_POLL_LOADED, #>IDX, #<IDX
 .endm
 
-; Translates `IDX` into absolute index and pushes result to VM stack
 OP_VM_PUSH_REFERENCE  = 0x2C
+;-- Translates IDX into absolute index and pushes result to VM stack
+; @param IDX index of the variable
 .macro VM_PUSH_REFERENCE IDX
         .db OP_VM_PUSH_REFERENCE, #>IDX, #<IDX
 .endm
 
-; Calls native code by far pointer.
 OP_VM_CALL_NATIVE     = 0x2D
+;-- Calls native code by the far pointer
+; @param BANK Bank number of the native routine
+; @param PTR Address of the native routine
 .macro VM_CALL_NATIVE BANK, PTR
         .db OP_VM_CALL_NATIVE, #>PTR, #<PTR, #<BANK
 .endm
 
-; clear VM memory
 OP_VM_MEMSET          = 0x76
+;-- Clear VM memory
+; @param DEST First variable to be cleared
+; @param VALUE Variable containing the value to be filled with
+; @param COUNT Number of variables to be filled
 .macro VM_MEMSET DEST, VALUE, COUNT
         .db OP_VM_MEMSET, #>COUNT, #<COUNT, #>VALUE, #<VALUE, #>DEST, #<DEST
 .endm
 
-; copy VM memory
 OP_VM_MEMCPY          = 0x77
+;-- copy VM memory
+; @param DEST First destination variable
+; @param SOUR First source variable
+; @param COUNT Number of variables to be copied
 .macro VM_MEMCPY DEST, SOUR, COUNT
         .db OP_VM_MEMCPY, #>COUNT, #<COUNT, #>SOUR, #<SOUR, #>DEST, #<DEST
 .endm
@@ -434,35 +526,24 @@ OP_VM_MEMCPY          = 0x77
 ; --- engine-specific instructions ------------------------------------------
 
 ; --- LOAD/SAVE --------------------------------------
-; To save or load the state of the game an `EXCEPTION_SAVE` or `EXCEPTION_LOAD` exception should be raised using `VM_RAISE`.
-
-; There's three save slots (`0`, `1` and `2`) available to save. `.SAVE_SLOT n` is used to set which one will be used.
-
-; For example, to save on slot `0`:
-
-; ```
-; VM_RAISE  	EXCEPTION_SAVE, 1
-;   .SAVE_SLOT 0
-; ```
-
-; And to load from slot `0`:
-
-; ```
-; VM_RAISE  	EXCEPTION_LOAD, 1
-;   .SAVE_SLOT 0
-; ```
 
 .macro .SAVE_SLOT SLOT
         .db #<SLOT
 .endm
-; Reads `COUNT` variables from save slot `SLOT` into variable `DEST` and puts the result of the operation into `RES`.
 OP_VM_SAVE_PEEK         = 0x2E
+;-- Reads variables from the save slot
+; @param RES Result of the operation
+; @param DEST First destination variable to be read into
+; @param SOUR First source variable in the save slot
+; @param COUNT Number of variables to be read
+; @param SLOT Save slot number
 .macro VM_SAVE_PEEK RES, DEST, SOUR, COUNT, SLOT
         .db OP_VM_SAVE_PEEK, #<SLOT, #>COUNT, #<COUNT, #>SOUR, #<SOUR, #>DEST, #<DEST, #>RES, #<RES
 .endm
 
-; Erases data in save slot `SLOT`.
 OP_VM_SAVE_CLEAR         = 0x2F
+;-- Erases data in save slot
+; @param SLOT Slot number
 .macro VM_SAVE_CLEAR SLOT
         .db OP_VM_SAVE_CLEAR, #<SLOT
 .endm
@@ -605,7 +686,8 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 
 ; --- UI ------------------------------------------
 
-;-- Loads a text in memory that contains `N` variables.
+;-- Loads a text in memory
+; @param ARG0 Amount of arguments that are passed before the null-terminated string
 ;
 ; The text string is defined using the `.asciz` command:
 ;
@@ -1119,8 +1201,15 @@ OP_VM_SIO_EXCHANGE      = 0x6D
 
 ; --- CAMERA -------------------------------
 
-; Moves the camera to a position set in the stack at a given `SPEED` and configures the lock status of the camera.
 OP_VM_CAMERA_MOVE_TO     = 0x70
+;-- Moves the camera to the new position
+; @param IDX Start of the pseudo-structure which contains the new camera position
+; @param SPEED Speed of the camera movement
+; @param AFTER_LOCK Lock status of the camera after the movement
+;   .CAMERA_LOCK   - lock camera by X and Y
+;   .CAMERA_LOCK_X - lock camera by X
+;   .CAMERA_LOCK_Y - lock camera by Y
+;   .CAMERA_UNLOCK - unlock camera
 .macro VM_CAMERA_MOVE_TO IDX, SPEED, AFTER_LOCK
         .db OP_VM_CAMERA_MOVE_TO, #<AFTER_LOCK, #<SPEED, #>IDX, #<IDX
 .endm
@@ -1131,6 +1220,8 @@ OP_VM_CAMERA_MOVE_TO     = 0x70
 .CAMERA_UNLOCK           = 0b00000000
 
 OP_VM_CAMERA_SET_POS     = 0x71
+;-- Sets the camera position
+; @param IDX Start of the pseudo-structure which contains the new camera position
 .macro VM_CAMERA_SET_POS IDX
         .db OP_VM_CAMERA_SET_POS, #>IDX, #<IDX
 .endm
@@ -1140,32 +1231,47 @@ OP_VM_CAMERA_SET_POS     = 0x71
 
 ; --- RTC ----------------------------------
 
-; Latch RTC value for access
 OP_VM_RTC_LATCH          = 0x78
+;-- Latch RTC value for access
 .macro VM_RTC_LATCH
         .db OP_VM_RTC_LATCH
 .endm
 
-; Read RTC value
 OP_VM_RTC_GET            = 0x79
 .RTC_SECONDS             = 0x00
 .RTC_MINUTES             = 0x01
 .RTC_HOURS               = 0x02
 .RTC_DAYS                = 0x03
+;-- Read RTC value
+; @param IDX Target variable
+; @param WHAT RTC value to be read
+;   .RTC_SECONDS - Seconds
+;   .RTC_MINUTES - Minutes
+;   .RTC_HOURS   - Hours
+;   .RTC_DAYS    - Days
 .macro VM_RTC_GET IDX, WHAT
         .db OP_VM_RTC_GET, #<WHAT, #>IDX, #<IDX
 .endm
 
-; Write RTC value
 OP_VM_RTC_SET            = 0x7A
+;-- Write RTC value
+; @param IDX Source variable
+; @param WHAT RTC value to be written
+;   .RTC_SECONDS - Seconds
+;   .RTC_MINUTES - Minutes
+;   .RTC_HOURS   - Hours
+;   .RTC_DAYS    - Days
 .macro VM_RTC_SET IDX, WHAT
         .db OP_VM_RTC_SET, #<WHAT, #>IDX, #<IDX
 .endm
 
-; Start or stop RTC
 OP_VM_RTC_START          = 0x7B
 .RTC_STOP                = 0
 .RTC_START               = 1
+;-- Start or stop RTC
+; @param START Start or stop flag
+;   .RTC_STOP    - stop RTC
+;   .RTC_START   - start RTC
 .macro VM_RTC_START START
         .db OP_VM_RTC_START, #<START
 .endm
@@ -1193,7 +1299,7 @@ OP_VM_LOAD_PALETTE       = 0x7C
 
 ; --- SGB -----------------------------------------
 
-; Transfers SGB packet(s). Data of variable length is placed after this instruction, for example:
+;-- Transfers SGB packet(s). Data of variable length is placed after this instruction, for example:
 ;
 ; ```
 ; VM_SGB_TRANSFER
@@ -1208,8 +1314,9 @@ OP_VM_SGB_TRANSFER       = 0x7E
 
 ; --- RUMBLE --------------------------------------
 
-; Enables or disables rumble on a cart that has that function.
 OP_VM_RUMBLE             = 0x7F
+;-- Enables or disables rumble on a cart that has that function
+; @param ENABLE 1 - enable or 0 - disable
 .macro VM_RUMBLE ENABLE
         .db OP_VM_RUMBLE, #<ENABLE
 .endm
@@ -1242,22 +1349,31 @@ OP_VM_COS_SCALE         = 0x8A
 
 ; --- TEXT SOUND -------------------------------------
 
-; Set sound effect asset for text
 OP_VM_SET_TEXT_SOUND    = 0x8B
+;-- Set the sound effect for the text output
+; @param BANK Bank number of the effect
+; @param ADDR Address of the effect
+; @param MASK Mute mask of the effect
 .macro VM_SET_TEXT_SOUND BANK, ADDR, MASK
         .db OP_VM_SET_TEXT_SOUND, #<MASK, #>ADDR, #<ADDR, #<BANK
 .endm
 
 ; --- GB PRINTER -------------------------------------
 
-; Detect printer
 OP_VM_PRINTER_DETECT    = 0x8C
+;-- Detect printer
+; @param ERROR Target variable that receives the result of detection
+; @param DELAY Detection timeout
 .macro VM_PRINTER_DETECT ERROR, DELAY
         .db OP_VM_PRINTER_DETECT, #<DELAY, #>ERROR, #<ERROR
 .endm
 
-; Print up to HEIGHT rows of the overlay window (must be multiple of 2)
 OP_VM_PRINT_OVERLAY     = 0x8D
+;-- Print up to HEIGHT rows of the overlay window (must be multiple of 2)
+; @param ERROR Target variable that receives the result of printing
+; @param START Start line of the overlay window
+; @param HEIGHT Amount of lines to print
+; @param MARGIN Lines to feed after the printing is finished
 .macro VM_PRINT_OVERLAY ERROR, START, HEIGHT, MARGIN
         .db OP_VM_PRINT_OVERLAY, #<MARGIN, #<HEIGHT, #<START, #>ERROR, #<ERROR
 .endm
