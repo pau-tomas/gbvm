@@ -92,8 +92,8 @@ OP_VM_GET_FAR      = 0x06
 ;-- Get byte or word by the far pointer into variable
 ; @param IDX Target variable
 ; @param SIZE Size of the ojject to be acquired:
-;   .GET_BYTE  - get 8-bit value
-;   .GET_WORD  - get 16-bit value
+;   `.GET_BYTE`  - get 8-bit value
+;   `.GET_WORD`  - get 16-bit value
 ; @param BANK Bank number of the object
 ; @param ADDR Address of the object
 .macro VM_GET_FAR IDX, SIZE, BANK, ADDR
@@ -153,8 +153,8 @@ OP_VM_INVOKE       = 0x0D
 ;-- Invokes C function until it returns true.
 ; @param ARG0 Bank number of the function
 ; @param ARG1 Address of the function, currently 2 functions are implemented:
-;   _wait_frames   - wait for N vblank intervals
-;   _camera_shake  - shake camera N times
+;   `_wait_frames`   - wait for N vblank intervals
+;   `_camera_shake`  - shake camera N times
 ; @param ARG2 Number of arguments to be removed from stack on return
 ; @param ARG3 Points the first parameter to be passed into the C function
 .macro VM_INVOKE ARG0, ARG1, ARG2, ARG3
@@ -181,12 +181,12 @@ OP_VM_IF           = 0x0F
 .NE                = 6
 ;-- Compares two variables using for condition.
 ; @param CONDITION Condition for test:
-;   .EQ   - variables are equal
-;   .LT   - A is lower than B
-;   .LTE  - A is lower or equal than B
-;   .GT   - A is greater than B
-;   .GTE  - A is greater or equal than B
-;   .NE   - A is not equal to B
+;   `.EQ`   - variables are equal
+;   `.LT`   - A is lower than B
+;   `.LTE`  - A is lower or equal than B
+;   `.GT`   - A is greater than B
+;   `.GTE`  - A is greater or equal than B
+;   `.NE`   - A is not equal to B
 ; @param IDXA A variable
 ; @param IDXB B variable
 ; @param LABEL Jump label when result is TRUE
@@ -316,12 +316,12 @@ OP_VM_GET_TLOCAL= 0x19
 OP_VM_IF_CONST  = 0x1A
 ;-- Compares a variable to an immediate value
 ; @param CONDITION Condition for test:
-;   .EQ   - variables are equal
-;   .LT   - A is lower than B
-;   .LTE  - A is lower or equal than B
-;   .GT   - A is greater than B
-;   .GTE  - A is greater or equal than B
-;   .NE   - A is not equal to B
+;   `.EQ`   - variables are equal
+;   `.LT`   - A is lower than B
+;   `.LTE`  - A is lower or equal than B
+;   `.GT`   - A is greater than B
+;   `.GTE`  - A is greater or equal than B
+;   `.NE`   - A is not equal to B
 ; @param IDXA A variable
 ; @param B immediate value to be compared with
 ; @param LABEL Jump label when result is TRUE
@@ -448,10 +448,10 @@ OP_VM_UNLOCK          = 0x26
 
 ;-- Raises an exception
 ; @param CODE Exception code:
-;   EXCEPTION_RESET        - Resets the device.
-;   EXCEPTION_CHANGE_SCENE - Changes to a new scene.
-;   EXCEPTION_SAVE         - Saves the state of the game.
-;   EXCEPTION_LOAD         - Loads the saved state of the game.
+;   `EXCEPTION_RESET`        - Resets the device.
+;   `EXCEPTION_CHANGE_SCENE` - Changes to a new scene.
+;   `EXCEPTION_SAVE`         - Saves the state of the game.
+;   `EXCEPTION_LOAD`         - Loads the saved state of the game.
 ; @param SIZE Length of the parameters to be passed into the exception handler
 OP_VM_RAISE           = 0x27
 .macro VM_RAISE CODE, SIZE
@@ -478,7 +478,7 @@ OP_VM_TEST_TERMINATE  = 0x2A
 .TEST_WAIT_VBL        = 1
 ;-- Terminates unit-testing immediately
 ; @param FLAGS terminate flags:
-;   .TEST_WAIT_VBL wait for VBlank before terminating
+;   `.TEST_WAIT_VBL` wait for VBlank before terminating
 .macro VM_TEST_TERMINATE FLAGS
         .db OP_VM_TEST_TERMINATE, #<FLAGS
 .endm
@@ -734,8 +734,8 @@ OP_VM_DISPLAY_TEXT      = 0x41
 .TEXT_TILE_CONTINUE     = 0xFF
 ;-- Renders the text in the defined layer (overlay, by default)
 ; @param OPTIONS Text rendering options:
-;   .DISPLAY_DEFAULT      - default behavior
-;   .DISPLAY_PRESERVE_POS - preserve text position
+;   `.DISPLAY_DEFAULT`      - default behavior
+;   `.DISPLAY_PRESERVE_POS` - preserve text position
 ; @param START_TILE Tile number within the text rendering area to be rendered from; use .TEXT_TILE_CONTINUE to proceed from the current position
 .macro VM_DISPLAY_TEXT_EX OPTIONS, START_TILE
         .db OP_VM_DISPLAY_TEXT, #<START_TILE, #<OPTIONS
@@ -750,8 +750,8 @@ OP_VM_SWITCH_TEXT_LAYER = 0x85
 .TEXT_LAYER_WIN         = 1
 ;-- Changes the `LAYER` where the text will be rendered.
 ; @param LAYER
-;   .TEXT_LAYER_BKG    - Render text in the background layer
-;   .TEXT_LAYER_WIN    - Render text in the overlay layer
+;   `.TEXT_LAYER_BKG`    - Render text in the background layer
+;   `.TEXT_LAYER_WIN`    - Render text in the overlay layer
 .macro VM_SWITCH_TEXT_LAYER LAYER
         .db OP_VM_SWITCH_TEXT_LAYER, #<LAYER
 .endm
@@ -782,12 +782,12 @@ OP_VM_OVERLAY_WAIT      = 0x44
 ;-- Wait for the UI operation(s) completion
 ; @param IS_MODAL indicates whether the operation is modal: .UI_MODAL, or not: .UI_NONMODAL
 ; @param WAIT_FLAGS bit field, set of events to be waited for:
-;   .UI_WAIT_NONE     - No wait
-;   .UI_WAIT_WINDOW   - Wait until the window moved to its final position
-;   .UI_WAIT_TEXT     - Wait until all the text finished rendering
-;   .UI_WAIT_BTN_A    - Wait until "A" is pressed
-;   .UI_WAIT_BTN_B    - Wait until "B" is pressed
-;   .UI_WAIT_BTN_ANY  - Wait until any button is pressed
+;   `.UI_WAIT_NONE`     - No wait
+;   `.UI_WAIT_WINDOW`   - Wait until the window moved to its final position
+;   `.UI_WAIT_TEXT`     - Wait until all the text finished rendering
+;   `.UI_WAIT_BTN_A`    - Wait until "A" is pressed
+;   `.UI_WAIT_BTN_B`    - Wait until "B" is pressed
+;   `.UI_WAIT_BTN_ANY`  - Wait until any button is pressed
 .macro VM_OVERLAY_WAIT IS_MODAL, WAIT_FLAGS
         .db OP_VM_OVERLAY_WAIT, #<WAIT_FLAGS, #<IS_MODAL
 .endm
@@ -802,9 +802,9 @@ OP_VM_OVERLAY_MOVE_TO   = 0x45
 ; @param X X-coordinate of the new position
 ; @param Y Y-coordinate of the new position
 ; @param SPEED speed of the movement:
-;   .OVERLAY_IN_SPEED       - default speed for appearing of the overlay
-;   .OVERLAY_OUT_SPEED      - default speed for disappearing of the overlay
-;   .OVERLAY_SPEED_INSTANT  - instant movement
+;   `.OVERLAY_IN_SPEED`       - default speed for appearing of the overlay
+;   `.OVERLAY_OUT_SPEED`      - default speed for disappearing of the overlay
+;   `.OVERLAY_SPEED_INSTANT`  - instant movement
 .macro VM_OVERLAY_MOVE_TO X, Y, SPEED
         .db OP_VM_OVERLAY_MOVE_TO, #<SPEED, #<Y, #<X
 .endm
@@ -818,11 +818,11 @@ OP_VM_OVERLAY_SHOW      = 0x46
 ; @param X X-coordinate of the new position
 ; @param Y Y-coordinate of the new position
 ; @param COLOR initial color of the overlay window:
-;   .UI_COLOR_BLACK     - black overlay window
-;   .UI_COLOR_WHITE     - white overlay window
+;   `.UI_COLOR_BLACK`     - black overlay window
+;   `.UI_COLOR_WHITE`     - white overlay window
 ; @param OPTIONS display options:
-;   .UI_DRAW_FRAME      - draw overlay frame
-;   .UI_AUTO_SCROLL     - set automatic text scroll area; text will be scrolled up when printing more lines than the overlay height.
+;   `.UI_DRAW_FRAME`      - draw overlay frame
+;   `.UI_AUTO_SCROLL`     - set automatic text scroll area; text will be scrolled up when printing more lines than the overlay height.
 .macro VM_OVERLAY_SHOW X, Y, COLOR, OPTIONS
         .db OP_VM_OVERLAY_SHOW, #<OPTIONS, #<COLOR, #<Y, #<X
 .endm
@@ -834,11 +834,11 @@ OP_VM_OVERLAY_CLEAR     = 0x47
 ; @param W Width in tiles of the rectangle area
 ; @param H Height in tiles of the rectangle area
 ; @param COLOR initial color of the overlay window:
-;   .UI_COLOR_BLACK     - black overlay window
-;   .UI_COLOR_WHITE     - white overlay window
+;   `.UI_COLOR_BLACK`     - black overlay window
+;   `.UI_COLOR_WHITE`     - white overlay window
 ; @param OPTIONS display options:
-;   .UI_DRAW_FRAME      - draw overlay frame
-;   .UI_AUTO_SCROLL     - set automatic text scroll area; text will be scrolled up when printing more lines than the overlay height.
+;   `.UI_DRAW_FRAME`      - draw overlay frame
+;   `.UI_AUTO_SCROLL`     - set automatic text scroll area; text will be scrolled up when printing more lines than the overlay height.
 .macro VM_OVERLAY_CLEAR X, Y, W, H, COLOR, OPTIONS
         .db OP_VM_OVERLAY_CLEAR, #<OPTIONS, #<COLOR, #<H, #<W, #<Y, #<X
 .endm
@@ -854,21 +854,21 @@ OP_VM_CHOICE            = 0x48
 ;-- Execute menu
 ; @param IDX Variable that receive the result of the menu execution
 ; @param OPTIONS bit field, set of the possible menu options:
-;   .UI_MENU_STANDARD    - default menu behavior
-;   .UI_MENU_LAST_0      - last item return result of 0
-;   .UI_MENU_CANCEL_B    - B button cancels the menu execution
-;   .UI_MENU_SET_START   - if set IDX may contain the initial item index
+;   `.UI_MENU_STANDARD`    - default menu behavior
+;   `.UI_MENU_LAST_0`      - last item return result of 0
+;   `.UI_MENU_CANCEL_B`    - B button cancels the menu execution
+;   `.UI_MENU_SET_START`   - if set IDX may contain the initial item index
 ; @param COUNT number of menu items
 ;
 ; instruction must be followed by the COUNT of .MENUITEM definitions:
 ; .MENUITEM X, Y, iL, iR, iU, iD
 ; where:
-;   X - X-Coordinate of the cursor pointer in tiles
-;   Y - Y-Coordinate of the cursor pointer in tiles
-;   iL - menu item number, where the cursor must move, when you press LEFT
-;   iR - menu item number, where the cursor must move, when you press RIGHT
-;   iU - menu item number, where the cursor must move, when you press UP
-;   iD - menu item number, where the cursor must move, when you press DOWN
+;   `X` - X-Coordinate of the cursor pointer in tiles
+;   `Y` - Y-Coordinate of the cursor pointer in tiles
+;   `iL` - menu item number, where the cursor must move, when you press LEFT
+;   `iR` - menu item number, where the cursor must move, when you press RIGHT
+;   `iU` - menu item number, where the cursor must move, when you press UP
+;   `iD` - menu item number, where the cursor must move, when you press DOWN
 .macro VM_CHOICE IDX, OPTIONS, COUNT
         .db OP_VM_CHOICE, #<COUNT, #<OPTIONS, #>IDX, #<IDX
 .endm
@@ -884,8 +884,8 @@ OP_VM_SET_FONT          = 0x4B
 .UI_PRINT_RIGHTTOLEFT   = 1
 ;-- Sets print direction
 ; @param DIRECTION direction of the text rendering:
-;   .UI_PRINT_LEFTTORIGHT  - text is rendered from left to right (left justify)
-;   .UI_PRINT_RIGHTTOLEFT  - text is rendered from right to left (right justify)
+;   `.UI_PRINT_LEFTTORIGHT`  - text is rendered from left to right (left justify)
+;   `.UI_PRINT_RIGHTTOLEFT`  - text is rendered from right to left (right justify)
 .macro VM_SET_PRINT_DIR DIRECTION
         VM_SET_CONST_UINT8 _vwf_direction, ^/DIRECTION & 1/
 .endm
@@ -893,12 +893,12 @@ OP_VM_SET_FONT          = 0x4B
 OP_VM_OVERLAY_SET_SUBMAP_EX = 0x4C
 ;-- Copies rectange area of the background map onto the overlay window
 ; @param PARAMS_IDX points to the beginning of the pseudo-structure that contains these members:
-;    x       - X-Coordinate within the overlay window in tiles
-;    y       - Y-Coordinate tithin the overlay window in tiles
-;    w       - Width of the copied area in tiles
-;    h       - Height of the copied area in tiles
-;    scene_x - X-Coordinate within the background map in tiles
-;    scene_y - Y-Coordinate within the background map in tiles
+;    `x`       - X-Coordinate within the overlay window in tiles
+;    `y`       - Y-Coordinate tithin the overlay window in tiles
+;    `w`       - Width of the copied area in tiles
+;    `h`       - Height of the copied area in tiles
+;    `scene_x` - X-Coordinate within the background map in tiles
+;    `scene_y` - Y-Coordinate within the background map in tiles
 .macro VM_OVERLAY_SET_SUBMAP_EX PARAMS_IDX
         .db OP_VM_OVERLAY_SET_SUBMAP_EX, #>PARAMS_IDX, #<PARAMS_IDX
 .endm
@@ -1206,10 +1206,10 @@ OP_VM_CAMERA_MOVE_TO     = 0x70
 ; @param IDX Start of the pseudo-structure which contains the new camera position
 ; @param SPEED Speed of the camera movement
 ; @param AFTER_LOCK Lock status of the camera after the movement
-;   .CAMERA_LOCK   - lock camera by X and Y
-;   .CAMERA_LOCK_X - lock camera by X
-;   .CAMERA_LOCK_Y - lock camera by Y
-;   .CAMERA_UNLOCK - unlock camera
+;   `.CAMERA_LOCK`   - lock camera by X and Y
+;   `.CAMERA_LOCK_X` - lock camera by X
+;   `.CAMERA_LOCK_Y` - lock camera by Y
+;   `.CAMERA_UNLOCK` - unlock camera
 .macro VM_CAMERA_MOVE_TO IDX, SPEED, AFTER_LOCK
         .db OP_VM_CAMERA_MOVE_TO, #<AFTER_LOCK, #<SPEED, #>IDX, #<IDX
 .endm
@@ -1245,10 +1245,10 @@ OP_VM_RTC_GET            = 0x79
 ;-- Read RTC value
 ; @param IDX Target variable
 ; @param WHAT RTC value to be read
-;   .RTC_SECONDS - Seconds
-;   .RTC_MINUTES - Minutes
-;   .RTC_HOURS   - Hours
-;   .RTC_DAYS    - Days
+;   `.RTC_SECONDS` - Seconds
+;   `.RTC_MINUTES` - Minutes
+;   `.RTC_HOURS`   - Hours
+;   `.RTC_DAYS`    - Days
 .macro VM_RTC_GET IDX, WHAT
         .db OP_VM_RTC_GET, #<WHAT, #>IDX, #<IDX
 .endm
@@ -1257,10 +1257,10 @@ OP_VM_RTC_SET            = 0x7A
 ;-- Write RTC value
 ; @param IDX Source variable
 ; @param WHAT RTC value to be written
-;   .RTC_SECONDS - Seconds
-;   .RTC_MINUTES - Minutes
-;   .RTC_HOURS   - Hours
-;   .RTC_DAYS    - Days
+;   `.RTC_SECONDS` - Seconds
+;   `.RTC_MINUTES` - Minutes
+;   `.RTC_HOURS`   - Hours
+;   `.RTC_DAYS`    - Days
 .macro VM_RTC_SET IDX, WHAT
         .db OP_VM_RTC_SET, #<WHAT, #>IDX, #<IDX
 .endm
@@ -1270,8 +1270,8 @@ OP_VM_RTC_START          = 0x7B
 .RTC_START               = 1
 ;-- Start or stop RTC
 ; @param START Start or stop flag
-;   .RTC_STOP    - stop RTC
-;   .RTC_START   - start RTC
+;   `.RTC_STOP`    - stop RTC
+;   `.RTC_START`   - start RTC
 .macro VM_RTC_START START
         .db OP_VM_RTC_START, #<START
 .endm
