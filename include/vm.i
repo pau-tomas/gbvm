@@ -1081,23 +1081,28 @@ OP_VM_INPUT_DETACH      = 0x5F
 
 ; --- MUSIC AND SOUND -------------------------------
 
-; Starts playing of music track
 OP_VM_MUSIC_PLAY        = 0x60
 .MUSIC_NO_LOOP          = 0
 .MUSIC_LOOP             = 1
+;-- Starts playing of music track
+; @param BANK Bank number of the track
+; @param ADDR Address of the track
+; @param LOOP If the track will loop on end (`.MUSIC_LOOP`) or not (`.MUSIC_NO_LOOP`)
 .macro VM_MUSIC_PLAY TRACK_BANK, TRACK, LOOP
         .db OP_VM_MUSIC_PLAY, #<LOOP, #>TRACK, #<TRACK, #<TRACK_BANK
 .endm
 
-; Stops playing of music track
 OP_VM_MUSIC_STOP        = 0x61
+;-- Stops playing of music track
 .macro VM_MUSIC_STOP
         .db OP_VM_MUSIC_STOP
 .endm
 
-; Mutes/unmutes channels using `MASK`. The 4 lower bits of the mask represent the 4 audio channels.
+OP_VM_MUSIC_MUTE        = 0x62
+;-- Mutes/unmutes mysic channels. 
+; @param MASK Mute Mask. The 4 lower bits represent the 4 audio channels.
 ;
-; | `Mask`   | Channel 1 | Channel 2 | Channel 3 | Channel 4 |
+; | `MASK`   | Channel 1 | Channel 2 | Channel 3 | Channel 4 |
 ; | -------- | --------- | --------- | --------- | --------- |
 ; | `0b0000` | Muted     | Muted     | Muted     | Muted     |
 ; | `0b0001` | Muted     | Muted     | Muted     | Not Muted |
@@ -1115,34 +1120,46 @@ OP_VM_MUSIC_STOP        = 0x61
 ; | `0b1101` | Not Muted | Not Muted | Muted     | Not Muted |
 ; | `0b1110` | Not Muted | Not Muted | Not Muted | Muted     |
 ; | `0b1111` | Not Muted | Not Muted | Not Muted | Not Muted |
-OP_VM_MUSIC_MUTE        = 0x62
 .macro VM_MUSIC_MUTE MASK
         .db OP_VM_MUSIC_MUTE, #<MASK
 .endm
 
-; Sets master volume to `VOL`
 OP_VM_SOUND_MASTERVOL   = 0x63
+;-- Sets master volume 
+; @param VOL The volume value
 .macro VM_SOUND_MASTERVOL VOL
         .db OP_VM_SOUND_MASTERVOL, #<VOL
 .endm
 
-; Attach script to music event
 OP_VM_MUSIC_ROUTINE     = 0x65
+;-- Attach script to music event
+; @param ROUTINE The routine Id. An integer between 0 and 3.
+; @param BANK Bank number of the routine
+; @param ADDR Address of the routine
 .macro VM_MUSIC_ROUTINE ROUTINE, BANK, ADDR
         .db OP_VM_MUSIC_ROUTINE, #>ADDR, #<ADDR, #<BANK, #<ROUTINE
 .endm
 
-; Play a sound effect asset
 OP_VM_SFX_PLAY          = 0x66
 .SFX_PRIORITY_MINIMAL   = 0
 .SFX_PRIORITY_NORMAL    = 4
 .SFX_PRIORITY_HIGH      = 8
+;-- Play a sound effect asset
+; @param BANK Bank number of the effect
+; @param ADDR Address of the effect
+; @param MASK Mute mask of the effect
+; @param PRIO Priority of the sound effect. Effects with higher priority will cancel the ones with less priority:
+;   `.SFX_PRIORITY_MINIMAL` - Minmium priority for playback
+;   `.SFX_PRIORITY_NORMAL`  - Normal priority for playback0
+;   `.SFX_PRIORITY_HIGH`    - High priority for playback
 .macro VM_SFX_PLAY BANK, ADDR, MASK, PRIO
         .db OP_VM_SFX_PLAY, #<PRIO, #<MASK, #>ADDR, #<ADDR, #<BANK
 .endm
 
-; Sets music playback position
 OP_VM_MUSIC_SETPOS      = 0x67
+;-- Sets playback position for the current song.
+; @param PATTERN    - The pattern to set the song position to
+; @param ROW        - The row to set the song position to
 .macro VM_MUSIC_SETPOS PATTERN, ROW
         .db OP_VM_MUSIC_SETPOS, #<ROW, #<PATTERN
 .endm
