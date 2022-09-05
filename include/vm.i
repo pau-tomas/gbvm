@@ -138,12 +138,12 @@ OP_VM_CALL_FAR     = 0x0A
 .endm
 
 OP_VM_RET_FAR      = 0x0B
-;-- Rerurn from the far call
+;-- Return from the far call
 .macro VM_RET_FAR
         .db OP_VM_RET_FAR, 0
 .endm
 
-;-- Rerurn from the far call and remove N arguments from stack
+;-- Return from the far call and remove N arguments from stack
 ; @param N Number of arguments to be removed from stack
 .macro VM_RET_FAR_N N
         .db OP_VM_RET_FAR, #<N
@@ -865,10 +865,10 @@ OP_VM_CHOICE            = 0x48
 ; where:
 ;   `X` - X-Coordinate of the cursor pointer in tiles
 ;   `Y` - Y-Coordinate of the cursor pointer in tiles
-;   `iL` - menu item number, where the cursor must move, when you press LEFT
-;   `iR` - menu item number, where the cursor must move, when you press RIGHT
-;   `iU` - menu item number, where the cursor must move, when you press UP
-;   `iD` - menu item number, where the cursor must move, when you press DOWN
+;   `iL` - menu item number where the cursor must move when you press LEFT
+;   `iR` - menu item number where the cursor must move when you press RIGHT
+;   `iU` - menu item number where the cursor must move when you press UP
+;   `iD` - menu item number where the cursor must move when you press DOWN
 .macro VM_CHOICE IDX, OPTIONS, COUNT
         .db OP_VM_CHOICE, #<COUNT, #<OPTIONS, #>IDX, #<IDX
 .endm
@@ -915,8 +915,7 @@ OP_VM_OVERLAY_SCROLL    = 0x4D
 .endm
 
 OP_VM_OVERLAY_SET_SCROLL = 0x4E
-;-- Defines the scroll area for the overlay
-; When the text overflows that area it'll scroll up by 1 row
+;-- Defines the scroll area for the overlay. When the text overflows that area it'll scroll up by 1 row
 ; @param X X-Coordinate of the upper left corner in tiles
 ; @param Y Y-Coordinate of the upper left corner in tiles
 ; @param W Width of the area in tiles
