@@ -55,23 +55,23 @@ OP_VM_STOP         = 0x00
 
 OP_VM_PUSH_CONST   = 0x01
 ;-- Pushes immediate value to the top of the VM stack
-; @param ARG0 immediate value to be pushed
-.macro VM_PUSH_CONST ARG0
-        .db OP_VM_PUSH_CONST, #>ARG0, #<ARG0
+; @param VAL immediate value to be pushed
+.macro VM_PUSH_CONST VAL
+        .db OP_VM_PUSH_CONST, #>VAL, #<VAL
 .endm
 
 OP_VM_POP          = 0x02
 ;-- Removes the top values from the VM stack
-; @param ARG0 number of values to be removed from the stack
-.macro VM_POP ARG0
-        .db OP_VM_POP, #ARG0
+; @param N number of values to be removed from the stack
+.macro VM_POP N
+        .db OP_VM_POP, #N
 .endm
 
 OP_VM_CALL         = 0x04
 ;-- Call script by near address
-; @param ARG0 address of the script subroutine
-.macro VM_CALL ARG0
-        .db OP_VM_CALL, #>ARG0, #<ARG0
+; @param ADDR address of the script subroutine
+.macro VM_CALL ADDR
+        .db OP_VM_CALL, #>ADDR, #<ADDR
 .endm
 
 OP_VM_RET          = 0x05
@@ -110,11 +110,11 @@ OP_VM_LOOP         = 0x07
 .endm
 
 OP_VM_SWITCH       = 0x08
-.macro .CASE VAL, LBL
-        .dw #VAL, #LBL
+.macro .CASE VAL, LABEL
+        .dw #VAL, #LABEL
 .endm
 ;-- Compares variable with a set of values, and if equal jump to the specified label.
-; values for testing may be defined with the .CASE macro, where VAL parameter is a value for testing and LBL is a jump label
+; values for testing may be defined with the .CASE macro, where VAL parameter is a value for testing and LABEL is a jump label
 ; @param IDX variable for compare
 ; @param SIZE amount of entries for test.
 ; @param N amount of values to de cleaned from stack on exit
@@ -125,16 +125,16 @@ OP_VM_SWITCH       = 0x08
 OP_VM_JUMP         = 0x09
 ;-- Jumps to near address
 ; @param ARG0 jump label
-.macro VM_JUMP ARG0
-        .db OP_VM_JUMP, #>ARG0, #<ARG0
+.macro VM_JUMP LABEL
+        .db OP_VM_JUMP, #>LABEL, #<LABEL
 .endm
 
 OP_VM_CALL_FAR     = 0x0A
 ;-- Call far routine (inter-bank call)
-; @param ARG0 Bank number of the routine
-; @param ARG1 Address of the routine
-.macro VM_CALL_FAR ARG0, ARG1
-        .db OP_VM_CALL_FAR, #>ARG1, #<ARG1, #<ARG0
+; @param BANK Bank number of the routine
+; @param ADDR Address of the routine
+.macro VM_CALL_FAR BANK, ADDR
+        .db OP_VM_CALL_FAR, #>ADDR, #<ADDR, #<BANK
 .endm
 
 OP_VM_RET_FAR      = 0x0B
@@ -151,14 +151,14 @@ OP_VM_RET_FAR      = 0x0B
 
 OP_VM_INVOKE       = 0x0D
 ;-- Invokes C function until it returns true.
-; @param ARG0 Bank number of the function
-; @param ARG1 Address of the function, currently 2 functions are implemented:
+; @param BANK Bank number of the function
+; @param ADDR Address of the function, currently 2 functions are implemented:
 ;   `_wait_frames`   - wait for N vblank intervals
 ;   `_camera_shake`  - shake camera N times
-; @param ARG2 Number of arguments to be removed from stack on return
-; @param ARG3 Points the first parameter to be passed into the C function
-.macro VM_INVOKE ARG0, ARG1, ARG2, ARG3
-        .db OP_VM_INVOKE, #>ARG3, #<ARG3, #<ARG2, #>ARG1, #<ARG1, #<ARG0
+; @param N Number of arguments to be removed from stack on return
+; @param PARAMS Points the first parameter to be passed into the C function
+.macro VM_INVOKE BANK, ADDR, N, PARAMS
+        .db OP_VM_INVOKE, #>PARAMS, #<PARAMS, #<N, #>ADDR, #<ADDR, #<BANK
 .endm
 
 OP_VM_BEGINTHREAD  = 0x0E
@@ -197,23 +197,23 @@ OP_VM_IF           = 0x0F
 
 OP_VM_PUSH_VALUE_IND = 0x10
 ;-- Pushes a value on VM stack or a global indirectly from an index in the variable
-; @param ARG0 variable that contains the index of the variable to be pushed on stack
-.macro VM_PUSH_VALUE_IND ARG0
-        .db OP_VM_PUSH_VALUE_IND, #>ARG0, #<ARG0
+; @param IDX variable that contains the index of the variable to be pushed on stack
+.macro VM_PUSH_VALUE_IND IDX
+        .db OP_VM_PUSH_VALUE_IND, #>IDX, #<IDX
 .endm
 
 OP_VM_PUSH_VALUE   = 0x11
 ;-- Pushes a value of the variable onto stack
-; @param ARG0 variable to be pushed
-.macro VM_PUSH_VALUE ARG0
-        .db OP_VM_PUSH_VALUE, #>ARG0, #<ARG0
+; @param IDX variable to be pushed
+.macro VM_PUSH_VALUE IDX
+        .db OP_VM_PUSH_VALUE, #>IDX, #<IDX
 .endm
 
 OP_VM_RESERVE      = 0x12
 ;-- Reserves or disposes amount of values on stack
-; @param ARG0 positive value - amount of variables to be reserved on stack, negative value - amount of variables to be popped from stack
-.macro VM_RESERVE ARG0
-        .db OP_VM_RESERVE, #<ARG0
+; @param N positive value - amount of variables to be reserved on stack, negative value - amount of variables to be popped from stack
+.macro VM_RESERVE N
+        .db OP_VM_RESERVE, #<N
 .endm
 
 OP_VM_SET         = 0x13
@@ -687,7 +687,7 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 ; --- UI ------------------------------------------
 
 ;-- Loads a text in memory
-; @param ARG0 Amount of arguments that are passed before the null-terminated string
+; @param NARGS Amount of arguments that are passed before the null-terminated string
 ;
 ; The text string is defined using the `.asciz` command:
 ;
@@ -724,8 +724,8 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 ; * `\n` Next line
 ; * `\r` Scroll text one line up
 OP_VM_LOAD_TEXT         = 0x40
-.macro VM_LOAD_TEXT ARG0
-        .db OP_VM_LOAD_TEXT, #<ARG0
+.macro VM_LOAD_TEXT NARGS
+        .db OP_VM_LOAD_TEXT, #<NARGS
 .endm
 
 OP_VM_DISPLAY_TEXT      = 0x41
