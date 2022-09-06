@@ -721,6 +721,15 @@ OP_VM_ACTOR_SET_FLAGS           = 0x3F
 .ACTOR_FLAG_ANIM_NOLOOP         = 0x04
 .ACTOR_FLAG_COLLISION           = 0x08
 .ACTOR_FLAG_PERSISTENT          = 0x10
+;-- Set actor flags
+; @param ACTOR Variable that contains the actor number
+; @param FLAGS bit values to be set or cleared:
+;   `.ACTOR_FLAG_PINNED`      - pin/unpin the actor
+;   `.ACTOR_FLAG_HIDDEN`      - hide/show actor
+;   `.ACTOR_FLAG_ANIM_NOLOOP` - disable animation loop
+;   `.ACTOR_FLAG_COLLISION`   - disable/enable collision
+;   `.ACTOR_FLAG_PERSISTENT`  - set persistent actor flag
+; @param MASK bit mask of values to be set or cleared
 .macro VM_ACTOR_SET_FLAGS ACTOR, FLAGS, MASK
         .db OP_VM_ACTOR_SET_FLAGS, #<MASK, #<FLAGS, #>ACTOR, #<ACTOR
 .endm
@@ -751,16 +760,27 @@ OP_VM_ACTOR_TERMINATE_UPDATE    = 0x74
 .endm
 
 OP_VM_ACTOR_SET_ANIM_FRAME      = 0x75
+;-- Set animation frame for the actor
+; @param ACTOR pseudo-struct that contains these members:
+;    `ID`    - Actor number
+;    `FRAME` - Animation frame
 .macro VM_ACTOR_SET_ANIM_FRAME ACTOR
         .db OP_VM_ACTOR_SET_ANIM_FRAME, #>ACTOR, #<ACTOR
 .endm
 
 OP_VM_ACTOR_GET_ANIM_FRAME      = 0x83
+;-- Get animation frame of the actor
+; @param ACTOR pseudo-struct that contains these members:
+;    `ID`    - Actor number
+;    `FRAME` - Animation frame
 .macro VM_ACTOR_GET_ANIM_FRAME ACTOR
         .db OP_VM_ACTOR_GET_ANIM_FRAME, #>ACTOR, #<ACTOR
 .endm
 
 OP_VM_ACTOR_SET_ANIM_SET        = 0x84
+;-- Set animation frame for the actor
+; @param ACTOR Variable that contains the actor number
+; @param OFFSET Animation set number
 .macro VM_ACTOR_SET_ANIM_SET ACTOR, OFFSET
         .db OP_VM_ACTOR_SET_ANIM_SET, #>OFFSET, #<OFFSET, #>ACTOR, #<ACTOR
 .endm
