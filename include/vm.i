@@ -46,6 +46,8 @@ EXCEPTION_LOAD          = 4
 .PARAM15 = -18
 .PARAM16 = -19
 
+; ------------------------------------------------------
+; @section Core
 
 OP_VM_STOP         = 0x00
 ;-- Stops execution of context
@@ -526,6 +528,7 @@ OP_VM_MEMCPY          = 0x77
 ; --- engine-specific instructions ------------------------------------------
 
 ; --- LOAD/SAVE --------------------------------------
+; @section Load and Save
 
 .macro .SAVE_SLOT SLOT
         .db #<SLOT
@@ -549,6 +552,7 @@ OP_VM_SAVE_CLEAR         = 0x2F
 .endm
 
 ; --- ACTOR ------------------------------------------
+; @section Actor
 
 OP_VM_ACTOR_MOVE_TO             = 0x30
 .ACTOR_ATTR_H_FIRST             = 0x01
@@ -786,6 +790,7 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 .endm
 
 ; --- UI ------------------------------------------
+; @section UI
 
 ;-- Loads a text in memory
 ; @param NARGS Amount of arguments that are passed before the null-terminated string
@@ -1039,6 +1044,7 @@ OP_VM_OVERLAY_SET_SUBMAP = 0x4F
 .endm
 
 ; --- GAMEBOY ------------------------------------------
+; @section Game Boy
 
 OP_VM_LOAD_TILES        = 0x49
 .FRAME_TILE_ID          = 0xC0
@@ -1099,6 +1105,9 @@ OP_VM_OVERLAY_SET_MAP   = 0x56
         .db OP_VM_OVERLAY_SET_MAP, #>BKG, #<BKG, #<BANK, #>Y_IDX, #<Y_IDX, #>X_IDX, #<X_IDX, #>IDX, #<IDX
 .endm
 
+; ------------------------------------------------------
+; @section Screen Fade
+
 OP_VM_FADE              = 0x57
 .FADE_NONMODAL          = 0x00
 .FADE_MODAL             = 0x01
@@ -1123,6 +1132,9 @@ OP_VM_FADE              = 0x57
         .endif
 .endm
 
+; ------------------------------------------------------
+; @section Timer
+
 ; Load script into timer context
 OP_VM_TIMER_PREPARE     = 0x58
 .macro VM_TIMER_PREPARE TIMER, BANK, ADDR
@@ -1146,6 +1158,9 @@ OP_VM_TIMER_RESET         = 0x73
 .macro VM_TIMER_RESET TIMER
         .db OP_VM_TIMER_RESET, #<TIMER
 .endm
+
+; ------------------------------------------------------
+; @section Game Boy
 
 OP_VM_GET_TILE_XY       = 0x5A
 .macro VM_GET_TILE_XY TILE_IDX, X_IDX, Y_IDX
@@ -1180,6 +1195,7 @@ OP_VM_INPUT_DETACH      = 0x5F
 .endm
 
 ; --- MUSIC AND SOUND -------------------------------
+; @section Music and Sound
 
 OP_VM_MUSIC_PLAY        = 0x60
 .MUSIC_NO_LOOP          = 0
@@ -1265,6 +1281,7 @@ OP_VM_MUSIC_SETPOS      = 0x67
 .endm
 
 ; --- SCENES -------------------------------
+; @section Scenes
 
 OP_VM_SCENE_PUSH        = 0x68
 ;-- Pushes the current scene to the scene stack.
@@ -1291,6 +1308,7 @@ OP_VM_SCENE_STACK_RESET = 0x6B
 .endm
 
 ; --- SIO ----------------------------------
+; @section SIO
 
 OP_VM_SIO_SET_MODE      = 0x6C
 .SIO_MODE_NONE          = 0
@@ -1306,6 +1324,7 @@ OP_VM_SIO_EXCHANGE      = 0x6D
 .endm
 
 ; --- CAMERA -------------------------------
+; @section Camera
 
 OP_VM_CAMERA_MOVE_TO     = 0x70
 ;-- Moves the camera to the new position
@@ -1340,6 +1359,7 @@ OP_VM_CAMERA_SET_POS     = 0x71
 .CAMERA_SHAKE_Y          = 2
 
 ; --- RTC ----------------------------------
+; @section RTC
 
 OP_VM_RTC_LATCH          = 0x78
 ;-- Latch RTC value for access
@@ -1387,6 +1407,7 @@ OP_VM_RTC_START          = 0x7B
 .endm
 
 ; --- COLOR ---------------------------------------
+; @section Color
 
 OP_VM_LOAD_PALETTE       = 0x7C
 .PALETTE_COMMIT          = 1
@@ -1408,6 +1429,7 @@ OP_VM_LOAD_PALETTE       = 0x7C
 .endm
 
 ; --- SGB -----------------------------------------
+; @section SGB
 
 ;-- Transfers SGB packet(s). Data of variable length is placed after this instruction, for example:
 ;
@@ -1423,6 +1445,7 @@ OP_VM_SGB_TRANSFER       = 0x7E
 .endm
 
 ; --- RUMBLE --------------------------------------
+; @section Rumble
 
 OP_VM_RUMBLE             = 0x7F
 ;-- Enables or disables rumble on a cart that has that function
@@ -1432,6 +1455,7 @@ OP_VM_RUMBLE             = 0x7F
 .endm
 
 ; --- PROJECTILES ---------------------------------
+; @section Projectiles
 
 OP_VM_PROJECTILE_LAUNCH  = 0x80
 .PROJECTILE_ANIM_ONCE    = 0x01
@@ -1446,6 +1470,7 @@ OP_VM_PROJECTILE_LOAD_TYPE = 0x81
 .endm
 
 ; --- MATH -------------------------------------------
+; @section Math
 
 OP_VM_SIN_SCALE         = 0x89
 .macro VM_SIN_SCALE IDX, IDX_ANGLE, SCALE
@@ -1458,6 +1483,7 @@ OP_VM_COS_SCALE         = 0x8A
 .endm
 
 ; --- TEXT SOUND -------------------------------------
+; @section Text Sound
 
 OP_VM_SET_TEXT_SOUND    = 0x8B
 ;-- Set the sound effect for the text output
@@ -1469,6 +1495,7 @@ OP_VM_SET_TEXT_SOUND    = 0x8B
 .endm
 
 ; --- GB PRINTER -------------------------------------
+; @section GB Printer
 
 OP_VM_PRINTER_DETECT    = 0x8C
 ;-- Detect printer
