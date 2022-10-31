@@ -10,6 +10,7 @@
 #include "data/sprite_player.h"
 #include "data/scene_cave_actors.h"
 #include "data/scene_cave_sprites.h"
+#include "data/scene_cave_projectiles.h"
 #include "data/scene_cave_init.h"
 
 BANKREF(scene_cave)
@@ -29,9 +30,10 @@ const struct scene_t scene_cave = {
     .player_sprite = TO_FAR_PTR_T(sprite_player),
     .n_actors = 2,
     .n_triggers = 0,
-    .n_sprites = 1,
-    .n_projectiles = 0,
+    .n_sprites = 2,
+    .n_projectiles = 1,
     .actors = TO_FAR_PTR_T(scene_cave_actors),
     .sprites = TO_FAR_PTR_T(scene_cave_sprites),
+    .projectiles = TO_FAR_PTR_T(scene_cave_projectiles),
     .script_init = TO_FAR_PTR_T(scene_cave_init)
 };
