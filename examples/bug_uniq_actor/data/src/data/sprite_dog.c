@@ -6,7 +6,7 @@
 
 BANKREF(sprite_dog)
 
-#define SPRITE_0_STATE_DEFAULT 0
+#define SPRITE_1_STATE_DEFAULT 0
 
 const metasprite_t sprite_dog_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -53,7 +53,7 @@ const struct animation_t sprite_dog_animations[] = {
 };
 
 const UWORD sprite_dog_animations_lookup[] = {
-    SPRITE_0_STATE_DEFAULT
+    SPRITE_1_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_dog = {
