@@ -272,7 +272,6 @@ void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, INT16 x_idx, INT16 y_idx, 
     UBYTE y = *((y_idx < 0) ? THIS->stack_ptr + y_idx : script_memory + y_idx);
     UBYTE w = ReadBankedUBYTE((void *)&(background->width), bank);
     UBYTE h = ReadBankedUBYTE((void *)&(background->height), bank);
-    _map_tile_offset = *(INT16 *)(VM_REF_TO_PTR(idx));
 #ifdef CGB
     if (_is_CGB) {
         ReadBankedFarPtr(&tilemap, (void *)&(background->cgb_tilemap_attr), bank);
@@ -283,6 +282,7 @@ void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, INT16 x_idx, INT16 y_idx, 
         }
     }
 #endif
+    _map_tile_offset = *(INT16 *)(VM_REF_TO_PTR(idx));
     ReadBankedFarPtr(&tilemap, (void *)&(background->tilemap), bank);
     SetBankedWinTiles(x, y, w, h, tilemap.ptr, tilemap.bank);
     _map_tile_offset = 0;
