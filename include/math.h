@@ -116,5 +116,6 @@ inline void point_translate_angle_to_delta(point16_t *point, uint8_t angle, uint
 }
 
 uint8_t isqrt(uint16_t x) NONBANKED;
+uint8_t atan2(int16_t y, int16_t x) BANKED;
 
 #endif

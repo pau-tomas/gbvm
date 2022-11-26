@@ -1,4 +1,4 @@
-#pragma bank 2
+#pragma bank 255
 
 #include <string.h>
 #include <stdlib.h>
@@ -104,12 +104,29 @@ void vm_load_text(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, UBYTE nar
 }
 
 // start displaying text
-void vm_display_text(SCRIPT_CTX * THIS, UBYTE options) OLDCALL BANKED {
+void vm_display_text(SCRIPT_CTX * THIS, UBYTE options, UBYTE start_tile) OLDCALL BANKED {
     THIS;
 
     INPUT_RESET;
     text_options = options;
     text_drawn = text_wait = text_ff = FALSE;
+
+#ifdef CGB
+        if (_is_CGB) {
+            if (start_tile >= (UBYTE)((0x100 - TEXT_BUFFER_START) + (0x100 - TEXT_BUFFER_START_BANK1))) {
+                return;
+            } else if (start_tile >= (UBYTE)(0x100 - TEXT_BUFFER_START)) {
+                ui_set_start_tile(TEXT_BUFFER_START_BANK1 + (start_tile - (UBYTE)(0x100 - TEXT_BUFFER_START)), 1);
+            } else {
+                ui_set_start_tile(TEXT_BUFFER_START + start_tile, 0);
+            }
+        } else {
+#endif
+            if (start_tile < (UBYTE)(0x100 - TEXT_BUFFER_START)) ui_set_start_tile(TEXT_BUFFER_START + start_tile, 0);
+#ifdef CGB
+        }
+#endif
+
 }
 
 // switch text rendering to window or background
@@ -255,7 +272,6 @@ void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, INT16 x_idx, INT16 y_idx, 
     UBYTE y = *((y_idx < 0) ? THIS->stack_ptr + y_idx : script_memory + y_idx);
     UBYTE w = ReadBankedUBYTE((void *)&(background->width), bank);
     UBYTE h = ReadBankedUBYTE((void *)&(background->height), bank);
-    _map_tile_offset = *(INT16 *)(VM_REF_TO_PTR(idx));
 #ifdef CGB
     if (_is_CGB) {
         ReadBankedFarPtr(&tilemap, (void *)&(background->cgb_tilemap_attr), bank);
@@ -266,6 +282,7 @@ void vm_overlay_set_map(SCRIPT_CTX * THIS, INT16 idx, INT16 x_idx, INT16 y_idx, 
         }
     }
 #endif
+    _map_tile_offset = *(INT16 *)(VM_REF_TO_PTR(idx));
     ReadBankedFarPtr(&tilemap, (void *)&(background->tilemap), bank);
     SetBankedWinTiles(x, y, w, h, tilemap.ptr, tilemap.bank);
     _map_tile_offset = 0;
