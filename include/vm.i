@@ -757,6 +757,11 @@ OP_VM_ACTOR_SET_FLAGS           = 0x3F
         VM_ACTOR_SET_FLAGS ACTOR, ^/(ENABLED << 3)/, .ACTOR_FLAG_COLLISION
 .endm
 
+OP_VM_ACTOR_BEGIN_UPDATE        = 0x8E
+.macro VM_ACTOR_BEGIN_UPDATE ACTOR
+        .db OP_VM_ACTOR_BEGIN_UPDATE, #>ACTOR, #<ACTOR
+.endm
+
 OP_VM_ACTOR_TERMINATE_UPDATE    = 0x74
 ;-- Terminates the actor update script
 ; @param ACTOR Variable that contains the actor number
