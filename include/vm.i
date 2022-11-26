@@ -248,6 +248,7 @@ OP_VM_RPN          = 0x15
 .MIN               = 'm'
 .MAX               = 'M'
 .ISQRT             = 'Q'
+.ATAN2             = 'T'
 ;.EQ                = 1
 ;.LT                = 2
 ;.LTE               = 3
