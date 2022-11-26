@@ -186,7 +186,7 @@ const SCRIPT_CMD script_cmds[] = {
 
     // GBPrinter functions
     {vm_print_detect,                   BANK(VM_GBPRINTER),     3}, // 0x8C
-    {vm_print_overlay,                  BANK(VM_GBPRINTER),     4}, // 0x8D
+    {vm_print_overlay,                  BANK(VM_GBPRINTER),     5}, // 0x8D
     
     {vm_actor_begin_update,             BANK(VM_ACTOR),         2}  // 0x8E
 };
