@@ -92,7 +92,6 @@ typedef enum {
 } direction_e;
 
 extern const int8_t sine_wave[256];
-extern const uint8_t atan2_table[20][18];
 extern const point8_t dir_lookup[4];
 extern const uint8_t dir_angle_lookup[4];
 
@@ -117,6 +116,6 @@ inline void point_translate_angle_to_delta(point16_t *point, uint8_t angle, uint
 }
 
 uint8_t isqrt(uint16_t x) NONBANKED;
-uint8_t atan2(int16_t y, int16_t x) NONBANKED;
+uint8_t atan2(int16_t y, int16_t x) BANKED;
 
 #endif
