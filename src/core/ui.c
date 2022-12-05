@@ -279,7 +279,7 @@ inline void ui_set_tile(UBYTE * addr, UBYTE tile, UBYTE bank) {
 UBYTE ui_draw_text_buffer_char() BANKED {
     static UBYTE current_font_idx, current_text_bkg_fill, current_vwf_direction, current_text_ff_joypad, current_text_draw_speed;
 
-    if ((text_ff_joypad) && (INPUT_A_OR_B_PRESSED)) text_ff = TRUE;
+//    if ((text_ff_joypad) && (INPUT_A_OR_B_PRESSED)) text_ff = TRUE;
 
     if ((!text_ff) && (text_wait)) {
         text_wait--;
@@ -360,22 +360,25 @@ UBYTE ui_draw_text_buffer_char() BANKED {
                 // wait for input cancels fast forward
                 if (text_ff) {
                     text_ff = FALSE;
-                    text_ff_joypad = FALSE;
                     INPUT_RESET;
                 }
+                text_ff_joypad = FALSE;
+                // point to the button mask
+                ui_text_ptr++;
                 // if high speed then skip waiting
-                if (text_draw_speed == 0) {
-                    ui_text_ptr++;
-                    break;
+                if (text_draw_speed) {
+                    // wait for key press (parameter is a mask)
+                    if (INPUT_PRESSED(*ui_text_ptr)) {
+                        // mask matches
+                        text_ff_joypad = current_text_ff_joypad;
+                        INPUT_RESET;
+                    } else {
+                        // go back to 0x06 control code
+                        ui_text_ptr--;
+                        return FALSE;
+                    }
                 }
-                // wait for key press (parameter is a mask)
-                if ((joy & ~last_joy) & *++ui_text_ptr) {
-                    text_ff_joypad = current_text_ff_joypad;
-                    INPUT_RESET;
-                    break;
-                }
-                ui_text_ptr--;
-                return FALSE;
+                break;
             case 0x07:
                 // set text color
                 text_bkg_fill = (*++ui_text_ptr & 1u) ? TEXT_BKG_FILL_W : TEXT_BKG_FILL_B;
@@ -426,7 +429,7 @@ UBYTE ui_draw_text_buffer_char() BANKED {
 }
 
 void ui_update() NONBANKED {
-    UBYTE is_moving = FALSE;
+    UBYTE flag = FALSE;
 
     // y should always move first
     if (win_pos_y != win_dest_pos_y) {
@@ -435,7 +438,7 @@ void ui_update() NONBANKED {
             // move window up/down
             if (win_pos_y < win_dest_pos_y) win_pos_y += interval; else win_pos_y -= interval;
         }
-        is_moving = TRUE;
+        flag = TRUE;
     }
     if (win_pos_x != win_dest_pos_x) {
         if ((game_time & ui_time_masks[win_speed]) == 0) {
@@ -443,22 +446,25 @@ void ui_update() NONBANKED {
             // move window left/right
             if (win_pos_x < win_dest_pos_x) win_pos_x += interval; else win_pos_x -= interval;
         }
-        is_moving = TRUE;
+        flag = TRUE;
     }
 
     // don't draw text while moving
-    if (is_moving) return;
+    if (flag) return;
     // all drawn - nothing to do
     if (text_drawn) return;
     // too fast - wait
-    if ((!INPUT_A_OR_B_PRESSED) && (game_time & current_text_speed)) return;
+    if ((text_ff_joypad) && (INPUT_A_OR_B_PRESSED)) {
+        text_ff = TRUE;
+    } else {
+        if (game_time & current_text_speed) return;
+    }
     // render next char
-    UBYTE letter_drawn;
     do {
-        letter_drawn = ui_draw_text_buffer_char();
+        flag = ui_draw_text_buffer_char();
     } while (((text_ff) || (text_draw_speed == 0)) && (!text_drawn));
     // play sound
-    if ((letter_drawn) && (text_sound_bank != SFX_STOP_BANK)) music_play_sfx(text_sound_bank, text_sound_data, text_sound_mask, MUSIC_SFX_PRIORITY_NORMAL);
+    if ((flag) && (text_sound_bank != SFX_STOP_BANK)) music_play_sfx(text_sound_bank, text_sound_data, text_sound_mask, MUSIC_SFX_PRIORITY_NORMAL);
 }
 
 UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE count, UBYTE start_index) BANKED {

@@ -158,26 +158,32 @@ __asm
 __endasm;
 }
 
-void MemcpyBanked(void* to, const void* from, size_t n, UBYTE bank) OLDCALL NONBANKED NAKED {
+void MemcpyBanked(void* to, const void* from, size_t n, UBYTE bank) NONBANKED NAKED {
     to; from; n; bank;
 __asm
     ldh a, (__current_bank)
     ld  (#__save), a
 
-    ldhl  sp, #8
-    ld  a, (hl)
+    ldhl  sp, #4
+    ld  a, (hl-)
     ldh	(__current_bank), a
     ld  (_rROMB0), a
 
-    pop bc
-    call  _memcpy           ; preserves BC
+    ld a, (hl-)
+    ld l, (hl)
+    ld h, a
+    push hl
+
+    call  _memcpy
 
     ld  a, (#__save)
     ldh (__current_bank), a
     ld  (_rROMB0), a
-    ld  h, b
-    ld  l, c
-    jp  (hl)
+
+    pop hl
+    add sp, #3
+
+    jp (hl)
 __endasm;
 }
 

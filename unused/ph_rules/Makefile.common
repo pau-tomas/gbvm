@@ -17,7 +17,9 @@ ROM_BUILD_DIR = build
 OBJDIR = obj
 REL_OBJDIR = obj/_rel
 
-CFLAGS = $(PLATFORM) -I$(TOP)include -Wa-I$(TOP)include
+# PHRULES = -Wf"--peep-file $(TOP)ph/gbz80.rul"
+
+CFLAGS = $(PLATFORM) $(PHRULES) -I$(TOP)include -Wa-I$(TOP)include
 
 LFLAGS_NBANKS += -Wm-yoA -Wm-ya4
 LFLAGS_SYMBOLS = -Wl-j -Wl-m -Wl-w -Wm-yS

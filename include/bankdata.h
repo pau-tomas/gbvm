@@ -121,7 +121,7 @@ inline UBYTE ReadBankedUBYTE(const unsigned char *ptr, UBYTE bank) {
  * @param n number of bytes to fetch from bank
  * @param bank bank to read from
  */
-void MemcpyBanked(void* to, const void* from, size_t n, UBYTE bank) OLDCALL;
+void MemcpyBanked(void* to, const void* from, size_t n, UBYTE bank);
 
 /**
  * memcpy data from banked memory location (non-reentrant!) to VRAM

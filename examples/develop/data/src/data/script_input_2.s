@@ -21,12 +21,57 @@ _script_input_2::
         VM_SFX_PLAY             ___bank_sound_effect1, _sound_effect1, ___mute_mask_sound_effect1, .SFX_PRIORITY_NORMAL
 
 ; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----
-        VM_PUSH_CONST           0       ; Y coord
-        VM_PUSH_CONST           0       ; X coord
-        VM_PUSH_CONST           128
-        VM_LOAD_TILESET         .ARG0, ___bank_bg_cave, _bg_cave
-        VM_OVERLAY_SET_MAP      .ARG0, .ARG1, .ARG2, ___bank_bg_cave, _bg_cave
+;        VM_PUSH_CONST           0       ; Y coord
+;        VM_PUSH_CONST           0       ; X coord
+;        VM_PUSH_CONST           128
+;        VM_LOAD_TILESET         .ARG0, ___bank_bg_cave, _bg_cave
+;        VM_OVERLAY_SET_MAP      .ARG0, .ARG1, .ARG2, ___bank_bg_cave, _bg_cave
+;        VM_POP                  3
+
+        VM_RPN
+            .R_INT16     128                    ; base tile in extended VRAM to load from
+            .R_INT16     ___bank_bg_cave        ; bank of bg_cave background
+            .R_INT16     _bg_cave               ; pointer to bg_cave background
+            .R_STOP
+        VM_CALL_NATIVE  b_load_cgb_tileset, _load_cgb_tileset
         VM_POP                  3
+
+        VM_RPN
+            .R_INT16     128                    ; base tile in extended VRAM to load from
+            .R_INT16     ___bank_bg_cave        ; bank of bg_cave background
+            .R_INT16     _bg_cave               ; pointer to bg_cave background
+            .R_INT8      0                      ; Y coord in tiles
+            .R_INT8      0                      ; X coord in tiles
+            .R_STOP
+        VM_CALL_NATIVE  b_overlay_cgb_set_map, _overlay_cgb_set_map
+        VM_POP                  5
+
+        VM_RPN
+            .R_INT16     128                    ; base tile in extended VRAM to load from
+            .R_INT16     ___bank_bg_cave        ; bank of bg_cave background
+            .R_INT16     _bg_cave               ; pointer to bg_cave background
+            .R_INT8      5                      ; Y coord in tiles where the item should be put
+            .R_INT8      7                      ; X coord in tiles where the item should be put
+            .R_INT8      14                     ; item number (background must be 32 tile width and multiple of 2 height)
+            .R_STOP
+        VM_CALL_NATIVE  b_overlay_cgb_display_item, _overlay_cgb_display_item
+        VM_POP                  6
+
+        VM_RPN
+            .R_INT8      2                      ; Y coord in tiles where the mask of 16 elements should be applied
+            .R_INT8      2                      ; X coord in tiles where the mask of 16 elements should be applied
+            .R_INT16     0x5555                 ; mask
+            .R_STOP
+        VM_CALL_NATIVE  b_overlay_cgb_mask_tiles, _overlay_cgb_mask_tiles
+        VM_POP                  3
+        VM_RPN
+            .R_INT8      3                      ; Y coord in tiles where the mask of 16 elements should be applied
+            .R_INT8      2                      ; X coord in tiles where the mask of 16 elements should be applied
+            .R_INT16     0xAAAA                 ; mask
+            .R_STOP
+        VM_CALL_NATIVE  b_overlay_cgb_mask_tiles, _overlay_cgb_mask_tiles
+        VM_POP                  3
+
 
         VM_OVERLAY_MOVE_TO      0, 0, .OVERLAY_IN_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_BTN_A)/
