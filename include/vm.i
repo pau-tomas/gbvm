@@ -1209,9 +1209,9 @@ OP_VM_MUSIC_PLAY        = 0x60
 ;-- Starts playing of music track
 ; @param BANK Bank number of the track
 ; @param ADDR Address of the track
-; @param LOOP If the track will loop on end (`.MUSIC_LOOP`) or not (`.MUSIC_NO_LOOP`)
+; @param LOOP Obsolete, has no effect
 .macro VM_MUSIC_PLAY TRACK_BANK, TRACK, LOOP
-        .db OP_VM_MUSIC_PLAY, #<LOOP, #>TRACK, #<TRACK, #<TRACK_BANK
+        .db OP_VM_MUSIC_PLAY, #>TRACK, #<TRACK, #<TRACK_BANK
 .endm
 
 OP_VM_MUSIC_STOP        = 0x61

@@ -5,7 +5,7 @@
 #include "sfx_player.h"
 
 #ifdef GBT_PLAYER
-#undef HUGE_TRACKER 
+#undef HUGE_TRACKER
 #define TRACK_T uint8_t
 #include "gbt_player.h"
 
@@ -56,7 +56,7 @@ extern script_event_t music_events[4];
 #define MUSIC_SFX_PRIORITY_HIGH     8
 
 #define MUSIC_STOP_BANK SFX_STOP_BANK
-//#define FORCE_CUT_SFX                                   // don't cut by default 
+//#define FORCE_CUT_SFX                                   // don't cut by default
 
 extern volatile uint8_t music_current_track_bank;
 extern uint8_t music_mute_mask;
@@ -86,8 +86,7 @@ inline void music_sound_cut_mask(uint8_t mask) {
 
 void music_play_isr();
 
-inline void music_load(uint8_t bank, const TRACK_T * data, uint8_t loop) {
-    loop;
+inline void music_load(uint8_t bank, const TRACK_T * data) {
     if ((bank == music_current_track_bank) && (data == music_current_track)) return;
     music_current_track_bank = MUSIC_STOP_BANK, music_current_track = data, music_next_track = data; music_current_track_bank = bank;
 }

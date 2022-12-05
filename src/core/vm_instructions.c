@@ -123,7 +123,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_input_detach,                   BANK(VM_GAMEBOY),       1}, // 0x5F
 
     // music and sound instructions section
-    {vm_music_play,                     BANK(VM_MUSIC),         4}, // 0x60
+    {vm_music_play,                     BANK(VM_MUSIC),         3}, // 0x60
     {vm_music_stop,                     BANK(VM_MUSIC),         0}, // 0x61
     {vm_music_mute,                     BANK(VM_MUSIC),         1}, // 0x62
     {vm_sound_mastervol,                BANK(VM_MUSIC),         1}, // 0x63
@@ -187,6 +187,6 @@ const SCRIPT_CMD script_cmds[] = {
     // GBPrinter functions
     {vm_print_detect,                   BANK(VM_GBPRINTER),     3}, // 0x8C
     {vm_print_overlay,                  BANK(VM_GBPRINTER),     5}, // 0x8D
-    
+
     {vm_actor_begin_update,             BANK(VM_ACTOR),         2}  // 0x8E
 };

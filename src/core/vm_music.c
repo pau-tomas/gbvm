@@ -7,10 +7,10 @@
 
 BANKREF(VM_MUSIC)
 
-void vm_music_play(SCRIPT_CTX * THIS, UBYTE track_bank, const TRACK_T * track, UBYTE loop) OLDCALL BANKED {
+void vm_music_play(SCRIPT_CTX * THIS, UBYTE track_bank, const TRACK_T * track) OLDCALL BANKED {
     THIS;
     music_global_mute_mask = 0;
-    music_load(track_bank, track, loop);
+    music_load(track_bank, track);
 }
 
 void vm_music_stop() OLDCALL BANKED {
