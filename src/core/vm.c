@@ -523,24 +523,20 @@ UBYTE VM_STEP(SCRIPT_CTX * CTX) NAKED NONBANKED STEP_FUNC_ATTR {
     CTX;
 #if defined(__SDCC) && defined(NINTENDO)
 __asm
-        lda hl, 2(sp)
-        ld a, (hl+)
-        ld h, (hl)
+        ld b, d
+        ld c, e                 ; bc = THIS
+
+        ld a, (de)
         ld l, a
-
-        inc hl
-        inc hl
-
-        ld a, (hl-)
-        ld e, a
-        ld a, (hl-)
-        ld l, (hl)
-        ld h, a
+        inc de
+        ld a, (de)
+        ld h, a                 ; hl offset of the script
+        inc de
 
         ldh a, (__current_bank)
         push af
 
-        ld a, e
+        ld a, (de)              ; bank of the script
         ldh (__current_bank), a
         ld (_rROMB0), a         ; switch bank with vm code
 
@@ -592,7 +588,7 @@ __asm
         ld b, h
         ld c, l                 ; bc points to the next VM instruction
 
-        lda hl, 8(sp)
+        lda hl, 2(sp)
         add hl, de              ; add correction
         ld a, (hl+)
         ld h, (hl)
@@ -619,15 +615,15 @@ __asm
         pop hl                  ; hl: args_len
         add hl, sp
         ld sp, hl               ; deallocate args_len bytes from the stack
-        add sp, #4              ; deallocate dummy word and THIS
-
-        pop bc                  ; restore bc
+        add sp, #6              ; deallocate dummy word and THIS twice
 
         ld e, #1                ; command executed
 3$:
         pop af
         ldh (__current_bank), a
         ld (_rROMB0), a         ; restore bank
+
+        ld a, e
 
         ret
 __endasm;

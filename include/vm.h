@@ -22,7 +22,7 @@ BANKREF_EXTERN(VM_MAIN)
 #define FN_ARG7 -8
 
 #if defined(NINTENDO)
-#define STEP_FUNC_ATTR OLDCALL PRESERVES_REGS(b, c)
+#define STEP_FUNC_ATTR
 typedef UWORD DUMMY0_t;
 typedef UWORD DUMMY1_t;
 #elif defined(SEGA)
