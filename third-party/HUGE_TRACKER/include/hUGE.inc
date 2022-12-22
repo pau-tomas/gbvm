@@ -1,6 +1,6 @@
-dn: MACRO ;; (note, instr, effect)
-    db \1
-    db ((\2 << 4) | (\3 >> 8))
+MACRO dn ;; (note, instr, effect)
+    db (\1 | ((\2 & %00010000) << 3))
+    db (((\2 << 4) & $FF) | (\3 >> 8))
     db LOW(\3)
 ENDM
 
@@ -78,3 +78,4 @@ A#8 EQU 70
 B_8 EQU 71
 LAST_NOTE EQU 72
 ___ EQU 90 ; the default "no note" value
+NO_NOTE EQU ___

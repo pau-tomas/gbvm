@@ -3,7 +3,7 @@
 
 #include <gbdk/platform.h>
 
-#define DN(A, B, C) (unsigned char)(A),(unsigned char)((B << 4) | (C >> 8)),(unsigned char)(C & 0xFF)
+#define DN(A, B, C) (unsigned char)((A) | (((B) & 0x10) << 3)),(unsigned char)((((B) << 4) & 0xFF) | ((C) >> 8)),(unsigned char)((C) & 0xFF)
 
 #define C_3 0
 #define Cs3 1
@@ -82,13 +82,39 @@
 
 typedef void (*hUGERoutine_t)(unsigned char param, unsigned char ch, unsigned char tick) OLDCALL;
 
+typedef struct hUGEDutyInstr_t {
+    const unsigned char sweep;
+    const unsigned char len_duty;
+    const unsigned char envelope;
+    const unsigned char * subpattern;
+    const unsigned char highmask;
+} hUGEDutyInstr_t;
+
+typedef struct hUGEWaveInstr_t {
+    const unsigned char length;
+    const unsigned char volume;
+    const unsigned char waveform;
+    const unsigned char * subpattern;
+    const unsigned char highmask;
+} hUGEWaveInstr_t;
+
+typedef struct hUGENoiseInstr_t {
+    const unsigned char envelope;
+    const unsigned char * subpattern;
+    const unsigned char highmask;
+    const unsigned char unused1;
+    const unsigned char unused2;
+} hUGENoiseInstr_t;
+
 typedef struct hUGESong_t {
-  unsigned char tempo;
-  const unsigned char * order_cnt;
-  const unsigned char ** order1, ** order2, ** order3, ** order4;
-  const unsigned char * duty_instruments, * wave_instruments, * noise_instruments;
-  const hUGERoutine_t ** routines;
-  const unsigned char * waves;
+    unsigned char tempo;
+    const unsigned char * order_cnt;
+    const unsigned char ** order1, ** order2, ** order3, ** order4;
+    const hUGEDutyInstr_t * duty_instruments;
+    const hUGEWaveInstr_t * wave_instruments;
+    const hUGENoiseInstr_t * noise_instruments;
+    const hUGERoutine_t ** routines;
+    const unsigned char * waves;
 } hUGESong_t;
 
 // initialize the driver with song data
@@ -113,10 +139,10 @@ extern volatile unsigned char hUGE_current_wave;
 extern volatile unsigned char hUGE_mute_mask;
 
 inline void hUGE_reset_wave() {
-	hUGE_current_wave = 100;
+    hUGE_current_wave = 100;
 }
 inline void hUGE_reset_wave_banked() {
-	hUGE_current_wave = 100;
+    hUGE_current_wave = 100;
 }
 
 #endif
