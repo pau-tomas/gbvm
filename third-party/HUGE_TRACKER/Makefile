@@ -5,15 +5,15 @@ SDAR = $(GBDK)/bin/sdar
 
 RRGBDS = ../../../rgbds
 RGBASM = $(RRGBDS)/rgbasm
-RGB2SDAS = ../../../rgb2sdas/rgb2sdas
+RGB2SDAS = python utils/rgb2sdas.py
 
 BUILD_DIR = ./build
 OBJ_DIR = ./obj
 
-CVTFLAGS = -b0
+CVTFLAGS = -b 0
 
 TARGET = $(BUILD_DIR)/hUGEDriver.lib
-OBJS = $(OBJ_DIR)/hUGEDriver.obj.o
+OBJS = $(OBJ_DIR)/hUGEDriver.o
 
 all: directories $(TARGET)
 
@@ -28,8 +28,8 @@ $(BUILD_DIR):
 $(OBJ_DIR)/%.obj:	%.asm
 	$(RGBASM) -DGBDK -o$@ $<
 
-$(OBJ_DIR)/%.obj.o:	$(OBJ_DIR)/%.obj
-	$(RGB2SDAS) $(CVTFLAGS) $<
+$(OBJ_DIR)/%.o:	$(OBJ_DIR)/%.obj
+	$(RGB2SDAS) $(CVTFLAGS) -o$@ $<
 
 $(TARGET): $(OBJS)
 	$(SDAR) -ru $@ $^

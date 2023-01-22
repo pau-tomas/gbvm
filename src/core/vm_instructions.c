@@ -34,7 +34,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_invoke,                         BANK(VM_MAIN),          6}, // 0x0D
     {vm_beginthread,                    BANK(VM_MAIN),          6}, // 0x0E
     {vm_if,                             BANK(VM_MAIN),          8}, // 0x0F
-    {vm_push_value_ind,                 BANK(VM_MAIN),          2}, // 0x11
+    {vm_push_value_ind,                 BANK(VM_MAIN),          2}, // 0x10
     {vm_push_value,                     BANK(VM_MAIN),          2}, // 0x11
     {vm_reserve,                        BANK(VM_MAIN),          1}, // 0x12
     {vm_set,                            BANK(VM_MAIN),          4}, // 0x13
