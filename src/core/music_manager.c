@@ -8,9 +8,9 @@
 #include "music_manager.h"
 #include "sfx_player.h"
 
-// queue length must be power of 2 
-#define MAX_ROUTINE_QUEUE_LEN 4 
-// music events queue 
+// queue length must be power of 2
+#define MAX_ROUTINE_QUEUE_LEN 4
+// music events queue
 uint8_t routine_queue[MAX_ROUTINE_QUEUE_LEN];
 uint8_t routine_queue_head, routine_queue_tail;
 // music events struct
@@ -26,12 +26,11 @@ uint8_t music_global_mute_mask;
 uint8_t music_sfx_priority;
 
 #ifdef HUGE_TRACKER
-void hUGETrackerRoutine(unsigned char param, unsigned char ch, unsigned char tick) NONBANKED OLDCALL {
-    ch;
+void hUGETrackerRoutine(unsigned char tick, unsigned int param) NONBANKED {
     if (tick) return; // return if not zero tick
     routine_queue_head++, routine_queue_head &= (MAX_ROUTINE_QUEUE_LEN - 1);
-    if (routine_queue_head == routine_queue_tail) routine_queue_tail++, routine_queue_tail &= (MAX_ROUTINE_QUEUE_LEN - 1);  
-    routine_queue[routine_queue_head] = param;    
+    if (routine_queue_head == routine_queue_tail) routine_queue_tail++, routine_queue_tail &= (MAX_ROUTINE_QUEUE_LEN - 1);
+    routine_queue[routine_queue_head] = (uint8_t)param;
 }
 #endif
 
@@ -46,7 +45,7 @@ void music_init_driver() BANKED {
 
 void music_init_events(uint8_t preserve) BANKED {
     if (preserve) {
-        for (uint8_t i = 0; i < 4; i++) 
+        for (uint8_t i = 0; i < 4; i++)
             music_events[i].handle = 0;
     } else {
         memset(music_events, 0, sizeof(music_events));
@@ -84,14 +83,14 @@ uint8_t music_events_poll() BANKED {
 
 void music_play_isr() NONBANKED {
     if (sfx_play_bank != SFX_STOP_BANK) {
-        if (!music_mute_flag) driver_set_mute_mask(music_global_mute_mask | music_mute_mask), music_mute_flag = TRUE; 
+        if (!music_mute_flag) driver_set_mute_mask(music_global_mute_mask | music_mute_mask), music_mute_flag = TRUE;
         if (!sfx_play_isr()) {
             driver_set_mute_mask(music_global_mute_mask), driver_reset_wave(), music_mute_flag = FALSE;
             #ifdef FORCE_CUT_SFX
             music_sound_cut_mask(music_mute_mask);
             #endif
             music_mute_mask = music_global_mute_mask;
-            music_sfx_priority = MUSIC_SFX_PRIORITY_MINIMAL; 
+            music_sfx_priority = MUSIC_SFX_PRIORITY_MINIMAL;
             sfx_play_bank = SFX_STOP_BANK;
         }
     }
