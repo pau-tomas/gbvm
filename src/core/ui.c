@@ -76,9 +76,8 @@ UBYTE text_sound_mask;
 UBYTE text_sound_bank;
 const UBYTE * text_sound_data;
 
-#ifdef CGB
 UBYTE overlay_priority;
-#endif
+UBYTE text_palette;
 
 void ui_init() BANKED {
     vwf_direction               = UI_PRINT_LEFTTORIGHT;
@@ -121,6 +120,7 @@ void ui_init() BANKED {
 
 #ifdef CGB
     overlay_priority            = S_PRIORITY;
+    text_palette                = UI_DEFAULT_PALETTE;
 #endif
 }
 
@@ -143,7 +143,7 @@ void ui_draw_frame(UBYTE x, UBYTE y, UBYTE width, UBYTE height) BANKED {
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        fill_win_rect(x, y, width, height, overlay_priority | (UI_PALETTE & 0x07u));
+        fill_win_rect(x, y, width, height, overlay_priority | (text_palette & 0x07u));
         VBK_REG = 0;
     }
 #endif
@@ -267,7 +267,7 @@ inline void ui_set_tile(UBYTE * addr, UBYTE tile, UBYTE bank) {
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        SetTile(addr, overlay_priority | ((bank) ? ((UI_PALETTE & 0x07u) | 0x08u) : (UI_PALETTE & 0x07u)));
+        SetTile(addr, overlay_priority | ((bank) ? ((text_palette & 0x07u) | 0x08u) : (text_palette & 0x07u)));
         VBK_REG = 0;
     }
 #else
@@ -389,14 +389,22 @@ UBYTE ui_draw_text_buffer_char() BANKED {
                 break;
             case 0x09:
                 break;
-            case '\r':
+            case '\n':  // 0x0a
+                // carriage return
+                ui_dest_ptr = ui_dest_base += 32u;
+                if (vwf_current_offset) ui_print_reset();
+                break;
+            case 0x0b:
+                text_palette = (*++ui_text_ptr & 0x07);
+                break;
+            case '\r':  // 0x0d
                 // line feed
                 if ((ui_dest_ptr + 32u) > (UBYTE *)((((UWORD)text_scroll_addr + ((UWORD)text_scroll_height << 5)) & 0xFFE0) - 1)) {
                     scroll_rect(text_scroll_addr, text_scroll_width, text_scroll_height, text_scroll_fill);
 #ifdef CGB
                     if (_is_CGB) {
                         VBK_REG = 1;
-                        scroll_rect(text_scroll_addr, text_scroll_width, text_scroll_height, overlay_priority | (UI_PALETTE & 0x07u));
+                        scroll_rect(text_scroll_addr, text_scroll_width, text_scroll_height, overlay_priority | (text_palette & 0x07u));
                         VBK_REG = 0;
                     }
 #endif
@@ -404,11 +412,6 @@ UBYTE ui_draw_text_buffer_char() BANKED {
                 } else {
                     ui_dest_ptr = ui_dest_base += 32u;
                 }
-                if (vwf_current_offset) ui_print_reset();
-                break;
-            case '\n':
-                // carriage return
-                ui_dest_ptr = ui_dest_base += 32u;
                 if (vwf_current_offset) ui_print_reset();
                 break;
             case 0x05:
@@ -477,7 +480,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priority | (UI_PALETTE & 0x07u));
+        set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priority | (text_palette & 0x07u));
         VBK_REG = 0;
     }
 #endif
@@ -522,7 +525,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 #ifdef CGB
         if (_is_CGB) {
             VBK_REG = 1;
-            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priority | (UI_PALETTE & 0x07u));
+            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priority | (text_palette & 0x07u));
             VBK_REG = 0;
         }
 #endif
@@ -533,7 +536,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 #ifdef CGB
         if (_is_CGB) {
             VBK_REG = 1;
-            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priority | (UI_PALETTE & 0x07u));
+            set_win_tile_xy(current_menu_item.X, current_menu_item.Y, overlay_priority | (text_palette & 0x07u));
             VBK_REG = 0;
         }
 #endif

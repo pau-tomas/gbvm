@@ -17,7 +17,7 @@
 #define TEXT_BKG_FILL_B 0xffu
 #define TEXT_MAX_LENGTH 255
 
-#define UI_PALETTE 7
+#define UI_DEFAULT_PALETTE 7
 
 #define MENU_OPEN_Y 112
 #define WIN_LEFT_X 7
@@ -76,6 +76,7 @@ extern const UBYTE ui_time_masks[];
 
 #ifdef CGB
 extern UBYTE overlay_priority;
+extern UBYTE text_palette;
 #endif
 
 void ui_init() BANKED;

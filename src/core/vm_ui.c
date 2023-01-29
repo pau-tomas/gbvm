@@ -196,7 +196,7 @@ void vm_overlay_clear(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UBY
 #ifdef CGB
         if (_is_CGB) {
             VBK_REG = 1;
-            fill_win_rect(x, y, w, h, overlay_priority | (UI_PALETTE & 0x07u));
+            fill_win_rect(x, y, w, h, overlay_priority | (text_palette & 0x07u));
             VBK_REG = 0;
         }
 #endif
@@ -231,7 +231,7 @@ void vm_overlay_scroll(SCRIPT_CTX * THIS, UBYTE x, UBYTE y, UBYTE w, UBYTE h, UB
 #ifdef CGB
     if (_is_CGB) {
         VBK_REG = 1;
-        scroll_rect(base_addr, w, h, overlay_priority | (UI_PALETTE & 0x07u));
+        scroll_rect(base_addr, w, h, overlay_priority | (text_palette & 0x07u));
         VBK_REG = 0;
     }
 #endif
