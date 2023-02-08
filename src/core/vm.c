@@ -731,7 +731,7 @@ UBYTE script_detach_hthread(UBYTE ID) BANKED {
 
 // process all contexts
 // executes one command in each active context
-UBYTE script_runner_update() NONBANKED {
+UBYTE script_runner_update(void) NONBANKED {
     static UBYTE waitable;
     static UBYTE counter;
 

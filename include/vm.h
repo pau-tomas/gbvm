@@ -161,7 +161,7 @@ void vm_memcpy(SCRIPT_CTX * THIS, INT16 idxA, INT16 idxB, INT16 count) OLDCALL B
 UBYTE VM_STEP(SCRIPT_CTX * CTX) NAKED NONBANKED STEP_FUNC_ATTR;
 
 // return TRUE if VM is in locked state
-inline UBYTE VM_ISLOCKED() {
+inline UBYTE VM_ISLOCKED(void) {
     return (vm_lock_state != 0);
 }
 
@@ -185,6 +185,6 @@ UBYTE script_detach_hthread(UBYTE ID) BANKED;
 #define EXCEPTION_CODE_NONE 0
 
 // process all contexts
-UBYTE script_runner_update() NONBANKED;
+UBYTE script_runner_update(void) NONBANKED;
 
 #endif

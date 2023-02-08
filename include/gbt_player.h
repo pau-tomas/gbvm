@@ -44,7 +44,7 @@ void gbt_enable_channels(UINT8 channel_flags);
 extern volatile UINT8 _gbt_channel3_loaded_instrument;
 
 // resets channel3 instrument; forces reloading of waveform
-inline void gbt_reset_ch3_instrument() {
+inline void gbt_reset_ch3_instrument(void) {
     _gbt_channel3_loaded_instrument = 0xffu;
 }
 

@@ -16,7 +16,7 @@ projectile_def_t projectile_defs[MAX_PROJECTILE_DEFS];
 projectile_t *projectiles_active_head;
 projectile_t *projectiles_inactive_head;
 
-void projectiles_init() BANKED {
+void projectiles_init(void) BANKED {
     UBYTE i;
     projectiles_active_head = NULL;
     projectiles_inactive_head = NULL;
@@ -29,7 +29,7 @@ static UBYTE _save_bank;
 static projectile_t *projectile;
 static projectile_t *prev_projectile;
 
-void projectiles_update() NONBANKED {
+void projectiles_update(void) NONBANKED {
     projectile_t *next;
 
     projectile = projectiles_active_head;
@@ -113,7 +113,7 @@ void projectiles_update() NONBANKED {
     SWITCH_ROM(_save_bank);
 }
 
-void projectiles_render() NONBANKED {
+void projectiles_render(void) NONBANKED {
     projectile = projectiles_active_head;
     prev_projectile = NULL;
 

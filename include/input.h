@@ -98,7 +98,7 @@ extern UBYTE frame_joy;
 extern UBYTE last_joy;
 extern UBYTE recent_joy;
 
-void input_init() BANKED;
-void input_update() NONBANKED;
+void input_init(void) BANKED;
+void input_update(void) NONBANKED;
 
 #endif

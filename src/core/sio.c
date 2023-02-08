@@ -5,7 +5,7 @@
 
 extern volatile UBYTE SIO_status;
 void SIO_send_byte(UBYTE data) PRESERVES_REGS(b, c, d, e, h, l);
-void SIO_receive() PRESERVES_REGS(b, c, d, e, h, l);
+void SIO_receive(void) PRESERVES_REGS(b, c, d, e, h, l);
 
 UBYTE link_operation_mode;
 
@@ -38,7 +38,7 @@ void on_SIO_receive(UBYTE data) NONBANKED {
     }
 }
 
-UBYTE SIO_update() NONBANKED {
+UBYTE SIO_update(void) NONBANKED {
     if (SIO_status == IO_ERROR) {
         link_operation_mode = LINK_MODE_NONE;
         link_packet_len = link_packet_snd_len = 0;
@@ -60,7 +60,7 @@ UBYTE SIO_update() NONBANKED {
     return TRUE;
 }
 
-void SIO_init() BANKED {
+void SIO_init(void) BANKED {
     link_operation_mode = LINK_MODE_NONE;
 
     link_packet_len = 0;

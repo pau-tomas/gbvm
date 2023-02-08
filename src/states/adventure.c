@@ -19,7 +19,7 @@
 #define ADVENTURE_CAMERA_DEADZONE 8
 #endif
 
-void adventure_init() BANKED {
+void adventure_init(void) BANKED {
     // Set camera to follow player
     camera_offset_x = 0;
     camera_offset_y = 0;
@@ -27,7 +27,7 @@ void adventure_init() BANKED {
     camera_deadzone_y = ADVENTURE_CAMERA_DEADZONE;
 }
 
-void adventure_update() BANKED {
+void adventure_update(void) BANKED {
     actor_t *hit_actor;
     UBYTE tile_start, tile_end;
     UBYTE angle = 0;

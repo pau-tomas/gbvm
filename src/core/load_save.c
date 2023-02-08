@@ -59,7 +59,7 @@ const save_point_t save_points[] = {
 
 size_t save_blob_size;
 
-void data_init() BANKED {
+void data_init(void) BANKED {
     ENABLE_RAM_MBC5;
     SWITCH_RAM_BANK(0, RAM_BANKS_ONLY);
     // calculate save blob size

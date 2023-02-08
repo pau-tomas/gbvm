@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-void core_reset() BANKED;
-void core_run() BANKED;
+void core_reset(void) BANKED;
+void core_run(void) BANKED;
 
 #endif

@@ -15,7 +15,7 @@ extern UBYTE triggers_len;
 /**
  * Resets trigger collision flags on scene start
  */
-void trigger_reset() BANKED;
+void trigger_reset(void) BANKED;
 
 /**
  * Find trigger at tile {tx,ty}

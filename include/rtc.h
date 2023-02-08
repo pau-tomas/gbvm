@@ -21,7 +21,7 @@ typedef enum {
 #define RTC_VALUE_FLAGS 0x0c
 
 inline void RTC_SELECT(UBYTE what) { SWITCH_RAM_BANK(what, RAM_BANKS_ONLY); }
-inline void RTC_LATCH() { RTC_LATCH_REG = 0; RTC_LATCH_REG = 1; }
+inline void RTC_LATCH(void) { RTC_LATCH_REG = 0; RTC_LATCH_REG = 1; }
 
 inline UWORD RTC_GET(const rtc_dateparts_e part) {
     UWORD v;

@@ -21,8 +21,8 @@ extern BYTE camera_deadzone_x;
 extern BYTE camera_deadzone_y;
 extern UBYTE camera_settings;
 
-void camera_init() BANKED;
-void camera_reset() BANKED;
-void camera_update() NONBANKED;
+void camera_init(void) BANKED;
+void camera_reset(void) BANKED;
+void camera_update(void) NONBANKED;
 
 #endif

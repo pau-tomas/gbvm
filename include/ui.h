@@ -79,10 +79,10 @@ extern UBYTE overlay_priority;
 extern UBYTE text_palette;
 #endif
 
-void ui_init() BANKED;
-void ui_update() NONBANKED;  // critical path, NONBANKED for speed
+void ui_init(void) BANKED;
+void ui_update(void) NONBANKED;  // critical path, NONBANKED for speed
 
-void ui_load_tiles() BANKED;
+void ui_load_tiles(void) BANKED;
 
 void ui_set_start_tile(UBYTE start_tile, UBYTE start_tile_bank) BANKED;
 

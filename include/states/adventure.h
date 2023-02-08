@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-void adventure_init();
-void adventure_update();
+void adventure_init(void);
+void adventure_update(void);
 
 #endif

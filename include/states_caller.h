@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-void state_init();
-void state_update();
+void state_init(void);
+void state_update(void);
 
 #endif

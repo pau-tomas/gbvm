@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-void logo_init() BANKED;
-void logo_update() BANKED;
+void logo_init(void) BANKED;
+void logo_update(void) BANKED;
 
 #endif

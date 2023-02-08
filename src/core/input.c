@@ -8,7 +8,7 @@ UBYTE frame_joy;
 UBYTE last_joy;
 UBYTE recent_joy;
 
-void input_init() BANKED {
+void input_init(void) BANKED {
     memset(&joypads, 0, sizeof(joypads));
     last_joy = 0;
     frame_joy = 0;
@@ -20,7 +20,7 @@ void input_init() BANKED {
 #endif
 }
 
-void input_update() NONBANKED {
+void input_update(void) NONBANKED {
     last_joy = joypads.joy0;
 #ifdef SGB
     joypad_ex(&joypads);

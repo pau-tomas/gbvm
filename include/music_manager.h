@@ -65,13 +65,13 @@ extern const TRACK_T * music_current_track;
 extern uint8_t music_global_mute_mask;
 extern uint8_t music_sfx_priority;
 
-void music_init_driver() BANKED;
+void music_init_driver(void) BANKED;
 
 void music_init_events(uint8_t preserve) BANKED;
-void music_events_update() NONBANKED;
-uint8_t music_events_poll() BANKED;
+void music_events_update(void) NONBANKED;
+uint8_t music_events_poll(void) BANKED;
 
-inline void music_sound_cut() {
+inline void music_sound_cut(void) {
     sfx_sound_cut();
 }
 
@@ -84,7 +84,7 @@ inline void music_sound_cut_mask(uint8_t mask) {
     sfx_sound_cut_mask(mask);
 }
 
-void music_play_isr();
+void music_play_isr(void);
 
 inline void music_load(uint8_t bank, const TRACK_T * data) {
     if ((bank == music_current_track_bank) && (data == music_current_track)) return;
@@ -93,16 +93,16 @@ inline void music_load(uint8_t bank, const TRACK_T * data) {
 
 void music_pause(uint8_t pause);
 
-inline void music_stop() {
+inline void music_stop(void) {
     music_current_track_bank = MUSIC_STOP_BANK, music_sound_cut();
 }
 
-inline void music_setup_timer() {
+inline void music_setup_timer(void) {
     TMA_REG = ((_cpu == CGB_TYPE) && (*(uint8_t *)0x0143 & 0x80)) ? 0x80u : 0xC0u;
     TAC_REG = 0x07u;
 }
 
-inline void music_init() {
+inline void music_init(void) {
     music_current_track_bank = MUSIC_STOP_BANK;
     sfx_reset_sample();
     sfx_sound_init();

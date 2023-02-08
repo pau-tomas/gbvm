@@ -15,7 +15,7 @@ UBYTE DMG_palette[3];
 palette_entry_t SprPalette[8];
 //palette_entry_t BkgPalette[8]; // moved into absolute.c to free 64 bytes of WRAM (move after shadow_OAM[] which is 256-boundary aligned)
 
-void palette_init() BANKED {
+void palette_init(void) BANKED {
 #ifdef CGB
     if (_is_CGB) {
         memset(BkgPalette, 0, sizeof(BkgPalette));

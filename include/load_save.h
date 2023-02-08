@@ -9,7 +9,7 @@
 BANKREF_EXTERN(VM_LOAD_SAVE)
 
 // initializes saving capabilities
-void data_init() BANKED;
+void data_init(void) BANKED;
 
 // save state to SRAM
 void data_save(UBYTE slot) BANKED;

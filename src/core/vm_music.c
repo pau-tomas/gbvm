@@ -13,7 +13,7 @@ void vm_music_play(SCRIPT_CTX * THIS, UBYTE track_bank, const TRACK_T * track) O
     music_load(track_bank, track);
 }
 
-void vm_music_stop() OLDCALL BANKED {
+void vm_music_stop(void) OLDCALL BANKED {
     music_stop();
 }
 

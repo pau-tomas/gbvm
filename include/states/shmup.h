@@ -3,7 +3,7 @@
 
 #include <gb/gb.h>
 
-void shmup_init();
-void shmup_update();
+void shmup_init(void);
+void shmup_update(void);
 
 #endif

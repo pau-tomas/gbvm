@@ -79,7 +79,7 @@ const UBYTE * text_sound_data;
 UBYTE overlay_priority;
 UBYTE text_palette;
 
-void ui_init() BANKED {
+void ui_init(void) BANKED {
     vwf_direction               = UI_PRINT_LEFTTORIGHT;
     vwf_current_font_idx        = 0;
     vwf_current_font_bank       = ui_fonts[0].bank;
@@ -124,7 +124,7 @@ void ui_init() BANKED {
 #endif
 }
 
-void ui_load_tiles() BANKED {
+void ui_load_tiles(void) BANKED {
     // load frame
     SetBankedBkgData(ui_frame_tl_tiles, 9, frame_image, BANK(frame_image));
     // load cursor
@@ -178,7 +178,7 @@ inline void ui_load_wram_tile(const UBYTE * tiledata) {
 #endif
 }
 
-inline void ui_next_tile() {
+inline void ui_next_tile(void) {
     ui_prev_tile_bank = ui_current_tile_bank;
     ui_prev_tile = ui_current_tile++;
     if (ui_current_tile) return;
@@ -195,7 +195,7 @@ inline void ui_next_tile() {
 #endif
 }
 
-void ui_print_reset() {
+void ui_print_reset(void) {
     if (vwf_current_offset) ui_next_tile();
     vwf_current_offset = 0;
     memset(vwf_tile_data, text_bkg_fill, sizeof(vwf_tile_data));
@@ -211,7 +211,7 @@ void ui_set_start_tile(UBYTE start_tile, UBYTE start_tile_bank) BANKED {
 void ui_print_shift_char(void * dest, const void * src, UBYTE bank) OLDCALL;
 UWORD ui_print_make_mask_lr(UBYTE width, UBYTE ofs) OLDCALL;
 UWORD ui_print_make_mask_rl(UBYTE width, UBYTE ofs) OLDCALL;
-void ui_swap_tiles();
+void ui_swap_tiles(void);
 
 UBYTE ui_print_render(const unsigned char ch) {
     UBYTE letter = (vwf_current_font_desc.attr & FONT_RECODE) ? ReadBankedUBYTE(vwf_current_font_desc.recode_table + (ch & vwf_current_font_desc.mask), vwf_current_font_bank) : ch;
@@ -276,7 +276,7 @@ inline void ui_set_tile(UBYTE * addr, UBYTE tile, UBYTE bank) {
     SetTile(addr, tile);
 }
 
-UBYTE ui_draw_text_buffer_char() BANKED {
+UBYTE ui_draw_text_buffer_char(void) BANKED {
     static UBYTE current_font_idx, current_text_bkg_fill, current_vwf_direction, current_text_ff_joypad, current_text_draw_speed;
 
 //    if ((text_ff_joypad) && (INPUT_A_OR_B_PRESSED)) text_ff = TRUE;
@@ -431,7 +431,7 @@ UBYTE ui_draw_text_buffer_char() BANKED {
     }
 }
 
-void ui_update() NONBANKED {
+void ui_update(void) NONBANKED {
     UBYTE flag = FALSE;
 
     // y should always move first

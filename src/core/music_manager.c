@@ -34,7 +34,7 @@ void hUGETrackerRoutine(unsigned char tick, unsigned int param) NONBANKED {
 }
 #endif
 
-void music_init_driver() BANKED {
+void music_init_driver(void) BANKED {
     music_init();
     music_mute_flag = FALSE, music_mute_mask = MUTE_MASK_NONE;
     music_play_isr_counter = 0;
@@ -55,7 +55,7 @@ void music_init_events(uint8_t preserve) BANKED {
     }
 }
 
-void music_events_update() NONBANKED {
+void music_events_update(void) NONBANKED {
     while (routine_queue_head != routine_queue_tail) {
         uint8_t data;
         CRITICAL {
@@ -69,7 +69,7 @@ void music_events_update() NONBANKED {
     }
 }
 
-uint8_t music_events_poll() BANKED {
+uint8_t music_events_poll(void) BANKED {
     if (routine_queue_head != routine_queue_tail) {
         uint8_t data;
         CRITICAL {
@@ -81,7 +81,7 @@ uint8_t music_events_poll() BANKED {
     return 0;
 }
 
-void music_play_isr() NONBANKED {
+void music_play_isr(void) NONBANKED {
     if (sfx_play_bank != SFX_STOP_BANK) {
         if (!music_mute_flag) driver_set_mute_mask(music_global_mute_mask | music_mute_mask), music_mute_flag = TRUE;
         if (!sfx_play_isr()) {
