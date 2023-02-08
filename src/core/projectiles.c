@@ -18,11 +18,9 @@ projectile_t *projectiles_active_head;
 projectile_t *projectiles_inactive_head;
 
 void projectiles_init(void) BANKED {
-    UBYTE i;
-    projectiles_active_head = NULL;
-    projectiles_inactive_head = NULL;
-    for ( i=0; i != MAX_PROJECTILES; i++ ) {
-        LL_PUSH_HEAD(projectiles_inactive_head, &projectiles[i]);
+    projectiles_active_head = projectiles_inactive_head = NULL;
+    for (projectile_t * proj = projectiles; proj < (projectiles + MAX_PROJECTILES); ++proj) {
+        LL_PUSH_HEAD(projectiles_inactive_head, proj);
     }
 }
 
