@@ -25,9 +25,9 @@ void input_update(void) NONBANKED {
 #ifdef SGB
     joypad_ex(&joypads);
     joy = joypads.joy0;
-#else 
+#else
     joypads.joy0 = joy = joypad();
 #endif
-    if ((joy & INPUT_DPAD) != (last_joy & INPUT_DPAD))
-        recent_joy = joy & ~last_joy;
+    if ((joy ^ last_joy) & INPUT_DPAD)
+        recent_joy = ((joy & ~last_joy) & INPUT_DPAD);
 }
