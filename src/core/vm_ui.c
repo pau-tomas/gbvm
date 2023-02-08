@@ -49,7 +49,7 @@ inline UBYTE itoa_format(INT16 v, UBYTE * d, UBYTE dlen) {
 void vm_load_text(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, UBYTE nargs) OLDCALL NONBANKED {
     dummy0; dummy1; // suppress warnings
 
-    UBYTE _save = _current_bank;
+    UBYTE _save = CURRENT_BANK;
     SWITCH_ROM(THIS->bank);
 
     const INT16 * args = (INT16 *)THIS->PC;

@@ -156,14 +156,14 @@ __endasm;
 }
 
 void MemcpyBanked(void* to, const void* from, size_t n, UBYTE bank) NONBANKED {
-    _save = _current_bank;
+    _save = CURRENT_BANK;
     SWITCH_ROM(bank);
     memcpy(to, from, n);
     SWITCH_ROM(_save);
 }
 
 void MemcpyVRAMBanked(void* to, const void* from, size_t n, UBYTE bank) NONBANKED {
-    _save = _current_bank;
+    _save = CURRENT_BANK;
     SWITCH_ROM(bank);
     set_data(to, from, n);
     SWITCH_ROM(_save);

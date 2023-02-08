@@ -98,7 +98,7 @@ void vm_switch(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, INT16 idx, U
     if (idx < 0) value = *(THIS->stack_ptr + idx); else value = *(script_memory + idx);
     if (n) THIS->stack_ptr -= n;        // dispose values on VM stack if required
 
-    UBYTE _save = _current_bank;        // we must preserve current bank,
+    UBYTE _save = CURRENT_BANK;         // we must preserve current bank,
     SWITCH_ROM(THIS->bank);             // then switch to bytecode bank
 
     table = (INT16 *)(THIS->PC);
@@ -150,7 +150,7 @@ void vm_beginthread(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, UBYTE b
     // initialize thread locals if any
     if (!(nargs)) return;
     if (ctx) {
-        UBYTE _save = _current_bank;        // we must preserve current bank,
+        UBYTE _save = CURRENT_BANK;         // we must preserve current bank,
         SWITCH_ROM(THIS->bank);             // then switch to bytecode bank
         for (UBYTE i = nargs; i != 0; i--) {
             INT16 A = *((INT16 *)THIS->PC);
@@ -260,7 +260,7 @@ void vm_rpn(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCALL NONBANK
     INT16 * A, * B, * ARGS;
     INT16 idx;
 
-    UBYTE _save = _current_bank;        // we must preserve current bank,
+    UBYTE _save = CURRENT_BANK;         // we must preserve current bank,
     SWITCH_ROM(THIS->bank);             // then switch to bytecode bank
 
     ARGS = THIS->stack_ptr;
@@ -381,7 +381,7 @@ void vm_get_far(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, INT16 idxA,
     dummy0; dummy1;
     UINT16 * A;
     if (idxA < 0) A = THIS->stack_ptr + idxA; else A = script_memory + idxA;
-    UBYTE _save = _current_bank;        // we must preserve current bank,
+    UBYTE _save = CURRENT_BANK;   // we must preserve current bank,
     SWITCH_ROM(bank);             // then switch to bytecode bank
     *A = (size == 0) ? *((UBYTE *)addr) : *((UINT16 *)addr);
     SWITCH_ROM(_save);

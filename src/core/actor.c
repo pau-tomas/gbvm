@@ -79,7 +79,7 @@ void player_init(void) BANKED {
 }
 
 void actors_update(void) NONBANKED {
-    UBYTE _save = _current_bank;
+    UBYTE _save = CURRENT_BANK;
     static actor_t *actor;
     static uint8_t screen_tile16_x, screen_tile16_y;
     static uint8_t actor_tile16_x, actor_tile16_y;

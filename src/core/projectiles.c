@@ -34,7 +34,7 @@ void projectiles_update(void) NONBANKED {
     projectile = projectiles_active_head;
     prev_projectile = NULL;
 
-    _save_bank = _current_bank;
+    _save_bank = CURRENT_BANK;
 
     while (projectile) {
         if (projectile->def.life_time == 0) {

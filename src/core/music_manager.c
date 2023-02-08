@@ -97,7 +97,7 @@ void music_play_isr(void) NONBANKED {
     if (music_play_isr_pause) return;
     if (music_current_track_bank == MUSIC_STOP_BANK) return;
     if (++music_play_isr_counter & 3) return;
-    uint8_t save_bank = _current_bank;
+    uint8_t save_bank = CURRENT_BANK;
     SWITCH_ROM(music_current_track_bank);
     if (music_next_track) {
         music_sound_cut();

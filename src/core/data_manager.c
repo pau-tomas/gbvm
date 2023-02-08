@@ -145,7 +145,7 @@ UBYTE load_sprite(UBYTE sprite_offset, const spritesheet_t * sprite, UBYTE bank)
 }
 
 void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_set, animation_t * res_animations) NONBANKED {
-    UBYTE _save = _current_bank;
+    UBYTE _save = CURRENT_BANK;
     SWITCH_ROM(bank);
     memcpy(res_animations, sprite->animations + sprite->animations_lookup[animation_set], sizeof(animation_t) * 8);
     SWITCH_ROM(_save);
