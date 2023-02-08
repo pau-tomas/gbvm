@@ -1,7 +1,7 @@
 #ifndef __FLASHER_H_INCLUDE
 #define __FLASHER_H_INCLUDE
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 void restore_sram_bank(UINT8 bank) BANKED;
 void restore_sram(void) BANKED;

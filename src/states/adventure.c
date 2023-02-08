@@ -85,7 +85,7 @@ void adventure_update(void) BANKED {
             while (tile_start != tile_end) {
 
                 if (tile_at(tile_x, tile_start) & COLLISION_LEFT) {
-                    new_pos.x = (((tile_x << 3) - PLAYER.bounds.right) << 4) - 1;           
+                    new_pos.x = (((tile_x << 3) - PLAYER.bounds.right) << 4) - 1;
                     break;
                 }
                 tile_start++;
@@ -95,7 +95,7 @@ void adventure_update(void) BANKED {
             UBYTE tile_x = ((new_pos.x >> 4) + PLAYER.bounds.left) >> 3;
             while (tile_start != tile_end) {
                 if (tile_at(tile_x, tile_start) & COLLISION_RIGHT) {
-                    new_pos.x = ((((tile_x + 1) << 3) - PLAYER.bounds.left) << 4) + 1;         
+                    new_pos.x = ((((tile_x + 1) << 3) - PLAYER.bounds.left) << 4) + 1;
                     break;
                 }
                 tile_start++;

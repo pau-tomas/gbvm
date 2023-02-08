@@ -1,7 +1,8 @@
 #ifndef PROJECTILES_H
 #define PROJECTILES_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
+
 #include "math.h"
 #include "collision.h"
 #include "gbs_types.h"

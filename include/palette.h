@@ -1,7 +1,7 @@
 #ifndef PALETTE_H
 #define PALETTE_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "compat.h"
 #include "gbs_types.h"

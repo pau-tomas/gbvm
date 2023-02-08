@@ -2,7 +2,7 @@
 
 #include "vm_actor.h"
 
-#include <gb/metasprites.h>
+#include <gbdk/metasprites.h>
 
 #include "actor.h"
 #include "game_time.h"

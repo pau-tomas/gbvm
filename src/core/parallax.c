@@ -1,6 +1,7 @@
 #pragma bank 255
 
-#include <gb/hardware.h>
+#include <gbdk/platform.h>
+
 #include <string.h>
 
 #include "parallax.h"

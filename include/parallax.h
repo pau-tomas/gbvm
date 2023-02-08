@@ -1,7 +1,7 @@
 #ifndef PARALLAX_H_INCLUDE
 #define PARALLAX_H_INCLUDE
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "compat.h"
 

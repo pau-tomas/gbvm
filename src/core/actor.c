@@ -2,8 +2,9 @@
 
 #include "actor.h"
 
-#include <gb/gb.h>
-#include <gb/metasprites.h>
+#include <gbdk/platform.h>
+#include <gbdk/metasprites.h>
+
 #include <string.h>
 
 #include "system.h"

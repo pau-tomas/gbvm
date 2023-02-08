@@ -1,7 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 #include "bankdata.h"
 #include "gbs_types.h"
 

@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 #include "gbs_types.h"
 
 extern far_ptr_t current_scene;

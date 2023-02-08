@@ -1,7 +1,8 @@
 #ifndef TRIGGER_H
 #define TRIGGER_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
+
 #include "gbs_types.h"
 #include "math.h"
 

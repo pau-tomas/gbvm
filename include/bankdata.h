@@ -1,7 +1,7 @@
 #ifndef BANK_DATA_H
 #define BANK_DATA_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "compat.h"
 

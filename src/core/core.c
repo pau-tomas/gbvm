@@ -1,9 +1,6 @@
 #pragma bank 255
 
-#include <gb/gb.h>
-#ifdef SGB
-    #include <gb/sgb.h>
-#endif
+#include <gbdk/platform.h>
 
 #include <string.h>
 #include <rand.h>

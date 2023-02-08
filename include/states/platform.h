@@ -1,7 +1,7 @@
 #ifndef STATE_PLATFORM_H
 #define STATE_PLATFORM_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 void platform_init(void);
 void platform_update(void);

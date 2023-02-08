@@ -1,7 +1,7 @@
 #ifndef _RTC_H_INCLUDE
 #define _RTC_H_INCLUDE
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "system.h"
 

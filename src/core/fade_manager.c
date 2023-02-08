@@ -1,9 +1,6 @@
 #pragma bank 255
 
-#include <gb/gb.h>
-#ifdef CGB
-    #include <gb/cgb.h>
-#endif
+#include <gbdk/platform.h>
 
 #include "compat.h"
 #include "system.h"

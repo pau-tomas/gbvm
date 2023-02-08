@@ -1,7 +1,7 @@
 #ifndef FADE_MANAGER_H
 #define FADE_MANAGER_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #define FADE_SPEED_MASK 0x3F
 #define FADE_IN_FLAG 0x40

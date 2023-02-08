@@ -1,8 +1,8 @@
 #pragma bank 255
 
-#include <gb/gb.h>
-#include <bankdata.h>
+#include <gbdk/platform.h>
 
+#include "bankdata.h"
 #include "system.h"
 #include "compat.h"
 #include "flasher.h"

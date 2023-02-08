@@ -2,7 +2,8 @@
 
 #include "projectiles.h"
 
-#include <gb/metasprites.h>
+#include <gbdk/metasprites.h>
+
 #include <string.h>
 
 #include "scroll.h"

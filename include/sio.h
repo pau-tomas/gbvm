@@ -1,7 +1,7 @@
 #ifndef _SIO_H_INCLUDE
 #define _SIO_H_INCLUDE
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "compat.h"
 

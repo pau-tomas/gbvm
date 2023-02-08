@@ -1,6 +1,6 @@
 #pragma bank 255
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "interrupts.h"
 

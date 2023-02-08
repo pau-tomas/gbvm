@@ -1,7 +1,7 @@
 #ifndef SCROLL_H
 #define SCROLL_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "compat.h"
 #include "parallax.h"

@@ -1,7 +1,7 @@
 #ifndef MATH_H
 #define MATH_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include <stdint.h>
 #include <stdbool.h>

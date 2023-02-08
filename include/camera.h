@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #define SCREEN_WIDTH 160
 #define SCREEN_HEIGHT 144

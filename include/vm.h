@@ -1,7 +1,7 @@
 #ifndef _VM_H_INCLUDE
 #define _VM_H_INCLUDE
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 #include <gbdk/far_ptr.h>
 
 #ifdef VM_DEBUG_OUTPUT

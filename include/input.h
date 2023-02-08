@@ -1,7 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #ifdef SGB
     #define MAX_JOYPADS 2

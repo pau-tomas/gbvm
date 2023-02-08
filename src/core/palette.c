@@ -1,8 +1,7 @@
 #pragma bank 255
 
-#ifdef SGB
-    #include <gb/sgb.h>
-#endif
+#include <gbdk/platform.h>
+
 #include <string.h>
 
 #include "compat.h"

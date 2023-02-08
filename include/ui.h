@@ -1,7 +1,7 @@
 #ifndef UI_H
 #define UI_H
 
-#include <gb/gb.h>
+#include <gbdk/platform.h>
 
 #include "gbs_types.h"
 #include "bankdata.h"
