@@ -146,15 +146,12 @@ void ApplyPaletteChangeColor(UBYTE index) {
 }
 #endif
 
-UBYTE DMGFadeToWhiteStep(UBYTE pal, UBYTE step) OLDCALL NAKED {
+UBYTE DMGFadeToWhiteStep(UBYTE step, UBYTE pal) NAKED {
     pal; step;
-#if defined(__SDCC) && defined(NINTENDO)
 __asm
-        ldhl    SP, #3
-        ld      A, (HL-)
-        ld      E, (HL)
+#if defined(__SDCC) && defined(NINTENDO)
         or      A
-        ret     Z
+        jr      Z, 0$
 
         ld      D, A
 1$:
@@ -180,20 +177,19 @@ __asm
 
         dec     D
         jr      NZ, 1$
+0$:
+        ld      A, E
+#endif
         ret
 __endasm;
-#endif
 }
 
-UBYTE DMGFadeToBlackStep(UBYTE pal, UBYTE step) OLDCALL NAKED {
+UBYTE DMGFadeToBlackStep(UBYTE step, UBYTE pal) NAKED {
     pal; step;
-#if defined(__SDCC) && defined(NINTENDO)
 __asm
-        ldhl    SP, #3
-        ld      A, (HL-)
-        ld      E, (HL)
+#if defined(__SDCC) && defined(NINTENDO)
         or      A
-        ret     Z
+        jr      Z, 0$
 
         ld      D, A
 1$:
@@ -220,21 +216,23 @@ __asm
 
         dec     D
         jr      NZ, 1$
+0$:
+        ld      A, E
+#endif
         ret
 __endasm;
-#endif
 }
 
 void ApplyPaletteChangeDMG(UBYTE index) {
     if (index > 4) index = 4;
     if (!fade_style) {
-        BGP_REG = DMGFadeToWhiteStep(DMG_palette[0], index);
-        OBP0_REG = DMGFadeToWhiteStep(DMG_palette[1], index);
-        OBP1_REG = DMGFadeToWhiteStep(DMG_palette[2], index);
+        BGP_REG = DMGFadeToWhiteStep(index, DMG_palette[0]);
+        OBP0_REG = DMGFadeToWhiteStep(index, DMG_palette[1]);
+        OBP1_REG = DMGFadeToWhiteStep(index, DMG_palette[2]);
     } else {
-        BGP_REG = DMGFadeToBlackStep(DMG_palette[0], index);
-        OBP0_REG = DMGFadeToBlackStep(DMG_palette[1], index);
-        OBP1_REG = DMGFadeToBlackStep(DMG_palette[2], index);
+        BGP_REG = DMGFadeToBlackStep(index, DMG_palette[0]);
+        OBP0_REG = DMGFadeToBlackStep(index, DMG_palette[1]);
+        OBP1_REG = DMGFadeToBlackStep(index, DMG_palette[2]);
     }
 }
 

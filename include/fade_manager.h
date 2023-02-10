@@ -46,14 +46,14 @@ void fade_applypalettechange(void) BANKED;
 
 /**
  * Change current fade speed
- * 
+ *
  * @param speed new fade speed
  */
 void fade_setspeed(UBYTE speed) BANKED;
 
 /**
  * Check if fade is currently running
- * 
+ *
  * @return TRUE if fade is currently running
  */
 inline UBYTE fade_isfading(void) {
