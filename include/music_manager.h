@@ -17,8 +17,9 @@ inline void driver_init(uint8_t bank, const TRACK_T * track, uint8_t loop) {
     gbt_loop(loop);
 }
 
-inline void driver_set_mute_mask(uint8_t mute_mask) {
+inline uint8_t driver_set_mute_mask(uint8_t mute_mask) {
     gbt_enable_channels(~mute_mask & 0x0f);
+    return mute_mask;
 }
 
 inline void music_setpos(UBYTE pattern, UBYTE row) {
@@ -39,8 +40,8 @@ inline void driver_init(uint8_t bank, const TRACK_T * track, uint8_t loop) {
     hUGE_init(track);
 }
 
-inline void driver_set_mute_mask(uint8_t mute_mask) {
-    hUGE_mute_mask = mute_mask;
+inline uint8_t driver_set_mute_mask(uint8_t mute_mask) {
+    return (hUGE_mute_mask = mute_mask);
 }
 
 inline void music_setpos(UBYTE pattern, UBYTE row) {

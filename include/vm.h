@@ -47,7 +47,7 @@ typedef UBYTE (*SCRIPT_UPDATE_FN)(void * THIS, UBYTE start, UWORD * stack_frame)
 typedef struct SCRIPT_CTX {
     const UBYTE * PC;
     UBYTE bank;
-    // linked list of contexts for cooperative multitasking
+    // linked list of contexts for the multitasking
     struct SCRIPT_CTX * next;
     // update function
     void * update_fn;

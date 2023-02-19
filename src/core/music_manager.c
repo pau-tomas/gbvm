@@ -89,7 +89,7 @@ void music_play_isr(void) NONBANKED {
             #ifdef FORCE_CUT_SFX
             music_sound_cut_mask(music_mute_mask);
             #endif
-            music_mute_mask = music_global_mute_mask;
+            music_mute_mask = MUTE_MASK_NONE;
             music_sfx_priority = MUSIC_SFX_PRIORITY_MINIMAL;
             sfx_play_bank = SFX_STOP_BANK;
         }

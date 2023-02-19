@@ -9,7 +9,7 @@ BANKREF(VM_MUSIC)
 
 void vm_music_play(SCRIPT_CTX * THIS, UBYTE track_bank, const TRACK_T * track) OLDCALL BANKED {
     THIS;
-    music_global_mute_mask = 0;
+    music_global_mute_mask = MUTE_MASK_NONE;
     music_load(track_bank, track);
 }
 
@@ -19,10 +19,7 @@ void vm_music_stop(void) OLDCALL BANKED {
 
 void vm_music_mute(SCRIPT_CTX * THIS, UBYTE channels) OLDCALL BANKED {
     THIS;
-    // TODO: mute channels
-    music_global_mute_mask = channels;
-    driver_set_mute_mask(channels);
-    music_sound_cut_mask(channels);
+    music_sound_cut_mask(driver_set_mute_mask(music_global_mute_mask = channels));
 }
 
 void vm_music_routine(SCRIPT_CTX * THIS, UBYTE routine, UBYTE bank, UBYTE * pc) OLDCALL BANKED {
