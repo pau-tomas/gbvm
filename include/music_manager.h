@@ -61,6 +61,7 @@ extern script_event_t music_events[4];
 
 extern volatile uint8_t music_current_track_bank;
 extern uint8_t music_mute_mask;
+extern uint8_t music_effective_mute;
 extern const TRACK_T * music_next_track;
 extern const TRACK_T * music_current_track;
 extern uint8_t music_global_mute_mask;
@@ -81,8 +82,8 @@ inline void music_sound_cut(void) {
 #define MUSIC_CH_3 SFX_CH_3
 #define MUSIC_CH_4 SFX_CH_4
 
-inline void music_sound_cut_mask(uint8_t mask) {
-    sfx_sound_cut_mask(mask);
+inline uint8_t music_sound_cut_mask(uint8_t mask) {
+    return sfx_sound_cut_mask(mask);
 }
 
 void music_play_isr(void);

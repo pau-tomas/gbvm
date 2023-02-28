@@ -17,7 +17,8 @@ uint8_t routine_queue_head, routine_queue_tail;
 script_event_t music_events[4];
 
 volatile uint8_t music_current_track_bank;
-uint8_t music_mute_flag, music_mute_mask;
+uint8_t music_mute_mask;
+uint8_t music_effective_mute;
 const TRACK_T * music_next_track;
 const TRACK_T * music_current_track;
 uint8_t music_play_isr_counter;
@@ -36,10 +37,9 @@ void hUGETrackerRoutine(unsigned char tick, unsigned int param) NONBANKED {
 
 void music_init_driver(void) BANKED {
     music_init();
-    music_mute_flag = FALSE, music_mute_mask = MUTE_MASK_NONE;
     music_play_isr_counter = 0;
     music_play_isr_pause = FALSE;
-    music_global_mute_mask = MUTE_MASK_NONE;
+    driver_set_mute_mask(music_effective_mute = music_global_mute_mask = music_mute_mask = MUTE_MASK_NONE);
     music_sfx_priority = MUSIC_SFX_PRIORITY_MINIMAL;
 }
 
@@ -83,9 +83,12 @@ uint8_t music_events_poll(void) BANKED {
 
 void music_play_isr(void) NONBANKED {
     if (sfx_play_bank != SFX_STOP_BANK) {
-        if (!music_mute_flag) driver_set_mute_mask(music_global_mute_mask | music_mute_mask), music_mute_flag = TRUE;
+        if (music_effective_mute != (music_global_mute_mask | music_mute_mask)) {
+            music_effective_mute = driver_set_mute_mask(music_global_mute_mask | music_mute_mask);
+        }
         if (!sfx_play_isr()) {
-            driver_set_mute_mask(music_global_mute_mask), driver_reset_wave(), music_mute_flag = FALSE;
+            music_effective_mute = driver_set_mute_mask(music_global_mute_mask);
+            driver_reset_wave();
             #ifdef FORCE_CUT_SFX
             music_sound_cut_mask(music_mute_mask);
             #endif
