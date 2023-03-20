@@ -11,6 +11,6 @@ void vm_sgb_transfer(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCAL
     UBYTE _save = CURRENT_BANK;
     SWITCH_ROM(THIS->bank);
     sgb_transfer((void *)THIS->PC);
-    THIS->PC += (*THIS->PC & 0x03) << 4;
+    THIS->PC += (*THIS->PC & 0x07) << 4;
     SWITCH_ROM(_save);
 }
