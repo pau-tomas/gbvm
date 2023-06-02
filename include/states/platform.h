@@ -3,8 +3,8 @@
 
 #include <gbdk/platform.h>
 
-void platform_init(void);
-void platform_update(void);
+void platform_init(void) BANKED;
+void platform_update(void) BANKED;
 
 extern WORD pl_vel_x;
 extern WORD pl_vel_y;

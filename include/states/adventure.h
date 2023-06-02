@@ -3,7 +3,7 @@
 
 #include <gbdk/platform.h>
 
-void adventure_init(void);
-void adventure_update(void);
+void adventure_init(void) BANKED;
+void adventure_update(void) BANKED;
 
 #endif

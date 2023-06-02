@@ -3,7 +3,7 @@
 
 #include <gbdk/platform.h>
 
-void pointnclick_init(void);
-void pointnclick_update(void);
+void pointnclick_init(void) BANKED;
+void pointnclick_update(void) BANKED;
 
 #endif

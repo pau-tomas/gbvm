@@ -3,7 +3,7 @@
 
 #include <gbdk/platform.h>
 
-void shmup_init(void);
-void shmup_update(void);
+void shmup_init(void) BANKED;
+void shmup_update(void) BANKED;
 
 #endif
