@@ -508,8 +508,8 @@ __endasm;
 }
 // memset for VM variables
 void vm_memset(SCRIPT_CTX * THIS, INT16 idx, INT16 value, INT16 count) OLDCALL BANKED {
-    memset(VM_REF_TO_PTR(idx), value, count << 1);
-}
+    for (INT16 i = 0, *v = VM_REF_TO_PTR(idx); i != count; i++) *v++ = value;
+ }
 // memcpy for VM variables
 void vm_memcpy(SCRIPT_CTX * THIS, INT16 idxA, INT16 idxB, INT16 count) OLDCALL BANKED {
     memcpy(VM_REF_TO_PTR(idxA), VM_REF_TO_PTR(idxB), count << 1);
