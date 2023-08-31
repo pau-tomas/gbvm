@@ -325,6 +325,8 @@ void vm_rpn(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCALL NONBANK
                 case '&': *A = *A  &  *B; break;
                 case '|': *A = *A  |  *B; break;
                 case '^': *A = *A  ^  *B; break;
+                case 'L': *A = *(uint16_t *)A << (*B & 0x0f); break;
+                case 'R': *A = *(uint16_t *)A >> (*B & 0x0f); break;
                 // funcs
                 case 'm': *A = (*A < *B) ? *A : *B; break;  // min
                 case 'M': *A = (*A > *B) ? *A : *B; break;  // max
