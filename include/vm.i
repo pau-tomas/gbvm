@@ -830,10 +830,13 @@ OP_VM_ACTOR_SET_ANIM_SET        = 0x84
 ; * `\002\x` Sets the text font
 ; * `\003\x\y` Sets the position for the next character
 ; * `\004\x\y` Sets the position for the next character relative to the last character
-; * `\005\` TBD
+; * `\005` Escape the next character
 ; * `\006\mask` Wait for input to continue to the next character.
 ; * `\007\n` Inverts the colors of the following characters.
+; * `\010\x` Switch left to right / right to left printing
+; * `\011` Zero width symbol
 ; * `\n` Next line
+; * `\013\x` Set UI palette number to x
 ; * `\r` Scroll text one line up
 OP_VM_LOAD_TEXT         = 0x40
 .macro VM_LOAD_TEXT NARGS
