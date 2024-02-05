@@ -51,7 +51,7 @@ actor_t * actors_active_head;
 actor_t * actors_active_tail;
 actor_t * actors_inactive_head;
 
-UINT8 screen_x, screen_y;
+UWORD screen_x, screen_y;
 actor_t * invalid;
 UBYTE player_moving;
 UBYTE player_iframes;
@@ -143,7 +143,7 @@ void actors_update(void) NONBANKED {
                 continue;
             }
         }
-        if (NO_OVERLAY_PRIORITY && (!show_actors_on_overlay) && (WX_REG != MINWNDPOSX) && (WX_REG < (UINT8)screen_x + 8) && (WY_REG < (UINT8)(screen_y) - 8)) {
+        if (NO_OVERLAY_PRIORITY && (!show_actors_on_overlay) && (WX_REG != MINWNDPOSX) && (WX_REG < screen_x + 8) && (WY_REG < (screen_y - 8))) {
             // Hide if under window (don't deactivate)
             actor = actor->prev;
             continue;

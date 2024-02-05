@@ -82,7 +82,7 @@ void projectiles_update(void) NONBANKED {
             }
         }
 
-        UINT8 screen_x = (projectile->pos.x >> 4) - draw_scroll_x + 8,
+        UWORD screen_x = (projectile->pos.x >> 4) - draw_scroll_x + 8,
               screen_y = (projectile->pos.y >> 4) - draw_scroll_y + 8;
 
         if (screen_x > 160 || screen_y > 144) {
