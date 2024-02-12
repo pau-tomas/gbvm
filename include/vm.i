@@ -244,6 +244,8 @@ OP_VM_RPN          = 0x15
 .B_OR              = '|'
 .B_XOR             = '^'
 .B_NOT             = '~'
+.SHL               = 'L'
+.SHR               = 'R'
 .ABS               = '@'
 .MIN               = 'm'
 .MAX               = 'M'
@@ -279,6 +281,10 @@ OP_VM_RPN          = 0x15
 .endm
 .macro .R_REF_SET ARG0
         .db -5
+        .dw #ARG0
+.endm
+.macro .R_REF_SET_IND ARG0
+        .db -6
         .dw #ARG0
 .endm
 .macro .R_OPERATOR ARG0

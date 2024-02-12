@@ -263,11 +263,18 @@ void vm_rpn(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCALL NONBANK
     UBYTE _save = CURRENT_BANK;         // we must preserve current bank,
     SWITCH_ROM(THIS->bank);             // then switch to bytecode bank
 
-    ARGS = THIS->stack_ptr;
+    ARGS = THIS->stack_ptr;             // fix position of the stack to simplify parameter addressing
     while (TRUE) {
         INT8 op = *(THIS->PC++);
         if (op < 0) {
             switch (op) {
+                case -6:
+                // set by indirect reference
+                    idx = *((INT16 *)(THIS->PC));
+                    idx = *((idx < 0) ? ARGS + idx : script_memory + idx);
+                    *((idx < 0) ? ARGS + idx : script_memory + idx) = *(--(THIS->stack_ptr));
+                    THIS->PC += 2;
+                    break;
                 case -5:
                 // set by reference
                     idx = *((INT16 *)(THIS->PC));
