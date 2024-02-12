@@ -287,6 +287,19 @@ OP_VM_RPN          = 0x15
         .db -6
         .dw #ARG0
 .endm
+.MEM_I8            = 'i'
+.MEM_U8            = 'u'
+.MEM_I16           = 'I'
+.macro .R_REF_MEM TYP, ADDR
+        .db -7
+        .db #TYP
+        .dw #ADDR
+.endm
+.macro .R_REF_MEM_SET TYP, ADDR
+        .db -8
+        .db #TYP
+        .dw #ADDR
+.endm
 .macro .R_OPERATOR ARG0
         .db ARG0
 .endm
