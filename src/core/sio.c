@@ -21,7 +21,7 @@ UBYTE link_packet_snd_len;
 const UBYTE * link_packet_snd_ptr;
 UBYTE link_packet_sent;
 
-void on_SIO_receive(UBYTE data) NONBANKED {
+void on_SIO_receive(UBYTE data) OLDCALL NONBANKED {
     if (link_packet_len) {
         link_packet_len--;
         *link_packet_ptr++ = data;
@@ -38,7 +38,7 @@ void on_SIO_receive(UBYTE data) NONBANKED {
     }
 }
 
-UBYTE SIO_update(void) NONBANKED {
+UBYTE SIO_update(void) OLDCALL NONBANKED {
     if (SIO_status == IO_ERROR) {
         link_operation_mode = LINK_MODE_NONE;
         link_packet_len = link_packet_snd_len = 0;
