@@ -96,7 +96,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_overlay_show,                   BANK(VM_UI),            4}, // 0x46
     {vm_overlay_clear,                  BANK(VM_UI),            6}, // 0x47
     {vm_choice,                         BANK(VM_UI),            4}, // 0x48
-    {vm_load_tiles,                     BANK(VM_GAMEBOY),       5}, // 0x49
+    {0, 0, 0},
     {0, 0, 0},
     {vm_set_font,                       BANK(VM_UI),            1}, // 0x4B
     {vm_overlay_set_submap_ex,          BANK(VM_UI),            2}, // 0x4C

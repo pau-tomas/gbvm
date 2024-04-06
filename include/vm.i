@@ -1093,15 +1093,6 @@ OP_VM_OVERLAY_SET_SUBMAP = 0x4F
 ; --- GAMEBOY ------------------------------------------
 ; @section Game Boy
 
-OP_VM_LOAD_TILES        = 0x49
-.FRAME_TILE_ID          = 0xC0
-.FRAME_LENGTH           = 9
-.CURSOR_TILE_ID         = 0xCB
-.CURSOR_LENGTH          = 1
-.macro VM_LOAD_TILES IDX, LEN, BANK, ADDR
-        .db OP_VM_LOAD_TILES, #>ADDR, #<ADDR, #<BANK, #<LEN, #>IDX, #<IDX
-.endm
-
 ; Loads a new tileset into the background VRAM tiles starting at a given tile id (`IDX`).
 OP_VM_LOAD_TILESET      = 0x50
 .macro VM_LOAD_TILESET IDX, BANK, BKG
@@ -1215,6 +1206,10 @@ OP_VM_GET_TILE_XY       = 0x5A
 .endm
 
 OP_VM_REPLACE_TILE      = 0x5B
+.FRAME_TILE_ID          = 0xC0
+.FRAME_LENGTH           = 9
+.CURSOR_TILE_ID         = 0xCB
+.CURSOR_LENGTH          = 1
 .macro VM_REPLACE_TILE TARGET_TILE_IDX, TILEDATA_BANK, TILEDATA, START_IDX, LEN
         .db OP_VM_REPLACE_TILE, #<LEN, #>START_IDX, #<START_IDX, #>TILEDATA, #<TILEDATA, #<TILEDATA_BANK, #>TARGET_TILE_IDX, #<TARGET_TILE_IDX
 .endm
