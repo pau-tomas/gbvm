@@ -1098,8 +1098,8 @@ OP_VM_LOAD_TILES        = 0x49
 .FRAME_LENGTH           = 9
 .CURSOR_TILE_ID         = 0xCB
 .CURSOR_LENGTH          = 1
-.macro VM_LOAD_TILES ID, LEN, BANK, ADDR
-        .db OP_VM_LOAD_TILES, #>ADDR, #<ADDR, #<BANK, #<LEN, #<ID
+.macro VM_LOAD_TILES IDX, LEN, BANK, ADDR
+        .db OP_VM_LOAD_TILES, #>ADDR, #<ADDR, #<BANK, #<LEN, #>IDX, #<IDX
 .endm
 
 ; Loads a new tileset into the background VRAM tiles starting at a given tile id (`IDX`).

@@ -185,9 +185,17 @@ void vm_rumble(SCRIPT_CTX * THIS, UBYTE enable) OLDCALL BANKED {
     if (enable) SWITCH_RAM_BANK(RUMBLE_ENABLE, RUMBLE_ENABLE); else  SWITCH_RAM_BANK(0, RUMBLE_ENABLE);
 }
 
-void vm_load_tiles(SCRIPT_CTX * THIS, UBYTE id, UBYTE len, UBYTE bank, UBYTE * offset) OLDCALL BANKED {
-    THIS;
-    SetBankedBkgData(id, len, offset, bank);
+void vm_load_tiles(SCRIPT_CTX * THIS, INT16 idx, UBYTE len, UBYTE bank, UBYTE * offset) OLDCALL BANKED {
+    INT16 base_tile = *(INT16 *)(VM_REF_TO_PTR(idx));
+#ifdef CGB
+    if (_is_CGB) {
+        VBK_REG =  (base_tile & 0x0800) ? 1 : 0;
+#endif
+        SetBankedBkgData((UBYTE)base_tile, len, offset, bank);
+#ifdef CGB
+        VBK_REG = 0;
+    }
+#endif
 }
 
 void vm_load_tileset(SCRIPT_CTX * THIS, INT16 idx, UBYTE bank, const background_t * background) OLDCALL BANKED {
