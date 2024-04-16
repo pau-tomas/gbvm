@@ -363,6 +363,7 @@ void vm_rpn(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCALL NONBANK
                 case '@': *B = abs(*B); continue;
                 case '~': *B = ~(*B);   continue;
                 case 'Q': *B = isqrt((UWORD)*B); continue;
+                case 'r': *B = randw() % (UWORD)*B; continue;
                 // terminator
                 default:
                     SWITCH_ROM(_save);             // restore bank
