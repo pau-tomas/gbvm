@@ -54,7 +54,7 @@ const SCRIPT_CMD script_cmds[] = {
     {0, 0, 0},
     {0, 0, 0},
     {vm_init_rng,                       BANK(VM_MAIN),          2}, // 0x23
-    {vm_rand,                           BANK(VM_MAIN),          8}, // 0x24
+    {vm_rand,                           BANK(VM_MAIN),          6}, // 0x24
     {vm_lock,                           BANK(VM_MAIN),          0}, // 0x25
     {vm_unlock,                         BANK(VM_MAIN),          0}, // 0x26
     {vm_raise,                          BANK(VM_MAIN),          2}, // 0x27

@@ -407,13 +407,10 @@ void vm_init_rng(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
 }
 
 // sets value on stack indexed by idx to random value from given range 0 <= n < limit, mask is calculated by macro
-void vm_rand(SCRIPT_CTX * THIS, INT16 idx, UINT16 min, UINT16 limit, UINT16 mask) OLDCALL BANKED {
-    UINT16 value = randw() & mask;
-    if (value >= limit) value -= limit;
-    if (value >= limit) value -= limit;
+void vm_rand(SCRIPT_CTX * THIS, INT16 idx, UINT16 min, UINT16 limit) OLDCALL BANKED {
     UINT16 * A;
     if (idx < 0) A = THIS->stack_ptr + idx; else A = script_memory + idx;
-    *A = value + min;
+    *A = (randw() % limit) + min;
 }
 
 // sets lock flag for current context
