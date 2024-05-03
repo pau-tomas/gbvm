@@ -1101,24 +1101,35 @@ OP_VM_LOAD_TILESET      = 0x50
 OP_VM_SET_SPRITE_VISIBLE = 0x51
 .SPRITES_SHOW           = 0
 .SPRITES_HIDE           = 1
+;-- Sets visibility of sprite layer. Has priority over VM_ACTOR_SET_HIDDEN.
+; @param MODE Mode
+;   `.SPRITES_SHOW` - Show sprite layer
+;   `.SPRITES_HIDE` - Hide sprite layer
 .macro VM_SET_SPRITE_VISIBLE MODE
         .db OP_VM_SET_SPRITE_VISIBLE, #<MODE
 .endm
 
+;-- Macro for SET_SPRITES_VISIBLE .SPRITES_SHOW.
 .macro VM_SHOW_SPRITES
         VM_SET_SPRITE_VISIBLE .SPRITES_SHOW
 .endm
+;-- Macro for SET_SPRITES_VISIBLE .SPRITES_HIDE.
 .macro VM_HIDE_SPRITES
         VM_SET_SPRITE_VISIBLE .SPRITES_HIDE
 .endm
 
 OP_VM_INPUT_WAIT        = 0x52
+;-- Waits to receive an input.
+; @param MASK Input mask
 .macro VM_INPUT_WAIT MASK
         .db OP_VM_INPUT_WAIT, #<MASK
 .endm
 
 OP_VM_INPUT_ATTACH      = 0x53
 .OVERRIDE_DEFAULT       = 0x80
+;-- Attaches a script to an input.
+; @param MASK Input mask
+; @param SLOT Slot containing script to attach
 .macro VM_INPUT_ATTACH MASK, SLOT
         .db OP_VM_INPUT_ATTACH, #<SLOT, #<MASK
 .endm
@@ -1128,16 +1139,33 @@ OP_VM_INPUT_GET         = 0x54
 .JOY1                   = 1
 .JOY2                   = 2
 .JOY3                   = 3
+;-- Gets input from joypad. Up to 4 joypads are supported when using SGB.
+; @param IDX Target variable that receives result
+; @param JOYID Joypad to get input from
+;   `.JOY0` - Joypad 0
+;   `.JOY1` - Joypad 1
+;   `.JOY2` - Joypad 2
+;   `.JOY3` - Joypad 3
 .macro VM_INPUT_GET IDX, JOYID
         .db OP_VM_INPUT_GET, #<JOYID, #>IDX, #<IDX
 .endm
 
 OP_VM_CONTEXT_PREPARE   = 0x55
+;-- Assigns a script to a slot for VM_INPUT_ATTACH.
+; @param SLOT Slot to assign to
+; @param BANK Bank number of the script
+; @param ADDR Address of the script
 .macro VM_CONTEXT_PREPARE SLOT, BANK, ADDR
         .db OP_VM_CONTEXT_PREPARE, #>ADDR, #<ADDR, #<BANK, #<SLOT
 .endm
 
 OP_VM_OVERLAY_SET_MAP   = 0x56
+;-- Copies a tilemap to the overlay at any position with VRAM index IDX as tile 0 of the map.
+; @param IDX VRAM index to be treated as tile 0 of the map
+; @param X_IDX X position on the overlay
+; @param Y_IDX Y position on the overlay
+; @param BANK Bank number of tilemap
+; @param BKG Tilemap
 .macro VM_OVERLAY_SET_MAP IDX, X_IDX, Y_IDX, BANK, BKG
         .db OP_VM_OVERLAY_SET_MAP, #>BKG, #<BKG, #<BANK, #>Y_IDX, #<Y_IDX, #>X_IDX, #<X_IDX, #>IDX, #<IDX
 .endm
@@ -1200,6 +1228,10 @@ OP_VM_TIMER_RESET         = 0x73
 ; @section Game Boy
 
 OP_VM_GET_TILE_XY       = 0x5A
+;-- Gets tile ID of background tile at position.
+; @param TILE_IDX Target variable that receives the tile ID
+; @param X_IDX X position of background tile
+; @param Y_IDX Y position of background tile
 .macro VM_GET_TILE_XY TILE_IDX, X_IDX, Y_IDX
         .db OP_VM_GET_TILE_XY, #>Y_IDX, #<Y_IDX, #>X_IDX, #<X_IDX, #>TILE_IDX, #<TILE_IDX
 .endm
@@ -1209,6 +1241,12 @@ OP_VM_REPLACE_TILE      = 0x5B
 .FRAME_LENGTH           = 9
 .CURSOR_TILE_ID         = 0xCB
 .CURSOR_LENGTH          = 1
+;-- Replaces one or more background tiles with background tiles from a tileset.
+; @param TARGET_TILE_IDX Tile ID of starting old tile
+; @param TILEDATA_BANK Bank number of tileset containing new tiles
+; @param TILEDATA Tileset containing new tiles
+; @param START_IDX Tile ID of starting new tile
+; @param LEN Number of tiles to replace
 .macro VM_REPLACE_TILE TARGET_TILE_IDX, TILEDATA_BANK, TILEDATA, START_IDX, LEN
         .db OP_VM_REPLACE_TILE, #<LEN, #>START_IDX, #<START_IDX, #>TILEDATA, #<TILEDATA, #<TILEDATA_BANK, #>TARGET_TILE_IDX, #<TARGET_TILE_IDX
 .endm
@@ -1221,16 +1259,28 @@ OP_VM_POLL              = 0x5C
 OP_VM_SET_SPRITE_MODE   = 0x5D
 .MODE_8X8               = 0
 .MODE_8X16              = 1
+;-- Sets sprite mode.
+; @param MODE Mode to set
+;   `.MODE_8X8` - 8x8 sprites
+;   `.MODE_8X16` - 8x16 sprites
 .macro VM_SET_SPRITE_MODE MODE
         .db OP_VM_SET_SPRITE_MODE, #<MODE
 .endm
 
 OP_VM_REPLACE_TILE_XY   = 0x5E
+;-- Replaces a single background tile at a position with a background tile from a tileset.
+; @param X X position of old background tile
+; @param Y Y position of old background tile
+; @param TILEDATA_BANK Bank number of tileset containing new tile
+; @param TILEDATA Tileset containing new tile
+; @param START_IDX Tile ID of new tile
 .macro VM_REPLACE_TILE_XY X, Y, TILEDATA_BANK, TILEDATA, START_IDX
         .db OP_VM_REPLACE_TILE_XY, #>START_IDX, #<START_IDX, #>TILEDATA, #<TILEDATA, #<TILEDATA_BANK, #<Y, #<X
 .endm
 
 OP_VM_INPUT_DETACH      = 0x5F
+;-- Removes an attached script from an input.
+; @param MASK Input mask
 .macro VM_INPUT_DETACH MASK
         .db OP_VM_INPUT_DETACH, #<MASK
 .endm
