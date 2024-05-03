@@ -1565,11 +1565,18 @@ OP_VM_RUMBLE             = 0x7F
 OP_VM_PROJECTILE_LAUNCH  = 0x80
 .PROJECTILE_ANIM_ONCE    = 0x01
 .PROJECTILE_STRONG       = 0x02
+;-- Spawns an instance of a projectile loaded in a slot.
+; @param TYPE Slot number of projectile to launch
+; @param IDX Points to start of struct on stack that determines launch parameters
 .macro VM_PROJECTILE_LAUNCH TYPE, IDX
         .db OP_VM_PROJECTILE_LAUNCH, #>IDX, #<IDX, #<TYPE
 .endm
 
 OP_VM_PROJECTILE_LOAD_TYPE = 0x81
+;-- Loads projectile into a slot for VM_PROJECTILE_LAUNCH.
+; @param TYPE Slot number to load into
+; @param BANK Bank number of projectile data to load
+; @param ADDR Projectile data to load
 .macro VM_PROJECTILE_LOAD_TYPE TYPE, BANK, ADDR
         .db OP_VM_PROJECTILE_LOAD_TYPE, #>ADDR, #<ADDR, #<BANK, #<TYPE
 .endm
