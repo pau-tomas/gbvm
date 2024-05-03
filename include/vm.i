@@ -1178,10 +1178,20 @@ OP_VM_FADE              = 0x57
 .FADE_MODAL             = 0x01
 .FADE_OUT               = 0x00
 .FADE_IN                = 0x02
+;-- Fades screen in or out.
+; @param FLAGS
+;   `.FADE_NONMODAL` - Nonmodal fade
+;   `.FADE_MODAL` - Modal fade
+;   `.FADE_OUT` - Fade out
+;   `.FADE_IN` - Fade in
 .macro VM_FADE FLAGS
         .db OP_VM_FADE, #<FLAGS
 .endm
 
+;-- Fades screen in. Macro for VM_FADE ^/(.FADE_IN)/ or VM_FADE ^/(.FADE_IN | .FADE_MODAL)/.
+; @param IS_MODAL
+;   `0` - Nonmodal fade
+;   `1` - Modal fade
 .macro VM_FADE_IN IS_MODAL
         .if IS_MODAL
                 VM_FADE ^/(.FADE_IN | .FADE_MODAL)/
@@ -1189,6 +1199,10 @@ OP_VM_FADE              = 0x57
                 VM_FADE ^/(.FADE_IN)/
         .endif
 .endm
+;-- Fades screen out. Macro for VM_FADE ^/(.FADE_OUT)/ or VM_FADE ^/(.FADE_OUT | .FADE_MODAL)/.
+; @param IS_MODAL
+;   `0` - Nonmodal fade
+;   `1` - Modal fade
 .macro VM_FADE_OUT IS_MODAL
         .if IS_MODAL
                 VM_FADE ^/(.FADE_OUT | .FADE_MODAL)/
