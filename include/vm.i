@@ -1578,11 +1578,19 @@ OP_VM_PROJECTILE_LOAD_TYPE = 0x81
 ; @section Math
 
 OP_VM_SIN_SCALE         = 0x89
+;-- Returns result of sine function.
+; @param IDX Sine scale (multiplies result) and also target variable that receives result
+; @param IDX_ANGLE Angle to pass into function. This value starts at 0 (pointing up) and increments 64 every 90 degrees clockwise
+; @param SCALE Accuracy between 0 and 7
 .macro VM_SIN_SCALE IDX, IDX_ANGLE, SCALE
         .db OP_VM_SIN_SCALE, #<SCALE, #>IDX_ANGLE, #<IDX_ANGLE, #>IDX, #<IDX
 .endm
 
 OP_VM_COS_SCALE         = 0x8A
+;-- Returns result of cosine function.
+; @param IDX Cosine scale (multiplies result) and also target variable that receives result
+; @param IDX_ANGLE Angle to pass into function. This value starts at 0 (pointing up) and increments 64 every 90 degrees clockwise
+; @param SCALE Accuracy between 0 and 7
 .macro VM_COS_SCALE IDX, IDX_ANGLE, SCALE
         .db OP_VM_COS_SCALE, #<SCALE, #>IDX_ANGLE, #<IDX_ANGLE, #>IDX, #<IDX
 .endm
