@@ -43,6 +43,7 @@ typedef struct SCRIPT_CMD {
 typedef UBYTE (*SCRIPT_UPDATE_FN)(void * THIS, UBYTE start, UWORD * stack_frame) OLDCALL BANKED;
 
 #define VM_REF_TO_PTR(idx) (void *)(((idx) < 0) ? THIS->stack_ptr + (idx) : script_memory + (idx))
+#dfeine VM_GLOBAL(idx) script_memory[(idx)]
 
 typedef struct SCRIPT_CTX {
     const UBYTE * PC;
