@@ -1419,11 +1419,20 @@ OP_VM_SIO_SET_MODE      = 0x6C
 .SIO_MODE_NONE          = 0
 .SIO_MODE_MASTER        = 1
 .SIO_MODE_SLAVE         = 2
+;-- Sets SIO mode.
+; @param MODE Mode:
+;   `.SIO_MODE_NONE` - Close SIO session.
+;   `.SIO_MODE_MASTER` - Host SIO session.
+;   `.SIO_MODE_SLAVE` - Join SIO session.
 .macro VM_SIO_SET_MODE MODE
         .db OP_VM_SIO_SET_MODE, #<MODE
 .endm
 
 OP_VM_SIO_EXCHANGE      = 0x6D
+;-- Exchanges data via SIO.
+; @param SOUR Source variable to send data from.
+; @param DEST Destination variable to receive data to.
+; @param SIZE Packet size.
 .macro VM_SIO_EXCHANGE SOUR, DEST, SIZE
         .db OP_VM_SIO_EXCHANGE, #<(SIZE << 1), #>DEST, #<DEST, #>SOUR, #<SOUR
 .endm
@@ -1530,6 +1539,12 @@ OP_VM_LOAD_PALETTE       = 0x7C
 .endm
 
 .macro VM_LOAD_PALETTE MASK, OPTIONS
+;-- Loads sprite or background palettes.
+; @param MASK Bit mask of palettes to be set.
+; @param OPTIONS Options:
+;   `.PALETTE_COMMIT` - Apply immediately, even if screen is faded out.
+;   `.PALETTE_BKG` - Set background palettes.
+;   `.PALETTE_SPRITE` - Set sprite palettes.
         .db OP_VM_LOAD_PALETTE, #<OPTIONS, #<MASK
 .endm
 
