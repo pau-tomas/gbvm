@@ -1160,8 +1160,8 @@ OP_VM_CONTEXT_PREPARE   = 0x55
 .endm
 
 OP_VM_OVERLAY_SET_MAP   = 0x56
-;-- Copies a tilemap to the overlay at any position with VRAM index IDX as tile 0 of the map.
-; @param IDX VRAM index to be treated as tile 0 of the map
+;-- Copies a tilemap starting at a given tile ID (`IDX`) to the overlay at a position.
+; @param IDX Tile ID where tilemap starts
 ; @param X_IDX X position on the overlay
 ; @param Y_IDX Y position on the overlay
 ; @param BANK Bank number of tilemap
@@ -1565,9 +1565,15 @@ OP_VM_RUMBLE             = 0x7F
 OP_VM_PROJECTILE_LAUNCH  = 0x80
 .PROJECTILE_ANIM_ONCE    = 0x01
 .PROJECTILE_STRONG       = 0x02
-;-- Spawns an instance of a projectile loaded in a slot.
+;-- Launches an instance of a projectile loaded in a slot.
 ; @param TYPE Slot number of projectile to launch
-; @param IDX Points to start of struct on stack that determines launch parameters
+; @param IDX Points to the beginning of the pseudo-structure that contains these members:
+;    `pos.x` - X position to launch from
+;    `pos.y` - Y position to launch from
+;    `angle` - Projectile angle or direction
+;    `flags` - Flags:
+;       `.PROJECTILE_STRONG` - do not destroy projectile on collision
+;       `.PROJECTILE_ANIM_ONCE` - do not loop projectile animation
 .macro VM_PROJECTILE_LAUNCH TYPE, IDX
         .db OP_VM_PROJECTILE_LAUNCH, #>IDX, #<IDX, #<TYPE
 .endm
