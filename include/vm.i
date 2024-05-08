@@ -1266,6 +1266,14 @@ OP_VM_REPLACE_TILE      = 0x5B
 .endm
 
 OP_VM_POLL              = 0x5C
+.POLL_EVENT_INPUT       = 0x01
+.POLL_EVENT_MUSIC       = 0x02
+;-- Waits for an input event, music routine event or both.
+; @param IDX_EVENT Target variable that receives event flag (either 1 for input or 2 for music routine).
+; @param IDX_VALUE Target variable that receives the value of the event.
+; @param MASK Which event(s) to wait for.
+;   `.POLL_EVENT_INPUT` - Wait for input event.
+;   `.POLL_EVENT_MUSIC` - Wait for music routine event.
 .macro VM_POLL IDX_EVENT, IDX_VALUE, MASK
         .db OP_VM_POLL, #<MASK, #>IDX_VALUE, #<IDX_VALUE, #>IDX_EVENT, #<IDX_EVENT
 .endm
