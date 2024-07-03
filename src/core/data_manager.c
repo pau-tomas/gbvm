@@ -210,6 +210,9 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
     // Load background + tiles
     load_background(scn.background.ptr, scn.background.bank);
 
+    load_bkg_palette(scn.palette.ptr, scn.palette.bank);
+    load_sprite_palette(scn.sprite_palette.ptr, scn.sprite_palette.bank);
+
     // Copy parallax settings
     memcpy(&parallax_rows, &scn.parallax_rows, sizeof(parallax_rows));
     if (scn.parallax_rows[0].next_y == 0) {
@@ -252,10 +255,6 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
         memcpy(&PLAYER.script, &scn.script_p_hit1, sizeof(far_ptr_t));
 
         player_moving = FALSE;
-
-        // Load palettes
-        load_bkg_palette(scn.palette.ptr, scn.palette.bank);
-        load_sprite_palette(scn.sprite_palette.ptr, scn.sprite_palette.bank);
 
         // Load actors
         actors_active_head = NULL;
