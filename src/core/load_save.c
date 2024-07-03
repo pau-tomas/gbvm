@@ -9,6 +9,7 @@
 #include "vm.h"
 #include "events.h"
 #include "music_manager.h"
+#include "palette.h"
 #include "data_manager.h"
 #ifdef BATTERYLESS
     #include "bankdata.h"
@@ -44,6 +45,10 @@ const save_point_t save_points[] = {
     SAVEPOINT(music_events),
     // scene
     SAVEPOINT(current_scene), SAVEPOINT(scene_stack_ptr), SAVEPOINT(scene_stack),
+    // Palettes
+    SAVEPOINT(DMG_palette),
+    SAVEPOINT(SprPalette),
+    SAVEPOINT(BkgPalette),
     // actors
     SAVEPOINT(actors),
     SAVEPOINT(actors_active_head), SAVEPOINT(actors_inactive_head), SAVEPOINT(player_moving), SAVEPOINT(player_collision_actor),
