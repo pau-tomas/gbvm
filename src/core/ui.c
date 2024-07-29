@@ -35,7 +35,6 @@ UBYTE win_speed;
 
 UBYTE text_drawn;
 UBYTE current_text_speed;
-UBYTE text_wait;
 
 UBYTE text_options;
 UBYTE text_in_speed;
@@ -279,13 +278,6 @@ inline void ui_set_tile(UBYTE * addr, UBYTE tile, UBYTE bank) {
 UBYTE ui_draw_text_buffer_char(void) BANKED {
     static UBYTE current_font_idx, current_text_bkg_fill, current_vwf_direction, current_text_ff_joypad, current_text_draw_speed;
 
-//    if ((text_ff_joypad) && (INPUT_A_OR_B_PRESSED)) text_ff = TRUE;
-
-    if ((!text_ff) && (text_wait)) {
-        text_wait--;
-        return FALSE;
-    }
-
     if (ui_text_ptr == 0) {
         // set the delay mask
         current_text_speed = ui_time_masks[text_draw_speed];
@@ -372,8 +364,10 @@ UBYTE ui_draw_text_buffer_char(void) BANKED {
                         // mask matches
                         text_ff_joypad = current_text_ff_joypad;
                         INPUT_RESET;
+                        current_text_speed = ui_time_masks[text_draw_speed];
                     } else {
                         // go back to 0x06 control code
+                        current_text_speed = 0;
                         ui_text_ptr--;
                         return FALSE;
                     }
