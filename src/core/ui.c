@@ -364,10 +364,8 @@ UBYTE ui_draw_text_buffer_char(void) BANKED {
                         // mask matches
                         text_ff_joypad = current_text_ff_joypad;
                         INPUT_RESET;
-                        current_text_speed = ui_time_masks[text_draw_speed];
                     } else {
                         // go back to 0x06 control code
-                        current_text_speed = 0;
                         ui_text_ptr--;
                         current_text_speed = 0;
                         return FALSE;
