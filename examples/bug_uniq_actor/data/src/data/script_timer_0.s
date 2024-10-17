@@ -23,10 +23,9 @@ _script_timer_0::
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
             .R_INT16    128
-            .R_INT16    0
             .R_STOP
-        VM_PROJECTILE_LAUNCH    0, .ARG3
-        VM_POP                  4
+        VM_PROJECTILE_LAUNCH    0, .ARG2
+        VM_POP                  3
 
         ; Stop Script
         VM_STOP

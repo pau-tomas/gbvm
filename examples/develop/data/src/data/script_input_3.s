@@ -28,9 +28,8 @@ _script_input_3::
             .R_INT16    0
             .R_STOP
         VM_ACTOR_GET_ANGLE      ^/(.LOCAL_ACTOR - 3)/, .ARG0
-        VM_PUSH_CONST           .PROJECTILE_STRONG
-        VM_PROJECTILE_LAUNCH    0, .ARG3
-        VM_POP                  4
+        VM_PROJECTILE_LAUNCH    0, .ARG2
+        VM_POP                  3
 
         ; Stop Script
         VM_STOP
