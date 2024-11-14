@@ -8,9 +8,18 @@
 import os
 import sys
 import json
+import difflib
+import pprint
+from array import array
 from PIL import Image, ImageChops
 
 from BGB_toolkit import load_noi, read_bgb_snspshot
+
+no_color = os.getenv("NO_COLOR") is not None
+
+red = lambda text: text if no_color else f"\033[31m{text}\033[0m"
+green = lambda text: text if no_color else f"\033[32m{text}\033[0m"
+white = lambda text: text if no_color else f"\033[38;2;255;255;255m{text}\033[0m"
 
 def get_rule_desc(config_file):
     desc = config.get('description', '')
@@ -53,6 +62,37 @@ def ASCIIZ(section, address):
     while data[fin] != 0: fin += 1
     return str(data[ofs:fin], 'ascii') if fin - ofs > 0 else ''
 
+def ASSERT_EQ(a, b):
+    if a != b:
+        diff = get_diff(a, b)
+        sys.stdout.write(
+            "\nAssertion failed:\n\n{:s}\n{:s}\n\n{:s}\n\n".format(
+                green("- Expected"), red("+ Received"), diff
+            )
+        )
+    return a == b
+
+def get_diff(a, b):
+    a_str = pprint.pformat(a) 
+    b_str = pprint.pformat(b)    
+    result = ""
+    codes = difflib.SequenceMatcher(a=a_str, b=b_str).get_opcodes()
+    for code in codes:
+        if code[0] == "equal": 
+            result += white(a_str[code[1]:code[2]])
+        elif code[0] == "delete":
+            result += red(a_str[code[1]:code[2]])
+        elif code[0] == "insert":
+            result += green(b_str[code[3]:code[4]])
+        elif code[0] == "replace":
+            result += (red(a_str[code[1]:code[2]]) + green(b_str[code[3]:code[4]]))
+    return result
+
+def handle_failure(rule, message=""):
+    error_message = f'{red("✕")} TEST: {get_rule_desc(sys.argv[1])} FAILED!\n    FAILED RULE: "{rule}"'
+    if message:
+        error_message += f"\n    {message}"
+    sys.exit(error_message)
 
 if len(sys.argv) == 1:
     sys.exit(('Unit test checker v0.1\n'
@@ -70,8 +110,12 @@ snapshot = read_bgb_snspshot(sys.argv[3])
 
 rules = config.get('rules', [])
 
-for x in rules:
-    if exec_rule(x) == False:
-        sys.exit('TEST: {:s} FAILED!\n  FAILED RULE: "{:s}"\n'.format(get_rule_desc(sys.argv[1]), x))
+for rule in rules:
+    if isinstance(rule, (list, tuple)):
+        if not exec_rule(rule[0]):
+            handle_failure(rule[0], rule[1])
+    else:
+        if not exec_rule(rule):
+            handle_failure(rule)
 
 sys.stdout.write('TEST: {:s} PASSED\n'.format(get_rule_desc(sys.argv[1])))

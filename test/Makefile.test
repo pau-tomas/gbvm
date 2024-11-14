@@ -40,6 +40,9 @@ DEMO:
 recording.dem:
 	$(EMU) -demorec recording.dem -rom $(ROM_BUILD_DIR)/rom.gb
 
+expected.png:
+	magick capture.bmp expected.png
+
 data:
 	$(GBS_CLI) export -d project/test.gbsproj data
 
