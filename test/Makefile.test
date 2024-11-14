@@ -43,6 +43,6 @@ recording.dem:
 data:
 	$(GBS_CLI) export -d project/test.gbsproj data
 
-test: settings directories $(ROM_BUILD_DIR)/rom.gb test.json
+test: settings directories BUILD test.json
 	@$(EMU) $(EMUFLAGS) -rom $(ROM_BUILD_DIR)/rom.gb
 	@$(TEST_CHK) test.json $(ROM_BUILD_DIR)/rom.noi $(ROM_BUILD_DIR)/rom.sna capture.bmp

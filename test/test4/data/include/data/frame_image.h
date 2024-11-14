@@ -5,7 +5,7 @@
 
 #include "gbs_types.h"
 
-extern const void __bank_frame_image;
+BANKREF_EXTERN(frame_image)
 extern const unsigned char frame_image[];
 
 #endif
