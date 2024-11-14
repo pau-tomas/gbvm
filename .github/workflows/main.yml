@@ -31,10 +31,10 @@ jobs:
           curl -L https://github.com/gb-studio-dev/gbvm-test-deps/archive/refs/tags/v0.0.2.zip > deps.zip
           unzip deps.zip -d deps
           cd deps/gbvm-test-deps*/files
-          mkdir /gbdk
-          tar -xvzf gbdk-linux64.tar.gz -C /gbdk --strip-components=1
-          unzip bgb.zip -d /bgb
-          unzip gbspack*.zip -d /gbspack
+          sudo mkdir /gbdk
+          sudo tar -xvzf gbdk-linux64.tar.gz -C /gbdk --strip-components=1
+          sudo unzip bgb.zip -d /bgb
+          sudo unzip gbspack*.zip -d /gbspack
 
       - name: Install / Run X Virtual Frame Buffer
         run: |
