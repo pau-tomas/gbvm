@@ -8,6 +8,7 @@ on:
       - feat-*
       - beta-*
       - wip-*
+      - toxa
 
   workflow_dispatch:
 
