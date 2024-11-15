@@ -29,7 +29,7 @@ test:
 	@for test in $(TESTS) ; do \
 		set -e; \
 		echo "# $$test"; \
-		$(MAKE) -C $$test settings test; \
+		$(MAKE) -C $$test clean settings test; \
 		echo ""; \
 	done
 

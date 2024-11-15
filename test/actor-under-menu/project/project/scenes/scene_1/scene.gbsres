@@ -1,0 +1,39 @@
+{
+  "_resourceType": "scene",
+  "id": "6a7d542a-aca7-4b9a-b5d3-c0aa77dbb0f3",
+  "_index": 0,
+  "name": "Scene 1",
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "collisions": "",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_1",
+  "x": 88,
+  "y": 88,
+  "script": [
+    {
+      "command": "EVENT_FADE_IN",
+      "args": {
+        "speed": 1
+      },
+      "id": "298b63df-d851-4e5b-85f7-fdc80a5b2b2e"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "; Text Menu\nVM_OVERLAY_CLEAR        0, 0, 10, 4, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/\nVM_OVERLAY_MOVE_TO      10, 18, .OVERLAY_SPEED_INSTANT\nVM_OVERLAY_MOVE_TO      10, 14, 3\nVM_LOAD_TEXT            0\n.asciz \"\\001\\001\\003\\003\\002\\002\\001Item 1\\012\\002\\001Item 2\"\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/\n\n; Terminate Test\nVM_TEST_TERMINATE .TEST_WAIT_VBL",
+        "references": []
+      },
+      "id": "bec4029a-b332-443a-b0f3-1cbfba62fa91"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "playerSpriteSheetId": "daf95270-e30d-423b-9ee7-990ae29f57f6"
+}
