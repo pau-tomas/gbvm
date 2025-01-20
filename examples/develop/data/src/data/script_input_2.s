@@ -81,6 +81,22 @@ _script_input_2::
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
 
+; --- VM_DISPLAY_TEXT_EX example -------------------------
+        VM_OVERLAY_CLEAR        0, 0, 20, 8, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
+        VM_OVERLAY_MOVE_TO      2, 10, .OVERLAY_IN_SPEED
+        VM_LOAD_TEXT            0
+                .asciz "Hello"
+        VM_DISPLAY_TEXT_EX      .DISPLAY_DEFAULT, .TEXT_TILE_CONTINUE
+        VM_OVERLAY_WAIT         .UI_MODAL, .UI_WAIT_TEXT
+        ; <- Wait code goes here
+        VM_LOAD_TEXT            0
+                .asciz "World"
+        VM_DISPLAY_TEXT_EX      .DISPLAY_PRESERVE_POS, .TEXT_TILE_CONTINUE
+        VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
+
+        VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
+        VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
+
 ; --- VM_CALL_NATIVE example -------------------------
         VM_PUSH_CONST           10
         VM_CALL_NATIVE          b_my_native_function, _my_native_function
@@ -136,7 +152,8 @@ _script_input_2::
 
         VM_PUSH_CONST           10
         VM_PUSH_CONST           ^/(.CAMERA_SHAKE_X | .CAMERA_SHAKE_Y)/
-        VM_INVOKE               b_camera_shake_frames, _camera_shake_frames, 2, .ARG1
+        VM_PUSH_CONST           4
+        VM_INVOKE               b_camera_shake_frames, _camera_shake_frames, 3, .ARG2
 
 ;        VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/
 ;            .DMG_PAL    0,1,2,3
