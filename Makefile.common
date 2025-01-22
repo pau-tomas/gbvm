@@ -37,6 +37,8 @@ EMUFLAGS = \
 	-screenonexit ./capture.bmp
 
 EMU_FORCE_DMG = -set "SystemMode=0"
+EMU_FORCE_CGB = -set "SystemMode=1"
+EMU_FORCE_SGB = -set "SystemMode=2"
 
 TARGET = $(ROM_BUILD_DIR)/rom.gb
 
@@ -83,15 +85,18 @@ profile:
 
 DMG:
 	@echo "DMG mode ON"
+	$(eval EMUFLAGS += $(EMU_FORCE_DMG))
 
 CGB:
 	$(eval CFLAGS += -DCGB)
 	$(eval LFLAGS += -Wm-yC)
+	$(eval EMUFLAGS += $(EMU_FORCE_CGB))
 	@echo "CGB mode ON"
 
 SGB:
 	$(eval CFLAGS += -DSGB)
 	$(eval LFLAGS += -Wm-ys)
+	$(eval EMUFLAGS += $(EMU_FORCE_SGB))
 	@echo "SGB mode ON"
 
 batteryless:

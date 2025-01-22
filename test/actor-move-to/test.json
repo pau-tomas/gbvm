@@ -1,0 +1,14 @@
+{
+  "description": "actor-move-to",
+  "rules": [
+    [
+      "ASSERT_EQ(DATA('WRAM', ADDR('_actors', 'WRAM')+1, 2), array(\"B\", [0x00, 0x02]))",
+      "actor[0] x coordinate is at 32px"
+    ],
+    [
+      "ASSERT_EQ(DATA('WRAM', ADDR('_actors', 'WRAM')+3, 2), array(\"B\", [0x80, 0x0]))",
+      "actor[0] y coordinate is at 8px"
+    ],
+    "CHECKSCREEN('expected.png')"
+  ]
+}

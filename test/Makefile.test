@@ -13,7 +13,6 @@ REL_OBJS_LOCAL = $(OBJS:$(OBJDIR)/%.o=$(REL_OBJDIR)/%.rel)
 REL_OBJS       = $(REL_OBJS_LOCAL:$(TOP)$(OBJDIR)/%.o=$(REL_OBJDIR)/%.rel)
 
 CFLAGS += -Idata/include -Wa-Idata/include -I..
-EMUFLAGS += $(EMU_FORCE_DMG)
 
 $(TOP)$(OBJDIR)/test_main.o:	$(TOP)test/framework/test_main.c
 	$(CC) $(CFLAGS) -Wf-MMD -c -o $@ $<
@@ -40,9 +39,12 @@ DEMO:
 recording.dem:
 	$(EMU) -demorec recording.dem -rom $(ROM_BUILD_DIR)/rom.gb
 
+expected.png:
+	magick capture.bmp expected.png
+
 data:
 	$(GBS_CLI) export -d project/test.gbsproj data
 
-test: settings directories $(ROM_BUILD_DIR)/rom.gb test.json
+test: settings directories BUILD test.json
 	@$(EMU) $(EMUFLAGS) -rom $(ROM_BUILD_DIR)/rom.gb
 	@$(TEST_CHK) test.json $(ROM_BUILD_DIR)/rom.noi $(ROM_BUILD_DIR)/rom.sna capture.bmp

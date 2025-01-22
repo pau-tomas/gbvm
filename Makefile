@@ -3,7 +3,7 @@ OBJDIR = obj
 EXAMPLES = $(foreach dir,examples,$(wildcard $(dir)/*))
 EXAMPLES_DIR = ./examples
 
-TESTS = $(filter-out test/framework, $(foreach dir,test,$(wildcard $(dir)/*)))
+TESTS = $(filter-out test/framework test/Makefile.test, $(foreach dir,test,$(wildcard $(dir)/*)))
 TEST_DIR = ./test
 
 all:		examples test
@@ -27,8 +27,9 @@ test:
 	rm -rf $(TEST_DIR)/*/build
 	rm -rf $(OBJDIR)
 	@for test in $(TESTS) ; do \
+		set -e; \
 		echo "# $$test"; \
-		$(MAKE) -C $$test settings test; \
+		$(MAKE) -C $$test clean settings test; \
 		echo ""; \
 	done
 
