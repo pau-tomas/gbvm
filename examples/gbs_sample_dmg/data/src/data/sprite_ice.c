@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: ice
-  
+
 #include "gbs_types.h"
-#include "data/tileset_ice.h"
+#include "data/sprite_ice_tileset.h"
+
 
 BANKREF(sprite_ice)
 
@@ -71,6 +72,6 @@ const struct spritesheet_t sprite_ice = {
         .right = 15,
         .top = -8
     },
-    .tileset = TO_FAR_PTR_T(tileset_ice),
+    .tileset = TO_FAR_PTR_T(sprite_ice_tileset),
     .cgb_tileset = { NULL, NULL }
 };

@@ -5,19 +5,19 @@
 
 #include "gbs_types.h"
 #include "data/sprite_rock.h"
-#include "data/script_s0a0_interact.h"
+#include "data/actor_0_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s0a1_interact.h"
+#include "data/actor_1_interact.h"
 #include "data/sprite_duck.h"
 #include "data/sprite_npc003.h"
-#include "data/script_s0a3_update.h"
-#include "data/script_s0a3_interact.h"
+#include "data/actor_3_update.h"
+#include "data/actor_3_interact.h"
 #include "data/sprite_cat.h"
-#include "data/script_s0a4_interact.h"
+#include "data/actor_4_interact.h"
 #include "data/sprite_npc001.h"
-#include "data/script_s0a5_interact.h"
+#include "data/actor_5_interact.h"
 #include "data/sprite_npc001.h"
-#include "data/script_s0a6_interact.h"
+#include "data/actor_6_interact.h"
 
 BANKREF(scene_outside_actors)
 
@@ -39,9 +39,10 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 8,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a0_interact),
+        .script = TO_FAR_PTR_T(actor_0_interact),
         .reserve_tiles = 0
     },
     {
@@ -61,9 +62,10 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a1_interact),
+        .script = TO_FAR_PTR_T(actor_1_interact),
         .reserve_tiles = 0
     },
     {
@@ -83,6 +85,7 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 16,
         .anim_tick = 63,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -104,10 +107,11 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script_update = TO_FAR_PTR_T(script_s0a3_update),
-        .script = TO_FAR_PTR_T(script_s0a3_interact),
+        .script_update = TO_FAR_PTR_T(actor_3_update),
+        .script = TO_FAR_PTR_T(actor_3_interact),
         .reserve_tiles = 0
     },
     {
@@ -127,9 +131,10 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a4_interact),
+        .script = TO_FAR_PTR_T(actor_4_interact),
         .reserve_tiles = 0
     },
     {
@@ -149,9 +154,10 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a5_interact),
+        .script = TO_FAR_PTR_T(actor_5_interact),
         .reserve_tiles = 0
     },
     {
@@ -171,9 +177,10 @@ const struct actor_t scene_outside_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a6_interact),
+        .script = TO_FAR_PTR_T(actor_6_interact),
         .reserve_tiles = 0
     }
 };

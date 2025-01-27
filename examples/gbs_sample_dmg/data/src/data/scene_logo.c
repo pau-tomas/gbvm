@@ -8,7 +8,7 @@
 #include "data/palette_0.h"
 #include "data/palette_1.h"
 #include "data/sprite_player.h"
-#include "data/script_s4_init.h"
+#include "data/scene_logo_init.h"
 
 BANKREF(scene_logo)
 
@@ -29,5 +29,5 @@ const struct scene_t scene_logo = {
     .n_triggers = 0,
     .n_sprites = 0,
     .n_projectiles = 0,
-    .script_init = TO_FAR_PTR_T(script_s4_init)
+    .script_init = TO_FAR_PTR_T(scene_logo_init)
 };

@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: player
-  
+
 #include "gbs_types.h"
-#include "data/tileset_player.h"
+#include "data/sprite_player_tileset.h"
+
 
 BANKREF(sprite_player)
 
@@ -117,6 +118,6 @@ const struct spritesheet_t sprite_player = {
         .right = 15,
         .top = 0
     },
-    .tileset = TO_FAR_PTR_T(tileset_player),
+    .tileset = TO_FAR_PTR_T(sprite_player_tileset),
     .cgb_tileset = { NULL, NULL }
 };

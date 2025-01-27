@@ -5,15 +5,15 @@
 
 #include "gbs_types.h"
 #include "data/sprite_npc002.h"
-#include "data/script_s2a0_interact.h"
+#include "data/actor_13_interact.h"
 #include "data/sprite_radio.h"
-#include "data/script_s2a1_interact.h"
+#include "data/actor_radio_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s2a2_interact.h"
+#include "data/actor_14_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s2a3_interact.h"
+#include "data/actor_15_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s2a4_interact.h"
+#include "data/actor_16_interact.h"
 
 BANKREF(scene_house_actors)
 
@@ -35,9 +35,10 @@ const struct actor_t scene_house_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s2a0_interact),
+        .script = TO_FAR_PTR_T(actor_13_interact),
         .reserve_tiles = 0
     },
     {
@@ -57,9 +58,10 @@ const struct actor_t scene_house_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s2a1_interact),
+        .script = TO_FAR_PTR_T(actor_radio_interact),
         .reserve_tiles = 0
     },
     {
@@ -79,9 +81,10 @@ const struct actor_t scene_house_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s2a2_interact),
+        .script = TO_FAR_PTR_T(actor_14_interact),
         .reserve_tiles = 0
     },
     {
@@ -101,9 +104,10 @@ const struct actor_t scene_house_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s2a3_interact),
+        .script = TO_FAR_PTR_T(actor_15_interact),
         .reserve_tiles = 0
     },
     {
@@ -123,9 +127,10 @@ const struct actor_t scene_house_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s2a4_interact),
+        .script = TO_FAR_PTR_T(actor_16_interact),
         .reserve_tiles = 0
     }
 };

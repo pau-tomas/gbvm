@@ -11,7 +11,7 @@
 #include "data/scene_underground_actors.h"
 #include "data/scene_underground_triggers.h"
 #include "data/scene_underground_sprites.h"
-#include "data/script_s6_init.h"
+#include "data/scene_underground_init.h"
 
 BANKREF(scene_underground)
 
@@ -35,5 +35,5 @@ const struct scene_t scene_underground = {
     .actors = TO_FAR_PTR_T(scene_underground_actors),
     .triggers = TO_FAR_PTR_T(scene_underground_triggers),
     .sprites = TO_FAR_PTR_T(scene_underground_sprites),
-    .script_init = TO_FAR_PTR_T(script_s6_init)
+    .script_init = TO_FAR_PTR_T(scene_underground_init)
 };

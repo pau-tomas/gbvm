@@ -11,7 +11,7 @@
 #include "data/scene_outside_actors.h"
 #include "data/scene_outside_triggers.h"
 #include "data/scene_outside_sprites.h"
-#include "data/script_s0_init.h"
+#include "data/scene_outside_init.h"
 
 BANKREF(scene_outside)
 
@@ -35,5 +35,5 @@ const struct scene_t scene_outside = {
     .actors = TO_FAR_PTR_T(scene_outside_actors),
     .triggers = TO_FAR_PTR_T(scene_outside_triggers),
     .sprites = TO_FAR_PTR_T(scene_outside_sprites),
-    .script_init = TO_FAR_PTR_T(script_s0_init)
+    .script_init = TO_FAR_PTR_T(scene_outside_init)
 };
