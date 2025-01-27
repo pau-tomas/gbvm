@@ -1,0 +1,26 @@
+{
+  "_resourceType": "trigger",
+  "id": "ba2d391e-206b-47c1-ad14-8b8cef67595c",
+  "_index": 4,
+  "symbol": "trigger_4",
+  "prefabId": "",
+  "name": "",
+  "x": 3,
+  "y": 5,
+  "width": 1,
+  "height": 2,
+  "prefabScriptOverrides": {},
+  "script": [],
+  "leaveScript": [
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Leave 1"
+        ],
+        "avatarId": ""
+      },
+      "id": "f2bfa390-232a-4bda-a740-5dc952c0a4d1"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "_resourceType": "trigger",
+  "id": "97a6be7b-11de-4214-987f-4924aa1c4863",
+  "_index": 20,
+  "symbol": "trigger_20",
+  "prefabId": "",
+  "name": "",
+  "x": 10,
+  "y": 11,
+  "width": 1,
+  "height": 2,
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Enter 2"
+        ],
+        "avatarId": ""
+      },
+      "id": "3c7a4d0d-114e-4efe-b7cb-3b0fe1e04b57"
+    }
+  ],
+  "leaveScript": [
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Leave 2"
+        ],
+        "avatarId": ""
+      },
+      "id": "ef07276a-6ea2-4edd-882d-a6a4dd36b2c6"
+    }
+  ]
+}
