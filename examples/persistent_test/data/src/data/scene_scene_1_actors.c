@@ -31,11 +31,11 @@ const struct actor_t scene_scene_1_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = TRUE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .script_update = TO_FAR_PTR_T(actor_0_update),
-        .reserve_tiles = 0,
-        .persistent = TRUE
+        .reserve_tiles = 0
     },
     {
         // Actor 2,
@@ -54,11 +54,11 @@ const struct actor_t scene_scene_1_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = TRUE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .script_update = TO_FAR_PTR_T(actor_1_update),
-        .reserve_tiles = 0,
-        .persistent = TRUE
+        .reserve_tiles = 0
     },
     {
         // Actor 3,
@@ -77,10 +77,10 @@ const struct actor_t scene_scene_1_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = TRUE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .script_update = TO_FAR_PTR_T(actor_2_update),
-        .reserve_tiles = 0,
-        .persistent = TRUE
+        .reserve_tiles = 0
     }
 };

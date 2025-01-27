@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: actor_animated
-  
+
 #include "gbs_types.h"
 #include "data/sprite_actor_animated_tileset.h"
+
 
 BANKREF(sprite_actor_animated)
 
