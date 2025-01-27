@@ -1,12 +1,12 @@
 #pragma bank 255
 
-// Tileset: tileset_radio
+// Tileset: sprite_radio_tileset
 
 #include "gbs_types.h"
 
-BANKREF(tileset_radio)
+BANKREF(sprite_radio_tileset)
 
-const struct tileset_t tileset_radio = {
+const struct tileset_t sprite_radio_tileset = {
     .n_tiles = 4,
     .tiles = {
         0x00, 0x00, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0xF8, 0xF8, 0xFC, 0x04,
