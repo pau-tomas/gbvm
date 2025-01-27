@@ -5,7 +5,7 @@
 
 #include "gbs_types.h"
 
-extern const void __bank_palette_2;
+BANKREF_EXTERN(palette_2)
 extern const struct palette_t palette_2;
 
 #endif

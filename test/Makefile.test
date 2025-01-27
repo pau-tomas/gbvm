@@ -1,11 +1,13 @@
 ADATA = $(foreach dir,data/src/data,$(notdir $(wildcard $(dir)/*.s)))
 CDATA = $(foreach dir,data/src/data,$(notdir $(wildcard $(dir)/*.c)))
 MDATA = $(foreach dir,data/src/data/music,$(notdir $(wildcard $(dir)/*.c)))
+SDATA = $(foreach dir,data/src/data/sounds,$(notdir $(wildcard $(dir)/*.c)))
 
 OBJS = $(filter-out $(TOP)$(OBJDIR)/main.o, $(ENGINE_OBJS)) \
 	$(ADATA:%.s=$(OBJDIR)/%.o) \
 	$(CDATA:%.c=$(OBJDIR)/%.o) \
 	$(MDATA:%.c=$(OBJDIR)/%.o) \
+	$(SDATA:%.c=$(OBJDIR)/%.o) \
 	$(TOP)$(OBJDIR)/test_main.o \
 	$(OBJDIR)/test.o
 	
@@ -18,6 +20,9 @@ $(TOP)$(OBJDIR)/test_main.o:	$(TOP)test/framework/test_main.c
 	$(CC) $(CFLAGS) -Wf-MMD -c -o $@ $<
 
 $(OBJDIR)/%.o:	data/src/data/music/%.c
+	$(CC) $(CFLAGS) -c -o $@ $<	
+
+$(OBJDIR)/%.o:	data/src/data/sounds/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<	
 
 $(OBJDIR)/%.o:	data/src/data/%.c
