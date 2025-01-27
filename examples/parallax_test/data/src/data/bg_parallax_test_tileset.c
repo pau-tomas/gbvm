@@ -1,12 +1,12 @@
 #pragma bank 255
 
-// Tileset: tileset_parallax_test
+// Tileset: bg_parallax_test_tileset
 
 #include "gbs_types.h"
 
-BANKREF(tileset_parallax_test)
+BANKREF(bg_parallax_test_tileset)
 
-const struct tileset_t tileset_parallax_test = {
+const struct tileset_t bg_parallax_test_tileset = {
     .n_tiles = 74,
     .tiles = {
         0x3F, 0xFF, 0xC0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x03, 0xFC, 0xFF, 0x00, 0xFF, 0xFF, 0x00, 0xFF,

@@ -1,12 +1,12 @@
 #pragma bank 255
 
-// Tileset: tileset_actor_animated
+// Tileset: sprite_actor_animated_tileset
 
 #include "gbs_types.h"
 
-BANKREF(tileset_actor_animated)
+BANKREF(sprite_actor_animated_tileset)
 
-const struct tileset_t tileset_actor_animated = {
+const struct tileset_t sprite_actor_animated_tileset = {
     .n_tiles = 20,
     .tiles = {
         0x00, 0x00, 0x00, 0x00, 0xE0, 0xE0, 0xF0, 0xB0, 0xF8, 0x98, 0xFC, 0x8C, 0xFE, 0x06, 0xFE, 0x02,
