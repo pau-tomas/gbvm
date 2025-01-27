@@ -1,4 +1,4 @@
-.module script_timer_0
+.module script_timer
 
 .include "vm.i"
 .include "data/game_globals.i"
@@ -7,17 +7,16 @@
 
 .LOCAL_ACTOR = -4
 
-___bank_script_timer_0 = 255
-.globl ___bank_script_timer_0
+___bank_script_timer = 255
+.globl ___bank_script_timer
 
-_script_timer_0::
+_script_timer::
         VM_RESERVE              4
 
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
         ; Launch Projectile In Direction
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_ACTOR_GET_POS        .LOCAL_ACTOR
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/

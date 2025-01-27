@@ -1,0 +1,71 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "Seen Cat",
+      "symbol": "symbol"
+    },
+    {
+      "id": "1",
+      "name": "Seen duck",
+      "symbol": "symbol_0"
+    },
+    {
+      "id": "2",
+      "name": "Used Radio",
+      "symbol": "symbol_1"
+    },
+    {
+      "id": "3",
+      "name": "Spoke To Space Dog",
+      "symbol": "symbol_2"
+    },
+    {
+      "id": "4",
+      "name": "Quest1",
+      "symbol": "symbol_3"
+    },
+    {
+      "id": "5",
+      "name": "Quest2",
+      "symbol": "symbol_4"
+    },
+    {
+      "id": "6",
+      "name": "Quest3",
+      "symbol": "symbol_5"
+    },
+    {
+      "id": "7",
+      "name": "Quest4",
+      "symbol": "symbol_6"
+    },
+    {
+      "id": "8",
+      "name": "Quest5",
+      "symbol": "symbol_7"
+    },
+    {
+      "id": "9",
+      "name": "Quest6",
+      "symbol": "symbol_8"
+    },
+    {
+      "id": "10",
+      "name": "NewGame",
+      "symbol": "symbol_9"
+    },
+    {
+      "id": "11",
+      "name": "SaveGame",
+      "symbol": "symbol_10"
+    },
+    {
+      "id": "12",
+      "name": "PushedIceBlock",
+      "symbol": "symbol_11"
+    }
+  ],
+  "constants": []
+}

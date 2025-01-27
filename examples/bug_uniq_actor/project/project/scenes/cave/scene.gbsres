@@ -1,0 +1,64 @@
+{
+  "_resourceType": "scene",
+  "id": "6dfccdcc-e4ae-4b8e-a421-6851fcb808b7",
+  "_index": 1,
+  "type": "TOPDOWN",
+  "name": "Cave",
+  "symbol": "scene_cave",
+  "x": 367,
+  "y": 502,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "6fad1892-bcb2-4924-bd1c-1e4d03dfeabb",
+  "tilesetId": "",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [
+    {
+      "command": "EVENT_SET_TIMER_SCRIPT",
+      "args": {
+        "timer": 1,
+        "duration": 0.5,
+        "frames": 15,
+        "__scriptTabs": "end",
+        "units": "frames"
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_LAUNCH_PROJECTILE",
+            "args": {
+              "spriteSheetId": "35c6f16a-6105-4584-8617-713699446cfb",
+              "spriteStateId": "",
+              "actorId": "player",
+              "x": 0,
+              "y": 0,
+              "otherActorId": "$self$",
+              "direction": "down",
+              "angle": 0,
+              "angleVariable": "L0",
+              "directionType": "direction",
+              "initialOffset": 8,
+              "speed": 2,
+              "animSpeed": 15,
+              "lifeTime": 1,
+              "loopAnim": true,
+              "destroyOnHit": true,
+              "collisionGroup": "3",
+              "collisionMask": [
+                "1"
+              ]
+            },
+            "id": "dee55f27-8058-4cd8-8127-654e96093fbb"
+          }
+        ]
+      },
+      "id": "4cec8837-429d-433c-8428-65666f3b611a"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": ""
+}

@@ -16,6 +16,7 @@ const struct projectile_def_t scene_cave_projectiles[] = {
         .life_time = 60,
         .collision_group = COLLISION_GROUP_3,
         .collision_mask = COLLISION_GROUP_1,
+        .strong = false,
         .bounds = {
             .left = 0,
             .bottom = 7,
@@ -23,6 +24,7 @@ const struct projectile_def_t scene_cave_projectiles[] = {
             .top = -8
         },
         .anim_tick = 15,
+        .anim_noloop = false,
         .animations = {
             {
                 .start = 0,
