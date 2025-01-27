@@ -3,7 +3,7 @@
 // Scene: Start
 
 #include "gbs_types.h"
-#include "data/bg_outside.h"
+#include "data/symbol.h"
 #include "data/scene_start_collisions.h"
 #include "data/palette_0.h"
 #include "data/palette_1.h"
@@ -11,7 +11,7 @@
 #include "data/scene_start_actors.h"
 #include "data/scene_start_triggers.h"
 #include "data/scene_start_sprites.h"
-#include "data/script_s0_init.h"
+#include "data/scene_start_init.h"
 
 BANKREF(scene_start)
 
@@ -19,7 +19,7 @@ const struct scene_t scene_start = {
     .width = 32,
     .height = 32,
     .type = SCENE_TYPE_TOPDOWN,
-    .background = TO_FAR_PTR_T(bg_outside),
+    .background = TO_FAR_PTR_T(symbol),
     .collisions = TO_FAR_PTR_T(scene_start_collisions),
     .parallax_rows = {
         PARALLAX_STEP(0,0,0)
@@ -35,5 +35,5 @@ const struct scene_t scene_start = {
     .actors = TO_FAR_PTR_T(scene_start_actors),
     .triggers = TO_FAR_PTR_T(scene_start_triggers),
     .sprites = TO_FAR_PTR_T(scene_start_sprites),
-    .script_init = TO_FAR_PTR_T(script_s0_init)
+    .script_init = TO_FAR_PTR_T(scene_start_init)
 };

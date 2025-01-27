@@ -1,0 +1,9 @@
+#ifndef GAME_GLOBALS_H
+#define GAME_GLOBALS_H
+
+#define MAX_GLOBAL_VARS 0
+#define STATE_DEFAULT 0
+#define STATE_IN_GRASS 1
+#define STATE_SURPRISED 2
+
+#endif
