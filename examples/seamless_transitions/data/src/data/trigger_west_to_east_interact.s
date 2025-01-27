@@ -4,7 +4,7 @@
 .include "data/game_globals.i"
 .include "macro.i"
 
-.globl ___bank_scene_transition, _scene_transition
+.globl _camera_settings, ___bank_scene_transition, _scene_transition
 
 .area _CODE_255
 
@@ -34,13 +34,14 @@ _trigger_west_to_east_interact::
             .R_INT16    2304
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_REF      .LOCAL_TMP1_LOCAL
-            .R_INT16    128
-            .R_OPERATOR .MUL
+            .R_INT16    7
+            .R_OPERATOR .SHL
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_RIGHT
+        VM_SET_CONST_INT8       _camera_settings, .CAMERA_LOCK
         VM_RAISE                EXCEPTION_CHANGE_SCENE, 3
             IMPORT_FAR_PTR_DATA _scene_transition
 

@@ -1,0 +1,23 @@
+{
+  "_resourceType": "scene",
+  "id": "065ac980-cc4a-4999-ae78-fd0d25867c23",
+  "_index": 1,
+  "type": "TOPDOWN",
+  "name": "East",
+  "symbol": "scene_east",
+  "x": 622,
+  "y": 299,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "7d11a41b-70eb-4abc-ac2c-e9e3bc7a8435",
+  "tilesetId": "6e32cd8c-d7da-493c-bc67-11a4d4bd4698",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "627f0345-6f18-4f18-b77c-7905f3aab46f",
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": ""
+}
