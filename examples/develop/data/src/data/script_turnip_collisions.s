@@ -7,8 +7,8 @@
 
 .area _CODE_255
 
-.SCRIPT_ARG_0_VARIABLE = -10
-.SCRIPT_ARG_1_VARIABLE = -11
+.SCRIPT_ARG_INDIRECT_0_VARIABLE = -10
+.SCRIPT_ARG_INDIRECT_1_VARIABLE = -11
 .SCRIPT_ARG_2_ACTOR = -12
 .LOCAL_ACTOR = -4
 .LOCAL_TMP4_CAMERA_SHAKE_ARGS = -4
@@ -34,20 +34,19 @@ _script_turnip_collisions::
             .R_REF      ^/(.LOCAL_TMP1_OTHER_ACTOR + 2)/
             .R_OPERATOR .LT
             .R_STOP
-        VM_IF_CONST .EQ         .ARG0, 0, 1$, 1
+        VM_IF_CONST             .EQ, .ARG0, 0, 1$, 1
 
-        ; Variable Set To True
+        ; Variable Set To
         VM_SET_CONST            .LOCAL_TMP2_VALUE_TMP, 1
-        VM_SET_INDIRECT         .SCRIPT_ARG_0_VARIABLE, .LOCAL_TMP2_VALUE_TMP
+        VM_SET_INDIRECT         .SCRIPT_ARG_INDIRECT_0_VARIABLE, .LOCAL_TMP2_VALUE_TMP
 
         ; Variable Decrement By 1
         VM_RPN
-            .R_REF_IND  .SCRIPT_ARG_1_VARIABLE
+            .R_REF_IND  .SCRIPT_ARG_INDIRECT_1_VARIABLE
             .R_INT8     1
             .R_OPERATOR .SUB
+            .R_REF_SET_IND .SCRIPT_ARG_INDIRECT_1_VARIABLE
             .R_STOP
-        VM_SET_INDIRECT         ^/(.SCRIPT_ARG_1_VARIABLE - 1)/, .ARG0
-        VM_POP                  1
 
         ; Actor Set Active
         VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_2_ACTOR
@@ -70,7 +69,7 @@ _script_turnip_collisions::
         ; Player Bounce
         VM_SET_CONST_INT16      _pl_vel_y, -8192
 
-        ; Wait N Frames
+        ; Wait 30 frames
         VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
 
@@ -80,17 +79,25 @@ _script_turnip_collisions::
 
         VM_JUMP                 2$
 1$:
-        ; Actor Set Active
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-
         ; Actor Set Position
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 1)/, 6656
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 2)/, 1664
+        ; -- Calculate coordinate values
+        VM_RPN
+            .R_INT16    6656
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
+            .R_INT16    1664
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_STOP
+        ; -- Position Actor
+        VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_SET_POS        .LOCAL_ACTOR
 
         ; Camera Shake
         VM_SET_CONST            .LOCAL_TMP4_CAMERA_SHAKE_ARGS, 30
         VM_SET_CONST            ^/(.LOCAL_TMP4_CAMERA_SHAKE_ARGS + 1)/, .CAMERA_SHAKE_X
+        VM_RPN
+            .R_INT16    5
+            .R_REF_SET  ^/(.LOCAL_TMP4_CAMERA_SHAKE_ARGS + 2)/
+            .R_STOP
         VM_INVOKE               b_camera_shake_frames, _camera_shake_frames, 0, .LOCAL_TMP4_CAMERA_SHAKE_ARGS
 
 2$:
