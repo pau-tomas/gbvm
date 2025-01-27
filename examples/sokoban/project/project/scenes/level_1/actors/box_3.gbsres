@@ -1,0 +1,35 @@
+{
+  "_resourceType": "actor",
+  "id": "d06c71ca-5634-4401-b631-3ebfbc1ad43d",
+  "_index": 2,
+  "symbol": "actor_box_1",
+  "prefabId": "",
+  "name": "Box",
+  "x": 10,
+  "y": 7,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f78876b6-d8d6-4d47-8a9b-5ef1bebd01fe",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "345792b9-0666-483a-b004-933c9ab4aa68",
+      "command": "EVENT_ACTOR_PUSH",
+      "args": {
+        "continue": false
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}
