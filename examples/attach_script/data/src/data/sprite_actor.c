@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: actor
-  
+
 #include "gbs_types.h"
-#include "data/tileset_actor.h"
+#include "data/sprite_actor_tileset.h"
+
 
 BANKREF(sprite_actor)
 
@@ -89,6 +90,6 @@ const struct spritesheet_t sprite_actor = {
         .right = 15,
         .top = -8
     },
-    .tileset = TO_FAR_PTR_T(tileset_actor),
+    .tileset = TO_FAR_PTR_T(sprite_actor_tileset),
     .cgb_tileset = { NULL, NULL }
 };

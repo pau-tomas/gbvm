@@ -1,12 +1,12 @@
 #pragma bank 255
 
-// Tileset: tileset_placeholder
+// Tileset: bg_placeholder_tileset
 
 #include "gbs_types.h"
 
-BANKREF(tileset_placeholder)
+BANKREF(bg_placeholder_tileset)
 
-const struct tileset_t tileset_placeholder = {
+const struct tileset_t bg_placeholder_tileset = {
     .n_tiles = 4,
     .tiles = {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
