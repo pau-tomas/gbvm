@@ -29,12 +29,12 @@ _scene_1_init::
         VM_FADE_IN              1
 
         ; Text Dialogue
-        VM_LOAD_TEXT            0
-        .asciz "scene projectile\012dir: right\012strong: false"
         VM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, .UI_DRAW_FRAME
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_SPEED_INSTANT
         VM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED
         VM_OVERLAY_SET_SCROLL   1, 1, 18, 5, .UI_COLOR_WHITE
+        VM_LOAD_TEXT            0
+        .asciz "scene projectile\012dir: right\012strong: false"
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -53,17 +53,17 @@ _scene_1_init::
         VM_PROJECTILE_LAUNCH    0, .ARG2
         VM_POP                  3
 
-        ; Wait 30 Frames
+        ; Wait 30 frames
         VM_SET_CONST            .LOCAL_TMP1_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP1_WAIT_ARGS
 
         ; Text Dialogue
-        VM_LOAD_TEXT            0
-        .asciz "scene projectile\012dir: up\012strong: true"
         VM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, .UI_DRAW_FRAME
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_SPEED_INSTANT
         VM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED
         VM_OVERLAY_SET_SCROLL   1, 1, 18, 5, .UI_COLOR_WHITE
+        VM_LOAD_TEXT            0
+        .asciz "scene projectile\012dir: up\012strong: true"
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -82,7 +82,7 @@ _scene_1_init::
         VM_PROJECTILE_LAUNCH    1, .ARG2
         VM_POP                  3
 
-        ; Wait 30 Frames
+        ; Wait 30 frames
         VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
 
@@ -93,12 +93,12 @@ _scene_1_init::
         VM_PROJECTILE_LOAD_TYPE 3, 1, ___bank_global_projectiles_0, _global_projectiles_0
 
         ; Text Dialogue
-        VM_LOAD_TEXT            0
-        .asciz "slot projectile\012dir: left\012strong: false"
         VM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, .UI_DRAW_FRAME
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_SPEED_INSTANT
         VM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED
         VM_OVERLAY_SET_SCROLL   1, 1, 18, 5, .UI_COLOR_WHITE
+        VM_LOAD_TEXT            0
+        .asciz "slot projectile\012dir: left\012strong: false"
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -117,17 +117,17 @@ _scene_1_init::
         VM_PROJECTILE_LAUNCH    2, .ARG2
         VM_POP                  3
 
-        ; Wait 30 Frames
+        ; Wait 30 frames
         VM_SET_CONST            .LOCAL_TMP3_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP3_WAIT_ARGS
 
         ; Text Dialogue
-        VM_LOAD_TEXT            0
-        .asciz "scene projectile\012dir: right\012strong: true"
         VM_OVERLAY_CLEAR        0, 0, 20, 5, .UI_COLOR_WHITE, .UI_DRAW_FRAME
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_SPEED_INSTANT
         VM_OVERLAY_MOVE_TO      0, 13, .OVERLAY_IN_SPEED
         VM_OVERLAY_SET_SCROLL   1, 1, 18, 5, .UI_COLOR_WHITE
+        VM_LOAD_TEXT            0
+        .asciz "scene projectile\012dir: right\012strong: true"
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
@@ -146,7 +146,7 @@ _scene_1_init::
         VM_PROJECTILE_LAUNCH    3, .ARG2
         VM_POP                  3
 
-        ; Wait 30 Frames
+        ; Wait 30 frames
         VM_SET_CONST            .LOCAL_TMP4_WAIT_ARGS, 30
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP4_WAIT_ARGS
 
