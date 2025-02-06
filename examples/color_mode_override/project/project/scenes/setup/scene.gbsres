@@ -1,0 +1,92 @@
+{
+  "_resourceType": "scene",
+  "id": "87939c54-a7d8-4142-b9b6-369d9d6694db",
+  "_index": 0,
+  "name": "Setup",
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "width": 20,
+  "height": 18,
+  "type": "TOPDOWN",
+  "colorModeOverride": "mixed",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "collisions": "",
+  "autoFadeSpeed": 1,
+  "symbol": "scene_setup",
+  "x": 80,
+  "y": 96,
+  "script": [
+    {
+      "command": "EVENT_IF_COLOR_SUPPORTED",
+      "args": {
+        "__collapseElse": false,
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SWITCH_SCENE",
+            "args": {
+              "sceneId": "abff2991-b19c-432e-854e-ad4e2d919bfa",
+              "x": {
+                "type": "number",
+                "value": 0
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "direction": "",
+              "fadeSpeed": "2"
+            },
+            "id": "655c2610-d99b-4886-90cc-70a3bc76aaaa"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "condition": {
+                "type": "not",
+                "value": {
+                  "type": "variable",
+                  "value": "0"
+                }
+              },
+              "__collapseElse": true
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_SWITCH_SCENE",
+                  "args": {
+                    "sceneId": "36736c20-0d27-4411-b919-b1d138aa0362",
+                    "x": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "y": {
+                      "type": "number",
+                      "value": 0
+                    },
+                    "direction": "",
+                    "fadeSpeed": "2"
+                  },
+                  "id": "8eb560c7-2712-4137-a63b-735e1df81912"
+                }
+              ],
+              "false": []
+            },
+            "id": "9657dbb7-cebb-45df-b45c-53e7a4fd88b7"
+          }
+        ]
+      },
+      "id": "9c4f4b4a-bf6a-40e8-beec-dea24950192d"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "playerSpriteSheetId": "ae9f8655-e097-42f8-ac4f-c0eae5548760"
+}
