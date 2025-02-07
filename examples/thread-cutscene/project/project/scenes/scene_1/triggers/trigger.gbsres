@@ -11,6 +11,10 @@
   "height": 3,
   "script": [
     {
+      "command": "EVENT_SCENE_UPDATE_PAUSE",
+      "id": "ba9bb17f-2890-463a-a80c-ba843001a4f2"
+    },
+    {
       "command": "EVENT_ACTOR_SET_DIRECTION",
       "args": {
         "actorId": "2185158b-d869-488e-ae82-9738e4a185fe",
@@ -120,6 +124,13 @@
               "actorId": "2185158b-d869-488e-ae82-9738e4a185fe"
             },
             "id": "fd1a3d05-ba3c-47b4-9ca6-c2658a164997"
+          },
+          {
+            "command": "EVENT_ACTOR_COLLISIONS_DISABLE",
+            "args": {
+              "actorId": "2185158b-d869-488e-ae82-9738e4a185fe"
+            },
+            "id": "59660b49-ea03-4d51-aad9-0edc54cc611a"
           }
         ]
       },
@@ -186,11 +197,9 @@
       "id": "70659fc3-96f7-43bc-bc4b-3f4b019bc848"
     },
     {
-      "command": "EVENT_ACTOR_HIDE",
-      "args": {
-        "actorId": "$self$"
-      },
-      "id": "6f788640-e9a1-430b-8af2-30b08caf4c71"
+      "command": "EVENT_SCENE_UPDATE_RESUME",
+      "args": {},
+      "id": "899ca1c8-5226-40e8-befc-604e0635480f"
     }
   ],
   "leaveScript": [],

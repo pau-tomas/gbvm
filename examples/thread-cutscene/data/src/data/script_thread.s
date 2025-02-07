@@ -68,5 +68,11 @@ _script_thread::
         VM_SET_CONST            .LOCAL_ACTOR, 1
         VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
 
+        ; Actor Set Active
+        VM_SET_CONST            .LOCAL_ACTOR, 1
+
+        ; Actor Set Collisions
+        VM_ACTOR_SET_COLL_ENABLED .LOCAL_ACTOR, 0
+
         ; Stop Script
         VM_STOP

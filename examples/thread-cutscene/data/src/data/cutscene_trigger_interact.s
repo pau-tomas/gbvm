@@ -3,7 +3,7 @@
 .include "vm.i"
 .include "data/game_globals.i"
 
-.globl b_wait_frames, _wait_frames
+.globl _pause_state_update, b_wait_frames, _wait_frames
 
 .area _CODE_255
 
@@ -18,6 +18,7 @@ _cutscene_trigger_interact::
 
         VM_RESERVE              5
 
+        ; Pause Scene Type Update
         VM_SET_CONST_INT8       _pause_state_update, 1
 
         ; Actor Set Direction To
@@ -93,10 +94,7 @@ _cutscene_trigger_interact::
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
-        ; Actor Hide
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
-
+        ; Resume Scene Type Update
         VM_SET_CONST_INT8       _pause_state_update, 0
 
         ; Stop Script
