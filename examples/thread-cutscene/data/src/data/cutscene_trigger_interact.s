@@ -18,6 +18,8 @@ _cutscene_trigger_interact::
 
         VM_RESERVE              5
 
+        VM_SET_CONST_INT8       _pause_state_update, 1
+
         ; Actor Set Direction To
         VM_SET_CONST            .LOCAL_ACTOR, 1
         VM_ACTOR_SET_DIR        .LOCAL_ACTOR, .DIR_LEFT
@@ -94,6 +96,8 @@ _cutscene_trigger_interact::
         ; Actor Hide
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_SET_HIDDEN     .LOCAL_ACTOR, 1
+
+        VM_SET_CONST_INT8       _pause_state_update, 0
 
         ; Stop Script
         VM_STOP
