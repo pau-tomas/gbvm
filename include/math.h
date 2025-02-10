@@ -92,17 +92,28 @@ typedef enum {
 } direction_e;
 
 extern const int8_t sine_wave[256];
-extern const point8_t dir_lookup[4];
 extern const uint8_t dir_angle_lookup[4];
 
 inline void point_translate_dir(point16_t *point, direction_e dir, uint8_t speed) {
-    point->x += (int16_t)(dir_lookup[dir].x * speed);
-    point->y += (int16_t)(dir_lookup[dir].y * speed);
+    if(dir == DIR_RIGHT)
+        point->x += speed;
+    else if(dir == DIR_LEFT)
+        point->x -= speed;
+    else if(dir == DIR_DOWN)
+        point->y += speed;
+    else if(dir == DIR_UP)
+        point->y -= speed;
 }
 
 inline void point_translate_dir_word(point16_t *point, direction_e dir, uint16_t speed) {
-    point->x += (int16_t)(dir_lookup[dir].x * speed);
-    point->y += (int16_t)(dir_lookup[dir].y * speed);
+    if(dir == DIR_RIGHT)
+        point->x += speed;
+    else if(dir == DIR_LEFT)
+        point->x -= speed;
+    else if(dir == DIR_DOWN)
+        point->y += speed;
+    else if(dir == DIR_UP)
+        point->y -= speed;
 }
 
 inline void point_translate_angle(point16_t *point, uint8_t angle, uint8_t speed) {
