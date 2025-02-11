@@ -1,0 +1,24 @@
+{
+  "_resourceType": "trigger",
+  "id": "faded20d-59ff-4cb1-85ce-c17ac139804c",
+  "_index": 2,
+  "symbol": "trigger_2",
+  "prefabId": "",
+  "name": "",
+  "x": 2,
+  "y": 12,
+  "width": 28,
+  "height": 1,
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "523224c1-0837-4138-a089-e248c1a93f3f",
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "$self$",
+        "spriteStateId": "In Grass"
+      }
+    }
+  ],
+  "leaveScript": []
+}

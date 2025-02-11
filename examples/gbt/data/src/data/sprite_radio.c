@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: radio
-  
+
 #include "gbs_types.h"
-#include "data/tileset_radio.h"
+#include "data/sprite_radio_tileset.h"
+
 
 BANKREF(sprite_radio)
 
@@ -71,6 +72,6 @@ const struct spritesheet_t sprite_radio = {
         .right = 15,
         .top = -8
     },
-    .tileset = TO_FAR_PTR_T(tileset_radio),
+    .tileset = TO_FAR_PTR_T(sprite_radio_tileset),
     .cgb_tileset = { NULL, NULL }
 };

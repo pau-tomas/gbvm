@@ -1,23 +1,27 @@
 #ifndef MUSIC_DATA_H
 #define MUSIC_DATA_H
 
-extern const void __bank_track_rulz_fastpacespeedrace__Data;
-extern const void track_rulz_fastpacespeedrace__Data;
-extern const void __bank_track_rulz_gonaspace__Data;
-extern const void track_rulz_gonaspace__Data;
-extern const void __bank_track_rulz_intro__Data;
-extern const void track_rulz_intro__Data;
-extern const void __bank_track_rulz_lightmood__Data;
-extern const void track_rulz_lightmood__Data;
-extern const void __bank_track_rulz_outside__Data;
-extern const void track_rulz_outside__Data;
-extern const void __bank_track_rulz_pause_underground__Data;
-extern const void track_rulz_pause_underground__Data;
-extern const void __bank_track_rulz_spaceemergency__Data;
-extern const void track_rulz_spaceemergency__Data;
-extern const void __bank_track_rulz_undergroundcave__Data;
-extern const void track_rulz_undergroundcave__Data;
-extern const void __bank_track_template__Data;
-extern const void track_template__Data;
+extern const void __bank_song_rulz_fastpacespeedrace_0_Data;
+extern const void song_rulz_fastpacespeedrace_0_Data;
+extern const void __bank_song_rulz_gonaspace_0_Data;
+extern const void song_rulz_gonaspace_0_Data;
+extern const void __bank_song_rulz_intro_0_Data;
+extern const void song_rulz_intro_0_Data;
+extern const void __bank_song_rulz_lightmood_0_Data;
+extern const void song_rulz_lightmood_0_Data;
+extern const void __bank_song_rulz_outside_0_Data;
+extern const void song_rulz_outside_0_Data;
+extern const void __bank_song_rulz_pause_underground_0_Data;
+extern const void song_rulz_pause_underground_0_Data;
+extern const void __bank_song_rulz_spaceemergency_0_Data;
+extern const void song_rulz_spaceemergency_0_Data;
+extern const void __bank_song_rulz_undergroundcave_0_Data;
+extern const void song_rulz_undergroundcave_0_Data;
+extern const void __bank_song_rulz_battletheme_0_Data;
+extern const void song_rulz_battletheme_0_Data;
+extern const void __bank_song_drum_example_Data;
+extern const void song_drum_example_Data;
+extern const void __bank_song_echo_example_Data;
+extern const void song_echo_example_Data;
 
 #endif

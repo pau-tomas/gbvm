@@ -1,0 +1,26 @@
+{
+  "_resourceType": "trigger",
+  "id": "36fbc3ac-18f5-4b63-9a45-650da7757a5b",
+  "_index": 12,
+  "symbol": "trigger_12",
+  "prefabId": "",
+  "name": "",
+  "x": 10,
+  "y": 2,
+  "width": 1,
+  "height": 2,
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Enter 2"
+        ],
+        "avatarId": ""
+      },
+      "id": "c3dd48b8-7184-4690-b125-b1518c0b133a"
+    }
+  ],
+  "leaveScript": []
+}

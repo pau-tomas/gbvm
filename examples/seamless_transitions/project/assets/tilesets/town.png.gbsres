@@ -1,0 +1,11 @@
+{
+  "_resourceType": "tileset",
+  "id": "6e32cd8c-d7da-493c-bc67-11a4d4bd4698",
+  "name": "town",
+  "symbol": "tileset_town",
+  "width": 60,
+  "height": 36,
+  "imageWidth": 480,
+  "imageHeight": 288,
+  "filename": "town.png"
+}

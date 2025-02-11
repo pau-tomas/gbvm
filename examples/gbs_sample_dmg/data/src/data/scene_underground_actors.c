@@ -5,15 +5,15 @@
 
 #include "gbs_types.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s6a0_interact.h"
+#include "data/actor_18_interact.h"
 #include "data/sprite_ice.h"
-#include "data/script_s6a1_interact.h"
+#include "data/actor_ice_block_interact.h"
 #include "data/sprite_rock.h"
-#include "data/script_s6a2_interact.h"
+#include "data/actor_rock_3_interact.h"
 #include "data/sprite_rock.h"
-#include "data/script_s6a3_interact.h"
+#include "data/actor_rock_2_interact.h"
 #include "data/sprite_rock.h"
-#include "data/script_s6a4_interact.h"
+#include "data/actor_rock_1_interact.h"
 
 BANKREF(scene_underground_actors)
 
@@ -35,9 +35,10 @@ const struct actor_t scene_underground_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s6a0_interact),
+        .script = TO_FAR_PTR_T(actor_18_interact),
         .reserve_tiles = 0
     },
     {
@@ -57,9 +58,10 @@ const struct actor_t scene_underground_actors[] = {
         .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s6a1_interact),
+        .script = TO_FAR_PTR_T(actor_ice_block_interact),
         .reserve_tiles = 0
     },
     {
@@ -79,9 +81,10 @@ const struct actor_t scene_underground_actors[] = {
         .move_speed = 8,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s6a2_interact),
+        .script = TO_FAR_PTR_T(actor_rock_3_interact),
         .reserve_tiles = 0
     },
     {
@@ -101,9 +104,10 @@ const struct actor_t scene_underground_actors[] = {
         .move_speed = 8,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s6a3_interact),
+        .script = TO_FAR_PTR_T(actor_rock_2_interact),
         .reserve_tiles = 0
     },
     {
@@ -123,9 +127,10 @@ const struct actor_t scene_underground_actors[] = {
         .move_speed = 8,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s6a4_interact),
+        .script = TO_FAR_PTR_T(actor_rock_1_interact),
         .reserve_tiles = 0
     }
 };

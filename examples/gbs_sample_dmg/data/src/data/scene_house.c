@@ -11,7 +11,7 @@
 #include "data/scene_house_actors.h"
 #include "data/scene_house_triggers.h"
 #include "data/scene_house_sprites.h"
-#include "data/script_s2_init.h"
+#include "data/scene_house_init.h"
 
 BANKREF(scene_house)
 
@@ -35,5 +35,5 @@ const struct scene_t scene_house = {
     .actors = TO_FAR_PTR_T(scene_house_actors),
     .triggers = TO_FAR_PTR_T(scene_house_triggers),
     .sprites = TO_FAR_PTR_T(scene_house_sprites),
-    .script_init = TO_FAR_PTR_T(script_s2_init)
+    .script_init = TO_FAR_PTR_T(scene_house_init)
 };

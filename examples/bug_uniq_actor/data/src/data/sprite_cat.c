@@ -4,6 +4,7 @@
 #include "gbs_types.h"
 #include "data/sprite_cat_tileset.h"
 
+
 BANKREF(sprite_cat)
 
 #define SPRITE_3_STATE_DEFAULT 0

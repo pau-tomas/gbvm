@@ -1,0 +1,46 @@
+{
+  "_resourceType": "actor",
+  "id": "97d0f9f0-52a0-4d90-9a6d-5498216f9986",
+  "_index": 0,
+  "symbol": "actor_cat",
+  "prefabId": "",
+  "name": "Cat",
+  "x": 13,
+  "y": 7,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "1e27bb8e-c805-435a-8b87-05b4f50da4f0",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "command": "EVENT_ACTOR_SET_SPRITE",
+      "args": {
+        "actorId": "97d0f9f0-52a0-4d90-9a6d-5498216f9986",
+        "spriteSheetId": "17219846-cda9-4e84-bdfa-c3ff105d42cc"
+      },
+      "id": "b570f334-8b92-49d8-a7c1-0caf06ea4937"
+    },
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Woof!"
+        ],
+        "avatarId": ""
+      },
+      "id": "d5b487d8-501a-47f1-8a8b-c231443031f2"
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

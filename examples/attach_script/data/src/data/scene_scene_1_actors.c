@@ -5,9 +5,9 @@
 
 #include "gbs_types.h"
 #include "data/sprite_actor.h"
-#include "data/script_s0a0_interact.h"
+#include "data/actor_0_interact.h"
 #include "data/sprite_actor.h"
-#include "data/script_s0a1_interact.h"
+#include "data/actor_1_interact.h"
 
 BANKREF(scene_scene_1_actors)
 
@@ -29,9 +29,10 @@ const struct actor_t scene_scene_1_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a0_interact),
+        .script = TO_FAR_PTR_T(actor_0_interact),
         .reserve_tiles = 0
     },
     {
@@ -51,9 +52,10 @@ const struct actor_t scene_scene_1_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a1_interact),
+        .script = TO_FAR_PTR_T(actor_1_interact),
         .reserve_tiles = 0
     }
 };

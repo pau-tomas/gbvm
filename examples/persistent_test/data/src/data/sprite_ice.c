@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: ice
-  
+
 #include "gbs_types.h"
 #include "data/sprite_ice_tileset.h"
+
 
 BANKREF(sprite_ice)
 

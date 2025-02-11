@@ -19,13 +19,6 @@ const int8_t sine_wave[256] = {
     -49, -46,  -43, -40, -37, -34, -31, -28, -25, -22, -19, -16, -12,  -9,  -6,  -3
 };
 
-const point8_t dir_lookup[4] = {
-    { .x =  0, .y =  1 },
-    { .x =  1, .y =  0 },
-    { .x =  0, .y = -1 },
-    { .x = -1, .y =  0 }
-};
-
 const UBYTE dir_angle_lookup[4] = {
     128,
     64,

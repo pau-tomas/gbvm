@@ -1,0 +1,23 @@
+{
+  "_resourceType": "scene",
+  "id": "438cf8c6-1e13-47f1-b0d5-63c654fe6c8e",
+  "_index": 0,
+  "type": "TOPDOWN",
+  "name": "West",
+  "symbol": "scene_west",
+  "x": 60,
+  "y": 312,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "6c6cf23f-e9d2-464d-9c49-17f175316cae",
+  "tilesetId": "6e32cd8c-d7da-493c-bc67-11a4d4bd4698",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "627f0345-6f18-4f18-b77c-7905f3aab46f",
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": ""
+}

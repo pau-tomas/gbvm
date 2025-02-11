@@ -1,0 +1,58 @@
+{
+  "_resourceType": "actor",
+  "id": "e458d538-c725-47ee-8b04-9a8a1747e067",
+  "_index": 0,
+  "symbol": "actor_0",
+  "prefabId": "",
+  "name": "",
+  "x": 4,
+  "y": 7,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f78876b6-d8d6-4d47-8a9b-5ef1bebd01fe",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "c6faadc9-8b1b-4153-a301-f13188423b62",
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "player",
+        "spriteStateId": "Surprised"
+      }
+    },
+    {
+      "id": "44bc92d9-0e09-487f-bebd-5ea21d1d7cb9",
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 0.5
+        },
+        "frames": {
+          "type": "number",
+          "value": 30
+        }
+      }
+    },
+    {
+      "id": "04702955-646b-4787-9f1b-36b209878278",
+      "command": "EVENT_ACTOR_SET_STATE",
+      "args": {
+        "actorId": "player",
+        "spriteStateId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

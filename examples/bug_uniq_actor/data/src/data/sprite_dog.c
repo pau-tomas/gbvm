@@ -4,6 +4,7 @@
 #include "gbs_types.h"
 #include "data/sprite_dog_tileset.h"
 
+
 BANKREF(sprite_dog)
 
 #define SPRITE_1_STATE_DEFAULT 0

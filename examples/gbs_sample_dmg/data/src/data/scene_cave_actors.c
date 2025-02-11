@@ -7,12 +7,11 @@
 #include "data/sprite_torch.h"
 #include "data/sprite_fire.h"
 #include "data/sprite_sage.h"
-#include "data/script_s1a2_interact.h"
+#include "data/actor_9_interact.h"
 #include "data/sprite_torch.h"
 #include "data/sprite_fire.h"
 #include "data/sprite_savepoint.h"
-#include "data/script_s1a5_interact.h"
-#include "data/sprite_portal.h"
+#include "data/actor_12_interact.h"
 
 BANKREF(scene_cave_actors)
 
@@ -34,6 +33,7 @@ const struct actor_t scene_cave_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -55,6 +55,7 @@ const struct actor_t scene_cave_actors[] = {
         .move_speed = 16,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -76,9 +77,10 @@ const struct actor_t scene_cave_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s1a2_interact),
+        .script = TO_FAR_PTR_T(actor_9_interact),
         .reserve_tiles = 0
     },
     {
@@ -98,6 +100,7 @@ const struct actor_t scene_cave_actors[] = {
         .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -119,6 +122,7 @@ const struct actor_t scene_cave_actors[] = {
         .move_speed = 16,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -140,30 +144,10 @@ const struct actor_t scene_cave_actors[] = {
         .move_speed = 16,
         .anim_tick = 31,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s1a5_interact),
-        .reserve_tiles = 0
-    },
-    {
-        // Actor 7,
-        .pos = {
-            .x = 32 * 16,
-            .y = 88 * 16
-        },
-        .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
-        },
-        .dir = DIR_DOWN,
-        .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
-        .anim_tick = 3,
-        .pinned = FALSE,
-        .collision_group = COLLISION_GROUP_NONE,
-        .collision_enabled = TRUE,
+        .script = TO_FAR_PTR_T(actor_12_interact),
         .reserve_tiles = 0
     }
 };

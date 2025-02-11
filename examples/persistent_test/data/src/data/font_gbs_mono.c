@@ -1,7 +1,7 @@
 #pragma bank 255
 
 // Font: gbs-mono.png
-  
+
 #include "gbs_types.h"
 
 static const UBYTE font_gbs_mono_table[] = {
@@ -231,7 +231,7 @@ static const UBYTE font_gbs_mono_bitmaps[] = {
 
 BANKREF(font_gbs_mono)
 const font_desc_t font_gbs_mono = {
-    FONT_RECODE, 
+    FONT_RECODE,
     0xFF,
     font_gbs_mono_table,
     NULL,

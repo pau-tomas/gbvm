@@ -1,0 +1,16 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "Save_Exists",
+      "symbol": "var_save_exists"
+    },
+    {
+      "id": "bd8c9770-17ba-453e-af24-21167ecb02a2__L0",
+      "name": "Local 0",
+      "symbol": "var_local_0"
+    }
+  ],
+  "constants": []
+}

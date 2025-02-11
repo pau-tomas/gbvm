@@ -13,6 +13,6 @@ extern const UBYTE start_player_anim_tick;
 
 extern const far_ptr_t ui_fonts[];
 
-void bootstrap_init() BANKED;
+void bootstrap_init(void) BANKED;
 
 #endif

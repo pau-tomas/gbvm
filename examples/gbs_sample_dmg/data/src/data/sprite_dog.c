@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: dog
-  
+
 #include "gbs_types.h"
-#include "data/tileset_dog.h"
+#include "data/sprite_dog_tileset.h"
+
 
 BANKREF(sprite_dog)
 
@@ -71,6 +72,6 @@ const struct spritesheet_t sprite_dog = {
         .right = 15,
         .top = -8
     },
-    .tileset = TO_FAR_PTR_T(tileset_dog),
+    .tileset = TO_FAR_PTR_T(sprite_dog_tileset),
     .cgb_tileset = { NULL, NULL }
 };

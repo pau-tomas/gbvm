@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "6c6cf23f-e9d2-464d-9c49-17f175316cae",
+  "name": "west",
+  "symbol": "bg_west",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144,
+  "tileColors": "",
+  "filename": "west.png"
+}

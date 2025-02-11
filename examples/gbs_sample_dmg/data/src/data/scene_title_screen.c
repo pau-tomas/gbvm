@@ -8,7 +8,7 @@
 #include "data/palette_0.h"
 #include "data/palette_1.h"
 #include "data/sprite_player.h"
-#include "data/script_s5_init.h"
+#include "data/scene_title_screen_init.h"
 
 BANKREF(scene_title_screen)
 
@@ -29,5 +29,5 @@ const struct scene_t scene_title_screen = {
     .n_triggers = 0,
     .n_sprites = 0,
     .n_projectiles = 0,
-    .script_init = TO_FAR_PTR_T(script_s5_init)
+    .script_init = TO_FAR_PTR_T(scene_title_screen_init)
 };

@@ -39,6 +39,8 @@ extern const UBYTE bootstrap_script[];
 
 extern void core_reset_hook(void); 
 
+UBYTE pause_state_update;
+
 void core_reset(void) BANKED {
     // cleanup core stuff
     SIO_init();
@@ -71,7 +73,7 @@ void process_VM(void) {
                 }
                 if (!VM_ISLOCKED()) {
                     if (joy != 0) events_update();                      // update joypad events (must be the first)
-                    state_update();                                     // update current scene, depending on its type
+                    if (!pause_state_update) state_update();                                     // update current scene, depending on its type
                     if ((game_time & 0x0F) == 0x00) timers_update();    // update timers
                     music_events_update();                              // update music events
                 }
@@ -163,6 +165,8 @@ void process_VM(void) {
                 }
                 if (!hide_sprites) SHOW_SPRITES;    // show sprites back if we switched LCD ISR while sprites were hidden 
 
+                pause_state_update = false;
+                
                 player_init();
                 state_init();
                 toggle_shadow_OAM();

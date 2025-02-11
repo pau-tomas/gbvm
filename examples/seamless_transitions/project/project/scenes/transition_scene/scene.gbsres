@@ -1,0 +1,181 @@
+{
+  "_resourceType": "scene",
+  "id": "72f73bab-0d4b-4801-8371-04a0e7581e1d",
+  "_index": 2,
+  "type": "TOPDOWN",
+  "name": "Transition Scene",
+  "symbol": "scene_transition",
+  "x": 249,
+  "y": 105,
+  "width": 40,
+  "height": 18,
+  "backgroundId": "ab0f13fb-6523-45b1-b75d-1075e056ed90",
+  "tilesetId": "6e32cd8c-d7da-493c-bc67-11a4d4bd4698",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "627f0345-6f18-4f18-b77c-7905f3aab46f",
+  "script": [
+    {
+      "command": "EVENT_IF_ACTOR_DIRECTION",
+      "args": {
+        "actorId": "$self$",
+        "direction": {
+          "type": "direction",
+          "value": "right"
+        },
+        "__collapseElse": false,
+        "__collapse": false,
+        "__comment": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_CAMERA_MOVE_TO",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 0
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "speed": 0
+            },
+            "id": "77b5b265-afe4-48af-9c09-ea1180012762"
+          },
+          {
+            "command": "EVENT_CAMERA_MOVE_TO",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 20
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "speed": 1
+            },
+            "id": "c9615798-d721-4a77-af79-6abaae229c83"
+          },
+          {
+            "command": "EVENT_ACTOR_MOVE_RELATIVE",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "number",
+                "value": 3
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "moveType": "horizontal",
+              "useCollisions": false,
+              "__collapse": false
+            },
+            "id": "0d961bf4-b4e5-43d2-a24f-c7b6758ed3db"
+          },
+          {
+            "command": "EVENT_SWITCH_SCENE",
+            "args": {
+              "sceneId": "065ac980-cc4a-4999-ae78-fd0d25867c23",
+              "x": {
+                "type": "number",
+                "value": 1
+              },
+              "y": {
+                "type": "property",
+                "target": "player",
+                "property": "ypos"
+              },
+              "direction": "right",
+              "fadeSpeed": 0
+            },
+            "id": "833cfb79-489b-4f43-bc7e-70faf650b323"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_CAMERA_MOVE_TO",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 20
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "speed": 0,
+              "__comment": false
+            },
+            "id": "153df897-b853-4047-b580-fb5b93615f57"
+          },
+          {
+            "command": "EVENT_CAMERA_MOVE_TO",
+            "args": {
+              "x": {
+                "type": "number",
+                "value": 0
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "speed": 1,
+              "__collapse": false,
+              "__comment": false
+            },
+            "id": "272ef7b3-dd46-4fe3-b445-cb2f7ed0a9e1"
+          },
+          {
+            "command": "EVENT_ACTOR_MOVE_RELATIVE",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "number",
+                "value": -3
+              },
+              "y": {
+                "type": "number",
+                "value": 0
+              },
+              "moveType": "horizontal",
+              "useCollisions": false,
+              "__collapse": true,
+              "__comment": false
+            },
+            "id": "4bc6cb36-c0b3-42ee-9c38-a0ec75b03f45"
+          },
+          {
+            "command": "EVENT_SWITCH_SCENE",
+            "args": {
+              "sceneId": "438cf8c6-1e13-47f1-b0d5-63c654fe6c8e",
+              "x": {
+                "type": "number",
+                "value": 17
+              },
+              "y": {
+                "type": "property",
+                "target": "player",
+                "property": "ypos"
+              },
+              "direction": "left",
+              "fadeSpeed": 0,
+              "__comment": false
+            },
+            "id": "dd001f2f-37d0-4e0b-a397-5ed5b742026a"
+          }
+        ]
+      },
+      "id": "7d6177db-5c18-4b91-bdc0-f707193ea2fd"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "002d0+"
+}

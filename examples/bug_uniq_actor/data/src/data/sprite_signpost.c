@@ -4,6 +4,7 @@
 #include "gbs_types.h"
 #include "data/sprite_signpost_tileset.h"
 
+
 BANKREF(sprite_signpost)
 
 #define SPRITE_4_STATE_DEFAULT 0

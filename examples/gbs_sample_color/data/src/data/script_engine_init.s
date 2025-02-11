@@ -18,8 +18,8 @@ _start_player_move_speed::
 _start_player_anim_tick:: 
         .db 15
 _ui_fonts:: 
-        IMPORT_FAR_PTR_DATA _font_gbs_mono
-
+        IMPORT_FAR_PTR_DATA _font_gbs_variable_width
+        IMPORT_FAR_PTR_DATA _avatar_font_0
 
 ; define engine init VM routine which will be packed into some bank
 .area _CODE_255
@@ -54,11 +54,9 @@ _script_engine_init::
         VM_SET_CONST_INT16      _plat_grav, 1792
         VM_SET_CONST_INT16      _plat_hold_grav, 512
         VM_SET_CONST_INT16      _plat_max_fall_vel, 20000
-        VM_SET_CONST_INT16      _shooter_scroll_speed, 16
-        VM_SET_CONST_INT16      _topdown_grid, 8
-        VM_SET_CONST_INT16      _fade_style, 0
-
-
+        VM_SET_CONST_INT8      _shooter_scroll_speed, 16
+        VM_SET_CONST_INT8      _topdown_grid, 8
+        VM_SET_CONST_INT8      _fade_style, 0
 
         ; return from init routine
         VM_RET_FAR

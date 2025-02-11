@@ -1,0 +1,11 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "abff2991-b19c-432e-854e-ad4e2d919bfa__L0",
+      "name": "MenuItem",
+      "symbol": "var_menuitem"
+    }
+  ],
+  "constants": []
+}

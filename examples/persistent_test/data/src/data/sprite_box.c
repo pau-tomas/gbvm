@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: box
-  
+
 #include "gbs_types.h"
 #include "data/sprite_box_tileset.h"
+
 
 BANKREF(sprite_box)
 
