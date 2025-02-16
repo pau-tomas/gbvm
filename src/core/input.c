@@ -7,6 +7,7 @@ joypads_t joypads;
 UBYTE frame_joy;
 UBYTE last_joy;
 UBYTE recent_joy;
+UBYTE joy_pressed;
 
 void input_init(void) BANKED {
     memset(&joypads, 0, sizeof(joypads));
@@ -30,4 +31,6 @@ void input_update(void) NONBANKED {
 #endif
     if ((joy ^ last_joy) & INPUT_DPAD)
         recent_joy = ((joy & ~last_joy) & INPUT_DPAD);
+    joy_pressed = joy;
+    joy_pressed &= ~last_joy;
 }
