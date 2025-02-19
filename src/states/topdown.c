@@ -27,11 +27,11 @@ void topdown_init(void) BANKED {
 
     if (topdown_grid == 16) {
         // Snap to 16px grid
-        PLAYER.pos.x = TILE16_TO_SUBPX(SUBPX_TO_TILE16(PLAYER.pos.x));
-        PLAYER.pos.y = TILE16_TO_SUBPX(SUBPX_TO_TILE16(PLAYER.pos.y)) + 128;
+        PLAYER.pos.x = SUBX_SNAP_TILE16(PLAYER.pos.x);
+        PLAYER.pos.y = SUBX_SNAP_TILE16(PLAYER.pos.y) + TILE_TO_SUBPX(1);
     } else {
-        PLAYER.pos.x = TILE_TO_SUBPX(SUBPX_TO_TILE(PLAYER.pos.x));
-        PLAYER.pos.y = TILE_TO_SUBPX(SUBPX_TO_TILE(PLAYER.pos.y));
+        PLAYER.pos.x = SUBX_SNAP_TILE(PLAYER.pos.x);
+        PLAYER.pos.y = SUBX_SNAP_TILE(PLAYER.pos.y);
     }
 }
 
