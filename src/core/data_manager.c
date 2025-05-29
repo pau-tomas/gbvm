@@ -55,6 +55,36 @@ void load_init(void) BANKED {
     scene_stack_ptr = scene_stack;
 }
 
+void load_actor_from_def(actor_t* actor, actor_def_t* actor_def) BANKED {
+    memset(actor, 0, sizeof(actor_t));
+    actor->active = actor_def->active;
+    actor->pinned = actor_def->pinned;
+    actor->hidden = actor_def->hidden;
+    actor->disabled = actor_def->disabled;
+    actor->anim_noloop = actor_def->anim_noloop;
+    actor->collision_enabled = actor_def->collision_enabled;
+    actor->movement_interrupt = actor_def->movement_interrupt;
+    actor->persistent = actor_def->persistent;
+    actor->pos = actor_def->pos;
+    actor->dir = actor_def->dir;
+    actor->bounds = actor_def->bounds;
+    actor->base_tile = actor_def->base_tile;
+    actor->frame = actor_def->frame;
+    actor->frame_start = actor_def->frame_start;
+    actor->frame_end = actor_def->frame_end;
+    actor->anim_tick = actor_def->anim_tick;
+    actor->move_speed = actor_def->move_speed;
+    actor->animation = actor_def->animation;
+    actor->reserve_tiles = actor_def->reserve_tiles;
+    for(uint8_t i = 0; i < 8; i++) {
+        actor->animations[i] = actor_def->animations[i];
+    }
+    actor->sprite = actor_def->sprite;
+    actor->script = actor_def->script;
+    actor->script_update = actor_def->script_update;
+    actor->collision_group = actor_def->collision_group;
+}
+
 void load_bkg_tileset(const tileset_t* tiles, UBYTE bank) BANKED {
     if ((!bank) || (!tiles)) return;
 
@@ -268,9 +298,12 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
 
         // Add other actors, activate pinned
         if (actors_len != 0) {
+            actor_def_t actor_def_temp_ram;
+            actor_def_t* p_actor_def = scn.actors.ptr;
             actor_t * actor = actors + 1;
-            MemcpyBanked(actor, scn.actors.ptr, sizeof(actor_t) * (actors_len - 1), scn.actors.bank);
-            for (i = actors_len - 1; i != 0; i--, actor++) {
+            for (i = 0; i < actors_len-1; i++, p_actor_def++, actor++) {
+                MemcpyBanked(&actor_def_temp_ram, p_actor_def, sizeof(actor_def_t), scn.actors.bank);
+                load_actor_from_def(actor, &actor_def_temp_ram);
                 if (actor->reserve_tiles) {
                     // exclusive sprites allocated separately to avoid overwriting if modified
                     actor->base_tile = allocated_sprite_tiles;
