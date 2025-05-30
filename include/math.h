@@ -74,12 +74,16 @@
 #define SUBPX_TO_PX(a)      ((a) >> 4)
 #define SUBPX_TO_TILE(a)    ((a) >> 7)
 #define SUBPX_TO_TILE16(a)  ((a) >> 8)
+
 #define PX_TO_SUBPX(a)      ((a) << 4)
+#define TILE_TO_SUBPX(a)    ((a) << 7)
+#define TILE16_TO_SUBPX(a)  ((a) << 8)
+
 #define PX_TO_TILE(a)       ((a) >> 3)
 #define PX_TO_TILE16(a)     ((a) >> 4)
-#define TILE_TO_SUBPX(a)    ((a) << 7)
 #define TILE_TO_PX(a)       ((a) << 3)
-#define TILE16_TO_SUBPX(a)  ((a) << 8)
+#define TILE16_TO_PX(a)     ((a) << 4)
+
 #define SUBPX_SNAP_PX(a)     ((a) & 0xFFF0)
 #define SUBPX_SNAP_TILE(a)   ((a) & 0xFF80)
 #define SUBPX_SNAP_TILE16(a) ((a) & 0xFF00)
