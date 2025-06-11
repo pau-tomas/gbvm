@@ -596,6 +596,8 @@ OP_VM_ACTOR_MOVE_TO             = 0x30
 .ACTOR_ATTR_H_FIRST             = 0x01
 .ACTOR_ATTR_CHECK_COLL          = 0x02
 .ACTOR_ATTR_DIAGONAL            = 0x04
+.ACTOR_ATTR_RELATIVE_SNAP_PX    = 0x08
+.ACTOR_ATTR_RELATIVE_SNAP_TILE  = 0x10
 ;-- Moves actor to a new position.
 ; @param IDX points to the beginning of the pseudo-structure that contains these members:
 ;    `ID`   - Actor number.
@@ -1468,6 +1470,10 @@ OP_VM_CAMERA_MOVE_TO     = 0x70
 .CAMERA_LOCK             = 0b00000011
 .CAMERA_LOCK_X           = 0b00000001
 .CAMERA_LOCK_Y           = 0b00000010
+.CAMERA_LOCK_X_MIN       = 0b00000100
+.CAMERA_LOCK_X_MAX       = 0b00001000
+.CAMERA_LOCK_Y_MIN       = 0b00010000
+.CAMERA_LOCK_Y_MAX       = 0b00100000
 .CAMERA_UNLOCK           = 0b00000000
 
 OP_VM_CAMERA_SET_POS     = 0x71
