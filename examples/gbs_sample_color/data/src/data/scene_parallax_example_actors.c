@@ -10,7 +10,7 @@
 
 BANKREF(scene_parallax_example_actors)
 
-const struct actor_t scene_parallax_example_actors[] = {
+const struct actor_def_t scene_parallax_example_actors[] = {
     {
         // Sign Post,
         .pos = {
