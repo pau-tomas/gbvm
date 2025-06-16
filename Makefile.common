@@ -148,9 +148,7 @@ $(TOP)$(OBJDIR)/%.o:	$(TOP)src/%.s
 
 $(OBJDIR)/linkfile.lk:	$(OBJDIR) $(OBJS)
 	@rm -f $@
-	@for file in $(OBJS) ; do \
-		echo -e "$${file}" >> $@ ; \
-	done
+	@for o in $(OBJS); do echo $$o >> $@; done
 
 BUILD:	$(OBJDIR)/linkfile.lk
 	$(CC) $(LFLAGS) -Wm-yn$(ROMTITLE) -o $(TARGET) -Wl-f$<
