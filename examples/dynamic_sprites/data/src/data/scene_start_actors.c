@@ -23,7 +23,7 @@
 
 BANKREF(scene_start_actors)
 
-const struct actor_t scene_start_actors[] = {
+const struct actor_def_t scene_start_actors[] = {
     {
         // PortalLeft,
         .pos = {

@@ -8,7 +8,7 @@
 
 const void __at(255) __bank_scene_0_actors;
 
-const struct actor_t scene_0_actors[] = {
+const struct actor_def_t scene_0_actors[] = {
     {
         // Actor 1,
         .pos = {

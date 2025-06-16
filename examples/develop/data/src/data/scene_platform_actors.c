@@ -14,7 +14,7 @@
 
 BANKREF(scene_platform_actors)
 
-const struct actor_t scene_platform_actors[] = {
+const struct actor_def_t scene_platform_actors[] = {
     {
         // Turnip 1,
         .pos = {

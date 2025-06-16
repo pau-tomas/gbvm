@@ -12,7 +12,7 @@
 
 BANKREF(scene_deep_space_actors)
 
-const struct actor_t scene_deep_space_actors[] = {
+const struct actor_def_t scene_deep_space_actors[] = {
     {
         // Space Dog,
         .pos = {

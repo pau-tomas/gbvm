@@ -12,7 +12,7 @@
 
 BANKREF(scene_outside_actors)
 
-const struct actor_t scene_outside_actors[] = {
+const struct actor_def_t scene_outside_actors[] = {
     {
         // Actor 1,
         .pos = {
