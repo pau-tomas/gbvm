@@ -6,7 +6,6 @@ TEST_DIR = $(TOP)test
 TEST_FW	= $(TEST_DIR)/framework
 EXAMPLES_DIR = ./examples
 EMU	= $(TOP)../bgb/bgb
-GBSPACK = $(TOP)../gbspack/gbspack
 TEST_CHK = python $(CURDIR)/$(TEST_FW)/unit_checker.py
 GBS_CLI = node $(TOP)../gb-studio/out/cli/gb-studio-cli.js
 PLATFORM =
@@ -15,16 +14,15 @@ ROMTITLE = "GBSTUDIO"
 
 ROM_BUILD_DIR = build
 OBJDIR = obj
-REL_OBJDIR = obj/_rel
+
+BATTERY = -Wl-g__start_save=0
 
 CFLAGS = $(PLATFORM) -I$(TOP)include -Wa-I$(TOP)include
 
-LFLAGS_NBANKS += -Wm-yoA -Wm-ya4
+LFLAGS_NBANKS += -autobank -Wb-ext=.rel -Wm-yoA -Wm-ya4
 LFLAGS_SYMBOLS = -Wl-j -Wl-m -Wl-w -Wm-yS
 
-LFLAGS = $(PLATFORM) -Wm-yt$(CART_MBC) $(LFLAGS_NBANKS) $(LFLAGS_SYMBOLS) -Wl-klib -Wl-g.STACK=0xDF00 -Wi-e
-
-PACKFLAGS = -b 1 -f 255 -e rel -c
+LFLAGS = $(PLATFORM) -Wm-yt$(CART_MBC) $(LFLAGS_NBANKS) $(LFLAGS_SYMBOLS) $(BATTERY) -Wl-klib -Wl-g.STACK=0xDF00 -Wi-e
 
 EMUFLAGS = \
 	-set "Color0=E8E8E8" \
@@ -57,7 +55,6 @@ ENGINE_OBJS = $(CSRC:%.c=$(TOP)$(OBJDIR)/%.o) \
 	$(ASTATES:%.s=$(TOP)$(OBJDIR)/%.o)
 
 OBJS = $(ENGINE_OBJS)
-REL_OBJS = $(OBJS:$(OBJDIR)/%.o=$(REL_OBJDIR)/%.rel)
 
 all:	settings directories BUILD
 
@@ -100,9 +97,9 @@ SGB:
 	@echo "SGB mode ON"
 
 batteryless:
-	$(eval PACKFLAGS += -a 4)
 	$(eval BATTERYLESS = 1)
 	$(eval CFLAGS += -DBATTERYLESS)
+	$(eval BATTERY = -Wb-reserve=15:4000 -Wb-reserve=14:4000 -Wb-reserve=13:4000 -Wb-reserve=12:4000 -Wl-g__start_save=12)
 	@echo "BETTERYLESS SAVE ON"
 
 MBC3:
@@ -118,11 +115,10 @@ hUGE:
 	@echo "Enable hUGETracker"
 GBT:
 	$(eval CFLAGS += -DGBT_PLAYER)
-	$(eval LFLAGS += -Wl-l$(TOP)lib/gbt_player.lib)
-	$(eval PACKFLAGS += -s 1:800)
+	$(eval LFLAGS += -Wl-l$(TOP)lib/gbt_player.lib -Wb-reserve=1:800)
 	@echo "Enable GBTPlayer"
 
-directories:	$(ROM_BUILD_DIR) $(OBJDIR) $(REL_OBJDIR)
+directories:	$(ROM_BUILD_DIR) $(OBJDIR)
 
 $(ROM_BUILD_DIR):
 	mkdir -p $(ROM_BUILD_DIR)
@@ -130,9 +126,6 @@ $(ROM_BUILD_DIR):
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 	mkdir -p $(TOP)$(OBJDIR)
-
-$(REL_OBJDIR):
-	mkdir -p $(REL_OBJDIR)
 
 $(TOP)$(OBJDIR)/%.o:	$(TOP)src/core/%.c
 	$(CC) $(CFLAGS) -Wf-MMD $(filter -Wf-ba%, $(subst .d,-Wf-ba,$(suffix $(<:%.c=%)))) -c -o $@ $<
@@ -152,17 +145,14 @@ $(TOP)$(OBJDIR)/%.o:	$(TOP)src/%.c
 $(TOP)$(OBJDIR)/%.o:	$(TOP)src/%.s
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(REL_OBJDIR)/linkfile.lk:	$(OBJS)
-	mkdir -p $(REL_OBJDIR)
 
-	$(shell rm -f $(REL_OBJDIR)/packfile.pk) 
-	$(foreach O,$(OBJS),$(shell echo $O >>$(REL_OBJDIR)/packfile.pk))
-	$(eval CART_SIZE=$(shell $(GBSPACK) $(PACKFLAGS) -o $(REL_OBJDIR) -i $(REL_OBJDIR)/packfile.pk))
+$(OBJDIR)/linkfile.lk:	$(OBJDIR) $(OBJS)
+	@rm -f $@
+	@for file in $(OBJS) ; do \
+		echo -e "$${file}" >> $@ ; \
+	done
 
-	$(shell echo -g __start_save=$(shell expr $(CART_SIZE) - 4 ) >$@)
-	$(foreach O,$(REL_OBJS),$(shell echo $O >>$@))
-
-BUILD:	$(REL_OBJDIR)/linkfile.lk
+BUILD:	$(OBJDIR)/linkfile.lk
 	$(CC) $(LFLAGS) -Wm-yn$(ROMTITLE) -o $(TARGET) -Wl-f$<
 
 clean:
