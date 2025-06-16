@@ -22,7 +22,7 @@
 
 BANKREF(scene_path_to_sample_town_actors)
 
-const struct actor_t scene_path_to_sample_town_actors[] = {
+const struct actor_def_t scene_path_to_sample_town_actors[] = {
     {
         // Enemies/Turnip,
         .pos = {

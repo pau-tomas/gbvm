@@ -19,7 +19,7 @@
 
 BANKREF(scene_launch_site_actors)
 
-const struct actor_t scene_launch_site_actors[] = {
+const struct actor_def_t scene_launch_site_actors[] = {
     {
         // Pod Door,
         .pos = {

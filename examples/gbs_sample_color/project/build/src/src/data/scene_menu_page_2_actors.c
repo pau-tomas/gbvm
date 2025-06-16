@@ -12,7 +12,7 @@
 
 BANKREF(scene_menu_page_2_actors)
 
-const struct actor_t scene_menu_page_2_actors[] = {
+const struct actor_def_t scene_menu_page_2_actors[] = {
     {
         // Quest7,
         .pos = {
