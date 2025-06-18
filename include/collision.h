@@ -22,6 +22,9 @@ extern unsigned char *collision_ptr;
 extern UBYTE image_tile_width;
 extern UBYTE image_tile_height;
 
+extern UBYTE tile_hit_x;
+extern UBYTE tile_hit_y;
+
 /**
  * Check if point is within positioned bounding box.
  *
@@ -67,5 +70,29 @@ inline UBYTE tile_at(UBYTE tx, UBYTE ty) {
         return ReadBankedUBYTE(collision_ptr + (ty * (UINT16)image_tile_width) + tx, collision_bank);
     return COLLISION_ALL;
 }
+
+/**
+ * Test for a tile matching mask in a vertical range from ty_start to ty_end at column tx.
+ * Updates globals tile_hit_x and tile_hit_y which can be read afterwards to determine which tile matched
+ * 
+ * @param tile_mask Tile bitmask to match
+ * @param tx Tile x-coordinate
+ * @param ty_start Starting tile y-coordinate
+ * @param ty_end Ending tile y-coordinate
+ * @return First matching tile value found, or 0 if none matched, COLLISION_ALL if out of bounds
+ */
+UBYTE tile_col_test_range_y(UBYTE tile_mask, UBYTE tx, UBYTE ty_start, UBYTE ty_end) NONBANKED;
+
+/**
+ * Test for a tile matching mask in a horizontal range from tx_start to tx_end at row ty.
+ * Updates globals tile_hit_x and tile_hit_y which can be read afterwards to determine which tile matched
+ *
+ * @param tile_mask Tile bitmask to match
+ * @param ty Tile y-coordinate
+ * @param tx_start Starting tile x-coordinate
+ * @param tx_end Ending tile x-coordinate
+ * @return First matching tile value found, or 0 if none matched, COLLISION_ALL if out of bounds
+ */
+UBYTE tile_col_test_range_x(UBYTE tile_mask, UBYTE ty, UBYTE tx_start, UBYTE tx_end) NONBANKED;
 
 #endif
