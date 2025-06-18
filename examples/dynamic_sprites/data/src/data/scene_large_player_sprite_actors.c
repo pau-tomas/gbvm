@@ -11,7 +11,7 @@
 
 BANKREF(scene_large_player_sprite_actors)
 
-const struct actor_def_t scene_large_player_sprite_actors[] = {
+const struct actor_t scene_large_player_sprite_actors[] = {
     {
         // Portal,
         .pos = {

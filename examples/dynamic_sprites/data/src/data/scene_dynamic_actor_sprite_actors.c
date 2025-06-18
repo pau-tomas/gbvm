@@ -21,7 +21,7 @@
 
 BANKREF(scene_dynamic_actor_sprite_actors)
 
-const struct actor_def_t scene_dynamic_actor_sprite_actors[] = {
+const struct actor_t scene_dynamic_actor_sprite_actors[] = {
     {
         // Portal,
         .pos = {

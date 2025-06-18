@@ -7,6 +7,6 @@
 #include "gbs_types.h"
 
 BANKREF_EXTERN(scene__actors)
-extern const struct actor_def_t scene__actors[];
+extern const struct actor_t scene__actors[];
 
 #endif

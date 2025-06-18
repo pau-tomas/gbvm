@@ -17,7 +17,7 @@
 
 BANKREF(scene_top_house_actors)
 
-const struct actor_def_t scene_top_house_actors[] = {
+const struct actor_t scene_top_house_actors[] = {
     {
         // Radio Guy,
         .pos = {

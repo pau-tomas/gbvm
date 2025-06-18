@@ -18,7 +18,7 @@
 
 BANKREF(scene_underground_actors)
 
-const struct actor_def_t scene_underground_actors[] = {
+const struct actor_t scene_underground_actors[] = {
     {
         // Sign Post,
         .pos = {

@@ -7,6 +7,6 @@
 #include "gbs_types.h"
 
 extern const void __bank_scene_0_actors;
-extern const struct actor_def_t scene_0_actors[];
+extern const struct actor_t scene_0_actors[];
 
 #endif

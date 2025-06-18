@@ -24,7 +24,7 @@
 
 BANKREF(scene_sample_town_actors)
 
-const struct actor_def_t scene_sample_town_actors[] = {
+const struct actor_t scene_sample_town_actors[] = {
     {
         // Rock,
         .pos = {

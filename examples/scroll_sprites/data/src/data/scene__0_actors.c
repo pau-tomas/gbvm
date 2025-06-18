@@ -13,7 +13,7 @@
 
 BANKREF(scene__0_actors)
 
-const struct actor_def_t scene__0_actors[] = {
+const struct actor_t scene__0_actors[] = {
     {
         // Actor 1,
         .pos = {
