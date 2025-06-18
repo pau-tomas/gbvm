@@ -107,12 +107,10 @@ void topdown_update(void) BANKED {
             actor_set_anim_idle(&PLAYER);
         }
 
-        if (IS_FRAME_ODD) {
-            // Check for actor overlap
-            hit_actor = actor_overlapping_player(FALSE);
-            if (hit_actor != NULL && hit_actor->collision_group) {
-                player_register_collision_with(hit_actor);
-            }
+        // Check for actor overlap
+        hit_actor = actor_overlapping_player(FALSE);
+        if (hit_actor != NULL && hit_actor->collision_group) {
+            player_register_collision_with(hit_actor);
         }
 
         // Check if walked in to actor
