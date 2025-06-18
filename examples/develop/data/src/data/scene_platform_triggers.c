@@ -15,46 +15,46 @@ BANKREF(scene_platform_triggers)
 const struct trigger_t scene_platform_triggers[] = {
     {
         // Trigger 1,
-        .x = 56,
-        .y = 17,
-        .width = 3,
-        .height = 1,
+        .left = 56,
+        .top = 17,
+        .right = 58,
+        .bottom = 17,
         .script = TO_FAR_PTR_T(script_s5t0_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
         // Trigger 2,
-        .x = 160,
-        .y = 0,
-        .width = 1,
-        .height = 14,
+        .left = 160,
+        .top = 0,
+        .right = 160,
+        .bottom = 13,
         .script = TO_FAR_PTR_T(script_s5t1_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
         // Trigger 3,
-        .x = 106,
-        .y = 17,
-        .width = 5,
-        .height = 1,
+        .left = 106,
+        .top = 17,
+        .right = 110,
+        .bottom = 17,
         .script = TO_FAR_PTR_T(script_s5t2_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
         // Trigger 4,
-        .x = 6,
-        .y = 13,
-        .width = 2,
-        .height = 1,
+        .left = 6,
+        .top = 13,
+        .right = 7,
+        .bottom = 13,
         .script = TO_FAR_PTR_T(script_s5t3_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
         // Trigger 5,
-        .x = 13,
-        .y = 8,
-        .width = 2,
-        .height = 1,
+        .left = 13,
+        .top = 8,
+        .right = 14,
+        .bottom = 8,
         .script = TO_FAR_PTR_T(script_s5t4_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     }

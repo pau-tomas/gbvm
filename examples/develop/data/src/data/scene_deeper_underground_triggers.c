@@ -11,10 +11,10 @@ BANKREF(scene_deeper_underground_triggers)
 const struct trigger_t scene_deeper_underground_triggers[] = {
     {
         // Trigger 1,
-        .x = 5,
-        .y = 0,
-        .width = 1,
-        .height = 1,
+        .left = 5,
+        .top = 0,
+        .right = 5,
+        .bottom = 0,
         .script = TO_FAR_PTR_T(script_s6t0_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     }
