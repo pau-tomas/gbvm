@@ -60,14 +60,10 @@ void topdown_update(void) BANKED {
 
             // Check for collisions to left of player
             tile_start = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.top);
-            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.bottom) + 1;
+            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.bottom);
             UBYTE tile_x = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.left);
-            while (tile_start != tile_end) {
-                if (tile_at(tile_x - 1, tile_start) & COLLISION_RIGHT) {
-                    player_moving = FALSE;
-                    break;
-                }
-                tile_start++;
+            if (tile_col_test_range_y(COLLISION_RIGHT, tile_x - 1, tile_start, tile_end)) {
+                player_moving = FALSE;
             }
         } else if (INPUT_RECENT_RIGHT) {
             player_moving = TRUE;
@@ -75,14 +71,10 @@ void topdown_update(void) BANKED {
 
             // Check for collisions to right of player
             tile_start = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.top);
-            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.bottom) + 1;
+            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.bottom);
             UBYTE tile_x = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.right);
-            while (tile_start != tile_end) {
-                if (tile_at(tile_x + 1, tile_start) & COLLISION_LEFT) {
-                    player_moving = FALSE;
-                    break;
-                }
-                tile_start++;
+            if (tile_col_test_range_y(COLLISION_LEFT, tile_x + 1, tile_start, tile_end)) {
+                player_moving = FALSE;
             }
         } else if (INPUT_RECENT_UP) {
             player_moving = TRUE;
@@ -90,14 +82,10 @@ void topdown_update(void) BANKED {
 
             // Check for collisions below player
             tile_start = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.left);
-            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.right) + 1;
+            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.right);
             UBYTE tile_y = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.top);
-            while (tile_start != tile_end) {
-                if (tile_at(tile_start, tile_y - 1) & COLLISION_BOTTOM) {
-                    player_moving = FALSE;
-                    break;
-                }
-                tile_start++;
+            if (tile_col_test_range_x(COLLISION_BOTTOM, tile_y - 1, tile_start, tile_end)) {
+                player_moving = FALSE;
             }
         } else if (INPUT_RECENT_DOWN) {
             player_moving = TRUE;
@@ -105,14 +93,10 @@ void topdown_update(void) BANKED {
 
             // Check for collisions below player
             tile_start = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.left);
-            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.right) + 1;
+            tile_end   = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.right);
             UBYTE tile_y = PX_TO_TILE(SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.bottom);
-            while (tile_start != tile_end) {
-                if (tile_at(tile_start, tile_y + 1) & COLLISION_TOP) {
-                    player_moving = FALSE;
-                    break;
-                }
-                tile_start++;
+            if (tile_col_test_range_x(COLLISION_TOP, tile_y + 1, tile_start, tile_end)) {
+                player_moving = FALSE;
             }
         }
 
