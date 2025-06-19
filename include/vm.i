@@ -683,7 +683,7 @@ OP_VM_ACTOR_SET_BOUNDS          = 0x37
 ; @param TOP Top boundary of the bounding box.
 ; @param BOTTOM Bottom boundary of the bounding box.
 .macro VM_ACTOR_SET_BOUNDS ACTOR, LEFT, RIGHT, TOP, BOTTOM
-        .db OP_VM_ACTOR_SET_BOUNDS, #<BOTTOM, #<TOP, #<RIGHT, #<LEFT, #>ACTOR, #<ACTOR
+        .db OP_VM_ACTOR_SET_BOUNDS, #>BOTTOM, #<BOTTOM, #>TOP, #<TOP, #>RIGHT, #<RIGHT, #>LEFT, #<LEFT, #>ACTOR, #<ACTOR
 .endm
 
 OP_VM_ACTOR_SET_SPRITESHEET     = 0x38
