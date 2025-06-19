@@ -362,19 +362,19 @@ void platform_update(void) BANKED {
                 UWORD slope_y_coord = 0;
                 if (IS_ON_SLOPE(col)) {
                     if ((col & COLLISION_SLOPE) == COLLISION_SLOPE_45_RIGHT) {
-                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (PX_TO_SUBPX(8) - x_offset) - PLAYER.bounds.bottom - PX_TO_SUBPX(1);
+                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (PX_TO_SUBPX(8) - x_offset) - PLAYER.bounds.bottom - 1;
                     } else if ((col & COLLISION_SLOPE) == COLLISION_SLOPE_225_RIGHT_BOT) {
-                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (PX_TO_SUBPX(8) - (x_offset >> 1)) - PLAYER.bounds.bottom - PX_TO_SUBPX(1);
+                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (PX_TO_SUBPX(8) - (x_offset >> 1)) - PLAYER.bounds.bottom - 1;
                     } else if ((col & COLLISION_SLOPE) == COLLISION_SLOPE_225_RIGHT_TOP) {
-                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (PX_TO_SUBPX(4) - (x_offset >> 1)) - PLAYER.bounds.bottom - PX_TO_SUBPX(1);
+                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (PX_TO_SUBPX(4) - (x_offset >> 1)) - PLAYER.bounds.bottom - 1;
                     }
 
                     else if ((col & COLLISION_SLOPE) == COLLISION_SLOPE_45_LEFT) {
-                        slope_y_coord = TILE_TO_SUBPX(tile_y) + x_offset - PLAYER.bounds.bottom - PX_TO_SUBPX(1);
+                        slope_y_coord = TILE_TO_SUBPX(tile_y) + x_offset - PLAYER.bounds.bottom - 1;
                     } else if ((col & COLLISION_SLOPE) == COLLISION_SLOPE_225_LEFT_BOT) {
-                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (x_offset >> 1) + PX_TO_SUBPX(4) - PLAYER.bounds.bottom - PX_TO_SUBPX(1);
+                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (x_offset >> 1) + PX_TO_SUBPX(4) - PLAYER.bounds.bottom - 1;
                     } else if ((col & COLLISION_SLOPE) == COLLISION_SLOPE_225_LEFT_TOP) {
-                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (x_offset >> 1) - PLAYER.bounds.bottom - PX_TO_SUBPX(1);
+                        slope_y_coord = TILE_TO_SUBPX(tile_y) + (x_offset >> 1) - PLAYER.bounds.bottom - 1;
                     }
                 }
 
