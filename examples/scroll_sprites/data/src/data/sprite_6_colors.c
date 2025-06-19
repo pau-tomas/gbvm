@@ -84,10 +84,10 @@ const struct spritesheet_t sprite_6_colors = {
     .animations = sprite_6_colors_animations,
     .animations_lookup = sprite_6_colors_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = -1,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(-1),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(tileset_6_colors),
     .cgb_tileset = { NULL, NULL }

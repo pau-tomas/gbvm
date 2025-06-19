@@ -103,10 +103,10 @@ const struct spritesheet_t sprite_elephant_color = {
     .animations = sprite_elephant_color_animations,
     .animations_lookup = sprite_elephant_color_animations_lookup,
     .bounds = {
-        .left = -21,
-        .bottom = 7,
-        .right = 25,
-        .top = -31
+        .left = PX_TO_SUBPX(-21),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(25),
+        .top = PX_TO_SUBPX(-31)
     },
     .tileset = TO_FAR_PTR_T(sprite_elephant_color_tileset),
     .cgb_tileset = TO_FAR_PTR_T(sprite_elephant_color_bank2_tileset)

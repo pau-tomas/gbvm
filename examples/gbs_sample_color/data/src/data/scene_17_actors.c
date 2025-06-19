@@ -34,10 +34,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 80 * 16
         },
         .bounds = {
-            .left = -8,
-            .bottom = 7,
-            .right = 23,
-            .top = -8
+            .left = PX_TO_SUBPX(-8),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(23),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_keyboard),
@@ -57,10 +57,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 56 * 16
         },
         .bounds = {
-            .left = -8,
-            .bottom = 7,
-            .right = 23,
-            .top = -8
+            .left = PX_TO_SUBPX(-8),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(23),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_drumkit),
@@ -80,10 +80,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 88 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_npc008),
@@ -104,10 +104,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 24 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
@@ -127,10 +127,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 24 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
@@ -150,10 +150,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 24 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
@@ -173,10 +173,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 24 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
@@ -196,10 +196,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 80 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
@@ -219,10 +219,10 @@ const struct actor_t scene_17_actors[] = {
             .y = 56 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),

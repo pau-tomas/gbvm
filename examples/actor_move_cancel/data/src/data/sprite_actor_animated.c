@@ -112,10 +112,10 @@ const struct spritesheet_t sprite_actor_animated = {
     .animations = sprite_actor_animated_animations,
     .animations_lookup = sprite_actor_animated_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = 0
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(0)
     },
     .tileset = TO_FAR_PTR_T(tileset_actor_animated),
     .cgb_tileset = { NULL, NULL }

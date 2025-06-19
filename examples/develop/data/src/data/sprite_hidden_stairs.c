@@ -67,10 +67,10 @@ const struct spritesheet_t sprite_hidden_stairs = {
     .animations = sprite_hidden_stairs_animations,
     .animations_lookup = sprite_hidden_stairs_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(tileset_hidden_stairs),
     .cgb_tileset = { NULL, NULL }

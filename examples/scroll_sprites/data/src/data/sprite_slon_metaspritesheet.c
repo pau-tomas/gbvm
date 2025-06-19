@@ -108,10 +108,10 @@ const struct spritesheet_t sprite_slon_metaspritesheet = {
     .animations = sprite_slon_metaspritesheet_animations,
     .animations_lookup = sprite_slon_metaspritesheet_animations_lookup,
     .bounds = {
-        .left = -16,
-        .bottom = 7,
-        .right = 31,
-        .top = -32
+        .left = PX_TO_SUBPX(-16),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(31),
+        .top = PX_TO_SUBPX(-32)
     },
     .tileset = TO_FAR_PTR_T(tileset_slon_metaspritesheet),
     .cgb_tileset = { NULL, NULL }

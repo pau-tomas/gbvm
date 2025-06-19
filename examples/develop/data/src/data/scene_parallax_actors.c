@@ -16,10 +16,10 @@ const struct actor_t scene_parallax_actors[] = {
             .y = 104 * 16
         },
         .bounds = {
-            .left = -22,
-            .bottom = 7,
-            .right = 33,
-            .top = -31
+            .left = PX_TO_SUBPX(-22),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(33),
+            .top = PX_TO_SUBPX(-31)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_elephant),
