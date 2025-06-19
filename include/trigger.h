@@ -45,13 +45,13 @@ void trigger_interact(UBYTE i) BANKED;
  */
 UBYTE trigger_activate_at(UBYTE tx, UBYTE ty, UBYTE force) BANKED;
 
-UBYTE trigger_activate_at_intersection(bounding_box_t *bb, point16_t *offset, UBYTE force) BANKED;
+UBYTE trigger_activate_at_intersection(rect16_t *bb, point16_t *offset, UBYTE force) BANKED;
 
-inline UBYTE trigger_at_intersection(bounding_box_t *bb, point16_t *offset) {
-    UBYTE tile_left   = PX_TO_TILE(SUBPX_TO_PX(offset->x) + bb->left);
-    UBYTE tile_right  = PX_TO_TILE(SUBPX_TO_PX(offset->x) + bb->right);
-    UBYTE tile_top    = PX_TO_TILE(SUBPX_TO_PX(offset->y) + bb->top);
-    UBYTE tile_bottom = PX_TO_TILE(SUBPX_TO_PX(offset->y) + bb->bottom);
+inline UBYTE trigger_at_intersection(rect16_t *bb, point16_t *offset) {
+    UBYTE tile_left   = SUBPX_TO_TILE(offset->x + bb->left);
+    UBYTE tile_right  = SUBPX_TO_TILE(offset->x + bb->right);
+    UBYTE tile_top    = SUBPX_TO_TILE(offset->y + bb->top);
+    UBYTE tile_bottom = SUBPX_TO_TILE(offset->y + bb->bottom);
     UBYTE i;
 
     for (i = 0; i != triggers_len; i++) {

@@ -28,8 +28,8 @@ void camera_init(void) BANKED {
 void camera_update(void) BANKED {
     if (camera_settings & CAMERA_LOCK_X_FLAG)
     {
-        WORD target_pos = PLAYER.pos.x + CAMERA_FIXED_OFFSET_X;
-        WORD tolerance = PX_TO_SUBPX(camera_deadzone_x + camera_offset_x);
+        WORD target_pos = PLAYER.pos.x + CAMERA_FIXED_OFFSET_X - PX_TO_SUBPX(camera_offset_x);
+        WORD tolerance = PX_TO_SUBPX(camera_deadzone_x);
         WORD new_cam_pos = camera_x;
 
         if (new_cam_pos < target_pos - tolerance)
@@ -53,8 +53,8 @@ void camera_update(void) BANKED {
 
     if (camera_settings & CAMERA_LOCK_Y_FLAG)
     {
-        WORD target_pos = PLAYER.pos.y + CAMERA_FIXED_OFFSET_Y;
-        WORD tolerance = PX_TO_SUBPX(camera_deadzone_y + camera_offset_y);
+        WORD target_pos = PLAYER.pos.y + CAMERA_FIXED_OFFSET_Y - PX_TO_SUBPX(camera_offset_y);
+        WORD tolerance = PX_TO_SUBPX(camera_deadzone_y);
         WORD new_cam_pos = camera_y;
 
         if (new_cam_pos < target_pos - tolerance)

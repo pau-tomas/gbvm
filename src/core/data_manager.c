@@ -35,6 +35,8 @@ UBYTE image_tile_width;
 UBYTE image_tile_height;
 UINT16 image_width;
 UINT16 image_height;
+UINT16 image_width_subpx;
+UINT16 image_height_subpx;
 UBYTE sprites_len;
 UBYTE actors_len;
 UBYTE projectiles_len;
@@ -104,9 +106,11 @@ void load_background(const background_t* background, UBYTE bank) BANKED {
 
     image_tile_width = bkg.width;
     image_tile_height = bkg.height;
-    image_width = image_tile_width * 8;
+    image_width = TILE_TO_PX(image_tile_width);
+    image_width_subpx = PX_TO_SUBPX(image_width);
     scroll_x_max = image_width - ((UINT16)SCREENWIDTH);
-    image_height = image_tile_height * 8;
+    image_height = TILE_TO_PX(image_tile_height);
+    image_height_subpx = PX_TO_SUBPX(image_height);
     scroll_y_max = image_height - ((UINT16)SCREENHEIGHT);
 
     load_bkg_tileset(bkg.tileset.ptr, bkg.tileset.bank);
@@ -150,7 +154,7 @@ void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_se
     SWITCH_ROM(_save);
 }
 
-void load_bounds(const spritesheet_t *sprite, UBYTE bank, bounding_box_t * res_bounds) BANKED {
+void load_bounds(const spritesheet_t *sprite, UBYTE bank, rect16_t * res_bounds) BANKED {
     MemcpyBanked(res_bounds, &sprite->bounds, sizeof(sprite->bounds), bank);
 }
 

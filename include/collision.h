@@ -13,10 +13,6 @@
 #define COLLISION_ALL 0xF
 #define TILE_PROP_LADDER 0x10
 
-typedef struct bounding_box_t {
-    BYTE left, right, top, bottom;
-} bounding_box_t;
-
 extern UBYTE collision_bank;
 extern unsigned char *collision_ptr;
 extern UBYTE image_tile_width;
@@ -33,11 +29,11 @@ extern UBYTE tile_hit_y;
  * @param point Pointer to position to look for within bounding box
  * @return Point is within bounding box
  */
-inline UBYTE bb_contains(bounding_box_t *bb, point16_t *offset, point16_t *point) {
-    if ((point->x < SUBPX_TO_PX(offset->x) + bb->left) || 
-        (point->x > SUBPX_TO_PX(offset->x) + bb->right)) return FALSE;
-    if ((point->y < SUBPX_TO_PX(offset->y) + bb->top) || 
-        (point->y > SUBPX_TO_PX(offset->y) + bb->bottom)) return FALSE;
+inline UBYTE bb_contains(rect16_t *bb, point16_t *offset, point16_t *point) {
+    if ((point->x < offset->x + bb->left) || 
+        (point->x > offset->x + bb->right)) return FALSE;
+    if ((point->y < offset->y + bb->top) || 
+        (point->y > offset->y + bb->bottom)) return FALSE;
     return TRUE;
 }
 
@@ -50,11 +46,11 @@ inline UBYTE bb_contains(bounding_box_t *bb, point16_t *offset, point16_t *point
  * @param offset_b Pointer to position offset for bounding box B
  * @return Positioned bounding boxes intersect
  */
-inline UBYTE bb_intersects(bounding_box_t *bb_a, point16_t *offset_a, bounding_box_t *bb_b, point16_t *offset_b) {
-    if ((SUBPX_TO_PX(offset_b->x) + bb_b->left   > SUBPX_TO_PX(offset_a->x) + bb_a->right) ||
-        (SUBPX_TO_PX(offset_b->x) + bb_b->right  < SUBPX_TO_PX(offset_a->x) + bb_a->left)) return FALSE;
-    if ((SUBPX_TO_PX(offset_b->y) + bb_b->top    > SUBPX_TO_PX(offset_a->y) + bb_a->bottom) ||
-        (SUBPX_TO_PX(offset_b->y) + bb_b->bottom < SUBPX_TO_PX(offset_a->y) + bb_a->top)) return FALSE;
+inline UBYTE bb_intersects(rect16_t *bb_a, point16_t *offset_a, rect16_t *bb_b, point16_t *offset_b) {
+    if ((offset_b->x + bb_b->left   > offset_a->x + bb_a->right) ||
+        (offset_b->x + bb_b->right  < offset_a->x + bb_a->left)) return FALSE;
+    if ((offset_b->y + bb_b->top    > offset_a->y + bb_a->bottom) ||
+        (offset_b->y + bb_b->bottom < offset_a->y + bb_a->top)) return FALSE;
     return TRUE;
 }
 

@@ -359,7 +359,7 @@ void vm_actor_emote(SCRIPT_CTX * THIS, INT16 idx, UBYTE emote_tiles_bank, const 
     }
 }
 
-void vm_actor_set_bounds(SCRIPT_CTX * THIS, INT16 idx, BYTE left, BYTE right, BYTE top, BYTE bottom) OLDCALL BANKED {
+void vm_actor_set_bounds(SCRIPT_CTX * THIS, INT16 idx, WORD left, WORD right, WORD top, WORD bottom) OLDCALL BANKED {
     UBYTE * n_actor = VM_REF_TO_PTR(idx);
     actor_t * actor = actors + *n_actor;
     actor->bounds.left = left;

@@ -44,7 +44,7 @@ typedef struct actor_t
     bool persistent           : 1;
     point16_t pos;
     direction_e dir;
-    bounding_box_t bounds;
+    rect16_t bounds;
     uint8_t base_tile;
     uint8_t frame;
     uint8_t frame_start;
@@ -110,7 +110,7 @@ typedef struct spritesheet_t {
     metasprite_t * const *metasprites;
     animation_t *animations;
     uint16_t *animations_lookup;
-    bounding_box_t bounds;
+    rect16_t bounds;
     far_ptr_t tileset;              // far pointer to sprite tileset
     far_ptr_t cgb_tileset;          // far pointer to additional CGB tileset (may be NULL)
 } spritesheet_t;
@@ -119,7 +119,7 @@ typedef struct projectile_def_t
 {
     bool anim_noloop          : 1;
     bool strong               : 1;
-    bounding_box_t bounds;
+    rect16_t bounds;
     far_ptr_t sprite;
     uint8_t life_time;
     uint8_t base_tile;

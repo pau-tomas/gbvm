@@ -15,6 +15,8 @@ extern UBYTE image_tile_width;
 extern UBYTE image_tile_height;
 extern UINT16 image_width;
 extern UINT16 image_height;
+extern UINT16 image_width_subpx;
+extern UINT16 image_height_subpx;
 extern scene_type_e scene_type;
 extern UBYTE actors_len;
 extern UBYTE sprites_len;
@@ -35,6 +37,6 @@ UBYTE load_sprite(UBYTE sprite_offset, const spritesheet_t * sprite, UBYTE bank)
 void load_player(void) BANKED;
 void load_emote(const unsigned char * tiles, UBYTE bank) BANKED;
 void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_set, animation_t * res_animations) NONBANKED;
-void load_bounds(const spritesheet_t * sprite, UBYTE bank, bounding_box_t * res_bounds) BANKED;
+void load_bounds(const spritesheet_t * sprite, UBYTE bank, rect16_t * res_bounds) BANKED;
 
 #endif

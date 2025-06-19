@@ -76,17 +76,21 @@
 #define SUBPX_TO_TILE16(a)  ((a) >> 8)
 
 #define PX_TO_SUBPX(a)      ((a) << 4)
-#define TILE_TO_SUBPX(a)    ((a) << 7)
-#define TILE16_TO_SUBPX(a)  ((a) << 8)
+#define TILE_TO_SUBPX(a)    (((UBYTE)(a)) << 7)
+#define TILE16_TO_SUBPX(a)  (((UBYTE)(a)) << 8)
 
 #define PX_TO_TILE(a)       ((a) >> 3)
 #define PX_TO_TILE16(a)     ((a) >> 4)
-#define TILE_TO_PX(a)       ((a) << 3)
-#define TILE16_TO_PX(a)     ((a) << 4)
+#define TILE_TO_PX(a)       (((UBYTE)(a)) << 3)
+#define TILE16_TO_PX(a)     (((UBYTE)(a)) << 4)
 
 #define SUBPX_SNAP_PX(a)     ((a) & 0xFFF0)
 #define SUBPX_SNAP_TILE(a)   ((a) & 0xFF80)
 #define SUBPX_SNAP_TILE16(a) ((a) & 0xFF00)
+#define PX_SNAP_TILE(a)     ((a) & 0xFFF8)
+
+#define SUBPX_TILE_REMAINDER(a) ((a) & 0x7F)
+#define PX_TILE_REMAINDER(a)    ((a) & 0x7)
 
 typedef struct upoint16_t {
     uint16_t x, y;
@@ -99,6 +103,14 @@ typedef struct point16_t {
 typedef struct point8_t {
     int8_t x, y;
 } point8_t;
+
+typedef struct rect_t {
+    int8_t left, right, top, bottom;
+} rect_t;
+
+typedef struct rect16_t {
+    int16_t left, right, top, bottom;
+} rect16_t;
 
 typedef enum {
     DIR_DOWN = 0,
