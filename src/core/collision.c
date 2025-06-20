@@ -9,7 +9,7 @@ UBYTE tile_col_test_range_y(UBYTE tile_mask, UBYTE tx, UBYTE ty_start, UBYTE ty_
     tile_hit_x = tx;
     tile_hit_y = ty_start;
 
-    if (tile_hit_x > image_tile_width || tile_hit_y > image_tile_height) {
+    if (tile_hit_x >= image_tile_width || tile_hit_y >= image_tile_height) {
       return COLLISION_ALL;
     }
 
@@ -46,7 +46,7 @@ UBYTE tile_col_test_range_x(UBYTE tile_mask, UBYTE ty, UBYTE tx_start, UBYTE tx_
     tile_hit_x = tx_start;
     tile_hit_y = ty;
 
-    if (tile_hit_x > image_tile_width || tile_hit_y > image_tile_height) {
+    if (tile_hit_x >= image_tile_width || tile_hit_y >= image_tile_height) {
       return COLLISION_ALL;
     }
 
