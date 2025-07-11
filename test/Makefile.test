@@ -26,7 +26,7 @@ $(OBJDIR)/%.o:	data/src/data/sounds/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<	
 
 $(OBJDIR)/%.o:	data/src/data/%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -Wf-MMD -c -o $@ $<
 
 $(OBJDIR)/%.o:	data/src/data/%.s
 	$(CC) $(CFLAGS) -c -o $@ $<	
@@ -34,8 +34,8 @@ $(OBJDIR)/%.o:	data/src/data/%.s
 $(OBJDIR)/%.o:	test.c
 	$(CC) $(CFLAGS) -I../framework -c -o $@ $<	
 
-$(REL_OBJDIR)/linkfile.lk:		$(OBJS)
-$(ROM_BUILD_DIR)/%.gb:	$(REL_OBJS)
+$(OBJDIR)/linkfile.lk:	$(OBJS)
+$(ROM_BUILD_DIR)/%.gb:	$(OBJDIR)/linkfile.lk
 
 .PHONY: DEMO data test recording.dem
 DEMO:
