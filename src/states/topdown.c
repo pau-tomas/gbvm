@@ -109,7 +109,7 @@ void topdown_update(void) BANKED {
 
         // Check for actor overlap
         hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL && hit_actor->collision_group) {
+        if (hit_actor != NULL && (hit_actor->collision_group & COLLISION_GROUP_MASK)) {
             player_register_collision_with(hit_actor);
         }
 
@@ -125,7 +125,7 @@ void topdown_update(void) BANKED {
 
         if (INPUT_PRESSED(INPUT_TOPDOWN_INTERACT)) {
             hit_actor = actor_in_front_of_player(topdown_grid, TRUE);
-            if (hit_actor != NULL && !hit_actor->collision_group) {
+            if (hit_actor != NULL && !(hit_actor->collision_group & COLLISION_GROUP_MASK)) {
                 actor_set_dir(hit_actor, FLIPPED_DIR(PLAYER.dir), FALSE);
                 player_moving = FALSE;
                 if (hit_actor->script.bank) {

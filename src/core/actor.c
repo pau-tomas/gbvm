@@ -367,10 +367,14 @@ actor_t *actor_overlapping_bb(rect16_t *bb, point16_t *offset, actor_t *ignore, 
 
 void actors_handle_player_collision(void) BANKED {
     if (player_iframes == 0 && player_collision_actor != NULL) {
-        if (player_collision_actor->collision_group) {
+        if (player_collision_actor->collision_group & COLLISION_GROUP_MASK) {
             // Execute scene player hit scripts based on actor's collision group
             if (PLAYER.script.bank) {
-                script_execute(PLAYER.script.bank, PLAYER.script.ptr, 0, 1, (UWORD)(player_collision_actor->collision_group));
+                script_execute(
+                    PLAYER.script.bank,
+                    PLAYER.script.ptr, 0, 1,
+                    (UWORD)(player_collision_actor->collision_group & COLLISION_GROUP_MASK)
+                );
             }
             // Execute actor's onHit player script
             if (player_collision_actor->script.bank) {

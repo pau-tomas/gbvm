@@ -174,13 +174,13 @@ void shmup_update(void) BANKED {
 
         // Check for actor collisions
         hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL && hit_actor->collision_group) {
+        if (hit_actor != NULL && (hit_actor->collision_group & COLLISION_GROUP_MASK)) {
             player_register_collision_with(hit_actor);
         } else if (INPUT_A_PRESSED) {
             if (!hit_actor) {
                 hit_actor = actor_in_front_of_player(8, TRUE);
             }
-            if (hit_actor && !hit_actor->collision_group && hit_actor->script.bank) {
+            if (hit_actor && !(hit_actor->collision_group & COLLISION_GROUP_MASK) && hit_actor->script.bank) {
                 script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 0);
             }
         }
