@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: box
-  
+
 #include "gbs_types.h"
-#include "data/tileset_box.h"
+#include "data/sprite_box_tileset.h"
+
 
 BANKREF(sprite_box)
 
@@ -71,6 +72,6 @@ const struct spritesheet_t sprite_box = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_box),
+    .tileset = TO_FAR_PTR_T(sprite_box_tileset),
     .cgb_tileset = { NULL, NULL }
 };

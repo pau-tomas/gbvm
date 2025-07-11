@@ -2,19 +2,20 @@
   "_resourceType": "scene",
   "id": "31c1306c-bbcd-45f4-acb8-c9825ba781ac",
   "_index": 0,
-  "name": "Scene 1",
-  "backgroundId": "88f07689-353d-4f22-9108-99caaed9eee1",
-  "tilesetId": "",
-  "width": 20,
-  "height": 18,
   "type": "TOPDOWN",
-  "paletteIds": [],
-  "spritePaletteIds": [],
-  "collisions": "",
-  "autoFadeSpeed": 1,
+  "name": "Scene 1",
   "symbol": "scene_1",
   "x": 120,
   "y": 72,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "88f07689-353d-4f22-9108-99caaed9eee1",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "a0bf75bf-4ab3-44b9-829c-6d1d4f9597f6",
   "script": [
     {
       "id": "50e901b3-a3d8-4269-bf59-388f458184d7",
@@ -83,8 +84,14 @@
           {
             "command": "EVENT_WAIT",
             "args": {
-              "time": 0.5,
-              "frames": 30,
+              "time": {
+                "type": "number",
+                "value": 0.5
+              },
+              "frames": {
+                "type": "number",
+                "value": 30
+              },
               "__collapse": true
             },
             "id": "c7767b1c-1d44-4742-99a8-e3936e54d5e0"
@@ -159,8 +166,14 @@
           {
             "command": "EVENT_WAIT",
             "args": {
-              "time": 0.5,
-              "frames": 30,
+              "time": {
+                "type": "number",
+                "value": 0.5
+              },
+              "frames": {
+                "type": "number",
+                "value": 30
+              },
               "__collapse": true
             },
             "id": "c781c485-41c2-473e-90a3-4e0c67fcee7e"
@@ -277,8 +290,14 @@
           {
             "command": "EVENT_WAIT",
             "args": {
-              "time": 0.5,
-              "frames": 30,
+              "time": {
+                "type": "number",
+                "value": 0.5
+              },
+              "frames": {
+                "type": "number",
+                "value": 30
+              },
               "__collapse": true
             },
             "id": "d2f1968b-cdf4-4df1-9174-de315bef6d6f"
@@ -342,8 +361,14 @@
           {
             "command": "EVENT_WAIT",
             "args": {
-              "time": 0.5,
-              "frames": 30,
+              "time": {
+                "type": "number",
+                "value": 0.5
+              },
+              "frames": {
+                "type": "number",
+                "value": 30
+              },
               "__collapse": true
             },
             "id": "21f9f830-8664-4128-a3b8-4773906593ea"
@@ -355,5 +380,5 @@
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "playerSpriteSheetId": "a0bf75bf-4ab3-44b9-829c-6d1d4f9597f6"
+  "collisions": ""
 }

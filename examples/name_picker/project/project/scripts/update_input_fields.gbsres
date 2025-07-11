@@ -1,0 +1,24 @@
+{
+  "_resourceType": "script",
+  "id": "9eb17486-e82a-42f7-a851-383012fb04de",
+  "name": "Update Input Fields",
+  "symbol": "script_update_input_fields",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "script": [
+    {
+      "id": "1cfca713-14da-43fe-8785-cb2f5ba56896",
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_REPLACE_TILE_XY      7, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_0_\nVM_REPLACE_TILE_XY      8, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_1_\nVM_REPLACE_TILE_XY      9, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_2_\nVM_REPLACE_TILE_XY      10, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_3_\nVM_REPLACE_TILE_XY      11, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_4_\n",
+        "references": [
+          {
+            "type": "background",
+            "id": "8c90060f-fd57-4468-9c8e-6f8549a776e8"
+          }
+        ]
+      }
+    }
+  ]
+}

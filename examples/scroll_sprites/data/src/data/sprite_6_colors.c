@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: 6-colors
-  
+
 #include "gbs_types.h"
-#include "data/tileset_6_colors.h"
+#include "data/sprite_6_colors_tileset.h"
+
 
 BANKREF(sprite_6_colors)
 
@@ -89,6 +90,6 @@ const struct spritesheet_t sprite_6_colors = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_6_colors),
+    .tileset = TO_FAR_PTR_T(sprite_6_colors_tileset),
     .cgb_tileset = { NULL, NULL }
 };

@@ -1,7 +1,6 @@
 {
   "_resourceType": "actorPrefab",
   "id": "5fa52cd0-57cd-414c-8b93-5601c6e9636f",
-  "_index": 0,
   "name": "Enemies/Turnip",
   "frame": 0,
   "animate": true,
@@ -11,6 +10,7 @@
   "animSpeed": 15,
   "persistent": false,
   "collisionGroup": "1",
+  "collisionExtraFlags": [],
   "script": [
     {
       "id": "944433b0-0259-461a-bcec-d7c3b7b65bf3",
@@ -190,7 +190,11 @@
                 "value": 0
               },
               "moveType": "horizontal",
-              "useCollisions": true
+              "useCollisions": true,
+              "collideWith": [
+                "walls",
+                "actors"
+              ]
             }
           }
         ],
@@ -209,7 +213,11 @@
                 "value": 0
               },
               "moveType": "horizontal",
-              "useCollisions": true
+              "useCollisions": true,
+              "collideWith": [
+                "walls",
+                "actors"
+              ]
             }
           }
         ]

@@ -26,8 +26,8 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
     {
         // Enemies/Turnip,
         .pos = {
-            .x = 576 * 16,
-            .y = 104 * 16
+            .x = 18432,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -37,7 +37,7 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_turnip),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -50,8 +50,8 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
     {
         // Gardener,
         .pos = {
-            .x = 360 * 16,
-            .y = 104 * 16
+            .x = 11520,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -61,7 +61,7 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
         },
         .dir = DIR_RIGHT,
         .sprite = TO_FAR_PTR_T(sprite_npc_gardener),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -73,8 +73,8 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
     {
         // Enemies/Turnip,
         .pos = {
-            .x = 760 * 16,
-            .y = 104 * 16
+            .x = 24320,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -84,7 +84,7 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_turnip),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -97,8 +97,8 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
     {
         // Enemies/Turnip,
         .pos = {
-            .x = 824 * 16,
-            .y = 104 * 16
+            .x = 26368,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -108,7 +108,7 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_turnip),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -121,8 +121,8 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
     {
         // Sign Post,
         .pos = {
-            .x = 1072 * 16,
-            .y = 104 * 16
+            .x = 34304,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -132,7 +132,7 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -144,8 +144,8 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
     {
         // Save Point,
         .pos = {
-            .x = 936 * 16,
-            .y = 104 * 16
+            .x = 29952,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -155,7 +155,7 @@ const struct actor_t scene_path_to_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_savepoint),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 31,
         .pinned = FALSE,
         .persistent = FALSE,

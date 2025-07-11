@@ -13,8 +13,8 @@ const struct actor_t scene_deeper_underground_actors[] = {
     {
         // Chest,
         .pos = {
-            .x = 216 * 16,
-            .y = 120 * 16
+            .x = 6912,
+            .y = 3840
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -24,7 +24,7 @@ const struct actor_t scene_deeper_underground_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_chest),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

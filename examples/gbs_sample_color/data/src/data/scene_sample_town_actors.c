@@ -28,8 +28,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Rock,
         .pos = {
-            .x = 200 * 16,
-            .y = 112 * 16
+            .x = 6400,
+            .y = 3584
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -39,7 +39,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -51,8 +51,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Duck,
         .pos = {
-            .x = 144 * 16,
-            .y = 144 * 16
+            .x = 4608,
+            .y = 4608
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -62,7 +62,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_duck),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 63,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -73,8 +73,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Pet Owner,
         .pos = {
-            .x = 192 * 16,
-            .y = 352 * 16
+            .x = 6144,
+            .y = 11264
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -84,7 +84,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_npc003),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -97,8 +97,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Cat,
         .pos = {
-            .x = 32 * 16,
-            .y = 48 * 16
+            .x = 1024,
+            .y = 1536
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -108,7 +108,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_cat),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -120,8 +120,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Angry Guy,
         .pos = {
-            .x = 144 * 16,
-            .y = 192 * 16
+            .x = 4608,
+            .y = 6144
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -131,7 +131,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_UP,
         .sprite = TO_FAR_PTR_T(sprite_npc001),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -143,8 +143,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Oblivious Guy,
         .pos = {
-            .x = 144 * 16,
-            .y = 128 * 16
+            .x = 4608,
+            .y = 4096
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -154,7 +154,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_npc001),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -166,8 +166,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Sign Post,
         .pos = {
-            .x = 224 * 16,
-            .y = 184 * 16
+            .x = 7168,
+            .y = 5888
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -177,7 +177,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -189,8 +189,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Hider,
         .pos = {
-            .x = 288 * 16,
-            .y = 192 * 16
+            .x = 9216,
+            .y = 6144
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -200,7 +200,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_npc004),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -212,8 +212,8 @@ const struct actor_t scene_sample_town_actors[] = {
     {
         // Florist,
         .pos = {
-            .x = 376 * 16,
-            .y = 376 * 16
+            .x = 12032,
+            .y = 12032
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -223,7 +223,7 @@ const struct actor_t scene_sample_town_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_npc007),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

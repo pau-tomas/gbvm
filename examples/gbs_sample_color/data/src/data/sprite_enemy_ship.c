@@ -7,9 +7,9 @@
 
 BANKREF(sprite_enemy_ship)
 
-#define SPRITE_21_STATE_DEFAULT 0
-#define SPRITE_21_STATE_EXPLODE 8
-#define SPRITE_21_STATE_OPEN 0
+#define SPRITE_19_STATE_DEFAULT 0
+#define SPRITE_19_STATE_EXPLODE 8
+#define SPRITE_19_STATE_OPEN 0
 
 const metasprite_t sprite_enemy_ship_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -118,8 +118,8 @@ const struct animation_t sprite_enemy_ship_animations[] = {
 };
 
 const UWORD sprite_enemy_ship_animations_lookup[] = {
-    SPRITE_21_STATE_DEFAULT,
-    SPRITE_21_STATE_EXPLODE
+    SPRITE_19_STATE_DEFAULT,
+    SPRITE_19_STATE_EXPLODE
 };
 
 const struct spritesheet_t sprite_enemy_ship = {

@@ -7,7 +7,7 @@
 
 BANKREF(sprite_cat)
 
-#define SPRITE_3_STATE_DEFAULT 0
+#define SPRITE_1_STATE_DEFAULT 0
 
 const metasprite_t sprite_cat_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -54,7 +54,7 @@ const struct animation_t sprite_cat_animations[] = {
 };
 
 const UWORD sprite_cat_animations_lookup[] = {
-    SPRITE_3_STATE_DEFAULT
+    SPRITE_1_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_cat = {

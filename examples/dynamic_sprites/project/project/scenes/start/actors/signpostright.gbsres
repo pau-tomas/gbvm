@@ -1,0 +1,39 @@
+{
+  "_resourceType": "actor",
+  "id": "f9b4354a-4341-4a4a-8450-5050fb19d157",
+  "_index": 3,
+  "symbol": "actor_signpostright",
+  "prefabId": "",
+  "name": "SignpostRight",
+  "x": 16,
+  "y": 7,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "2bbb00f0-33a0-4beb-aaa1-b430a565d5fb",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "455fe8cf-80b7-40d5-a322-5e97cb4334b2",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Scene With Dynamic\nPlayer Sprites"
+        ],
+        "avatarId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

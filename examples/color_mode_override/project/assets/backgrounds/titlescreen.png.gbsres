@@ -3,10 +3,10 @@
   "id": "e3f3f77a-bf96-4796-8f82-32832fac3604",
   "name": "titlescreen",
   "symbol": "bg_titlescreen",
+  "tileColors": "",
   "width": 20,
   "height": 18,
   "imageWidth": 160,
   "imageHeight": 144,
-  "tileColors": "",
   "filename": "titlescreen.png"
 }

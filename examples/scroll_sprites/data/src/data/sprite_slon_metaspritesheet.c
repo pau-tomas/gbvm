@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: slon_metaspritesheet
-  
+
 #include "gbs_types.h"
-#include "data/tileset_slon_metaspritesheet.h"
+#include "data/sprite_slon_metaspritesheet_tileset.h"
+
 
 BANKREF(sprite_slon_metaspritesheet)
 
@@ -113,6 +114,6 @@ const struct spritesheet_t sprite_slon_metaspritesheet = {
         .right = PX_TO_SUBPX(31),
         .top = PX_TO_SUBPX(-32)
     },
-    .tileset = TO_FAR_PTR_T(tileset_slon_metaspritesheet),
+    .tileset = TO_FAR_PTR_T(sprite_slon_metaspritesheet_tileset),
     .cgb_tileset = { NULL, NULL }
 };

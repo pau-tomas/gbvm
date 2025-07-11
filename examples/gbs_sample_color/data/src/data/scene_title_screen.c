@@ -19,7 +19,7 @@ const struct scene_t scene_title_screen = {
     .background = TO_FAR_PTR_T(bg_titlescreen),
     .collisions = TO_FAR_PTR_T(scene_title_screen_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_9),

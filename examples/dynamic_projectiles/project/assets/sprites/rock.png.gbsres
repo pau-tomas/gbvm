@@ -3,8 +3,6 @@
   "id": "56fb7adf-432b-4654-adc3-31dc83da4221",
   "name": "rock",
   "symbol": "sprite_rock",
-  "width": 16,
-  "height": 16,
   "states": [
     {
       "id": "55db1865-c6c2-4ad4-978d-3ae6e4be6aab",
@@ -122,6 +120,8 @@
   "boundsWidth": 16,
   "boundsHeight": 16,
   "animSpeed": 15,
+  "width": 16,
+  "height": 16,
   "filename": "rock.png",
   "checksum": "b7cf1ef0e7291494c1aff13493d447801316d6e8"
 }

@@ -15,8 +15,8 @@ const struct actor_t scene_1_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 72 * 16,
-            .y = 24 * 16
+            .x = 2304,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -26,7 +26,7 @@ const struct actor_t scene_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -37,8 +37,8 @@ const struct actor_t scene_1_actors[] = {
     {
         // Actor 2,
         .pos = {
-            .x = 112 * 16,
-            .y = 56 * 16
+            .x = 3584,
+            .y = 1792
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -48,7 +48,7 @@ const struct actor_t scene_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -59,8 +59,8 @@ const struct actor_t scene_1_actors[] = {
     {
         // Actor 3,
         .pos = {
-            .x = 32 * 16,
-            .y = 56 * 16
+            .x = 1024,
+            .y = 1792
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -70,7 +70,7 @@ const struct actor_t scene_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -81,8 +81,8 @@ const struct actor_t scene_1_actors[] = {
     {
         // Actor 4,
         .pos = {
-            .x = 72 * 16,
-            .y = 96 * 16
+            .x = 2304,
+            .y = 3072
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -92,7 +92,7 @@ const struct actor_t scene_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

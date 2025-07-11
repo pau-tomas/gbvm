@@ -16,8 +16,8 @@ const struct actor_t scene_deep_space_actors[] = {
     {
         // Space Dog,
         .pos = {
-            .x = 112 * 16,
-            .y = 112 * 16
+            .x = 3584,
+            .y = 3584
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -27,7 +27,7 @@ const struct actor_t scene_deep_space_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_dog),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -39,8 +39,8 @@ const struct actor_t scene_deep_space_actors[] = {
     {
         // Portal,
         .pos = {
-            .x = 112 * 16,
-            .y = 80 * 16
+            .x = 3584,
+            .y = 2560
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -50,7 +50,7 @@ const struct actor_t scene_deep_space_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -61,8 +61,8 @@ const struct actor_t scene_deep_space_actors[] = {
     {
         // Save Point,
         .pos = {
-            .x = 152 * 16,
-            .y = 112 * 16
+            .x = 4864,
+            .y = 3584
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -72,7 +72,7 @@ const struct actor_t scene_deep_space_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_savepoint),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 31,
         .pinned = FALSE,
         .persistent = FALSE,

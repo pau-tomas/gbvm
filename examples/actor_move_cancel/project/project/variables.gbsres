@@ -1,0 +1,61 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "Killed",
+      "symbol": "var_killed"
+    },
+    {
+      "id": "99283172-7d97-411a-8a03-079a9635f256__L0",
+      "name": "killed",
+      "symbol": "var_killed_0"
+    },
+    {
+      "id": "4484fd05-cd8d-419c-9887-735dae8f35e9__L0",
+      "name": "Killed",
+      "symbol": "var_killed_1"
+    },
+    {
+      "id": "4484fd05-cd8d-419c-9887-735dae8f35e9__L1",
+      "name": "Rand X",
+      "symbol": "var_rand_x"
+    },
+    {
+      "id": "4484fd05-cd8d-419c-9887-735dae8f35e9__L2",
+      "name": "Rand Y",
+      "symbol": "var_rand_y"
+    },
+    {
+      "id": "d528f176-2514-4fba-a804-d95a6d834abb__L0",
+      "name": "Killed",
+      "symbol": "var_killed_2"
+    },
+    {
+      "id": "d528f176-2514-4fba-a804-d95a6d834abb__L1",
+      "name": "Rand X",
+      "symbol": "var_rand_x_0"
+    },
+    {
+      "id": "d528f176-2514-4fba-a804-d95a6d834abb__L2",
+      "name": "Rand Y",
+      "symbol": "var_rand_y_0"
+    },
+    {
+      "id": "c2e40cab-9a00-4180-b4c0-372726593b18__L0",
+      "name": "Killed",
+      "symbol": "var_killed_3"
+    },
+    {
+      "id": "c2e40cab-9a00-4180-b4c0-372726593b18__L1",
+      "name": "Rand X",
+      "symbol": "var_rand_x_1"
+    },
+    {
+      "id": "c2e40cab-9a00-4180-b4c0-372726593b18__L2",
+      "name": "Rand Y",
+      "symbol": "var_rand_y_1"
+    }
+  ],
+  "constants": []
+}

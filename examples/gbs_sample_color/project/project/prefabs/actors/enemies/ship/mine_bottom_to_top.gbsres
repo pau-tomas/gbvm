@@ -1,7 +1,6 @@
 {
   "_resourceType": "actorPrefab",
   "id": "a11074c9-2deb-40c7-ab78-7e56c58efac5",
-  "_index": 10,
   "name": "Enemies/Ship/Mine Bottom To Top",
   "frame": 0,
   "animate": false,
@@ -11,6 +10,7 @@
   "animSpeed": 15,
   "persistent": false,
   "collisionGroup": "1",
+  "collisionExtraFlags": [],
   "script": [
     {
       "id": "f369ea59-6c05-4fcb-a005-2c85d090f1e5",
@@ -119,7 +119,8 @@
                 "value": 0
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           },
@@ -137,7 +138,8 @@
                 "value": -6
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           },
@@ -178,7 +180,8 @@
                 "value": -6
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           },
@@ -196,7 +199,8 @@
                 "value": 0
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           }

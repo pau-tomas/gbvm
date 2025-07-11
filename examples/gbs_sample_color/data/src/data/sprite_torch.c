@@ -7,9 +7,9 @@
 
 BANKREF(sprite_torch)
 
-#define SPRITE_3_STATE_DEFAULT 0
-#define SPRITE_3_STATE_EXPLODE 0
-#define SPRITE_3_STATE_OPEN 0
+#define SPRITE_1_STATE_DEFAULT 0
+#define SPRITE_1_STATE_EXPLODE 0
+#define SPRITE_1_STATE_OPEN 0
 
 const metasprite_t sprite_torch_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -56,7 +56,7 @@ const struct animation_t sprite_torch_animations[] = {
 };
 
 const UWORD sprite_torch_animations_lookup[] = {
-    SPRITE_3_STATE_DEFAULT
+    SPRITE_1_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_torch = {

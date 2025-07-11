@@ -15,8 +15,8 @@ const struct actor_t scene_scene_1_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 16 * 16,
-            .y = 96 * 16
+            .x = 512,
+            .y = 3072
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -26,7 +26,7 @@ const struct actor_t scene_scene_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -38,8 +38,8 @@ const struct actor_t scene_scene_1_actors[] = {
     {
         // Actor 2,
         .pos = {
-            .x = 128 * 16,
-            .y = 96 * 16
+            .x = 4096,
+            .y = 3072
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -49,7 +49,7 @@ const struct actor_t scene_scene_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

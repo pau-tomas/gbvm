@@ -3,10 +3,10 @@
   "id": "61ebba47-11bd-45b3-a660-0acc613ed3f7",
   "name": "title",
   "symbol": "bg_title",
+  "tileColors": "",
   "width": 20,
   "height": 18,
   "imageWidth": 160,
   "imageHeight": 144,
-  "tileColors": "",
   "filename": "title.png"
 }

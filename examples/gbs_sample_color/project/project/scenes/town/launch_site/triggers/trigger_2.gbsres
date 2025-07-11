@@ -199,7 +199,8 @@
                 "value": 2
               },
               "moveType": "horizontal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             }
           },
           {

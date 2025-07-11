@@ -101,12 +101,12 @@ _scene_path_to_sample_town_init::
         ; -- Calculate coordinate values
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    0
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    0
             .R_OPERATOR .EQ
@@ -132,12 +132,12 @@ _scene_path_to_sample_town_init::
         ; -- Calculate coordinate values
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    0
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    0
             .R_OPERATOR .EQ
@@ -163,12 +163,12 @@ _scene_path_to_sample_town_init::
         ; -- Calculate coordinate values
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    0
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    0
             .R_OPERATOR .EQ

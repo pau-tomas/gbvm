@@ -7,9 +7,9 @@
 
 BANKREF(sprite_player_platform)
 
-#define SPRITE_7_STATE_DEFAULT 0
-#define SPRITE_7_STATE_EXPLODE 0
-#define SPRITE_7_STATE_OPEN 0
+#define SPRITE_5_STATE_DEFAULT 0
+#define SPRITE_5_STATE_EXPLODE 0
+#define SPRITE_5_STATE_OPEN 0
 
 const metasprite_t sprite_player_platform_metasprite_0[]  = {
     { -12, 0, 0, 32 }, { 0, 8, 2, 32 }, { 12, -8, 10, 32 }, { 0, 8, 12, 32 },
@@ -157,7 +157,7 @@ const struct animation_t sprite_player_platform_animations[] = {
 };
 
 const UWORD sprite_player_platform_animations_lookup[] = {
-    SPRITE_7_STATE_DEFAULT
+    SPRITE_5_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_player_platform = {

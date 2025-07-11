@@ -7,9 +7,9 @@
 
 BANKREF(sprite_npc_gardener)
 
-#define SPRITE_15_STATE_DEFAULT 0
-#define SPRITE_15_STATE_EXPLODE 0
-#define SPRITE_15_STATE_OPEN 0
+#define SPRITE_13_STATE_DEFAULT 0
+#define SPRITE_13_STATE_EXPLODE 0
+#define SPRITE_13_STATE_OPEN 0
 
 const metasprite_t sprite_npc_gardener_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { -16, 0, 2, 0 }, { 16, -8, 4, 0 }, { -16, 0, 6, 0 },
@@ -62,7 +62,7 @@ const struct animation_t sprite_npc_gardener_animations[] = {
 };
 
 const UWORD sprite_npc_gardener_animations_lookup[] = {
-    SPRITE_15_STATE_DEFAULT
+    SPRITE_13_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_npc_gardener = {

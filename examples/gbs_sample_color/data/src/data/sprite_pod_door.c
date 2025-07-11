@@ -7,9 +7,9 @@
 
 BANKREF(sprite_pod_door)
 
-#define SPRITE_23_STATE_DEFAULT 0
-#define SPRITE_23_STATE_EXPLODE 0
-#define SPRITE_23_STATE_OPEN 0
+#define SPRITE_21_STATE_DEFAULT 0
+#define SPRITE_21_STATE_EXPLODE 0
+#define SPRITE_21_STATE_OPEN 0
 
 const metasprite_t sprite_pod_door_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 0, 32 },
@@ -68,7 +68,7 @@ const struct animation_t sprite_pod_door_animations[] = {
 };
 
 const UWORD sprite_pod_door_animations_lookup[] = {
-    SPRITE_23_STATE_DEFAULT
+    SPRITE_21_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_pod_door = {

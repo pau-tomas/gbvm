@@ -21,8 +21,8 @@ const struct actor_t scene_house_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 96 * 16,
-            .y = 40 * 16
+            .x = 3072,
+            .y = 1280
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -32,7 +32,7 @@ const struct actor_t scene_house_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_npc002),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -44,8 +44,8 @@ const struct actor_t scene_house_actors[] = {
     {
         // Radio,
         .pos = {
-            .x = 120 * 16,
-            .y = 40 * 16
+            .x = 3840,
+            .y = 1280
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -55,7 +55,7 @@ const struct actor_t scene_house_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_radio),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -67,8 +67,8 @@ const struct actor_t scene_house_actors[] = {
     {
         // Actor 3,
         .pos = {
-            .x = 120 * 16,
-            .y = 88 * 16
+            .x = 3840,
+            .y = 2816
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -78,7 +78,7 @@ const struct actor_t scene_house_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -90,8 +90,8 @@ const struct actor_t scene_house_actors[] = {
     {
         // Actor 4,
         .pos = {
-            .x = 24 * 16,
-            .y = 88 * 16
+            .x = 768,
+            .y = 2816
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -101,7 +101,7 @@ const struct actor_t scene_house_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -113,8 +113,8 @@ const struct actor_t scene_house_actors[] = {
     {
         // Actor 5,
         .pos = {
-            .x = 24 * 16,
-            .y = 40 * 16
+            .x = 768,
+            .y = 1280
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -124,7 +124,7 @@ const struct actor_t scene_house_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

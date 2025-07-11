@@ -12,10 +12,11 @@ const struct projectile_def_t scene_scene_1_projectiles[] = {
     {
         // Projectile 0,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 64,
+        .move_speed = 128,
         .life_time = 60,
         .collision_group = COLLISION_GROUP_3,
         .collision_mask = COLLISION_GROUP_1,
+        .strong = false,
         .bounds = {
             .left = PX_TO_SUBPX(0),
             .bottom = PX_TO_SUBPX(7),
@@ -23,6 +24,7 @@ const struct projectile_def_t scene_scene_1_projectiles[] = {
             .top = PX_TO_SUBPX(-8)
         },
         .anim_tick = 15,
+        .anim_noloop = false,
         .animations = {
             {
                 .start = 0,

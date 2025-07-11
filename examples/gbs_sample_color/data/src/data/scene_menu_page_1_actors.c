@@ -17,8 +17,8 @@ const struct actor_t scene_menu_page_1_actors[] = {
     {
         // Quest1,
         .pos = {
-            .x = 16 * 16,
-            .y = 32 * 16
+            .x = 512,
+            .y = 1024
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -28,7 +28,7 @@ const struct actor_t scene_menu_page_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_checkbox),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -39,8 +39,8 @@ const struct actor_t scene_menu_page_1_actors[] = {
     {
         // Quest2,
         .pos = {
-            .x = 16 * 16,
-            .y = 48 * 16
+            .x = 512,
+            .y = 1536
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -50,7 +50,7 @@ const struct actor_t scene_menu_page_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_checkbox),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -61,8 +61,8 @@ const struct actor_t scene_menu_page_1_actors[] = {
     {
         // Quest3,
         .pos = {
-            .x = 16 * 16,
-            .y = 64 * 16
+            .x = 512,
+            .y = 2048
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -72,7 +72,7 @@ const struct actor_t scene_menu_page_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_checkbox),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -83,8 +83,8 @@ const struct actor_t scene_menu_page_1_actors[] = {
     {
         // Quest4,
         .pos = {
-            .x = 16 * 16,
-            .y = 88 * 16
+            .x = 512,
+            .y = 2816
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -94,7 +94,7 @@ const struct actor_t scene_menu_page_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_checkbox),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -105,8 +105,8 @@ const struct actor_t scene_menu_page_1_actors[] = {
     {
         // Quest5,
         .pos = {
-            .x = 16 * 16,
-            .y = 104 * 16
+            .x = 512,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -116,7 +116,7 @@ const struct actor_t scene_menu_page_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_checkbox),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -127,8 +127,8 @@ const struct actor_t scene_menu_page_1_actors[] = {
     {
         // Quest6,
         .pos = {
-            .x = 16 * 16,
-            .y = 120 * 16
+            .x = 512,
+            .y = 3840
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -138,7 +138,7 @@ const struct actor_t scene_menu_page_1_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_checkbox),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,

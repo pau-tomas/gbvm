@@ -7,9 +7,9 @@
 
 BANKREF(sprite_npc003)
 
-#define SPRITE_30_STATE_DEFAULT 0
-#define SPRITE_30_STATE_EXPLODE 0
-#define SPRITE_30_STATE_OPEN 0
+#define SPRITE_28_STATE_DEFAULT 0
+#define SPRITE_28_STATE_EXPLODE 0
+#define SPRITE_28_STATE_OPEN 0
 
 const metasprite_t sprite_npc003_metasprite_0[]  = {
     { 0, 8, 8, 0 }, { 0, -8, 10, 0 },
@@ -102,7 +102,7 @@ const struct animation_t sprite_npc003_animations[] = {
 };
 
 const UWORD sprite_npc003_animations_lookup[] = {
-    SPRITE_30_STATE_DEFAULT
+    SPRITE_28_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_npc003 = {

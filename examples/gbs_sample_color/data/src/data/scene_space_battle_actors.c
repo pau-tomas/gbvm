@@ -57,8 +57,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 0 * 16,
-            .y = 8 * 16
+            .x = 0,
+            .y = 256
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -68,7 +68,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_ui_weapon),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = TRUE,
         .persistent = FALSE,
@@ -79,8 +79,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 288 * 16,
-            .y = 72 * 16
+            .x = 9216,
+            .y = 2304
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -90,7 +90,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -103,8 +103,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 536 * 16,
-            .y = 112 * 16
+            .x = 17152,
+            .y = 3584
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -114,7 +114,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -127,8 +127,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 608 * 16,
-            .y = 32 * 16
+            .x = 19456,
+            .y = 1024
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -138,7 +138,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -151,8 +151,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 688 * 16,
-            .y = 112 * 16
+            .x = 22016,
+            .y = 3584
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -162,7 +162,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -175,8 +175,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 1824 * 16,
-            .y = 24 * 16
+            .x = 58368,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -186,7 +186,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -199,8 +199,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 1744 * 16,
-            .y = 72 * 16
+            .x = 55808,
+            .y = 2304
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -210,7 +210,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -223,8 +223,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Vertical,
         .pos = {
-            .x = 1832 * 16,
-            .y = 120 * 16
+            .x = 58624,
+            .y = 3840
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -234,7 +234,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_enemy_ship),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -247,8 +247,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Diagonal,
         .pos = {
-            .x = 888 * 16,
-            .y = 72 * 16
+            .x = 28416,
+            .y = 2304
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -258,7 +258,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -271,8 +271,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Top To Bottom,
         .pos = {
-            .x = 1040 * 16,
-            .y = 24 * 16
+            .x = 33280,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -282,7 +282,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -295,8 +295,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Bottom To Top,
         .pos = {
-            .x = 1320 * 16,
-            .y = 120 * 16
+            .x = 42240,
+            .y = 3840
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -306,7 +306,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -319,8 +319,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Top To Bottom,
         .pos = {
-            .x = 1120 * 16,
-            .y = 24 * 16
+            .x = 35840,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -330,7 +330,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -343,8 +343,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Top To Bottom,
         .pos = {
-            .x = 1200 * 16,
-            .y = 24 * 16
+            .x = 38400,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -354,7 +354,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -367,8 +367,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Bottom To Top,
         .pos = {
-            .x = 1400 * 16,
-            .y = 120 * 16
+            .x = 44800,
+            .y = 3840
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -378,7 +378,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -391,8 +391,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Bottom To Top,
         .pos = {
-            .x = 1480 * 16,
-            .y = 120 * 16
+            .x = 47360,
+            .y = 3840
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -402,7 +402,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -415,8 +415,8 @@ const struct actor_t scene_space_battle_actors[] = {
     {
         // Enemies/Ship/Mine Diagonal,
         .pos = {
-            .x = 1648 * 16,
-            .y = 72 * 16
+            .x = 52736,
+            .y = 2304
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -426,7 +426,7 @@ const struct actor_t scene_space_battle_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_space_mine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

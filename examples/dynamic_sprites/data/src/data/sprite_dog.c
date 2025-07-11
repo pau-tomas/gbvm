@@ -1,12 +1,13 @@
 #pragma bank 255
 // SpriteSheet: dog
-  
+
 #include "gbs_types.h"
-#include "data/tileset_dog.h"
+#include "data/sprite_dog_tileset.h"
+
 
 BANKREF(sprite_dog)
 
-#define SPRITE_0_STATE_DEFAULT 0
+#define SPRITE_5_STATE_DEFAULT 0
 
 const metasprite_t sprite_dog_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -53,7 +54,7 @@ const struct animation_t sprite_dog_animations[] = {
 };
 
 const UWORD sprite_dog_animations_lookup[] = {
-    SPRITE_0_STATE_DEFAULT
+    SPRITE_5_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_dog = {
@@ -71,6 +72,6 @@ const struct spritesheet_t sprite_dog = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_dog),
+    .tileset = TO_FAR_PTR_T(sprite_dog_tileset),
     .cgb_tileset = { NULL, NULL }
 };

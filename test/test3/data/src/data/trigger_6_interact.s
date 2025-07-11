@@ -18,8 +18,6 @@ _trigger_6_interact::
 
         VM_RESERVE              4
 
-GBVM$trigger_6_interact$3127a331_e71d_4823_8eb8_c626fd6fbd64$f5dfb7bb_70b9_4a37_b4c7_1c289c2ed9ae$trigger$f50555b6_4777_4ebe_ae33_2d9cddeef9ef$script = .
-.globl GBVM$trigger_6_interact$3127a331_e71d_4823_8eb8_c626fd6fbd64$f5dfb7bb_70b9_4a37_b4c7_1c289c2ed9ae$trigger$f50555b6_4777_4ebe_ae33_2d9cddeef9ef$script
         ; Load Scene
         VM_SET_CONST_INT8       _fade_frames_per_step, 3
         VM_FADE_OUT             1
@@ -27,7 +25,7 @@ GBVM$trigger_6_interact$3127a331_e71d_4823_8eb8_c626fd6fbd64$f5dfb7bb_70b9_4a37_
         VM_RPN
             .R_INT16    0
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    128
+            .R_INT16    256
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0

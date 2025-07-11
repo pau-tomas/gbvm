@@ -13,8 +13,8 @@ const struct actor_t scene_stars_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 120 * 16,
-            .y = 96 * 16
+            .x = 3840,
+            .y = 3072
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -24,7 +24,7 @@ const struct actor_t scene_stars_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_dog),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

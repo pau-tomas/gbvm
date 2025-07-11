@@ -7,9 +7,9 @@
 
 BANKREF(sprite_player_ship)
 
-#define SPRITE_19_STATE_DEFAULT 0
-#define SPRITE_19_STATE_EXPLODE 0
-#define SPRITE_19_STATE_OPEN 0
+#define SPRITE_17_STATE_DEFAULT 0
+#define SPRITE_17_STATE_EXPLODE 0
+#define SPRITE_17_STATE_OPEN 0
 
 const metasprite_t sprite_player_ship_metasprite_0[]  = {
     { 0, 8, 8, 0 }, { 0, -8, 10, 0 },
@@ -102,7 +102,7 @@ const struct animation_t sprite_player_ship_animations[] = {
 };
 
 const UWORD sprite_player_ship_animations_lookup[] = {
-    SPRITE_19_STATE_DEFAULT
+    SPRITE_17_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_player_ship = {

@@ -3,11 +3,11 @@
   "id": "33ae580b-d809-4804-a558-71c08a3ac495",
   "name": "stars_wide",
   "symbol": "bg_stars_wide",
+  "tileColors": "",
   "width": 255,
   "height": 18,
   "imageWidth": 2040,
   "imageHeight": 144,
-  "tileColors": "",
   "filename": "stars_wide.png",
   "autoColor": false
 }

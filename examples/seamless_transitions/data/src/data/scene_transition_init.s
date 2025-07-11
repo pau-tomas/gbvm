@@ -9,17 +9,13 @@
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
-.LOCAL_TMP1_ACTOR_DIR = -6
-.LOCAL_TMP2_CAMERA_MOVE_ARGS = -6
-.LOCAL_TMP3_CAMERA_MOVE_ARGS = -6
-.LOCAL_TMP4_LOCAL = -6
-.LOCAL_TMP6_LOCAL = -6
-.LOCAL_TMP7_CAMERA_MOVE_ARGS = -6
-.LOCAL_TMP8_CAMERA_MOVE_ARGS = -6
-.LOCAL_TMP9_LOCAL = -6
-.LOCAL_TMP11_LOCAL = -6
-.LOCAL_TMP5_LOCAL = -7
-.LOCAL_TMP10_LOCAL = -7
+.LOCAL_TMP7_ACTOR_POS = -4
+.LOCAL_TMP1_ACTOR_DIR = -8
+.LOCAL_TMP2_CAMERA_MOVE_ARGS = -8
+.LOCAL_TMP3_CAMERA_MOVE_ARGS = -8
+.LOCAL_TMP4_ACTOR_POS = -8
+.LOCAL_TMP5_CAMERA_MOVE_ARGS = -8
+.LOCAL_TMP6_CAMERA_MOVE_ARGS = -8
 
 ___bank_scene_transition_init = 255
 .globl ___bank_scene_transition_init
@@ -27,7 +23,7 @@ ___bank_scene_transition_init = 255
 _scene_transition_init::
         VM_LOCK
 
-        VM_RESERVE              7
+        VM_RESERVE              8
 
         ; Wait 1 Frames
         VM_IDLE
@@ -48,9 +44,9 @@ _scene_transition_init::
         ; Camera Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    1280
+            .R_INT16    2560
             .R_REF_SET  .LOCAL_TMP2_CAMERA_MOVE_ARGS
-            .R_INT16    1152
+            .R_INT16    2304
             .R_REF_SET  ^/(.LOCAL_TMP2_CAMERA_MOVE_ARGS + 1)/
             .R_STOP
         ; -- Move Camera
@@ -59,72 +55,37 @@ _scene_transition_init::
         ; Camera Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    3840
+            .R_INT16    7680
             .R_REF_SET  .LOCAL_TMP3_CAMERA_MOVE_ARGS
-            .R_INT16    1152
+            .R_INT16    2304
             .R_REF_SET  ^/(.LOCAL_TMP3_CAMERA_MOVE_ARGS + 1)/
             .R_STOP
         ; -- Move Camera
-        VM_CAMERA_MOVE_TO       .LOCAL_TMP3_CAMERA_MOVE_ARGS, 16, .CAMERA_UNLOCK
+        VM_CAMERA_MOVE_TO       .LOCAL_TMP3_CAMERA_MOVE_ARGS, 32, .CAMERA_UNLOCK
 
         ; Actor Move Relative
-        ; -- Fetch $self$ xpos
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP4_LOCAL
-            .R_STOP
-        ; -- Fetch $self$ ypos
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP5_LOCAL
-            .R_STOP
         ; -- Calculate coordinate values
         VM_RPN
-            .R_REF      .LOCAL_TMP4_LOCAL
-            .R_INT16    3
-            .R_OPERATOR .ADD
-            .R_INT16    7
-            .R_OPERATOR .SHL
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    768
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_REF      .LOCAL_TMP5_LOCAL
             .R_INT16    0
-            .R_OPERATOR .ADD
-            .R_INT16    7
-            .R_OPERATOR .SHL
-            .R_INT16    0
-            .R_OPERATOR .MAX
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    ^/(.ACTOR_ATTR_H_FIRST | .ACTOR_ATTR_RELATIVE_SNAP_TILE)/
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
         ; Load Scene
-        ; -- Fetch player ypos
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP6_LOCAL
-            .R_STOP
+        ; -- Fetch player actorPosition
+        VM_SET_CONST            .LOCAL_TMP4_ACTOR_POS, 0
+        VM_ACTOR_GET_POS        .LOCAL_TMP4_ACTOR_POS
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    128
+            .R_INT16    256
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_REF      .LOCAL_TMP6_LOCAL
-            .R_INT16    7
-            .R_OPERATOR .SHL
+            .R_REF      ^/(.LOCAL_TMP4_ACTOR_POS + 2)/
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0
@@ -139,83 +100,48 @@ _scene_transition_init::
         ; Camera Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    3840
-            .R_REF_SET  .LOCAL_TMP7_CAMERA_MOVE_ARGS
-            .R_INT16    1152
-            .R_REF_SET  ^/(.LOCAL_TMP7_CAMERA_MOVE_ARGS + 1)/
+            .R_INT16    7680
+            .R_REF_SET  .LOCAL_TMP5_CAMERA_MOVE_ARGS
+            .R_INT16    2304
+            .R_REF_SET  ^/(.LOCAL_TMP5_CAMERA_MOVE_ARGS + 1)/
             .R_STOP
         ; -- Move Camera
-        VM_CAMERA_SET_POS       .LOCAL_TMP7_CAMERA_MOVE_ARGS
+        VM_CAMERA_SET_POS       .LOCAL_TMP5_CAMERA_MOVE_ARGS
 
         ; Camera Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    1280
-            .R_REF_SET  .LOCAL_TMP8_CAMERA_MOVE_ARGS
-            .R_INT16    1152
-            .R_REF_SET  ^/(.LOCAL_TMP8_CAMERA_MOVE_ARGS + 1)/
+            .R_INT16    2560
+            .R_REF_SET  .LOCAL_TMP6_CAMERA_MOVE_ARGS
+            .R_INT16    2304
+            .R_REF_SET  ^/(.LOCAL_TMP6_CAMERA_MOVE_ARGS + 1)/
             .R_STOP
         ; -- Move Camera
-        VM_CAMERA_MOVE_TO       .LOCAL_TMP8_CAMERA_MOVE_ARGS, 16, .CAMERA_UNLOCK
+        VM_CAMERA_MOVE_TO       .LOCAL_TMP6_CAMERA_MOVE_ARGS, 32, .CAMERA_UNLOCK
 
         ; Actor Move Relative
-        ; -- Fetch $self$ xpos
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP9_LOCAL
-            .R_STOP
-        ; -- Fetch $self$ ypos
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP10_LOCAL
-            .R_STOP
         ; -- Calculate coordinate values
         VM_RPN
-            .R_REF      .LOCAL_TMP9_LOCAL
-            .R_INT16    -3
-            .R_OPERATOR .ADD
-            .R_INT16    7
-            .R_OPERATOR .SHL
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    -768
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_REF      .LOCAL_TMP10_LOCAL
             .R_INT16    0
-            .R_OPERATOR .ADD
-            .R_INT16    7
-            .R_OPERATOR .SHL
-            .R_INT16    0
-            .R_OPERATOR .MAX
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    ^/(.ACTOR_ATTR_H_FIRST | .ACTOR_ATTR_RELATIVE_SNAP_TILE)/
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
         ; Load Scene
-        ; -- Fetch player ypos
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP11_LOCAL
-            .R_STOP
+        ; -- Fetch player actorPosition
+        VM_SET_CONST            .LOCAL_TMP7_ACTOR_POS, 0
+        VM_ACTOR_GET_POS        .LOCAL_TMP7_ACTOR_POS
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    2176
+            .R_INT16    4352
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_REF      .LOCAL_TMP11_LOCAL
-            .R_INT16    7
-            .R_OPERATOR .SHL
+            .R_REF      ^/(.LOCAL_TMP7_ACTOR_POS + 2)/
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0

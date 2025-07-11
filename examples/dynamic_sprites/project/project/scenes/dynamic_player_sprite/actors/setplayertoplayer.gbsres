@@ -1,0 +1,37 @@
+{
+  "_resourceType": "actor",
+  "id": "12e8af4e-b812-4621-b4ea-6f3ca06b65cf",
+  "_index": 2,
+  "symbol": "actor_setplayertoplayer",
+  "prefabId": "",
+  "name": "SetPlayerToPlayer",
+  "x": 4,
+  "y": 9,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "00f9f36f-8245-4451-ae1b-7e8ea7d83ef4",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "98c66a30-152e-400b-8757-e9536b11869b",
+      "command": "EVENT_ACTOR_SET_SPRITE",
+      "args": {
+        "actorId": "player",
+        "spriteSheetId": "00f9f36f-8245-4451-ae1b-7e8ea7d83ef4"
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

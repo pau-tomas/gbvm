@@ -1,0 +1,198 @@
+{
+  "_resourceType": "scene",
+  "id": "6b8aeef1-12a3-4c10-b86e-a0faf5fec7ad",
+  "_index": 0,
+  "type": "TOPDOWN",
+  "name": "",
+  "symbol": "scene_1",
+  "x": 324,
+  "y": 230,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "11b5452b-187c-43a3-afb1-a1f4f74ffda2",
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_OVERLAY_MOVE_TO      0, 14, .OVERLAY_TEXT_IN_SPEED\nVM_OVERLAY_CLEAR        0, 0, 20, 2, .UI_COLOR_BLACK, 0\nVM_OVERLAY_SHOW         0, 14, .UI_COLOR_WHITE, 0\n\nVM_SET_CONST_INT8       _text_draw_speed, 0",
+        "__collapse": true,
+        "__label": "Prepare Dialogue  Box"
+      },
+      "id": "36907a8b-dd28-4469-8c0f-497b5e695dd1"
+    },
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "7",
+        "value": {
+          "type": "number",
+          "value": 12
+        },
+        "__comment": false
+      },
+      "id": "e38686d8-a0fe-41e8-b375-f87c12b13e16"
+    },
+    {
+      "command": "EVENT_RTC_SET",
+      "args": {
+        "variableDays": "L2",
+        "typeDays": "number",
+        "variableHours": "7",
+        "typeHours": "variable",
+        "variableMinutes": "L0",
+        "typeMinutes": "number",
+        "variableSeconds": "L2",
+        "typeSeconds": "variable",
+        "valueMinutes": 100,
+        "valueSeconds": 19,
+        "valueDays": 5,
+        "__comment": false
+      },
+      "id": "602267d3-7e21-4a36-bf6b-9ef858025e50"
+    },
+    {
+      "command": "EVENT_SET_TIMER_SCRIPT",
+      "args": {
+        "duration": 0.5,
+        "__scriptTabs": "end",
+        "timer": 1
+      },
+      "children": {
+        "script": [
+          {
+            "command": "EVENT_RTC_GET",
+            "args": {
+              "variableDays": "2",
+              "variableHours": "L4",
+              "variableMinutes": "L0",
+              "variableSeconds": "4"
+            },
+            "id": "ff246926-5e0d-491d-863f-010fcf6886f5"
+          },
+          {
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_LOAD_TEXT            4\n    .dw VAR_DAYS, VAR_S0_HOURS, VAR_S0_MINUTES, VAR_SECONDS\n    .asciz \"\\002\\001DAY:%D8 \\nTIME: %D2:%D2:%D2\"\nVM_DISPLAY_TEXT",
+              "__comment": false
+            },
+            "id": "4ce7bab5-c65d-4784-876b-76838e2f0a1d"
+          }
+        ]
+      },
+      "id": "97e98ad3-af31-4fd5-93b3-1834aee0aef4"
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "a",
+          "b"
+        ],
+        "__scriptTabs": "press"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_IF",
+            "args": {
+              "variable": "0",
+              "__collapseElse": false,
+              "condition": {
+                "type": "variable",
+                "value": "0"
+              }
+            },
+            "children": {
+              "true": [
+                {
+                  "command": "EVENT_RTC_START",
+                  "args": {},
+                  "id": "59567e94-2153-4a7b-9bb3-d84e4b645125"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "0",
+                    "value": {
+                      "type": "false"
+                    }
+                  },
+                  "id": "4f7ece06-e8dd-4cf2-a5fc-3b199376e036"
+                }
+              ],
+              "false": [
+                {
+                  "command": "EVENT_RTC_STOP",
+                  "args": {},
+                  "id": "92712100-3bae-42e2-aee2-955a9887ff97"
+                },
+                {
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "0",
+                    "value": {
+                      "type": "true"
+                    }
+                  },
+                  "id": "05736925-08b5-4938-a7ce-ef658cf88dc4"
+                }
+              ]
+            },
+            "id": "96b8c99a-331f-459f-b9ad-2bb4f8365132"
+          }
+        ]
+      },
+      "id": "bac5270d-7ef7-44dc-a889-b8ad834671f8"
+    }
+  ],
+  "playerHit1Script": [
+    {
+      "command": "EVENT_RTC_START",
+      "args": {},
+      "id": "b226326d-9e29-4922-be92-6c21b44b0c41"
+    },
+    {
+      "command": "EVENT_RTC_STOP",
+      "args": {},
+      "id": "189abc06-8e9f-47d6-a4fd-c86fb825ec96"
+    },
+    {
+      "command": "EVENT_RTC_SET",
+      "args": {
+        "variableDays": "L0",
+        "valueDays": 0,
+        "typeDays": "number",
+        "variableHours": "L0",
+        "valueHours": 0,
+        "typeHours": "number",
+        "variableMinutes": "L0",
+        "valueMinutes": 0,
+        "typeMinutes": "number",
+        "variableSeconds": "L0",
+        "valueSeconds": 0,
+        "typeSeconds": "number"
+      },
+      "id": "22d97b6b-3aef-4871-90b2-7419eb91f3c9"
+    },
+    {
+      "command": "EVENT_RTC_GET",
+      "args": {
+        "variableDays": "L0",
+        "variableHours": "L0",
+        "variableMinutes": "L0",
+        "variableSeconds": "L0",
+        "__collapse": false
+      },
+      "id": "23b3a821-7c5a-48a1-9d57-f27272235d3d"
+    }
+  ],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+"
+}

@@ -21,9 +21,9 @@ _trigger_30_interact::
         ; Actor Set Position
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    6656
+            .R_INT16    13312
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1664
+            .R_INT16    3328
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         ; -- Position Actor

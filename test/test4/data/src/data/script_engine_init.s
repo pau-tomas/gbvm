@@ -6,15 +6,15 @@
 .area _CODE
 
 _start_scene_x:: 
-        .dw 1664
+        .dw 3328
 _start_scene_y:: 
-        .dw 1664 
+        .dw 3328 
 _start_scene_dir:: 
         .db .DIR_RIGHT
 _start_scene::
         IMPORT_FAR_PTR_DATA _scene_outside
 _start_player_move_speed:: 
-        .db 16
+        .db 32
 _start_player_anim_tick:: 
         .db 15
 _ui_fonts:: 
@@ -31,8 +31,12 @@ ___bank_script_engine_init = 255
 .globl _fade_style
 
 _script_engine_init::
-        VM_SET_CONST_INT16      _topdown_grid, 8
-        VM_SET_CONST_INT16      _fade_style, 0
+        VM_RPN
+            .R_INT8 8
+            .R_REF_MEM_SET .MEM_I8, _topdown_grid
+            .R_INT8 0
+            .R_REF_MEM_SET .MEM_I8, _fade_style
+            .R_STOP
 
         ; return from init routine
         VM_RET_FAR

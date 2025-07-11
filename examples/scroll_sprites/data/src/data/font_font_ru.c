@@ -1,7 +1,7 @@
 #pragma bank 255
 
 // Font: font-ru.png
-  
+
 #include "gbs_types.h"
 
 static const UBYTE font_font_ru_table[] = {
@@ -183,7 +183,7 @@ static const UBYTE font_font_ru_bitmaps[] = {
 
 BANKREF(font_font_ru)
 const font_desc_t font_font_ru = {
-    FONT_RECODE | FONT_VWF | FONT_VWF_1BIT, 
+    FONT_RECODE | FONT_VWF | FONT_VWF_1BIT,
     0xFF,
     font_font_ru_table,
     font_font_ru_widths,

@@ -1,0 +1,9 @@
+{
+  "_resourceType": "emote",
+  "id": "19d5c000-3cc2-48be-b26e-29e2385ae13e",
+  "name": "sweat",
+  "symbol": "emote_sweat",
+  "width": 16,
+  "height": 16,
+  "filename": "sweat.png"
+}

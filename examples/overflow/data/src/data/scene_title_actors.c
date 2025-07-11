@@ -16,8 +16,8 @@ const struct actor_t scene_title_actors[] = {
     {
         // Start,
         .pos = {
-            .x = 16 * 16,
-            .y = 24 * 16
+            .x = 512,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -27,7 +27,7 @@ const struct actor_t scene_title_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_press_start),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -38,8 +38,8 @@ const struct actor_t scene_title_actors[] = {
     {
         // Continue,
         .pos = {
-            .x = 80 * 16,
-            .y = 8 * 16
+            .x = 2560,
+            .y = 256
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -49,7 +49,7 @@ const struct actor_t scene_title_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_continue),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -60,8 +60,8 @@ const struct actor_t scene_title_actors[] = {
     {
         // New_Game,
         .pos = {
-            .x = 80 * 16,
-            .y = 24 * 16
+            .x = 2560,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -71,7 +71,7 @@ const struct actor_t scene_title_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_new_game),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -82,8 +82,8 @@ const struct actor_t scene_title_actors[] = {
     {
         // C_Button,
         .pos = {
-            .x = 128 * 16,
-            .y = 8 * 16
+            .x = 4096,
+            .y = 256
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -93,7 +93,7 @@ const struct actor_t scene_title_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_button_a),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -104,8 +104,8 @@ const struct actor_t scene_title_actors[] = {
     {
         // NG_Button,
         .pos = {
-            .x = 128 * 16,
-            .y = 24 * 16
+            .x = 4096,
+            .y = 768
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -115,7 +115,7 @@ const struct actor_t scene_title_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_button_b),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

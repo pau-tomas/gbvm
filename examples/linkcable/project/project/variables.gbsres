@@ -1,0 +1,21 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "c860944a-2fd8-4d44-94e6-2480b4463283__L0",
+      "name": "Is Host",
+      "symbol": "var_is_host"
+    },
+    {
+      "id": "c860944a-2fd8-4d44-94e6-2480b4463283__L1",
+      "name": "My Value",
+      "symbol": "var_my_value"
+    },
+    {
+      "id": "c860944a-2fd8-4d44-94e6-2480b4463283__L2",
+      "name": "Their Value",
+      "symbol": "var_their_value"
+    }
+  ],
+  "constants": []
+}

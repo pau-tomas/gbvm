@@ -16,8 +16,6 @@ ___bank_script_input = 255
 _script_input::
         VM_RESERVE              4
 
-GBVM$script_input$59658cff_173f_48d8_bfdf_8e6a87019579$aa2a543b_6c85_4c40_bbf3_145307646993$scene$aa2a543b_6c85_4c40_bbf3_145307646993$script = .
-.globl GBVM$script_input$59658cff_173f_48d8_bfdf_8e6a87019579$aa2a543b_6c85_4c40_bbf3_145307646993$scene$aa2a543b_6c85_4c40_bbf3_145307646993$script
         ; Load Scene
         VM_SET_CONST_INT8       _fade_frames_per_step, 3
         VM_FADE_OUT             1

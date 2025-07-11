@@ -1,0 +1,93 @@
+{
+  "_resourceType": "settings",
+  "startSceneId": "5d194350-3194-4d36-b58a-a2598e84a752",
+  "startX": 2,
+  "startY": 3,
+  "startMoveSpeed": 1,
+  "startAnimSpeed": 15,
+  "startDirection": "down",
+  "showCollisionExtraTiles": false,
+  "showCollisionTileValues": false,
+  "collisionLayerOpacity": 50,
+  "sgbEnabled": true,
+  "customHead": "",
+  "defaultBackgroundPaletteIds": [
+    "default-bg-1",
+    "default-bg-2",
+    "default-bg-3",
+    "default-bg-4",
+    "default-bg-5",
+    "default-bg-6",
+    "",
+    ""
+  ],
+  "defaultSpritePaletteIds": [
+    "default-sprite-1",
+    "default-sprite-2",
+    "default-sprite-3",
+    "default-sprite-4",
+    "default-sprite-5",
+    "default-sprite-6",
+    "default-sprite-7",
+    "default-sprite-8"
+  ],
+  "defaultSpritePaletteId": "default-sprite",
+  "defaultUIPaletteId": "default-ui",
+  "playerPaletteId": "",
+  "defaultFontId": "",
+  "defaultCharacterEncoding": "",
+  "defaultPlayerSprites": {
+    "TOPDOWN": "daf95270-e30d-423b-9ee7-990ae29f57f6",
+    "PLATFORM": "daf95270-e30d-423b-9ee7-990ae29f57f6",
+    "ADVENTURE": "daf95270-e30d-423b-9ee7-990ae29f57f6",
+    "SHMUP": "daf95270-e30d-423b-9ee7-990ae29f57f6",
+    "POINTNCLICK": "daf95270-e30d-423b-9ee7-990ae29f57f6",
+    "LOGO": "daf95270-e30d-423b-9ee7-990ae29f57f6"
+  },
+  "musicDriver": "gbt",
+  "cartType": "mbc5",
+  "batterylessEnabled": false,
+  "customColorsWhite": "E8F8E0",
+  "customColorsLight": "B0F088",
+  "customColorsDark": "509878",
+  "customColorsBlack": "202850",
+  "customControlsUp": [
+    "ArrowUp",
+    "w"
+  ],
+  "customControlsDown": [
+    "ArrowDown",
+    "s"
+  ],
+  "customControlsLeft": [
+    "ArrowLeft",
+    "a"
+  ],
+  "customControlsRight": [
+    "ArrowRight",
+    "d"
+  ],
+  "customControlsA": [
+    "Alt",
+    "z",
+    "j"
+  ],
+  "customControlsB": [
+    "Control",
+    "k",
+    "x"
+  ],
+  "customControlsStart": [
+    "Enter"
+  ],
+  "customControlsSelect": [
+    "Shift"
+  ],
+  "colorMode": "mono",
+  "colorCorrection": "default",
+  "generateDebugFilesEnabled": false,
+  "compilerPreset": 3000,
+  "scriptEventPresets": {},
+  "scriptEventDefaultPresets": {},
+  "runSceneSelectionOnly": false
+}

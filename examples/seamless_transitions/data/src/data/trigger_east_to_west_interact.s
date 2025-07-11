@@ -9,7 +9,7 @@
 .area _CODE_255
 
 .LOCAL_ACTOR = -4
-.LOCAL_TMP1_LOCAL = -5
+.LOCAL_TMP1_ACTOR_POS = -4
 
 ___bank_trigger_east_to_west_interact = 255
 .globl ___bank_trigger_east_to_west_interact
@@ -17,25 +17,17 @@ ___bank_trigger_east_to_west_interact = 255
 _trigger_east_to_west_interact::
         VM_LOCK
 
-        VM_RESERVE              5
+        VM_RESERVE              4
 
         ; Load Scene
-        ; -- Fetch player ypos
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP1_LOCAL
-            .R_STOP
+        ; -- Fetch player actorPosition
+        VM_SET_CONST            .LOCAL_TMP1_ACTOR_POS, 0
+        VM_ACTOR_GET_POS        .LOCAL_TMP1_ACTOR_POS
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    2560
+            .R_INT16    5120
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_REF      .LOCAL_TMP1_LOCAL
-            .R_INT16    7
-            .R_OPERATOR .SHL
+            .R_REF      ^/(.LOCAL_TMP1_ACTOR_POS + 2)/
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0

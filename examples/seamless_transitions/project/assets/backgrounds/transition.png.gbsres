@@ -3,10 +3,10 @@
   "id": "ab0f13fb-6523-45b1-b75d-1075e056ed90",
   "name": "transition",
   "symbol": "bg_transition",
+  "tileColors": "",
   "width": 40,
   "height": 18,
   "imageWidth": 320,
   "imageHeight": 144,
-  "tileColors": "",
   "filename": "transition.png"
 }

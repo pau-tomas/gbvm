@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "260b985f-fc40-4905-8031-03a9a7fc36b5",
+  "name": "letters",
+  "symbol": "bg_letters",
+  "tileColors": "",
+  "filename": "letters.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}

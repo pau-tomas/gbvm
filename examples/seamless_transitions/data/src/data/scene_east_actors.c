@@ -12,8 +12,8 @@ const struct actor_t scene_east_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 24 * 16,
-            .y = 40 * 16
+            .x = 768,
+            .y = 1280
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -23,7 +23,7 @@ const struct actor_t scene_east_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

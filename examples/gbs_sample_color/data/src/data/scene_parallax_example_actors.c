@@ -14,8 +14,8 @@ const struct actor_t scene_parallax_example_actors[] = {
     {
         // Sign Post,
         .pos = {
-            .x = 352 * 16,
-            .y = 104 * 16
+            .x = 11264,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -25,7 +25,7 @@ const struct actor_t scene_parallax_example_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -37,8 +37,8 @@ const struct actor_t scene_parallax_example_actors[] = {
     {
         // Elephant,
         .pos = {
-            .x = 136 * 16,
-            .y = 104 * 16
+            .x = 4352,
+            .y = 3328
         },
         .bounds = {
             .left = PX_TO_SUBPX(-21),
@@ -48,7 +48,7 @@ const struct actor_t scene_parallax_example_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_elephant),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

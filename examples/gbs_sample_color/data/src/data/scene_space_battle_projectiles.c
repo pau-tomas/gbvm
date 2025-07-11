@@ -13,7 +13,7 @@ const struct projectile_def_t scene_space_battle_projectiles[] = {
     {
         // Projectile 0,
         .sprite = TO_FAR_PTR_T(sprite_bullet_right),
-        .move_speed = 48,
+        .move_speed = 96,
         .life_time = 72,
         .collision_group = COLLISION_GROUP_1,
         .collision_mask = COLLISION_GROUP_1,
@@ -49,7 +49,7 @@ const struct projectile_def_t scene_space_battle_projectiles[] = {
     {
         // Projectile 1,
         .sprite = TO_FAR_PTR_T(sprite_bullet_left),
-        .move_speed = 16,
+        .move_speed = 32,
         .life_time = 60,
         .collision_group = COLLISION_GROUP_1,
         .collision_mask = COLLISION_GROUP_PLAYER,

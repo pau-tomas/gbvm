@@ -7,7 +7,7 @@
 
 BANKREF(sprite_bullet_left)
 
-#define SPRITE_2_STATE_DEFAULT 0
+#define SPRITE_4_STATE_DEFAULT 0
 
 const metasprite_t sprite_bullet_left_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -60,7 +60,7 @@ const struct animation_t sprite_bullet_left_animations[] = {
 };
 
 const UWORD sprite_bullet_left_animations_lookup[] = {
-    SPRITE_2_STATE_DEFAULT
+    SPRITE_4_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_bullet_left = {

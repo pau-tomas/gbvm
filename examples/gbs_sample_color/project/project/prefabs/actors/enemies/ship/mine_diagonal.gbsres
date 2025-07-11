@@ -1,7 +1,6 @@
 {
   "_resourceType": "actorPrefab",
   "id": "9ffef1be-e9d3-4121-bc18-b83a844ffa38",
-  "_index": 8,
   "name": "Enemies/Ship/Mine Diagonal",
   "frame": 0,
   "animate": false,
@@ -11,6 +10,7 @@
   "animSpeed": 15,
   "persistent": false,
   "collisionGroup": "1",
+  "collisionExtraFlags": [],
   "script": [
     {
       "id": "2ab3eea3-eba7-4617-9753-f16aaf2d3b9a",
@@ -119,7 +119,8 @@
                 "value": -4
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           },
@@ -137,7 +138,8 @@
                 "value": 4
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           },
@@ -178,7 +180,8 @@
                 "value": 4
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           },
@@ -196,7 +199,8 @@
                 "value": -4
               },
               "moveType": "diagonal",
-              "useCollisions": false
+              "useCollisions": false,
+              "collideWith": []
             },
             "children": {}
           }

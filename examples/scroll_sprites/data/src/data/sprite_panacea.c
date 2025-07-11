@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: panacea
-  
+
 #include "gbs_types.h"
-#include "data/tileset_panacea.h"
+#include "data/sprite_panacea_tileset.h"
+
 
 BANKREF(sprite_panacea)
 
@@ -120,6 +121,6 @@ const struct spritesheet_t sprite_panacea = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_panacea),
+    .tileset = TO_FAR_PTR_T(sprite_panacea_tileset),
     .cgb_tileset = { NULL, NULL }
 };

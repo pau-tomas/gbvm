@@ -7,9 +7,9 @@
 
 BANKREF(sprite_keyboard)
 
-#define SPRITE_26_STATE_DEFAULT 0
-#define SPRITE_26_STATE_EXPLODE 0
-#define SPRITE_26_STATE_OPEN 0
+#define SPRITE_24_STATE_DEFAULT 0
+#define SPRITE_24_STATE_EXPLODE 0
+#define SPRITE_24_STATE_OPEN 0
 
 const metasprite_t sprite_keyboard_metasprite_0[]  = {
     { 0, 16, 0, 0 }, { 0, -8, 2, 0 }, { 0, -8, 4, 0 }, { 0, -8, 6, 0 },
@@ -56,7 +56,7 @@ const struct animation_t sprite_keyboard_animations[] = {
 };
 
 const UWORD sprite_keyboard_animations_lookup[] = {
-    SPRITE_26_STATE_DEFAULT
+    SPRITE_24_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_keyboard = {

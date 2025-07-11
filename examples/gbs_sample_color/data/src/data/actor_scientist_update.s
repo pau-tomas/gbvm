@@ -22,16 +22,13 @@ _actor_scientist_update::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    1024
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    2048
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1536
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    3072
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    0
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, 0
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 2
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
@@ -47,16 +44,13 @@ _actor_scientist_update::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    768
-            .R_INT16    0
-            .R_OPERATOR .MAX
-            .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_INT16    1536
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
+            .R_INT16    3072
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    .ACTOR_ATTR_H_FIRST
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 2
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
@@ -72,16 +66,13 @@ _actor_scientist_update::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    512
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    1024
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1280
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    2560
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    .ACTOR_ATTR_H_FIRST
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 2
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
@@ -97,16 +88,13 @@ _actor_scientist_update::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    1024
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    2048
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1536
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    3072
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    0
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, 0
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 2
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR

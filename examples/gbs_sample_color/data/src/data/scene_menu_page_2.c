@@ -21,7 +21,7 @@ const struct scene_t scene_menu_page_2 = {
     .background = TO_FAR_PTR_T(bg_menu_page2),
     .collisions = TO_FAR_PTR_T(scene_menu_page_2_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_8),
     .sprite_palette = TO_FAR_PTR_T(palette_9),

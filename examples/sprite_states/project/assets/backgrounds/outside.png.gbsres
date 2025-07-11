@@ -3,10 +3,10 @@
   "id": "851f6ea3-8057-4005-a26b-b925e0495a27",
   "name": "outside",
   "symbol": "symbol",
+  "tileColors": "",
   "width": 32,
   "height": 32,
   "imageWidth": 256,
   "imageHeight": 256,
-  "tileColors": "",
   "filename": "outside.png"
 }

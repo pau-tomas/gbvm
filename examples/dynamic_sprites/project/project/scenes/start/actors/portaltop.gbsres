@@ -1,0 +1,46 @@
+{
+  "_resourceType": "actor",
+  "id": "9b8b9b04-446c-404c-abef-2cce613ea481",
+  "_index": 5,
+  "symbol": "actor_portaltop",
+  "prefabId": "",
+  "name": "PortalTop",
+  "x": 9,
+  "y": 2,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "50c90331-8fb0-44c4-922d-f06e5a02bfb9",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 7,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "1",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "da03dc18-c720-4473-a5e8-cd33d989e7fa",
+      "command": "EVENT_SWITCH_SCENE",
+      "args": {
+        "sceneId": "6eac2533-94d0-41cb-9afc-ac95f43dccbc",
+        "x": {
+          "type": "number",
+          "value": 9
+        },
+        "y": {
+          "type": "number",
+          "value": 14
+        },
+        "direction": "up",
+        "fadeSpeed": "2"
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

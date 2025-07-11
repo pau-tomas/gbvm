@@ -3,10 +3,10 @@
   "id": "7e86e725-e6be-48ca-a35a-c1d31c82a769",
   "name": "parallax_test",
   "symbol": "bg_parallax_test",
+  "tileColors": "",
   "width": 40,
   "height": 18,
   "imageWidth": 320,
   "imageHeight": 144,
-  "tileColors": "",
   "filename": "parallax_test.png"
 }

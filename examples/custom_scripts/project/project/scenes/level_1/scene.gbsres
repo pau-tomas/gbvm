@@ -1,0 +1,62 @@
+{
+  "_resourceType": "scene",
+  "id": "cdf7eb84-97b9-4918-9ef3-0a5e75446f85",
+  "_index": 0,
+  "type": "TOPDOWN",
+  "name": "Level 1",
+  "symbol": "scene_level_1",
+  "x": 118,
+  "y": 132,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "550a1463-7865-4547-97f9-8c1aac8d31d0",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [
+    {
+      "id": "0dd56224-c6d8-416d-a6cf-fb4dddd53202",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": "Before Call",
+        "avatarId": ""
+      }
+    },
+    {
+      "id": "a390e839-5629-49af-ab87-1181f01c5f7a",
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "e43f1aa1-12b6-4108-861d-d04844f5cc28",
+        "__name": "Custom Event 1"
+      },
+      "children": {
+        "script": [
+          {
+            "id": "512b1ba2-49e4-4c6d-b39f-78ec7cf76227",
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "Hello World"
+              ],
+              "avatarId": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "f7cbb7ae-4b06-4529-a02f-06107fd70fad",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": "After Call",
+        "avatarId": ""
+      }
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "0f30+006+0fe+006+0fa+00a+0fa+00a+0fe+006+0fe+006+0fa+002+0f4+004+0fa+002+0f4+004+0fa+002+0f2+006+0fa+002+0f2+006+0fa+00c+0f8+00c+0f8+00c+0f8+00c+0f2c+"
+}

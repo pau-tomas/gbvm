@@ -17,6 +17,7 @@
   "isPinned": false,
   "persistent": true,
   "collisionGroup": "",
+  "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
   "script": [],
   "startScript": [],
@@ -34,7 +35,8 @@
           "value": -6
         },
         "moveType": "horizontal",
-        "useCollisions": false
+        "useCollisions": false,
+        "collideWith": []
       },
       "id": "0ed5ab4e-0bae-483f-9f51-912a63498c5d"
     },
@@ -51,7 +53,8 @@
           "value": 6
         },
         "moveType": "horizontal",
-        "useCollisions": false
+        "useCollisions": false,
+        "collideWith": []
       },
       "id": "22990111-0082-4c25-b4cc-c46cd1d770b6"
     }

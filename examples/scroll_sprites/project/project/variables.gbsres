@@ -1,0 +1,16 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "Tile",
+      "symbol": "var_tile"
+    },
+    {
+      "id": "a5d5c7eb-e42f-4774-8388-8c3a45239edc__L0",
+      "name": "Local 0",
+      "symbol": "var_local_0"
+    }
+  ],
+  "constants": []
+}

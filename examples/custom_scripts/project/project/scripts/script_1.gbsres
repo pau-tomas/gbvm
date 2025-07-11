@@ -1,0 +1,21 @@
+{
+  "_resourceType": "script",
+  "id": "e43f1aa1-12b6-4108-861d-d04844f5cc28",
+  "name": "Script 1",
+  "symbol": "script_1",
+  "description": "Testing Custom Event",
+  "variables": {},
+  "actors": {},
+  "script": [
+    {
+      "id": "512b1ba2-49e4-4c6d-b39f-78ec7cf76227",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Hello World"
+        ],
+        "avatarId": ""
+      }
+    }
+  ]
+}

@@ -23,9 +23,9 @@ _trigger_3_interact::
         VM_FADE_OUT             1
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    17408
+            .R_INT16    34816
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1664
+            .R_INT16    3328
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0
