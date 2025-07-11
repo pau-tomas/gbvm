@@ -29,7 +29,7 @@ _actor_box_3_interact::
         VM_IF_CONST             .EQ, .LOCAL_TMP1_PUSH_DIR_VAR, .DIR_RIGHT, 3$, 0
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .ADD
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
@@ -37,7 +37,7 @@ _actor_box_3_interact::
 1$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .SUB
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -47,7 +47,7 @@ _actor_box_3_interact::
 2$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .SUB
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -57,7 +57,7 @@ _actor_box_3_interact::
 3$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .ADD
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_STOP
