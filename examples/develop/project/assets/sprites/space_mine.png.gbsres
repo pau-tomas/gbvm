@@ -1,0 +1,158 @@
+{
+  "_resourceType": "sprite",
+  "id": "b4845aec-11e3-475b-8a9a-0a01b920c710",
+  "name": "space_mine",
+  "symbol": "sprite_space_mine",
+  "states": [
+    {
+      "id": "26d5c7d1-fc53-4724-8271-e5cb88174c90",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "f5aa9040-1b9b-4b20-8413-25d37cf5dbf3",
+          "frames": [
+            {
+              "id": "47e2bd8f-84d1-4a54-892b-620337d92534",
+              "tiles": [
+                {
+                  "id": "e72bbc84-5e42-4a4e-a940-48f68ac33ef6",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "3be0171d-5107-4b2b-b409-13ff6f20e637",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "b57cc8ee-24a1-46f8-95de-71ae8cc37a1a",
+              "tiles": [
+                {
+                  "id": "1562a688-957b-4c34-b754-744a253c3cff",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 16,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "d6e44ad0-8262-4a62-9fcf-ccde81c534f5",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 24,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "699be69b-1335-4708-9228-d12e66cf6e09",
+          "frames": [
+            {
+              "id": "d38c6f91-af4c-4ede-a003-8ee002b43f1c",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "b975160d-3632-4a3b-8e32-2d7ee60c472d",
+          "frames": [
+            {
+              "id": "a11a3222-696d-4fdb-a0f5-85a8b31937e1",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "1f9a59b1-484d-48c1-aa3c-7d2a0c142d1e",
+          "frames": [
+            {
+              "id": "66d1a5e2-cd2c-4586-9603-6efa15c498d4",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "ac673140-d05d-4f9b-9172-8e3d0630048e",
+          "frames": [
+            {
+              "id": "ce1d3714-1a74-45ae-a21a-a6a9c7b813ee",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "c2ea9cee-906b-4c59-955b-da0cc21f0bdc",
+          "frames": [
+            {
+              "id": "96f247e3-d3e8-4675-8745-b261770ff5ea",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "28c24097-a3e2-42a7-a724-3305deda2607",
+          "frames": [
+            {
+              "id": "e6577fe8-4de9-4b9f-a2b4-c9362971f574",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "ec43faca-91db-4a49-9b4b-b9f5eb24801b",
+          "frames": [
+            {
+              "id": "19aeccab-5769-409c-858e-9b9c445b06a9",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 4,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": 0,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "space_mine.png",
+  "width": 32,
+  "height": 16,
+  "checksum": "d8c6e531c595f6d6dd3a59a07bad688ce45697bc"
+}

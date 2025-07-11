@@ -1,0 +1,11 @@
+{
+  "_resourceType": "tileset",
+  "id": "811d0a87-726d-4576-aca2-b00f7387ead5",
+  "name": "waterfall",
+  "symbol": "tileset_waterfall",
+  "width": 4,
+  "height": 2,
+  "imageWidth": 32,
+  "imageHeight": 16,
+  "filename": "waterfall.png"
+}

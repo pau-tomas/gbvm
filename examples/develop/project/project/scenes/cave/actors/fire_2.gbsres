@@ -1,0 +1,37 @@
+{
+  "_resourceType": "actor",
+  "id": "ee80f72c-ec7c-46d1-9653-23b16fcce2d9",
+  "_index": 4,
+  "symbol": "actor_fire_0",
+  "prefabId": "",
+  "name": "Fire",
+  "x": 14,
+  "y": 4,
+  "frame": 2,
+  "animate": true,
+  "spriteSheetId": "f2610e3c-8ff9-42fa-a9bb-d1591031fa17",
+  "paletteId": "0cae84a7-ed50-4b05-b39a-66be5af7ffd2",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 7,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "54fbe459-14c2-4fca-933f-93203ffbb3f3",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": "Also Hot!",
+        "avatarId": "a450445c-0c3a-49ac-9f69-ea3a668765f9"
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

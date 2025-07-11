@@ -1,0 +1,220 @@
+{
+  "_resourceType": "scene",
+  "id": "2017e4bb-16d3-47bc-a86c-9c47e1860e0c",
+  "_index": 7,
+  "type": "ADVENTURE",
+  "name": "Outside",
+  "symbol": "scene_outside",
+  "x": 548,
+  "y": 142,
+  "width": 32,
+  "height": 32,
+  "backgroundId": "07016701-d5df-4983-8a5a-3930c7f45822",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "320dcbf4-2760-4e0d-8e2b-41970675034f",
+    "036c985f-d774-4a94-813c-9ac43c52627f",
+    "",
+    "b550d28a-9cb7-4f19-82fb-d839725f2419",
+    "9fb1f41b-54d4-43c6-8731-16de50176aa0"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [
+    {
+      "id": "da5d7bc4-ae28-4992-ab12-dcdcb3e1055e",
+      "command": "EVENT_SET_TIMER_SCRIPT",
+      "args": {
+        "duration": 0.25,
+        "__scriptTabs": "end",
+        "__comment": false,
+        "__collapse": false,
+        "timer": 1
+      },
+      "children": {
+        "script": [
+          {
+            "id": "b0e5515b-4039-45b7-8837-5f7dcd37cb52",
+            "command": "EVENT_IF",
+            "args": {
+              "variable": "L0",
+              "operator": "==",
+              "comparator": 16,
+              "__collapseElse": false,
+              "condition": {
+                "type": "eq",
+                "valueA": {
+                  "type": "variable",
+                  "value": "L0"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 16
+                }
+              }
+            },
+            "children": {
+              "true": [
+                {
+                  "id": "190d959a-f913-43a4-bd17-d66232bdce8b",
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "L0",
+                    "value": {
+                      "type": "number",
+                      "value": 9
+                    }
+                  }
+                }
+              ],
+              "false": [
+                {
+                  "id": "c2f0558f-fbaa-4b09-a77a-0be234c9aec3",
+                  "command": "EVENT_SET_VALUE",
+                  "args": {
+                    "variable": "L0",
+                    "value": {
+                      "type": "number",
+                      "value": 16
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "37f19a47-9fdb-4728-a6c8-eaa9c39550b1",
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_PUSH_CONST           0x10\nVM_REPLACE_TILE         .ARG0, ___bank_bg_outside_tileset, _bg_outside_tileset, VAR_S7_FLOWERSTATE, 1\nVM_POP                  1",
+              "references": [
+                {
+                  "type": "background",
+                  "id": "07016701-d5df-4983-8a5a-3930c7f45822"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "3b08bd04-281b-4503-ab76-20e52f029427",
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "start"
+        ],
+        "__scriptTabs": "press",
+        "__collapse": false
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_RANDOMIZE\n\n; -- overlay cut scanline example --------------------\n\nVM_SET_CONST_UINT8      _overlay_cut_scanline, 127\n\n; --- VM_SFX_PLAY complex effect example -------------\nVM_SFX_PLAY             ___bank_sound_effect1, _sound_effect1, ___mute_mask_sound_effect1, .SFX_PRIORITY_NORMAL\n\n; --- VM_LOAD_TILESET/VM_OVERLAY_SET_MAP example -----\nVM_PUSH_CONST           0       ; Y coord\nVM_PUSH_CONST           0       ; X coord\nVM_PUSH_CONST           128\nVM_LOAD_TILESET         .ARG0, ___bank_bg_cave, _bg_cave\nVM_OVERLAY_SET_MAP      .ARG0, .ARG1, .ARG2, ___bank_bg_cave, _bg_cave\nVM_POP                  3\n\nVM_OVERLAY_MOVE_TO      0, 0, .OVERLAY_IN_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_BTN_A)/\n\n; Print\nVM_PUSH_CONST           0\nVM_PRINTER_DETECT       .ARG0, 10\nVM_IF_CONST     .NE     .ARG0, 0, 103$, 0\nVM_PRINT_OVERLAY        .ARG0, 0, 18, 3\n103$:\nVM_POP                  1\n\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/\n\n; --- VM_SFX_PLAY waveform example\nVM_SFX_PLAY             ___bank_wave_icq_message, _wave_icq_message, ___mute_mask_wave_icq_message, .SFX_PRIORITY_NORMAL\n\n; --- VM_SWITCH example ------------------------------\nVM_PUSH_CONST           10\nVM_SWITCH               .ARG0, 3, 0\n        .dw 0,  11$\n        .dw 1,  12$\n        .dw 10, 13$\n\nVM_LOAD_TEXT            1\n        .dw .ARG0\n        .asciz \"Default; value: %d\"\nVM_JUMP                 10$\n11$:\nVM_LOAD_TEXT            1\n        .dw .ARG0\n        .asciz \"Zero; value: %d\"\nVM_JUMP                 10$\n12$:\nVM_LOAD_TEXT            1\n        .dw .ARG0\n        .asciz \"One; value: %d\"\nVM_JUMP                 10$\n13$:\nVM_LOAD_TEXT            1\n        .dw .ARG0\n        .asciz \"Ten; value: %d\"\nVM_JUMP                 10$\n10$:\nVM_POP                  1\n\nVM_OVERLAY_CLEAR        0, 0, 20, 8, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/\nVM_OVERLAY_MOVE_TO      2, 10, .OVERLAY_IN_SPEED\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/\n\n; --- VM_DISPLAY_TEXT_EX example -------------------------\nVM_OVERLAY_CLEAR        0, 0, 20, 8, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/\nVM_OVERLAY_MOVE_TO      2, 10, .OVERLAY_IN_SPEED\nVM_LOAD_TEXT            0\n        .asciz \"Hello\"\nVM_DISPLAY_TEXT_EX      .DISPLAY_DEFAULT, .TEXT_TILE_CONTINUE\nVM_OVERLAY_WAIT         .UI_MODAL, .UI_WAIT_TEXT\n; <- Wait code goes here\nVM_LOAD_TEXT            0\n        .asciz \"World\"\nVM_DISPLAY_TEXT_EX      .DISPLAY_PRESERVE_POS, .TEXT_TILE_CONTINUE\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/\n\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/\n\n; --- VM_CALL_NATIVE example -------------------------\nVM_PUSH_CONST           10\nVM_CALL_NATIVE          b_my_native_function, _my_native_function\nVM_POP                  1\nVM_JUMP                 101$\n102$:\n; sound effect test\n.db 0x71, 0b11111000, 0x4c,0x81,0x43,0x73,0x86  ; play for 2 frames\n.db 0x01, 0b00101000, 0x00,0xc0                 ; shut ch1\n.db 0x01, 0b00000111                            ; stop\n101$:"
+            },
+            "id": "088b0d8b-52f3-4460-a48f-15b654b420f8"
+          },
+          {
+            "id": "6251bef4-aea4-4d84-8fe4-e7c0be7b1947",
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_SET_PRINT_DIR        .UI_PRINT_RIGHTTOLEFT"
+            }
+          },
+          {
+            "id": "3d2e9696-fda5-4441-bb38-ec87604ea8e7",
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "!F:ba1a5213-bb6f-40ec-8efc-fd0e9c543bb3!דג סקרן שט בים\nמאוכזב ולפתע מצא חברה"
+              ],
+              "avatarId": ""
+            }
+          },
+          {
+            "id": "ab938946-d2a7-470a-87d8-38f05f00236e",
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_SET_PRINT_DIR        .UI_PRINT_LEFTTORIGHT"
+            }
+          },
+          {
+            "id": "5bae42a6-8f4a-4993-868b-8298bed6ed2c",
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "!F:d1692d0d-71f4-41cc-926c-4eef96b89952!Съешь ещё этих мягких\nфранцузских булок,\nда выпей чаю."
+              ],
+              "avatarId": ""
+            }
+          },
+          {
+            "id": "9a4e73eb-fb72-4725-a058-bf47cb369f5b",
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/\n    .DMG_PAL    3,2,1,0\n\nVM_PUSH_CONST           10\nVM_PUSH_CONST           ^/(.CAMERA_SHAKE_X | .CAMERA_SHAKE_Y)/\nVM_INVOKE       b_camera_shake_frames, _camera_shake_frames, 2, .ARG1\n\nVM_LOAD_PALETTE         0x01, ^/.PALETTE_COMMIT | .PALETTE_BKG/\n    .DMG_PAL    0,1,2,3\n\nVM_RESERVE              6\n\nVM_GET_INT8             .ARG0, __is_SGB \nVM_IF_CONST     .EQ     .ARG0, 0, 1$, 0 \nVM_SGB_TRANSFER   \n    .db ((0x04 << 3) | 1), 1, 0x07, ((0x01 << 4) | (0x02 << 2) | 0x03), 5,5, 10,10,  0, 0, 0, 0, 0, 0, 0, 0 ; ATTR_BLK packet\n1$:\n\nVM_RTC_START            .RTC_START\nVM_RTC_LATCH\nVM_RTC_GET              .ARG3, .RTC_SECONDS \nVM_RTC_GET              .ARG2, .RTC_MINUTES \nVM_RTC_GET              .ARG1, .RTC_HOURS \nVM_RTC_GET              .ARG0, .RTC_DAYS \n        \nVM_LOAD_TEXT            4\n    .dw .ARG0, .ARG1, .ARG2, .ARG3\n    .asciz \"\\002\\001DAY:%D8 TIME: %D2:%D2:%D2\"\nVM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_BLACK, 0\nVM_OVERLAY_MOVE_TO      0, 9, .OVERLAY_TEXT_IN_SPEED\nVM_DISPLAY_TEXT\nVM_OVERLAY_SHOW         0, 9, .UI_COLOR_BLACK, 0\n\nVM_OVERLAY_SET_SUBMAP   2, 2, 6, 5, 8, 4\n\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_SET_CONST            .ARG5, 0\nVM_ACTOR_GET_POS        .ARG5\n\nVM_SET_CONST            .ARG2, 1\nVM_ACTOR_GET_POS        .ARG2\n\nVM_RPN\n    ; chebyshev distance\n    .R_REF      .ARG4\n    .R_REF      .ARG1\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_REF      .ARG3\n    .R_REF      .ARG0\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_OPERATOR .MAX\n    ; manhattan distance\n    .R_REF      .ARG4\n    .R_REF      .ARG1\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_REF      .ARG3\n    .R_REF      .ARG0\n    .R_OPERATOR .SUB\n    .R_OPERATOR .ABS\n    .R_OPERATOR .ADD\n\n    .R_STOP\n\nVM_LOAD_TEXT            6\n    .dw .ARG6, .ARG5, .ARG3, .ARG2, .ARG1, .ARG0\n    .asciz \"\\001\\001\\002\\004@A\\nBC\\001\\003\\004\\001\\377\\002\\001x1=%d y1=%d\\nx2=%d y2=%d\\n\\004\\376\\001Chebyshev:\\002\\002%d\\n\\002\\001Manhattan:\\002\\002%d\\n\\002\\001\\007\\002This\\007\\001 is \\002\\002BOLD\\002\\001\\nOk!\"\nVM_OVERLAY_CLEAR        0, 0, 20, 9, .UI_COLOR_WHITE, .UI_DRAW_FRAME \nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_LOAD_TEXT            0\n    .asciz \"\\001\\001\\002\\004@A\\nBC\\001\\003\\004\\001\\377\\002\\001Hi, it's KOT speaking!\\nWhere's SLON?\\006\\377\\003\\022\\005\\001\\001\\002\\004DE\\nFG\\003\\006\\005\\001\\003\\002\\001Sorry, i have no idea\\nwhat're you mean!\"\nVM_OVERLAY_MOVE_TO      0, 11, .OVERLAY_TEXT_OUT_SPEED\nVM_OVERLAY_CLEAR        0, 0, 20, 7, .UI_COLOR_WHITE, .UI_DRAW_FRAME \nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_OVERLAY_CLEAR        0, 0, 20, 7, .UI_COLOR_WHITE, ^/(.UI_DRAW_FRAME | .UI_AUTO_SCROLL)/ \nVM_LOAD_TEXT            0\n    .asciz \"\\001\\005Terminal mode\\rLoading text...\\rText loaded!\\rLet's see how this text\\rscrolls...\\rOne more line...\\rYes, it does!\\rLet's type something\\relse...\\rI don't know what...\\rHello, world!\\rI think that is\\r\\002\\002ENOUGH\\002\\001.\"\nVM_DISPLAY_TEXT\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_ANY)/\n\nVM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_TEXT_OUT_SPEED\nVM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW)/\n\nVM_POP                  ^/6 + 2/    ; 6 for local vars + 2 results of RPN calc\\001\\001\\002\\003DE\\nFG\\001\\003\\004\\001\\377\\002\\001\\001\\001\\002\\003@A\\nBC\\001\\003\\004\\001\\377\\002\\001",
+              "__collapse": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "command": "EVENT_SET_INPUT_SCRIPT",
+      "args": {
+        "input": [
+          "b"
+        ],
+        "__scriptTabs": "press"
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_LAUNCH_PROJECTILE",
+            "args": {
+              "spriteSheetId": "6dba41ee-c7c7-4e21-a526-bd99587eb695",
+              "spriteStateId": "",
+              "actorId": "$self$",
+              "x": 0,
+              "y": 0,
+              "otherActorId": "$self$",
+              "direction": "right",
+              "angle": 0,
+              "angleVariable": "L0",
+              "directionType": "actor",
+              "initialOffset": 16,
+              "speed": 2,
+              "animSpeed": 15,
+              "lifeTime": 1,
+              "collisionGroup": "3",
+              "collisionMask": [
+                "1"
+              ],
+              "loopAnim": true,
+              "destroyOnHit": true
+            },
+            "id": "73f350f4-6f18-4ace-a7d4-bbbc8a139403"
+          }
+        ]
+      },
+      "id": "cb0440ac-447b-47e3-a8c7-ca61f54c9738"
+    }
+  ],
+  "playerHit1Script": [
+    {
+      "command": "EVENT_ACTOR_EMOTE",
+      "args": {
+        "actorId": "$self$",
+        "emoteId": "04abf4ce-fa59-4e92-b7b1-ad6bba14c41c"
+      },
+      "id": "b60279ed-20e8-4088-9b3d-b13473f85f7b"
+    }
+  ],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "0f65+002+0f2+002+0f2+002+0f2+00!0f10+006+0f6+004+0f10+006+0f6+004+0f10+006+0f6+004+0f10+006+0f2+002+0f2+006+0f4+002+0f8+006+0f2+002+0f2+007+0f3+002+0f8+001c+0f4+001c+0f4+001c+0f4+003+0f2+0017+0f4+002+0f4+0016+0f4+002+0f4+0016+0f4+003+0f2+0017+0f4+001c+0f4+00d+0fd+002+0f4+009+0f12+00!0f4+007+0f14+00!0f4+007+0f14+00!0f4+007+0f14+00!0f4+00a+0f11+00!0f4+00c+0fd+003+0f4+001c+0f4+001c+0f4+001c+0f4+001c+0f82+"
+}

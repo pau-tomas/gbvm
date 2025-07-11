@@ -1,0 +1,127 @@
+{
+  "_resourceType": "sprite",
+  "id": "e9e61bf7-88fd-491d-ae01-4b7f76909108",
+  "name": "torch",
+  "symbol": "sprite_torch",
+  "states": [
+    {
+      "id": "b3fb6704-986f-4f07-9ab3-d084b12315c6",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "def1c4ec-737f-42b3-8008-2bc4a6b0f03e",
+          "frames": [
+            {
+              "id": "8a8ee24a-48ba-40e6-a528-2ea3892119ad",
+              "tiles": [
+                {
+                  "id": "42b600cd-15ed-443e-9362-d5020fc12d3d",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "b19bbe03-8ed0-4d27-b321-3d67850d6a15",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5dc712ab-e5ef-4c48-bce3-5506cbdb4f8d",
+          "frames": [
+            {
+              "id": "2aa71d18-0724-431c-baeb-5eb0e319391d",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "23d51b82-4f9f-433d-b0cc-7905c1757489",
+          "frames": [
+            {
+              "id": "1346e1f2-a5f8-4d2d-a7f2-7f4a993f33f4",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "1f790af4-273f-4399-a79a-7676c55aa2de",
+          "frames": [
+            {
+              "id": "2cf21487-8aeb-466c-b777-69f425f2a323",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "75329413-fa99-4134-88b8-160e80810737",
+          "frames": [
+            {
+              "id": "5cddbac9-d344-47dd-b1cb-496f5d15e960",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "61be84fc-478b-4079-8dd9-a9b22a521f66",
+          "frames": [
+            {
+              "id": "5360dd2b-a34d-4089-8671-3101e70db593",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "95522cfd-dc97-4638-a4c5-c4118e224a5b",
+          "frames": [
+            {
+              "id": "7285b923-ac09-43f2-9abc-149bdde4d80d",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "6b6704cf-0866-4895-8d72-38fbafd72b6b",
+          "frames": [
+            {
+              "id": "6592ecaf-de2b-40bf-bab0-0c6f60a0a509",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 2,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": 0,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "torch.png",
+  "width": 16,
+  "height": 16,
+  "checksum": "7115d29144680ee075cf63709a5bd562d327b0a4"
+}

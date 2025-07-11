@@ -1,0 +1,158 @@
+{
+  "_resourceType": "sprite",
+  "id": "954ffda3-81b7-40ea-a338-3b11ad4b75fb",
+  "name": "enemy_ship",
+  "symbol": "sprite_enemy_ship",
+  "states": [
+    {
+      "id": "0b94850c-2d16-4783-b0c1-c32d1cc038a1",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "a6d00730-6b5d-4a72-a7ce-5d605e25418f",
+          "frames": [
+            {
+              "id": "51492779-f811-4e8e-b1f6-8c4df838c324",
+              "tiles": [
+                {
+                  "id": "8d0d5917-ba10-43bf-8a79-cf499b32d870",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "6f3c931a-8f81-4771-a7a9-455045ccfa09",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "b1166566-25ac-4715-85f7-e141826397c1",
+              "tiles": [
+                {
+                  "id": "07fee7ed-bf35-444a-a83c-0f1fd1b4f813",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 16,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "f4678e77-2150-43db-bc33-b8301f8a24bc",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 24,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "062e7a0f-25e2-469a-be27-957f3b12968c",
+          "frames": [
+            {
+              "id": "f48305dc-daf6-4055-b47c-35f39813197d",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "309b32aa-ce55-4570-b6fc-bf35971b028c",
+          "frames": [
+            {
+              "id": "a9d454c2-73fa-4747-92a0-5c657c5fba16",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "01ebe20f-2612-4a2b-915a-60ba361f3e73",
+          "frames": [
+            {
+              "id": "53da7ec6-07e9-4c99-8e29-5cf2c06ef150",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "42126a7c-8915-4873-9664-62b19ed20a80",
+          "frames": [
+            {
+              "id": "8ab8ab9e-d502-46db-a61c-46358fd75e31",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "963c13b9-d26d-499f-8a3f-a54dadfee7e8",
+          "frames": [
+            {
+              "id": "e81d7524-0c1a-4e44-acab-13ebefb92c8f",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "27dc3c76-d172-443a-934a-a96710986466",
+          "frames": [
+            {
+              "id": "b56c90f5-f7aa-49bd-834f-81ec7659a331",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "5893f893-83c0-4edb-b8b9-c9bd03268b9c",
+          "frames": [
+            {
+              "id": "b26dcd23-2fb8-4c54-902d-63a5634aa9f1",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 3,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": 0,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "enemy_ship.png",
+  "width": 32,
+  "height": 16,
+  "checksum": "a785c97ea4ac2aeb9bd9c2418314cbe3d17312e8"
+}
