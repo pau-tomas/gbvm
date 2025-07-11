@@ -31,13 +31,13 @@ BANKREF(VM_ACTOR)
 
 typedef struct act_move_to_t {
     INT16 ID;
-    INT16 X, Y;
+    UINT16 X, Y;
     UBYTE ATTR;
 } act_move_to_t;
 
 typedef struct act_set_pos_t {
     INT16 ID;
-    INT16 X, Y;
+    UINT16 X, Y;
 } act_set_pos_t;
 
 typedef struct act_set_frame_t {
@@ -49,6 +49,68 @@ typedef struct gbs_farptr_t {
     INT16 BANK;
     const void * DATA;
 } gbs_farptr_t;
+
+static UWORD check_collision_horizontal(UWORD start_x, UWORD start_y, rect16_t *bounds, UWORD end_pos) {
+    UBYTE tx1, ty1, tx2, ty2;
+    ty1 = SUBPX_TO_TILE(start_y + bounds->top);
+    ty2 = SUBPX_TO_TILE(start_y + bounds->bottom) + 1;
+    if (start_x > end_pos) {
+        // Check left
+        tx1 = SUBPX_TO_TILE(start_x + bounds->left);
+        tx2 = SUBPX_TO_TILE(end_pos + bounds->left);
+        if (tx2 > tx1) {
+            tx2 = 0;
+        }
+    }
+    else {
+        // Check right
+        tx1 = SUBPX_TO_TILE(start_x + bounds->right);
+        tx2 = SUBPX_TO_TILE(end_pos + bounds->right);
+        if (tx2 < tx1) {
+            tx2 = image_tile_width;
+        }            
+    }
+    while (ty1 != ty2) {
+        if (tile_col_test_range_x(COLLISION_LEFT, ty1, tx1, tx2)) {
+            return (start_x > end_pos) ?
+                   TILE_TO_SUBPX(tile_hit_x) - bounds->left + TILE_TO_SUBPX(1) : 
+                   TILE_TO_SUBPX(tile_hit_x) - bounds->right - PX_TO_SUBPX(1);
+        }                
+        ty1++;
+    }
+    return end_pos;
+}
+
+static UWORD check_collision_vertical(UWORD start_x, UWORD start_y, rect16_t *bounds, UWORD end_pos) {
+    UBYTE tx1, ty1, tx2, ty2;
+    tx1 = SUBPX_TO_TILE(start_x + bounds->left);
+    tx2 = SUBPX_TO_TILE(start_x + bounds->right) + 1;
+    if (start_y > end_pos) {
+        // Check up
+        ty1 = SUBPX_TO_TILE(start_y + bounds->top);
+        ty2 = SUBPX_TO_TILE(end_pos + bounds->top);
+        if (ty2 > ty1) {
+            ty2 = 0;
+        }
+    }
+    else {
+        // Check down
+        ty1 = SUBPX_TO_TILE(start_y + bounds->bottom);
+        ty2 = SUBPX_TO_TILE(end_pos + bounds->bottom);
+        if (ty2 < ty1) {
+            ty2 = image_tile_height;
+        }
+    }
+    while (tx1 != tx2) {
+        if (tile_col_test_range_y(COLLISION_TOP, tx1, ty1, ty2)) {
+            return (start_y > end_pos) ? 
+                   TILE_TO_SUBPX(tile_hit_y) - bounds->top + TILE_TO_SUBPX(1) : 
+                   TILE_TO_SUBPX(tile_hit_y) - bounds->bottom - PX_TO_SUBPX(1);
+        }
+        tx1++;
+    }
+    return end_pos;
+}
 
 void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
     actor_t *actor;
@@ -79,38 +141,39 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         }
 
         // If moving relative add current position
+        // and prevent overflow
+        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_RELATIVE)) {
+            params->X = saturating_add_u16(actor->pos.x, (WORD)params->X);
+            params->Y = saturating_add_u16(actor->pos.y, (WORD)params->Y);
+        }
         // and snap destination to either pixels/tiles
         if (CHK_FLAG(params->ATTR, ACTOR_ATTR_RELATIVE_SNAP_PX)) {
-            params->X = SUBPX_SNAP_PX(params->X + actor->pos.x);
-            params->Y = SUBPX_SNAP_PX(params->Y + actor->pos.y);
+            params->X = SUBPX_SNAP_PX(params->X);
+            params->Y = SUBPX_SNAP_PX(params->Y);
         } else if (CHK_FLAG(params->ATTR, ACTOR_ATTR_RELATIVE_SNAP_TILE)) {
-            params->X = SUBPX_SNAP_TILE(params->X + actor->pos.x);
-            params->Y = SUBPX_SNAP_TILE(params->Y + actor->pos.y);
+            params->X = SUBPX_SNAP_TILE(params->X);
+            params->Y = SUBPX_SNAP_TILE(params->Y);
         }
 
         // Check for collisions in path
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL)) {
+        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_WALLS)) {
             if (CHK_FLAG(params->ATTR, ACTOR_ATTR_H_FIRST)) {
                 // Check for horizontal collision
                 if (actor->pos.x != params->X) {
-                    UBYTE check_dir = (actor->pos.x > params->X) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT;
-                    params->X = check_collision_in_direction(actor->pos.x, actor->pos.y, &actor->bounds, params->X, check_dir);
+                    params->X = check_collision_horizontal(actor->pos.x, actor->pos.y, &actor->bounds, params->X);
                 }
                 // Check for vertical collision
                 if (actor->pos.y != params->Y) {
-                    UBYTE check_dir = (actor->pos.y > params->Y) ? CHECK_DIR_UP : CHECK_DIR_DOWN;
-                    params->Y = check_collision_in_direction(params->X, actor->pos.y, &actor->bounds, params->Y, check_dir);
+                    params->Y = check_collision_vertical(params->X, actor->pos.y, &actor->bounds, params->Y);
                 }
             } else {
                 // Check for vertical collision
                 if (actor->pos.y != params->Y) {
-                    UBYTE check_dir = (actor->pos.y > params->Y) ? CHECK_DIR_UP : CHECK_DIR_DOWN;
-                    params->Y = check_collision_in_direction(actor->pos.x, actor->pos.y, &actor->bounds, params->Y, check_dir);
+                    params->Y = check_collision_vertical(actor->pos.x, actor->pos.y, &actor->bounds, params->Y);
                 }
                 // Check for horizontal collision
                 if (actor->pos.x != params->X) {
-                    UBYTE check_dir = (actor->pos.x > params->X) ? CHECK_DIR_LEFT : CHECK_DIR_RIGHT;
-                    params->X = check_collision_in_direction(actor->pos.x, params->Y, &actor->bounds, params->X, check_dir);
+                    params->X = check_collision_horizontal(actor->pos.x, params->Y, &actor->bounds, params->X);
                 }
             }
         }
@@ -164,7 +227,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
+        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
             point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
             THIS->flags = 0;
             actor_set_anim_idle(actor);
@@ -198,7 +261,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
+        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
             point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
             THIS->flags = 0;
             actor_set_anim_idle(actor);

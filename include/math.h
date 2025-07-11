@@ -71,26 +71,35 @@
 
 #define N_DIRECTIONS    4
 
-#define SUBPX_TO_PX(a)      ((a) >> 4)
-#define SUBPX_TO_TILE(a)    ((a) >> 7)
-#define SUBPX_TO_TILE16(a)  ((a) >> 8)
+#define SUBPX_TO_PX(a)      ((a) >> 5)
+#define SUBPX_TO_TILE(a)    ((UBYTE)((a) >> 8))
+#define SUBPX_TO_TILE16(a)  ((UBYTE)((a) >> 9))
 
-#define PX_TO_SUBPX(a)      ((a) << 4)
-#define TILE_TO_SUBPX(a)    (((UBYTE)(a)) << 7)
-#define TILE16_TO_SUBPX(a)  (((UBYTE)(a)) << 8)
+#define PX_TO_SUBPX(a)      ((a) << 5)
+#define TILE_TO_SUBPX(a)    (((UBYTE)(a)) << 8)
+#define TILE16_TO_SUBPX(a)  (((UBYTE)(a)) << 9)
 
-#define PX_TO_TILE(a)       ((a) >> 3)
-#define PX_TO_TILE16(a)     ((a) >> 4)
+#define PX_TO_TILE(a)       ((UBYTE)((a) >> 3))
+#define PX_TO_TILE16(a)     ((UBYTE)((a) >> 4))
 #define TILE_TO_PX(a)       (((UBYTE)(a)) << 3)
 #define TILE16_TO_PX(a)     (((UBYTE)(a)) << 4)
 
-#define SUBPX_SNAP_PX(a)     ((a) & 0xFFF0)
-#define SUBPX_SNAP_TILE(a)   ((a) & 0xFF80)
-#define SUBPX_SNAP_TILE16(a) ((a) & 0xFF00)
+#define SUBPX_SNAP_PX(a)     ((a) & 0xFFE0)
+#define SUBPX_SNAP_TILE(a)   ((a) & 0xFF00)
+#define SUBPX_SNAP_TILE16(a) ((a) & 0xFE00)
 #define PX_SNAP_TILE(a)     ((a) & 0xFFF8)
 
-#define SUBPX_TILE_REMAINDER(a) ((a) & 0x7F)
-#define PX_TILE_REMAINDER(a)    ((a) & 0x7)
+#define SUBPX_TILE_REMAINDER(a) ((UBYTE)((a) & 0xFF))
+#define PX_TILE_REMAINDER(a)    ((UBYTE)((a) & 0x7))
+
+#define WORD_MIN            -32768
+#define WORD_MAX            32767
+#define UWORD_MIN           0
+#define UWORD_MAX           65535
+#define BYTE_MIN            -128
+#define BYTE_MAX            127
+#define UBYTE_MIN           0
+#define UBYTE_MAX           255
 
 typedef struct upoint16_t {
     uint16_t x, y;
@@ -123,7 +132,7 @@ typedef enum {
 extern const int8_t sine_wave[256];
 extern const uint8_t dir_angle_lookup[4];
 
-inline void point_translate_dir(point16_t *point, direction_e dir, uint8_t speed) {
+inline void point_translate_dir(upoint16_t *point, direction_e dir, uint8_t speed) {
     if(dir == DIR_RIGHT)
         point->x += speed;
     else if(dir == DIR_LEFT)
@@ -134,7 +143,7 @@ inline void point_translate_dir(point16_t *point, direction_e dir, uint8_t speed
         point->y -= speed;
 }
 
-inline void point_translate_dir_word(point16_t *point, direction_e dir, uint16_t speed) {
+inline void point_translate_dir_word(upoint16_t *point, direction_e dir, uint16_t speed) {
     if(dir == DIR_RIGHT)
         point->x += speed;
     else if(dir == DIR_LEFT)
@@ -145,14 +154,34 @@ inline void point_translate_dir_word(point16_t *point, direction_e dir, uint16_t
         point->y -= speed;
 }
 
-inline void point_translate_angle(point16_t *point, uint8_t angle, uint8_t speed) {
+inline void point_translate_angle(upoint16_t *point, uint8_t angle, uint8_t speed) {
     point->x += ((SIN(angle) * (speed)) >> 7);
     point->y -= ((COS(angle) * (speed)) >> 7);
 }
 
-inline void point_translate_angle_to_delta(point16_t *point, uint8_t angle, uint8_t speed) {
+inline void point_translate_angle_to_delta(upoint16_t *point, uint8_t angle, uint8_t speed) {
     point->x = ((SIN(angle) * (speed)) >> 7);
     point->y = ((COS(angle) * (speed)) >> 7);
+}
+
+// Saturating addition of a signed 16-bit delta onto an unsigned 16-bit base.
+// Clamps to 0 or UINT16_MAX without ever using a 32-bit type.
+inline uint16_t saturating_add_u16(uint16_t base, int16_t delta) {
+    if (delta >= 0) {
+        uint16_t udelta = (uint16_t)delta;
+        // if base + udelta would wrap past UINT16_MAX, clamp to UINT16_MAX
+        if (base > UINT16_MAX - udelta) {
+            return UINT16_MAX;
+        }
+        return base + udelta;
+    } else {
+        uint16_t mag = (uint16_t)(-delta);
+        // if subtracting would underflow below 0, clamp to 0
+        if (mag > base) {
+            return 0;
+        }
+        return base - mag;
+    }
 }
 
 uint8_t isqrt(uint16_t x) NONBANKED;
