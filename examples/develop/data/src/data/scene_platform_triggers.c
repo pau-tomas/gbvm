@@ -4,11 +4,11 @@
 // Triggers
 
 #include "gbs_types.h"
-#include "data/script_s5t0_interact.h"
-#include "data/script_s5t1_interact.h"
-#include "data/script_s5t2_interact.h"
-#include "data/script_s5t3_interact.h"
-#include "data/script_s5t4_interact.h"
+#include "data/trigger_14_interact.h"
+#include "data/trigger_15_interact.h"
+#include "data/trigger_16_interact.h"
+#include "data/trigger_17_interact.h"
+#include "data/trigger_18_interact.h"
 
 BANKREF(scene_platform_triggers)
 
@@ -19,7 +19,7 @@ const struct trigger_t scene_platform_triggers[] = {
         .top = 17,
         .right = 58,
         .bottom = 17,
-        .script = TO_FAR_PTR_T(script_s5t0_interact),
+        .script = TO_FAR_PTR_T(trigger_14_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
@@ -28,7 +28,7 @@ const struct trigger_t scene_platform_triggers[] = {
         .top = 0,
         .right = 160,
         .bottom = 13,
-        .script = TO_FAR_PTR_T(script_s5t1_interact),
+        .script = TO_FAR_PTR_T(trigger_15_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
@@ -37,7 +37,7 @@ const struct trigger_t scene_platform_triggers[] = {
         .top = 17,
         .right = 110,
         .bottom = 17,
-        .script = TO_FAR_PTR_T(script_s5t2_interact),
+        .script = TO_FAR_PTR_T(trigger_16_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
@@ -46,7 +46,7 @@ const struct trigger_t scene_platform_triggers[] = {
         .top = 13,
         .right = 7,
         .bottom = 13,
-        .script = TO_FAR_PTR_T(script_s5t3_interact),
+        .script = TO_FAR_PTR_T(trigger_17_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
@@ -55,7 +55,7 @@ const struct trigger_t scene_platform_triggers[] = {
         .top = 8,
         .right = 14,
         .bottom = 8,
-        .script = TO_FAR_PTR_T(script_s5t4_interact),
+        .script = TO_FAR_PTR_T(trigger_18_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     }
 };

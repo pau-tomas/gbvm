@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: turnip_squash
-  
+
 #include "gbs_types.h"
-#include "data/tileset_turnip_squash.h"
+#include "data/sprite_turnip_squash_tileset.h"
+
 
 BANKREF(sprite_turnip_squash)
 
-#define SPRITE_0_STATE_DEFAULT 0
-#define SPRITE_0_STATE_OPEN 0
+#define SPRITE_16_STATE_DEFAULT 0
+#define SPRITE_16_STATE_OPEN 0
 
 const metasprite_t sprite_turnip_squash_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -54,7 +55,7 @@ const struct animation_t sprite_turnip_squash_animations[] = {
 };
 
 const UWORD sprite_turnip_squash_animations_lookup[] = {
-    SPRITE_0_STATE_DEFAULT
+    SPRITE_16_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_turnip_squash = {
@@ -72,6 +73,6 @@ const struct spritesheet_t sprite_turnip_squash = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_turnip_squash),
+    .tileset = TO_FAR_PTR_T(sprite_turnip_squash_tileset),
     .cgb_tileset = { NULL, NULL }
 };

@@ -11,7 +11,7 @@
 #include "data/scene_dancefloor_actors.h"
 #include "data/scene_dancefloor_triggers.h"
 #include "data/scene_dancefloor_sprites.h"
-#include "data/script_s9_init.h"
+#include "data/scene_dancefloor_init.h"
 
 BANKREF(scene_dancefloor)
 
@@ -22,7 +22,7 @@ const struct scene_t scene_dancefloor = {
     .background = TO_FAR_PTR_T(bg_dancefloor),
     .collisions = TO_FAR_PTR_T(scene_dancefloor_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_5),
     .sprite_palette = TO_FAR_PTR_T(palette_7),
@@ -35,5 +35,5 @@ const struct scene_t scene_dancefloor = {
     .actors = TO_FAR_PTR_T(scene_dancefloor_actors),
     .triggers = TO_FAR_PTR_T(scene_dancefloor_triggers),
     .sprites = TO_FAR_PTR_T(scene_dancefloor_sprites),
-    .script_init = TO_FAR_PTR_T(script_s9_init)
+    .script_init = TO_FAR_PTR_T(scene_dancefloor_init)
 };

@@ -12,8 +12,8 @@
 #include "data/scene_outside_triggers.h"
 #include "data/scene_outside_sprites.h"
 #include "data/scene_outside_projectiles.h"
-#include "data/script_s7_init.h"
-#include "data/script_s7_p_hit1.h"
+#include "data/scene_outside_init.h"
+#include "data/scene_outside_p_hit1.h"
 
 BANKREF(scene_outside)
 
@@ -24,7 +24,7 @@ const struct scene_t scene_outside = {
     .background = TO_FAR_PTR_T(bg_outside),
     .collisions = TO_FAR_PTR_T(scene_outside_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_3),
     .sprite_palette = TO_FAR_PTR_T(palette_6),
@@ -38,6 +38,6 @@ const struct scene_t scene_outside = {
     .triggers = TO_FAR_PTR_T(scene_outside_triggers),
     .sprites = TO_FAR_PTR_T(scene_outside_sprites),
     .projectiles = TO_FAR_PTR_T(scene_outside_projectiles),
-    .script_init = TO_FAR_PTR_T(script_s7_init),
-    .script_p_hit1 = TO_FAR_PTR_T(script_s7_p_hit1)
+    .script_init = TO_FAR_PTR_T(scene_outside_init),
+    .script_p_hit1 = TO_FAR_PTR_T(scene_outside_p_hit1)
 };

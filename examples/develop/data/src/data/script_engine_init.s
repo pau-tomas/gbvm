@@ -19,8 +19,8 @@ _start_player_anim_tick::
         .db 15
 _ui_fonts:: 
         IMPORT_FAR_PTR_DATA _font_font_vwf
-        IMPORT_FAR_PTR_DATA _font_font_he
-        IMPORT_FAR_PTR_DATA _font_font_ru
+        IMPORT_FAR_PTR_DATA _font_iec_8859_8
+        IMPORT_FAR_PTR_DATA _font_windows_1251_cyrillic_
         IMPORT_FAR_PTR_DATA _avatar_font_0
 
 ; define engine init VM routine which will be packed into some bank

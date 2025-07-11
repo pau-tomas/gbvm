@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: hidden_stairs
-  
+
 #include "gbs_types.h"
-#include "data/tileset_hidden_stairs.h"
+#include "data/sprite_hidden_stairs_tileset.h"
+
 
 BANKREF(sprite_hidden_stairs)
 
-#define SPRITE_10_STATE_DEFAULT 0
-#define SPRITE_10_STATE_OPEN 0
+#define SPRITE_8_STATE_DEFAULT 0
+#define SPRITE_8_STATE_OPEN 0
 
 const metasprite_t sprite_hidden_stairs_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 0, 32 },
@@ -54,7 +55,7 @@ const struct animation_t sprite_hidden_stairs_animations[] = {
 };
 
 const UWORD sprite_hidden_stairs_animations_lookup[] = {
-    SPRITE_10_STATE_DEFAULT
+    SPRITE_8_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_hidden_stairs = {
@@ -72,6 +73,6 @@ const struct spritesheet_t sprite_hidden_stairs = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_hidden_stairs),
+    .tileset = TO_FAR_PTR_T(sprite_hidden_stairs_tileset),
     .cgb_tileset = { NULL, NULL }
 };

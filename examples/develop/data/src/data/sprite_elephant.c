@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: elephant
-  
+
 #include "gbs_types.h"
-#include "data/tileset_elephant.h"
+#include "data/sprite_elephant_tileset.h"
+
 
 BANKREF(sprite_elephant)
 
-#define SPRITE_16_STATE_DEFAULT 0
-#define SPRITE_16_STATE_OPEN 0
+#define SPRITE_14_STATE_DEFAULT 0
+#define SPRITE_14_STATE_OPEN 0
 
 const metasprite_t sprite_elephant_metasprite_0[]  = {
     { -10, 28, 0, 2 }, { 10, -8, 2, 2 }, { -16, 0, 4, 2 }, { -16, 0, 6, 2 }, { 32, -8, 8, 2 }, { -16, 0, 10, 2 }, { -16, 0, 12, 2 }, { 32, -8, 14, 2 }, { -16, 0, 10, 34 }, { -16, 0, 16, 2 }, { 32, -8, 18, 2 }, { -16, 0, 20, 2 }, { -16, 0, 22, 2 }, { 16, -8, 24, 2 }, { -16, 0, 26, 2 }, { 32, -8, 28, 2 }, { -16, 0, 30, 2 }, { -16, 0, 6, 34 },
@@ -90,7 +91,7 @@ const struct animation_t sprite_elephant_animations[] = {
 };
 
 const UWORD sprite_elephant_animations_lookup[] = {
-    SPRITE_16_STATE_DEFAULT
+    SPRITE_14_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_elephant = {
@@ -108,6 +109,6 @@ const struct spritesheet_t sprite_elephant = {
         .right = PX_TO_SUBPX(33),
         .top = PX_TO_SUBPX(-31)
     },
-    .tileset = TO_FAR_PTR_T(tileset_elephant),
+    .tileset = TO_FAR_PTR_T(sprite_elephant_tileset),
     .cgb_tileset = { NULL, NULL }
 };

@@ -8,7 +8,7 @@
 #include "data/palette_0.h"
 #include "data/palette_6.h"
 #include "data/sprite_player.h"
-#include "data/script_s10_init.h"
+#include "data/scene_digits_init.h"
 
 BANKREF(scene_digits)
 
@@ -19,7 +19,7 @@ const struct scene_t scene_digits = {
     .background = TO_FAR_PTR_T(bg_digits),
     .collisions = TO_FAR_PTR_T(scene_digits_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_6),
@@ -29,5 +29,5 @@ const struct scene_t scene_digits = {
     .n_triggers = 0,
     .n_sprites = 0,
     .n_projectiles = 0,
-    .script_init = TO_FAR_PTR_T(script_s10_init)
+    .script_init = TO_FAR_PTR_T(scene_digits_init)
 };

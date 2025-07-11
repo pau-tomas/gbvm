@@ -9,7 +9,7 @@
 #include "data/palette_6.h"
 #include "data/sprite_cursor.h"
 #include "data/scene_player_s_house_triggers.h"
-#include "data/script_s4_init.h"
+#include "data/scene_player_s_house_init.h"
 
 BANKREF(scene_player_s_house)
 
@@ -20,7 +20,7 @@ const struct scene_t scene_player_s_house = {
     .background = TO_FAR_PTR_T(bg_room),
     .collisions = TO_FAR_PTR_T(scene_player_s_house_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_1),
     .sprite_palette = TO_FAR_PTR_T(palette_6),
@@ -31,5 +31,5 @@ const struct scene_t scene_player_s_house = {
     .n_sprites = 0,
     .n_projectiles = 0,
     .triggers = TO_FAR_PTR_T(scene_player_s_house_triggers),
-    .script_init = TO_FAR_PTR_T(script_s4_init)
+    .script_init = TO_FAR_PTR_T(scene_player_s_house_init)
 };

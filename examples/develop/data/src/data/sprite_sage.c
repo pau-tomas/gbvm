@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: sage
-  
+
 #include "gbs_types.h"
-#include "data/tileset_sage.h"
+#include "data/sprite_sage_tileset.h"
+
 
 BANKREF(sprite_sage)
 
-#define SPRITE_5_STATE_DEFAULT 0
-#define SPRITE_5_STATE_OPEN 0
+#define SPRITE_3_STATE_DEFAULT 0
+#define SPRITE_3_STATE_OPEN 0
 
 const metasprite_t sprite_sage_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -54,7 +55,7 @@ const struct animation_t sprite_sage_animations[] = {
 };
 
 const UWORD sprite_sage_animations_lookup[] = {
-    SPRITE_5_STATE_DEFAULT
+    SPRITE_3_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_sage = {
@@ -72,6 +73,6 @@ const struct spritesheet_t sprite_sage = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_sage),
+    .tileset = TO_FAR_PTR_T(sprite_sage_tileset),
     .cgb_tileset = { NULL, NULL }
 };

@@ -6,14 +6,14 @@
 #include "gbs_types.h"
 #include "data/sprite_torch.h"
 #include "data/sprite_fire.h"
-#include "data/script_s0a1_interact.h"
+#include "data/actor_fire_interact.h"
 #include "data/sprite_sage.h"
-#include "data/script_s0a2_interact.h"
+#include "data/actor_sage_interact.h"
 #include "data/sprite_torch.h"
 #include "data/sprite_fire.h"
-#include "data/script_s0a4_interact.h"
+#include "data/actor_fire_0_interact.h"
 #include "data/sprite_savepoint.h"
-#include "data/script_s0a5_interact.h"
+#include "data/actor_save_point_interact.h"
 
 BANKREF(scene_cave_actors)
 
@@ -21,8 +21,8 @@ const struct actor_t scene_cave_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 32 * 16,
-            .y = 48 * 16
+            .x = 1024,
+            .y = 1536
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -32,9 +32,10 @@ const struct actor_t scene_cave_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_torch),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -42,8 +43,8 @@ const struct actor_t scene_cave_actors[] = {
     {
         // Fire,
         .pos = {
-            .x = 32 * 16,
-            .y = 32 * 16
+            .x = 1024,
+            .y = 1024
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -53,19 +54,20 @@ const struct actor_t scene_cave_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_fire),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a1_interact),
+        .script = TO_FAR_PTR_T(actor_fire_interact),
         .reserve_tiles = 0
     },
     {
         // Sage,
         .pos = {
-            .x = 72 * 16,
-            .y = 56 * 16
+            .x = 2304,
+            .y = 1792
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -75,19 +77,20 @@ const struct actor_t scene_cave_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_sage),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a2_interact),
+        .script = TO_FAR_PTR_T(actor_sage_interact),
         .reserve_tiles = 0
     },
     {
         // Actor 4,
         .pos = {
-            .x = 112 * 16,
-            .y = 48 * 16
+            .x = 3584,
+            .y = 1536
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -97,9 +100,10 @@ const struct actor_t scene_cave_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_torch),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0
@@ -107,8 +111,8 @@ const struct actor_t scene_cave_actors[] = {
     {
         // Fire,
         .pos = {
-            .x = 112 * 16,
-            .y = 32 * 16
+            .x = 3584,
+            .y = 1024
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -118,19 +122,20 @@ const struct actor_t scene_cave_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_fire),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a4_interact),
+        .script = TO_FAR_PTR_T(actor_fire_0_interact),
         .reserve_tiles = 0
     },
     {
         // Save Point,
         .pos = {
-            .x = 112 * 16,
-            .y = 88 * 16
+            .x = 3584,
+            .y = 2816
         },
         .bounds = {
             .left = PX_TO_SUBPX(0),
@@ -140,12 +145,13 @@ const struct actor_t scene_cave_actors[] = {
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_savepoint),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 31,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a5_interact),
+        .script = TO_FAR_PTR_T(actor_save_point_interact),
         .reserve_tiles = 0
     }
 };

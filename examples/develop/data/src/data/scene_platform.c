@@ -11,7 +11,7 @@
 #include "data/scene_platform_actors.h"
 #include "data/scene_platform_triggers.h"
 #include "data/scene_platform_sprites.h"
-#include "data/script_s5_init.h"
+#include "data/scene_platform_init.h"
 
 BANKREF(scene_platform)
 
@@ -22,7 +22,7 @@ const struct scene_t scene_platform = {
     .background = TO_FAR_PTR_T(bg_platform_path),
     .collisions = TO_FAR_PTR_T(scene_platform_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_2),
     .sprite_palette = TO_FAR_PTR_T(palette_6),
@@ -35,5 +35,5 @@ const struct scene_t scene_platform = {
     .actors = TO_FAR_PTR_T(scene_platform_actors),
     .triggers = TO_FAR_PTR_T(scene_platform_triggers),
     .sprites = TO_FAR_PTR_T(scene_platform_sprites),
-    .script_init = TO_FAR_PTR_T(script_s5_init)
+    .script_init = TO_FAR_PTR_T(scene_platform_init)
 };

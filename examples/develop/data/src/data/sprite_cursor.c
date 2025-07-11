@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: cursor
-  
+
 #include "gbs_types.h"
-#include "data/tileset_cursor.h"
+#include "data/sprite_cursor_tileset.h"
+
 
 BANKREF(sprite_cursor)
 
-#define SPRITE_11_STATE_DEFAULT 0
-#define SPRITE_11_STATE_OPEN 0
+#define SPRITE_9_STATE_DEFAULT 0
+#define SPRITE_9_STATE_OPEN 0
 
 const metasprite_t sprite_cursor_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -59,7 +60,7 @@ const struct animation_t sprite_cursor_animations[] = {
 };
 
 const UWORD sprite_cursor_animations_lookup[] = {
-    SPRITE_11_STATE_DEFAULT
+    SPRITE_9_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_cursor = {
@@ -77,6 +78,6 @@ const struct spritesheet_t sprite_cursor = {
         .right = PX_TO_SUBPX(15),
         .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_cursor),
+    .tileset = TO_FAR_PTR_T(sprite_cursor_tileset),
     .cgb_tileset = { NULL, NULL }
 };
