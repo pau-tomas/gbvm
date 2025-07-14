@@ -10,7 +10,7 @@ UBYTE tile_col_test_range_y(UBYTE tile_mask, UBYTE tx, UBYTE ty_start, UBYTE ty_
     tile_hit_y = ty_start;
 
     if (tile_hit_x >= image_tile_width || tile_hit_y >= image_tile_height) {
-      return COLLISION_ALL;
+      return COLLISION_ALL & tile_mask ? COLLISION_ALL : 0;
     }
 
     UBYTE _save = CURRENT_BANK;
@@ -33,9 +33,9 @@ UBYTE tile_col_test_range_y(UBYTE tile_mask, UBYTE tx, UBYTE ty_start, UBYTE ty_
             tile_hit_y--;
             tile_ptr -= image_tile_width;
         }
-        if (tile_hit_y > image_tile_height) {
+        if (tile_hit_y >= image_tile_height) {
           SWITCH_ROM(_save);
-          return COLLISION_ALL;
+          return COLLISION_ALL & tile_mask ? COLLISION_ALL : 0;
         }
     }
     SWITCH_ROM(_save);
@@ -47,7 +47,7 @@ UBYTE tile_col_test_range_x(UBYTE tile_mask, UBYTE ty, UBYTE tx_start, UBYTE tx_
     tile_hit_y = ty;
 
     if (tile_hit_x >= image_tile_width || tile_hit_y >= image_tile_height) {
-      return COLLISION_ALL;
+      return COLLISION_ALL & tile_mask ? COLLISION_ALL : 0;
     }
 
     UBYTE _save = CURRENT_BANK;
@@ -70,9 +70,9 @@ UBYTE tile_col_test_range_x(UBYTE tile_mask, UBYTE ty, UBYTE tx_start, UBYTE tx_
             tile_hit_x--;
             tile_ptr--;
         }
-        if (tile_hit_x > image_tile_width) {
+        if (tile_hit_x >= image_tile_width) {
           SWITCH_ROM(_save);
-          return COLLISION_ALL;
+          return COLLISION_ALL & tile_mask ? COLLISION_ALL : 0;
         }                
     }
     SWITCH_ROM(_save);
