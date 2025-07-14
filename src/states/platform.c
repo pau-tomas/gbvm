@@ -1976,7 +1976,7 @@ static void move_and_collide(UBYTE mask)
         BYTE wall;
         WORD bounds_edge;
 
-        if (new_x > PLAYER.pos.x)
+        if (plat_delta_x > 0)
         {
             // Right movement
             moving_right = TRUE;
