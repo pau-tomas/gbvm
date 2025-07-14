@@ -296,9 +296,6 @@ WORD plat_jump_vel_per_frame;  // Holds the jump per frame value for the current
 WORD plat_jump_reduction_vel;  // Holds the current jump reduction value based on the number of jumps without landing
 
 // Camera
-WORD *plat_edge_left;          // Pointer to the camera scroll x minimum value
-WORD *plat_edge_right;         // Pointer to the camera scroll x maximum value
-WORD plat_stage_left;          // Stores default scroll x minimum value
 BYTE plat_camera_deadzone_x;   // Default camera deadzone x - used to restore camera after dash
 
 // Ground
@@ -463,26 +460,6 @@ void platform_init(void) BANKED
     else
     {
         camera_y = 0;
-    }
-
-    // Initialize Camera Bounds
-    plat_stage_left = 0;
-
-    if (plat_camera_block & CAMERA_LOCK_SCREEN_LEFT)
-    {
-        plat_edge_left = &scroll_x;
-    }
-    else
-    {
-        plat_edge_left = &plat_stage_left;
-    }
-    if (plat_camera_block & CAMERA_LOCK_SCREEN_RIGHT)
-    {
-        plat_edge_right = &scroll_x;
-    }
-    else
-    {
-        plat_edge_right = &image_width;
     }
 
     // Initialize State
@@ -1976,34 +1953,17 @@ static void move_and_collide(UBYTE mask)
         UWORD new_x = PLAYER.pos.x + plat_delta_x;
 
         // Edge Locking
-        // If the player is past the right edge (camera or screen)
-        if (new_x > PX_TO_SUBPX(*plat_edge_right + SCREEN_WIDTH - 16))
+        // If the player is past the right screen edge
+        if ((plat_camera_block & CAMERA_LOCK_SCREEN_RIGHT) && ((new_x + PLAYER.bounds.right + PX_TO_SUBPX(1)) > PX_TO_SUBPX(scroll_x + SCREEN_WIDTH)))
         {
-            // If the player is trying to go FURTHER right
-            if (new_x > PLAYER.pos.x)
-            {
-                new_x = PLAYER.pos.x;
-                plat_vel_x = 0;
-            }
-            else
-            {
-                // If the player is already off the screen, push them back
-                new_x = PLAYER.pos.x - MIN(PLAYER.pos.x - PX_TO_SUBPX(*plat_edge_right + SCREEN_WIDTH - 16), 16);
-            }
-            // Same but for left side. This side needs a 1 tile (8px) buffer so it
-            // doesn't overflow the variable.
+            new_x = PX_TO_SUBPX(scroll_x + SCREEN_WIDTH) - PLAYER.bounds.right - PX_TO_SUBPX(1);
+            plat_vel_x = 0;
         }
-        else if (new_x < PX_TO_SUBPX(*plat_edge_left))
+        // If the player is past the left screen edge
+        if ((plat_camera_block & CAMERA_LOCK_SCREEN_LEFT) && (new_x + PLAYER.bounds.left < PX_TO_SUBPX(scroll_x)))
         {
-            if (plat_delta_x < 0)
-            {
-                new_x = PLAYER.pos.x;
-                plat_vel_x = 0;
-            }
-            else
-            {
-                new_x = PLAYER.pos.x + MIN(PX_TO_SUBPX(*plat_edge_left + 8) - PLAYER.pos.x, 16);
-            }
+            new_x = PX_TO_SUBPX(scroll_x) - PLAYER.bounds.left;
+            plat_vel_x = 0;
         }
 
         if (!(mask & COL_CHECK_WALLS))
