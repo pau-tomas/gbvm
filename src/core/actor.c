@@ -25,11 +25,11 @@
 #define EMOTE_BOUNCE_FRAMES        15
 #define ANIM_PAUSED                255
 
-#define OFFSCREEN_TILE_OFFSET      64u
-#define SCREEN_TILE_W              20u
-#define SCREEN_TILE_H              18u
-#define ACTOR_BOUNDS_TILE          12u
-#define ACTOR_BOUNDS_TILE_HALF     6u
+#define TILE16_OFFSET              64u
+#define SCREEN_TILE16_W            10u
+#define SCREEN_TILE16_H            9u
+#define ACTOR_BOUNDS_TILE16        6u
+#define ACTOR_BOUNDS_TILE16_HALF   3u
 
 BANKREF(ACTOR)
 
@@ -77,15 +77,15 @@ void player_init(void) BANKED {
 void actors_update(void) NONBANKED {
     UBYTE _save = CURRENT_BANK;
     static actor_t *actor;
-    static uint8_t screen_tile_x, screen_tile_y;
-    static uint8_t actor_tile_x, actor_tile_y;
+    static uint8_t screen_tile16_x, screen_tile16_y;
+    static uint8_t actor_tile16_x, actor_tile16_y;
 
     // Convert scroll pos to 16px tile coordinates
     // allowing full range of scene to be represented in 7 bits
     // offset by 64 to allow signed comparisons on
     // unsigned int values (is faster)
-    screen_tile_x = PX_TO_TILE(draw_scroll_x) + OFFSCREEN_TILE_OFFSET;
-    screen_tile_y = PX_TO_TILE(draw_scroll_y) + OFFSCREEN_TILE_OFFSET;
+    screen_tile16_x = PX_TO_TILE16(draw_scroll_x) + TILE16_OFFSET;
+    screen_tile16_y = PX_TO_TILE16(draw_scroll_y) + TILE16_OFFSET;
 
     if (emote_actor) {
         SWITCH_ROM(emote_actor->sprite.bank);
@@ -121,18 +121,18 @@ void actors_update(void) NONBANKED {
             // Bottom right coordinate of actor in 16px tile coordinates
             // Subtract bounding box estimate width/height
             // and offset by 64 to allow signed comparisons with screen tiles
-            actor_tile_x = SUBPX_TO_TILE(actor->pos.x) + ACTOR_BOUNDS_TILE_HALF + OFFSCREEN_TILE_OFFSET;
-            actor_tile_y = SUBPX_TO_TILE(actor->pos.y) + ACTOR_BOUNDS_TILE_HALF + OFFSCREEN_TILE_OFFSET;
+            actor_tile16_x = SUBPX_TO_TILE16(actor->pos.x) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
+            actor_tile16_y = SUBPX_TO_TILE16(actor->pos.y) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
 
             if (
                 // Actor right edge < screen left edge
-                (actor_tile_x < screen_tile_x) ||
+                (actor_tile16_x < screen_tile16_x) ||
                 // Actor left edge > screen right edge
-                ((actor_tile_x - (ACTOR_BOUNDS_TILE + SCREEN_TILE_W)) > screen_tile_x) ||
+                ((actor_tile16_x - (ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_W)) > screen_tile16_x) ||
                 // Actor bottom edge < screen top edge
-                (actor_tile_y < screen_tile_y) ||
+                (actor_tile16_y < screen_tile16_y) ||
                 // Actor top edge > screen bottom edge
-                ((actor_tile_y - (ACTOR_BOUNDS_TILE + SCREEN_TILE_H)) > screen_tile_y)
+                ((actor_tile16_y - (ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_H)) > screen_tile16_y)
             ) {
                 if (actor->persistent) {
                     actor = actor->prev;
