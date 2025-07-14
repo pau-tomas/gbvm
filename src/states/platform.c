@@ -324,16 +324,17 @@ UBYTE plat_jump_type;          // Tracks the type of jumping, from the ground, i
 
 // Function Definitions -------------------------------------------------------
 
-void player_set_jump_anim(void) BANKED;
-void wall_check(void) BANKED;
-void ladder_check(void) BANKED;
-void dash_init(void) BANKED;
-void handle_horizontal_input(void) BANKED;
-void move_and_collide(UBYTE mask) BANKED;
+static void player_set_jump_anim(void);
+static void wall_check(void);
+static void ladder_check(void);
+static void dash_init(void);
+static void handle_horizontal_input(void);
+static void move_and_collide(UBYTE mask);
+
 void plat_state_script_attach(SCRIPT_CTX *THIS) OLDCALL BANKED;
 void plat_state_script_detach(SCRIPT_CTX *THIS) OLDCALL BANKED;
 void plat_callback_reset(void);
-void plat_callback_execute(UBYTE i) BANKED;
+static void plat_callback_execute(UBYTE i);
 
 #ifdef FEAT_PLATFORM_DROP_THROUGH
 
@@ -1683,7 +1684,7 @@ void platform_update(void) BANKED
     }
 }
 
-void player_set_jump_anim(void) BANKED
+static void player_set_jump_anim(void)
 {
     // This animation is currently shared by jumping, dashing, and falling.
     // Dashing doesn't need this complexity though. Here velocity overrides
@@ -1711,7 +1712,7 @@ void player_set_jump_anim(void) BANKED
 }
 
 #ifdef FEAT_PLATFORM_WALL_JUMP
-void wall_check(void) BANKED
+static void wall_check(void)
 {
     if (plat_wall_col != 0 && plat_wall_slide)
     {
@@ -1725,7 +1726,7 @@ void wall_check(void) BANKED
 #endif
 
 #ifdef FEAT_PLATFORM_LADDERS
-void ladder_check(void) BANKED
+static void ladder_check(void)
 {
     if (plat_ladder_block_v) {
         // Need to have released up/down since
@@ -1770,7 +1771,7 @@ void ladder_check(void) BANKED
 #endif
 
 #ifdef FEAT_PLATFORM_DASH
-void dash_init(void) BANKED
+static void dash_init(void)
 {
     // If the player is pressing a direction (but not facing a direction, ie on
     // a wall or on a changed frame)
@@ -1831,7 +1832,7 @@ void dash_init(void) BANKED
 }
 #endif
 
-void handle_horizontal_input(void) BANKED
+static void handle_horizontal_input(void)
 {
     if (INPUT_LEFT || INPUT_RIGHT)
     {
@@ -1952,7 +1953,7 @@ void handle_horizontal_input(void) BANKED
     }
 }
 
-void move_and_collide(UBYTE mask) BANKED
+static void move_and_collide(UBYTE mask)
 {
     UWORD sp_half_width = DIV_2(PLAYER.bounds.right - PLAYER.bounds.left);
 
@@ -2369,7 +2370,7 @@ inline void plat_callback_reset(void)
     memset(plat_events, 0, sizeof(plat_events));
 }
 
-void plat_callback_execute(UBYTE i) BANKED
+static void plat_callback_execute(UBYTE i)
 {
     script_event_t *event = &plat_events[i];
     if (!event->script_addr)
