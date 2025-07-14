@@ -2022,7 +2022,7 @@ static void move_and_collide(UBYTE mask)
             moving_right = TRUE;
             hit_flag = COLLISION_LEFT;
             wall = WALL_COL_RIGHT;
-            bounds_edge = PLAYER.bounds.right;
+            bounds_edge = PLAYER.bounds.right + PX_TO_SUBPX(1);
         }
         else
         {
@@ -2056,11 +2056,11 @@ static void move_and_collide(UBYTE mask)
 #endif
             if (moving_right)
             {
-                new_x = TILE_TO_SUBPX(tile_x) - bounds_edge - 1;
+                new_x = TILE_TO_SUBPX(tile_x) - bounds_edge;
             }
             else
             {
-                new_x = TILE_TO_SUBPX(tile_x + 1) - bounds_edge + 1;
+                new_x = TILE_TO_SUBPX(tile_x + 1) - bounds_edge;
             }
 
             plat_vel_x = 0;
