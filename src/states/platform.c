@@ -2308,7 +2308,7 @@ finally_check_actor_col:
         }
     }
 
-    if (IS_FRAME_EVEN && mask & COL_CHECK_TRIGGERS)
+    if (mask & COL_CHECK_TRIGGERS)
     {
         trigger_activate_at_intersection(&PLAYER.bounds, &PLAYER.pos, INPUT_UP_PRESSED);
     }
