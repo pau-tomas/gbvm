@@ -2187,7 +2187,12 @@ static void move_and_collide(UBYTE mask)
             // Tile snap threshold
             // If offset into tile is greater than amount moved down this frame
             // then must have started below top of the tile and should fall through
+            // if (SUBPX_TILE_REMAINDER(y_bottom) > (SUBPX_TILE_REMAINDER(plat_delta_y) + PX_TO_SUBPX(4))) {
+#ifdef FEAT_PLATFORM_SLOPES
+            if (!prev_on_slope && (SUBPX_TILE_REMAINDER(y_bottom) > SUBPX_TILE_REMAINDER(plat_delta_y))) {
+#else
             if (SUBPX_TILE_REMAINDER(y_bottom) > SUBPX_TILE_REMAINDER(plat_delta_y)) {
+#endif
                 goto finally_update_y;
             }
 
