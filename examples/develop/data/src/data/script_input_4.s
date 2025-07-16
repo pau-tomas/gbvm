@@ -99,8 +99,26 @@ GBVM$script_input_4$088b0d8b_52f3_4460_a48f_15b654b420f8$2017e4bb_16d3_47bc_a86c
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
         
         ; --- VM_CALL_NATIVE example -------------------------
+        VM_PUSH_CONST           0                       ; actor 0 is the player
+        VM_CALL_NATIVE          b_check_update_running, _check_update_running
+        VM_IF_CONST     .EQ     .ARG0, 0, 1000$, 1      ; check result in .ARG0 for zero, and pop the value
+        ; update script is running
+        VM_JUMP                1001$
+1000$:
+        ; update script is not running
+1001$:
+
+        VM_PUSH_CONST           0                       ; actor 0 is the player
+        VM_CALL_NATIVE          b_check_update_running, _check_update_running
+        VM_IF_CONST     .EQ     .ARG0, 0, 1000$, 1      ; check result in .ARG0 for zero, and pop the value
+        ; update script is running
+        VM_JUMP                1001$
+1000$:
+        ; update script is not running
+1001$:
+
         VM_PUSH_CONST           10
-        VM_CALL_NATIVE          b_my_native_function, _my_native_function
+        VM_CALL_NATIVE          b_my_native_nonbloking_function, _my_native_nonbloking_function
         VM_POP                  1
         VM_JUMP                 101$
         102$:
@@ -117,12 +135,13 @@ GBVM$script_input_4$6251bef4_aea4_4d84_8fe4_e7c0be7b1947$2017e4bb_16d3_47bc_a86c
 GBVM$script_input_4$3d2e9696_fda5_4441_bb38_ec87604ea8e7$2017e4bb_16d3_47bc_a86c_9c47e1860e0c$scene$2017e4bb_16d3_47bc_a86c_9c47e1860e0c$script = .
 .globl GBVM$script_input_4$3d2e9696_fda5_4441_bb38_ec87604ea8e7$2017e4bb_16d3_47bc_a86c_9c47e1860e0c$scene$2017e4bb_16d3_47bc_a86c_9c47e1860e0c$script
         ; Text Dialogue
-        VM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_WHITE, .UI_DRAW_FRAME
-        VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_SPEED_INSTANT
-        VM_OVERLAY_MOVE_TO      0, 14, .OVERLAY_IN_SPEED
-        VM_OVERLAY_SET_SCROLL   1, 1, 18, 5, .UI_COLOR_WHITE
-        VM_LOAD_TEXT            0
-        .asciz "\002\002\343\342 \361\367\370\357 \371\350 \341\351\355\012\356\340\345\353\346\341 \345\354\364\372\362 \356\366\340 \347\341\370\344"
+        VM_PUSH_CONST           12345
+        VM_LOAD_TEXT            1
+            .dw .ARG0
+            .asciz "\002\002\343\342 \361\367\370\357 \371\350 \341\351\355\n%d \356\340\345\353\346\341 \345\354\364\372\362 \356\366\340 \347\341\370\344"
+        VM_POP                  1
+        VM_OVERLAY_CLEAR        0, 0, 20, 4, .UI_COLOR_WHITE, ^/(.UI_AUTO_SCROLL | .UI_DRAW_FRAME)/
+        VM_OVERLAY_MOVE_TO      0, 12, .OVERLAY_IN_SPEED
         VM_DISPLAY_TEXT
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT | .UI_WAIT_BTN_A)/
         VM_OVERLAY_MOVE_TO      0, 18, .OVERLAY_OUT_SPEED
