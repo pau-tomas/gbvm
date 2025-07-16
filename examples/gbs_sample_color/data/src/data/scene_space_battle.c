@@ -24,7 +24,7 @@ const struct scene_t scene_space_battle = {
     .background = TO_FAR_PTR_T(bg_leaving_earth),
     .collisions = TO_FAR_PTR_T(scene_space_battle_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_5),
     .sprite_palette = TO_FAR_PTR_T(palette_9),

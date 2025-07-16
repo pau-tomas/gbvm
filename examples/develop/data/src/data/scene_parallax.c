@@ -11,7 +11,7 @@
 #include "data/scene_parallax_actors.h"
 #include "data/scene_parallax_triggers.h"
 #include "data/scene_parallax_sprites.h"
-#include "data/script_s8_init.h"
+#include "data/scene_parallax_init.h"
 
 BANKREF(scene_parallax)
 
@@ -35,5 +35,5 @@ const struct scene_t scene_parallax = {
     .actors = TO_FAR_PTR_T(scene_parallax_actors),
     .triggers = TO_FAR_PTR_T(scene_parallax_triggers),
     .sprites = TO_FAR_PTR_T(scene_parallax_sprites),
-    .script_init = TO_FAR_PTR_T(script_s8_init)
+    .script_init = TO_FAR_PTR_T(scene_parallax_init)
 };

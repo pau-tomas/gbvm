@@ -13,16 +13,16 @@ const struct projectile_def_t scene_space_battle_projectiles[] = {
     {
         // Projectile 0,
         .sprite = TO_FAR_PTR_T(sprite_bullet_right),
-        .move_speed = 48,
+        .move_speed = 96,
         .life_time = 72,
         .collision_group = COLLISION_GROUP_1,
         .collision_mask = COLLISION_GROUP_1,
         .strong = false,
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .anim_tick = 7,
         .anim_noloop = false,
@@ -49,16 +49,16 @@ const struct projectile_def_t scene_space_battle_projectiles[] = {
     {
         // Projectile 1,
         .sprite = TO_FAR_PTR_T(sprite_bullet_left),
-        .move_speed = 16,
+        .move_speed = 32,
         .life_time = 60,
         .collision_group = COLLISION_GROUP_1,
         .collision_mask = COLLISION_GROUP_PLAYER,
         .strong = false,
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .anim_tick = 7,
         .anim_noloop = false,

@@ -4,38 +4,38 @@
 // Triggers
 
 #include "gbs_types.h"
-#include "data/script_s7t0_interact.h"
-#include "data/script_s7t1_interact.h"
-#include "data/script_s7t2_interact.h"
+#include "data/trigger_20_interact.h"
+#include "data/trigger_21_interact.h"
+#include "data/trigger_22_interact.h"
 
 BANKREF(scene_outside_triggers)
 
 const struct trigger_t scene_outside_triggers[] = {
     {
         // Trigger 1,
-        .x = 10,
-        .y = 8,
-        .width = 2,
-        .height = 1,
-        .script = TO_FAR_PTR_T(script_s7t0_interact),
+        .left = 10,
+        .top = 8,
+        .right = 11,
+        .bottom = 8,
+        .script = TO_FAR_PTR_T(trigger_20_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
         // Trigger 2,
-        .x = 24,
-        .y = 8,
-        .width = 2,
-        .height = 1,
-        .script = TO_FAR_PTR_T(script_s7t1_interact),
+        .left = 24,
+        .top = 8,
+        .right = 25,
+        .bottom = 8,
+        .script = TO_FAR_PTR_T(trigger_21_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     },
     {
         // Trigger 3,
-        .x = 25,
-        .y = 13,
-        .width = 2,
-        .height = 2,
-        .script = TO_FAR_PTR_T(script_s7t2_interact),
+        .left = 25,
+        .top = 13,
+        .right = 26,
+        .bottom = 14,
+        .script = TO_FAR_PTR_T(trigger_22_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     }
 };

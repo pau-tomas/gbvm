@@ -7,9 +7,9 @@
 
 BANKREF(sprite_space_mine)
 
-#define SPRITE_22_STATE_DEFAULT 0
-#define SPRITE_22_STATE_EXPLODE 8
-#define SPRITE_22_STATE_OPEN 0
+#define SPRITE_20_STATE_DEFAULT 0
+#define SPRITE_20_STATE_EXPLODE 8
+#define SPRITE_20_STATE_OPEN 0
 
 const metasprite_t sprite_space_mine_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -118,8 +118,8 @@ const struct animation_t sprite_space_mine_animations[] = {
 };
 
 const UWORD sprite_space_mine_animations_lookup[] = {
-    SPRITE_22_STATE_DEFAULT,
-    SPRITE_22_STATE_EXPLODE
+    SPRITE_20_STATE_DEFAULT,
+    SPRITE_20_STATE_EXPLODE
 };
 
 const struct spritesheet_t sprite_space_mine = {
@@ -132,10 +132,10 @@ const struct spritesheet_t sprite_space_mine = {
     .animations = sprite_space_mine_animations,
     .animations_lookup = sprite_space_mine_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_space_mine_tileset),
     .cgb_tileset = { NULL, NULL }

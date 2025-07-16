@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: elephant
-  
+
 #include "gbs_types.h"
-#include "data/tileset_elephant.h"
+#include "data/sprite_elephant_tileset.h"
+
 
 BANKREF(sprite_elephant)
 
@@ -97,11 +98,11 @@ const struct spritesheet_t sprite_elephant = {
     .animations = sprite_elephant_animations,
     .animations_lookup = sprite_elephant_animations_lookup,
     .bounds = {
-        .left = -16,
-        .bottom = 7,
-        .right = 35,
-        .top = -32
+        .left = PX_TO_SUBPX(-16),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(35),
+        .top = PX_TO_SUBPX(-32)
     },
-    .tileset = TO_FAR_PTR_T(tileset_elephant),
+    .tileset = TO_FAR_PTR_T(sprite_elephant_tileset),
     .cgb_tileset = { NULL, NULL }
 };

@@ -19,22 +19,22 @@
 
 BANKREF(scene_launch_site_actors)
 
-const struct actor_def_t scene_launch_site_actors[] = {
+const struct actor_t scene_launch_site_actors[] = {
     {
         // Pod Door,
         .pos = {
-            .x = 120 * 16,
-            .y = 72 * 16
+            .x = 3840,
+            .y = 2304
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_pod_door),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 255,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -45,18 +45,18 @@ const struct actor_def_t scene_launch_site_actors[] = {
     {
         // Scientist,
         .pos = {
-            .x = 64 * 16,
-            .y = 96 * 16
+            .x = 2048,
+            .y = 3072
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_UP,
         .sprite = TO_FAR_PTR_T(sprite_npc005),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -69,18 +69,18 @@ const struct actor_def_t scene_launch_site_actors[] = {
     {
         // Machine,
         .pos = {
-            .x = 32 * 16,
-            .y = 64 * 16
+            .x = 1024,
+            .y = 2048
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -92,18 +92,18 @@ const struct actor_def_t scene_launch_site_actors[] = {
     {
         // Machine,
         .pos = {
-            .x = 16 * 16,
-            .y = 64 * 16
+            .x = 512,
+            .y = 2048
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -115,18 +115,18 @@ const struct actor_def_t scene_launch_site_actors[] = {
     {
         // Machine,
         .pos = {
-            .x = 48 * 16,
-            .y = 80 * 16
+            .x = 1536,
+            .y = 2560
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -138,18 +138,18 @@ const struct actor_def_t scene_launch_site_actors[] = {
     {
         // Machine,
         .pos = {
-            .x = 64 * 16,
-            .y = 80 * 16
+            .x = 2048,
+            .y = 2560
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_machine),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

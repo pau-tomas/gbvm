@@ -65,17 +65,17 @@ void pointnclick_update(void) BANKED {
     if (player_moving) {
         point_translate_angle(&(PLAYER.pos), angle, PLAYER.move_speed);
         // Clamp X
-        if (SUBPX_TO_PX(PLAYER.pos.x) - PLAYER.bounds.left > image_width) {
-            PLAYER.pos.x = PX_TO_SUBPX(PLAYER.bounds.left);
-        } else if (SUBPX_TO_PX(PLAYER.pos.x) + PLAYER.bounds.right > image_width) {
-            PLAYER.pos.x = PX_TO_SUBPX(image_width - PLAYER.bounds.right);
+        if (PLAYER.pos.x + PLAYER.bounds.left > image_width_subpx) {
+            PLAYER.pos.x = -PLAYER.bounds.left;
+        } else if (PLAYER.pos.x + PLAYER.bounds.right > image_width_subpx) {
+            PLAYER.pos.x = image_width_subpx - PLAYER.bounds.right;
         }
         // Clamp Y
-        if (SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.top > image_height) {
-            PLAYER.pos.y = -PX_TO_SUBPX(PLAYER.bounds.top);
-        } else if (SUBPX_TO_PX(PLAYER.pos.y) + PLAYER.bounds.bottom > image_height) {
-            PLAYER.pos.y = PX_TO_SUBPX(image_height - PLAYER.bounds.bottom);
-        }             
+        if (PLAYER.pos.y + PLAYER.bounds.top > image_height_subpx) {
+            PLAYER.pos.y = -PLAYER.bounds.top;
+        } else if (PLAYER.pos.y + PLAYER.bounds.bottom > image_height_subpx) {
+            PLAYER.pos.y = image_height_subpx - PLAYER.bounds.bottom;
+        }
     }
 
     // Check for trigger collisions

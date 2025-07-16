@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: chest
-  
+
 #include "gbs_types.h"
-#include "data/tileset_chest.h"
+#include "data/sprite_chest_tileset.h"
+
 
 BANKREF(sprite_chest)
 
-#define SPRITE_14_STATE_DEFAULT 0
-#define SPRITE_14_STATE_OPEN 8
+#define SPRITE_12_STATE_DEFAULT 0
+#define SPRITE_12_STATE_OPEN 8
 
 const metasprite_t sprite_chest_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 0, 32 },
@@ -92,8 +93,8 @@ const struct animation_t sprite_chest_animations[] = {
 };
 
 const UWORD sprite_chest_animations_lookup[] = {
-    SPRITE_14_STATE_DEFAULT,
-    SPRITE_14_STATE_OPEN
+    SPRITE_12_STATE_DEFAULT,
+    SPRITE_12_STATE_OPEN
 };
 
 const struct spritesheet_t sprite_chest = {
@@ -106,11 +107,11 @@ const struct spritesheet_t sprite_chest = {
     .animations = sprite_chest_animations,
     .animations_lookup = sprite_chest_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_chest),
+    .tileset = TO_FAR_PTR_T(sprite_chest_tileset),
     .cgb_tileset = { NULL, NULL }
 };

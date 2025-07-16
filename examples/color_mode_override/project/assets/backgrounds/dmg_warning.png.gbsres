@@ -3,10 +3,10 @@
   "id": "babcadba-892b-4ecc-8c9c-25cc14bb8ff0",
   "name": "dmg_warning",
   "symbol": "bg_dmg_warning",
+  "tileColors": "",
   "width": 20,
   "height": 18,
   "imageWidth": 160,
   "imageHeight": 144,
-  "tileColors": "",
   "filename": "dmg_warning.png"
 }

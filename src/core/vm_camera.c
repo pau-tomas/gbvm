@@ -27,7 +27,7 @@ void vm_camera_move_to(SCRIPT_CTX * THIS, INT16 idx, UBYTE speed, UBYTE after_lo
 
     // Actor reached destination
     if ((camera_x == params->X) && (camera_y == params->Y)) {
-        camera_settings |= after_lock_camera;
+        camera_settings = after_lock_camera;
         camera_clamp_x = camera_x;
         camera_clamp_y = camera_y;
         return;

@@ -11,10 +11,10 @@ BANKREF(scene_space_battle_triggers)
 const struct trigger_t scene_space_battle_triggers[] = {
     {
         // Trigger 1,
-        .x = 231,
-        .y = 0,
-        .width = 1,
-        .height = 18,
+        .left = 231,
+        .top = 0,
+        .right = 231,
+        .bottom = 17,
         .script = TO_FAR_PTR_T(trigger_18_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     }

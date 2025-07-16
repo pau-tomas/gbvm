@@ -17,6 +17,7 @@
   "isPinned": false,
   "persistent": false,
   "collisionGroup": "1",
+  "collisionExtraFlags": [],
   "prefabScriptOverrides": {},
   "script": [
     {
@@ -242,7 +243,11 @@
                       "value": 0
                     },
                     "moveType": "horizontal",
-                    "useCollisions": true
+                    "useCollisions": true,
+                    "collideWith": [
+                      "walls",
+                      "actors"
+                    ]
                   }
                 }
               ],
@@ -261,7 +266,11 @@
                       "value": 0
                     },
                     "moveType": "horizontal",
-                    "useCollisions": true
+                    "useCollisions": true,
+                    "collideWith": [
+                      "walls",
+                      "actors"
+                    ]
                   }
                 }
               ]

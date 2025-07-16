@@ -11,10 +11,10 @@ BANKREF(scene_parallax_example_triggers)
 const struct trigger_t scene_parallax_example_triggers[] = {
     {
         // Trigger 1,
-        .x = 79,
-        .y = 12,
-        .width = 1,
-        .height = 2,
+        .left = 79,
+        .top = 12,
+        .right = 79,
+        .bottom = 13,
         .script = TO_FAR_PTR_T(trigger_40_interact),
         .script_flags = TRIGGER_HAS_ENTER_SCRIPT
     }

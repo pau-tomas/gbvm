@@ -14,18 +14,18 @@ const struct actor_t scene_parallax_example_actors[] = {
     {
         // Sign Post,
         .pos = {
-            .x = 352 * 16,
-            .y = 104 * 16
+            .x = 11264,
+            .y = 3328
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -37,18 +37,18 @@ const struct actor_t scene_parallax_example_actors[] = {
     {
         // Elephant,
         .pos = {
-            .x = 136 * 16,
-            .y = 104 * 16
+            .x = 4352,
+            .y = 3328
         },
         .bounds = {
-            .left = -21,
-            .bottom = 7,
-            .right = 25,
-            .top = -31
+            .left = PX_TO_SUBPX(-21),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(25),
+            .top = PX_TO_SUBPX(-31)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_elephant),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

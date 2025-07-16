@@ -14,16 +14,10 @@ ___bank_scene_dmg_init = 255
 _scene_dmg_init::
         VM_LOCK
 
-GBVM$scene_dmg_init$16e0a979_5a23_473c_a3c5_6c5369081a2a$574628f6_119a_4e20_bfd6_202a1e98706f$scene$574628f6_119a_4e20_bfd6_202a1e98706f$script = .
-.globl GBVM$scene_dmg_init$16e0a979_5a23_473c_a3c5_6c5369081a2a$574628f6_119a_4e20_bfd6_202a1e98706f$scene$574628f6_119a_4e20_bfd6_202a1e98706f$script
         ; Input Script Attach
         VM_CONTEXT_PREPARE      1, ___bank_script_input, _script_input
         VM_INPUT_ATTACH         128, ^/(1 | .OVERRIDE_DEFAULT)/
 
-GBVM_END$scene_dmg_init$16e0a979_5a23_473c_a3c5_6c5369081a2a = .
-.globl GBVM_END$scene_dmg_init$16e0a979_5a23_473c_a3c5_6c5369081a2a
-GBVM$scene_dmg_init$autofade$574628f6_119a_4e20_bfd6_202a1e98706f$scene$574628f6_119a_4e20_bfd6_202a1e98706f$script = .
-.globl GBVM$scene_dmg_init$autofade$574628f6_119a_4e20_bfd6_202a1e98706f$scene$574628f6_119a_4e20_bfd6_202a1e98706f$script
         ; Wait 1 Frames
         VM_IDLE
 

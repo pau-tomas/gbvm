@@ -1,0 +1,39 @@
+{
+  "_resourceType": "actor",
+  "id": "fd2c33a9-d4cd-4b14-a26e-fcf628ae765f",
+  "_index": 6,
+  "symbol": "actor_dynamicactor",
+  "prefabId": "",
+  "name": "DynamicActor",
+  "x": 9,
+  "y": 7,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "2bbb00f0-33a0-4beb-aaa1-b430a565d5fb",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "517ce92c-757e-49b9-826f-273d3a8d0db0",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "I am being modified"
+        ],
+        "avatarId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

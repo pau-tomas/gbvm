@@ -9,7 +9,9 @@
 BANKREF_EXTERN(VM_ACTOR)
 
 #define ACTOR_ATTR_H_FIRST    0x01
-#define ACTOR_ATTR_CHECK_COLL 0x02
+#define ACTOR_ATTR_CHECK_COLL_WALLS  0x02
+#define ACTOR_ATTR_CHECK_COLL_ACTORS 0x20
+#define ACTOR_ATTR_CHECK_COLL        ACTOR_ATTR_CHECK_COLL_WALLS | ACTOR_ATTR_CHECK_COLL_ACTORS
 #define ACTOR_ATTR_DIAGONAL   0x04
 #define ACTOR_ATTR_RELATIVE_SNAP_PX   0x08
 #define ACTOR_ATTR_RELATIVE_SNAP_TILE 0x10
@@ -23,7 +25,7 @@ void vm_actor_deactivate(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED;
 void vm_actor_set_anim(SCRIPT_CTX * THIS, INT16 idx, INT16 idx_anim) OLDCALL BANKED;
 void vm_actor_set_pos(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED;
 void vm_actor_emote(SCRIPT_CTX * THIS, INT16 idx, UBYTE emote_tiles_bank, const unsigned char *emote_tiles) OLDCALL BANKED;
-void vm_actor_set_bounds(SCRIPT_CTX * THIS, INT16 idx, BYTE left, BYTE right, BYTE top, BYTE bottom) OLDCALL BANKED;
+void vm_actor_set_bounds(SCRIPT_CTX * THIS, INT16 idx, WORD left, WORD right, WORD top, WORD bottom) OLDCALL BANKED;
 void vm_actor_set_spritesheet(SCRIPT_CTX * THIS, INT16 idx, UBYTE spritesheet_bank, const spritesheet_t *spritesheet) OLDCALL BANKED;
 void vm_actor_replace_tile(SCRIPT_CTX * THIS, INT16 idx, UBYTE target_tile, UBYTE tileset_bank, const tileset_t * tileset, UBYTE start_tile, UBYTE length) OLDCALL BANKED;
 void vm_actor_get_pos(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED;

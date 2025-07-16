@@ -7,9 +7,9 @@
 
 BANKREF(sprite_turnip)
 
-#define SPRITE_14_STATE_DEFAULT 0
-#define SPRITE_14_STATE_EXPLODE 8
-#define SPRITE_14_STATE_OPEN 0
+#define SPRITE_12_STATE_DEFAULT 0
+#define SPRITE_12_STATE_EXPLODE 8
+#define SPRITE_12_STATE_OPEN 0
 
 const metasprite_t sprite_turnip_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -100,8 +100,8 @@ const struct animation_t sprite_turnip_animations[] = {
 };
 
 const UWORD sprite_turnip_animations_lookup[] = {
-    SPRITE_14_STATE_DEFAULT,
-    SPRITE_14_STATE_EXPLODE
+    SPRITE_12_STATE_DEFAULT,
+    SPRITE_12_STATE_EXPLODE
 };
 
 const struct spritesheet_t sprite_turnip = {
@@ -114,10 +114,10 @@ const struct spritesheet_t sprite_turnip = {
     .animations = sprite_turnip_animations,
     .animations_lookup = sprite_turnip_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_turnip_tileset),
     .cgb_tileset = { NULL, NULL }

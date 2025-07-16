@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: npc006
-  
+
 #include "gbs_types.h"
-#include "data/tileset_npc006.h"
+#include "data/sprite_npc006_tileset.h"
+
 
 BANKREF(sprite_npc006)
 
@@ -112,11 +113,11 @@ const struct spritesheet_t sprite_npc006 = {
     .animations = sprite_npc006_animations,
     .animations_lookup = sprite_npc006_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_npc006),
+    .tileset = TO_FAR_PTR_T(sprite_npc006_tileset),
     .cgb_tileset = { NULL, NULL }
 };

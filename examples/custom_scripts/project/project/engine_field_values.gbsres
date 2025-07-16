@@ -1,0 +1,21 @@
+{
+  "_resourceType": "engineFieldValues",
+  "engineFieldValues": [
+    {
+      "id": "fade_style",
+      "value": 0
+    },
+    {
+      "id": "topdown_grid",
+      "value": 16
+    },
+    {
+      "id": "FEAT_PLATFORM_COYOTE_TIME",
+      "value": 0
+    },
+    {
+      "id": "FEAT_PLATFORM_DROP_THROUGH",
+      "value": 0
+    }
+  ]
+}

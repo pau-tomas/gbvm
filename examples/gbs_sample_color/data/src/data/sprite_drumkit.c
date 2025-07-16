@@ -7,9 +7,9 @@
 
 BANKREF(sprite_drumkit)
 
-#define SPRITE_27_STATE_DEFAULT 0
-#define SPRITE_27_STATE_EXPLODE 0
-#define SPRITE_27_STATE_OPEN 0
+#define SPRITE_25_STATE_DEFAULT 0
+#define SPRITE_25_STATE_EXPLODE 0
+#define SPRITE_25_STATE_OPEN 0
 
 const metasprite_t sprite_drumkit_metasprite_0[]  = {
     { 0, 16, 0, 0 }, { 0, -8, 2, 0 }, { 0, -8, 4, 0 }, { 0, -8, 6, 0 },
@@ -56,7 +56,7 @@ const struct animation_t sprite_drumkit_animations[] = {
 };
 
 const UWORD sprite_drumkit_animations_lookup[] = {
-    SPRITE_27_STATE_DEFAULT
+    SPRITE_25_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_drumkit = {
@@ -69,10 +69,10 @@ const struct spritesheet_t sprite_drumkit = {
     .animations = sprite_drumkit_animations,
     .animations_lookup = sprite_drumkit_animations_lookup,
     .bounds = {
-        .left = -8,
-        .bottom = 7,
-        .right = 23,
-        .top = -8
+        .left = PX_TO_SUBPX(-8),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(23),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_drumkit_tileset),
     .cgb_tileset = { NULL, NULL }

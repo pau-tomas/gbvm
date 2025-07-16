@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: npc003
-  
+
 #include "gbs_types.h"
-#include "data/tileset_npc003.h"
+#include "data/sprite_npc003_tileset.h"
+
 
 BANKREF(sprite_npc003)
 
-#define SPRITE_15_STATE_DEFAULT 0
-#define SPRITE_15_STATE_OPEN 0
+#define SPRITE_13_STATE_DEFAULT 0
+#define SPRITE_13_STATE_OPEN 0
 
 const metasprite_t sprite_npc003_metasprite_0[]  = {
     { 0, 8, 8, 0 }, { 0, -8, 10, 0 },
@@ -100,7 +101,7 @@ const struct animation_t sprite_npc003_animations[] = {
 };
 
 const UWORD sprite_npc003_animations_lookup[] = {
-    SPRITE_15_STATE_DEFAULT
+    SPRITE_13_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_npc003 = {
@@ -113,11 +114,11 @@ const struct spritesheet_t sprite_npc003 = {
     .animations = sprite_npc003_animations,
     .animations_lookup = sprite_npc003_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_npc003),
+    .tileset = TO_FAR_PTR_T(sprite_npc003_tileset),
     .cgb_tileset = { NULL, NULL }
 };

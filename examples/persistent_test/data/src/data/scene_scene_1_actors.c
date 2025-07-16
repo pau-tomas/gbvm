@@ -13,22 +13,22 @@
 
 BANKREF(scene_scene_1_actors)
 
-const struct actor_def_t scene_scene_1_actors[] = {
+const struct actor_t scene_scene_1_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 64 * 16,
-            .y = 88 * 16
+            .x = 2048,
+            .y = 2816
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = TRUE,
@@ -40,18 +40,18 @@ const struct actor_def_t scene_scene_1_actors[] = {
     {
         // Actor 2,
         .pos = {
-            .x = 104 * 16,
-            .y = 88 * 16
+            .x = 3328,
+            .y = 2816
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_ice),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = TRUE,
@@ -63,18 +63,18 @@ const struct actor_def_t scene_scene_1_actors[] = {
     {
         // Actor 3,
         .pos = {
-            .x = 8 * 16,
-            .y = 16 * 16
+            .x = 256,
+            .y = 512
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = TRUE,

@@ -2,19 +2,20 @@
   "_resourceType": "scene",
   "id": "6e8e84f5-e349-4e91-958b-1ae0d5fdde9a",
   "_index": 0,
-  "name": "Scene 1",
-  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
-  "tilesetId": "",
-  "width": 20,
-  "height": 18,
   "type": "TOPDOWN",
-  "paletteIds": [],
-  "spritePaletteIds": [],
-  "collisions": "",
-  "autoFadeSpeed": 1,
+  "name": "Scene 1",
   "symbol": "scene_1",
   "x": 96,
   "y": 64,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "11b5452b-187c-43a3-afb1-a1f4f74ffda2",
   "script": [
     {
       "command": "EVENT_ACTOR_MOVE_TO",
@@ -29,7 +30,8 @@
           "value": 1
         },
         "moveType": "horizontal",
-        "useCollisions": false
+        "useCollisions": false,
+        "collideWith": []
       },
       "id": "d431fb53-f700-4813-a805-6f6924124408"
     },
@@ -46,7 +48,8 @@
           "value": 5
         },
         "moveType": "horizontal",
-        "useCollisions": false
+        "useCollisions": false,
+        "collideWith": []
       },
       "id": "ae88bf49-ba83-4772-ad92-bf5577fd2b52"
     },
@@ -63,7 +66,11 @@
           "value": 5
         },
         "moveType": "horizontal",
-        "useCollisions": true
+        "useCollisions": true,
+        "collideWith": [
+          "walls",
+          "actors"
+        ]
       },
       "id": "072f13d6-0564-442b-9146-5827ed0fb2be"
     },
@@ -80,7 +87,8 @@
           "value": 3
         },
         "moveType": "horizontal",
-        "useCollisions": false
+        "useCollisions": false,
+        "collideWith": []
       },
       "id": "1b0bcb14-01cf-4fa3-800d-18b57c521a0a"
     },
@@ -95,5 +103,5 @@
   "playerHit1Script": [],
   "playerHit2Script": [],
   "playerHit3Script": [],
-  "playerSpriteSheetId": "11b5452b-187c-43a3-afb1-a1f4f74ffda2"
+  "collisions": ""
 }

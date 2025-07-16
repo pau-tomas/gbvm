@@ -1,0 +1,181 @@
+{
+  "_resourceType": "sprite",
+  "id": "058c0142-0c1e-4762-b5ac-e085d84fc734",
+  "name": "pod_door",
+  "symbol": "sprite_pod_door",
+  "states": [
+    {
+      "id": "c28be4d3-d331-4572-8426-f65485585958",
+      "name": "",
+      "animationType": "multi",
+      "flipLeft": true,
+      "animations": [
+        {
+          "id": "d337ae68-abd0-42a6-a773-864ad6f3ccc9",
+          "frames": [
+            {
+              "id": "d15c063d-188f-4419-b9a8-7e5b77976c5b",
+              "tiles": [
+                {
+                  "id": "cba4aa83-bfac-47af-bbb5-d9937ae7eef6",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 32,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "060e472e-ed58-4ebd-8171-abad9abcf4f6",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 40,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "17df3d3f-526a-463e-9e1e-b98886a8d560",
+          "frames": [
+            {
+              "id": "f1a51a39-b0cd-4cab-83e5-2d278f965118",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "5e78bb84-fd7d-46da-8c90-3a0a7001f39a",
+          "frames": [
+            {
+              "id": "a5dd36cb-8824-41e7-a60f-e4a9af78d5d4",
+              "tiles": [
+                {
+                  "id": "fcb3c8ec-0813-4edb-83b8-5f9249e3175b",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 16,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "d1bd2c6c-60cc-4cca-8e42-91d380fbef4c",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 24,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "62ebbc0a-3f3c-43b0-a7d2-bb6bf16ecbc6",
+          "frames": [
+            {
+              "id": "8be31f9e-0334-4771-8da3-7dab926502eb",
+              "tiles": [
+                {
+                  "id": "48650f50-cc07-4035-b784-70038b20dee3",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "ee450c95-ea61-4123-86b4-a3b0c7f5b573",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f121bedb-d0ac-4f2f-aaab-500691185413",
+          "frames": [
+            {
+              "id": "2892a8c1-68d6-490e-906a-f6ac25e24136",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "c28fceb1-264a-4c65-b1f2-7486d04df48b",
+          "frames": [
+            {
+              "id": "f38a499c-68c1-44ca-996b-38af90fb8c87",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "efbcba18-a86f-4d16-a674-6927cd1ba347",
+          "frames": [
+            {
+              "id": "1b45df12-163d-4d08-9b6e-6b5090a3a170",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "af99693e-21c1-483b-8c81-efce2a5ead61",
+          "frames": [
+            {
+              "id": "651da765-d442-473e-ba21-f8ed09e21a93",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 3,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": 0,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "pod_door.png",
+  "width": 48,
+  "height": 16,
+  "checksum": "b8f3e928d6ed27502f5a431e4a35496ecebb614a"
+}

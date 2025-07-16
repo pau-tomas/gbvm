@@ -41,34 +41,8 @@ UBYTE trigger_activate_at(UBYTE tx, UBYTE ty, UBYTE force) BANKED {
     return FALSE;
 }
 
-UBYTE trigger_at_intersection(bounding_box_t *bb, point16_t *offset) BANKED {
-    UBYTE tile_left   = PX_TO_TILE(SUBPX_TO_PX(offset->x) + bb->left);
-    UBYTE tile_right  = PX_TO_TILE(SUBPX_TO_PX(offset->x) + bb->right);
-    UBYTE tile_top    = PX_TO_TILE(SUBPX_TO_PX(offset->y) + bb->top);
-    UBYTE tile_bottom = PX_TO_TILE(SUBPX_TO_PX(offset->y) + bb->bottom);
-    UBYTE i;
-
-    for (i = 0; i != triggers_len; i++) {
-        UBYTE trigger_left   = triggers[i].x;
-        UBYTE trigger_top    = triggers[i].y;
-        UBYTE trigger_right  = triggers[i].x + triggers[i].width  - 1;
-        UBYTE trigger_bottom = triggers[i].y + triggers[i].height - 1;
-
-        if ((tile_left <= trigger_right)
-            && (tile_right >= trigger_left)
-            && (tile_top <= trigger_bottom)
-            && (tile_bottom >= trigger_top)) {
-                return i;
-        }
-    }
-
-    return NO_TRIGGER_COLLISON;
-}
-
-
-UBYTE trigger_activate_at_intersection(bounding_box_t *bb, point16_t *offset, UBYTE force) BANKED {
+UBYTE trigger_activate_at_intersection(rect16_t *bb, upoint16_t *offset, UBYTE force) BANKED {
     UBYTE hit_trigger = trigger_at_intersection(bb, offset);
-    UBYTE trigger_script_called = FALSE;
 
     // Don't reactivate trigger if not changed tile
     if (!force && (last_trigger == hit_trigger)) {
@@ -77,6 +51,7 @@ UBYTE trigger_activate_at_intersection(bounding_box_t *bb, point16_t *offset, UB
 
     if (last_trigger != NO_TRIGGER_COLLISON && 
         (hit_trigger == NO_TRIGGER_COLLISON || hit_trigger != last_trigger)) {
+        UBYTE trigger_script_called = FALSE;
         
         if (hit_trigger != NO_TRIGGER_COLLISON && triggers[hit_trigger].script_flags & TRIGGER_HAS_ENTER_SCRIPT) {
             script_execute(triggers[hit_trigger].script.bank, triggers[hit_trigger].script.ptr, 0, 1, 1);
@@ -109,10 +84,10 @@ UBYTE trigger_at_tile(UBYTE tx_a, UBYTE ty_a) BANKED {
     UBYTE i, tx_b, ty_b, tx_c, ty_c;
 
     for (i = 0; i != triggers_len; i++) {
-        tx_b = triggers[i].x;
-        ty_b = triggers[i].y;
-        tx_c = tx_b + triggers[i].width - 1;
-        ty_c = ty_b + triggers[i].height - 1;
+        tx_b = triggers[i].left;
+        ty_b = triggers[i].top;
+        tx_c = triggers[i].right;
+        ty_c = triggers[i].bottom;
 
         if ((tx_a + 1) >= tx_b && tx_a <= tx_c && ty_a >= ty_b && ty_a <= ty_c) {
             return i;

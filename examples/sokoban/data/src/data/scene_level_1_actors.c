@@ -21,22 +21,22 @@
 
 BANKREF(scene_level_1_actors)
 
-const struct actor_def_t scene_level_1_actors[] = {
+const struct actor_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 64 * 16,
-            .y = 40 * 16
+            .x = 2048,
+            .y = 1280
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -48,18 +48,18 @@ const struct actor_def_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 32 * 16,
-            .y = 104 * 16
+            .x = 1024,
+            .y = 3328
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -71,18 +71,18 @@ const struct actor_def_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 80 * 16,
-            .y = 56 * 16
+            .x = 2560,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -94,18 +94,18 @@ const struct actor_def_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 80 * 16,
-            .y = 72 * 16
+            .x = 2560,
+            .y = 2304
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -117,18 +117,18 @@ const struct actor_def_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 64 * 16,
-            .y = 104 * 16
+            .x = 2048,
+            .y = 3328
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -140,18 +140,18 @@ const struct actor_def_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 80 * 16,
-            .y = 104 * 16
+            .x = 2560,
+            .y = 3328
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -163,18 +163,18 @@ const struct actor_def_t scene_level_1_actors[] = {
     {
         // Box,
         .pos = {
-            .x = 96 * 16,
-            .y = 104 * 16
+            .x = 3072,
+            .y = 3328
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_box),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
         .persistent = FALSE,

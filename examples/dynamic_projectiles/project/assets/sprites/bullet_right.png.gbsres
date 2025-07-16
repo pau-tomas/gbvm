@@ -3,8 +3,6 @@
   "id": "8744deb5-fe46-4f00-b0dd-ad68cf371cb2",
   "name": "bullet_right",
   "symbol": "sprite_bullet_right",
-  "width": 32,
-  "height": 16,
   "states": [
     {
       "id": "3f20917a-ea69-48d6-941a-85af07479194",
@@ -153,6 +151,8 @@
   "boundsWidth": 16,
   "boundsHeight": 16,
   "animSpeed": 15,
+  "width": 32,
+  "height": 16,
   "filename": "bullet_right.png",
   "checksum": "8314b3c3b8f067e20f49bf3bd3cb63e03a457cc0"
 }

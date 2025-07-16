@@ -187,7 +187,7 @@ void actors_update(void) NONBANKED {
     SWITCH_ROM(_save);
 }
 
-void deactivate_actor(actor_t *actor) BANKED {
+static void deactivate_actor_impl(actor_t *actor) {
 #ifdef STRICT
     // Check exists in inactive list
     UBYTE found = 0;
@@ -213,7 +213,11 @@ void deactivate_actor(actor_t *actor) BANKED {
     }
 }
 
-void activate_actor(actor_t *actor) BANKED {
+void deactivate_actor(actor_t *actor) BANKED {
+    deactivate_actor_impl(actor);
+}
+
+static void activate_actor_impl(actor_t *actor) {
 #ifdef STRICT
     // Check exists in inactive list
     UBYTE found = 0;
@@ -238,9 +242,12 @@ void activate_actor(actor_t *actor) BANKED {
     actor->hscript_hit = SCRIPT_TERMINATED;
 }
 
+void activate_actor(actor_t *actor) BANKED {
+    activate_actor_impl(actor);
+}
+
 void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
-    static actor_t *actor;
-    actor = actors_inactive_head;
+    actor_t *actor = actors_inactive_head;
 
     while (actor) {
         UBYTE ty = SUBPX_TO_TILE(actor->pos.y);
@@ -248,7 +255,7 @@ void activate_actors_in_row(UBYTE x, UBYTE y) BANKED {
             UBYTE tx = SUBPX_TO_TILE(actor->pos.x);
             if ((tx + 1 > x) && (tx < x + SCREEN_TILE_REFRES_W)) {
                 actor_t * next = actor->next;
-                activate_actor(actor);
+                activate_actor_impl(actor);
                 actor = next;
                 continue;
             }
@@ -262,24 +269,21 @@ void activate_actors_in_col(UBYTE x, UBYTE y) BANKED {
     UBYTE y_max = y + SCREEN_TILE_REFRES_H;
 
     while (actor) {
-        
-        UBYTE tx_left   = PX_TO_TILE(SUBPX_TO_PX(actor->pos.x) + actor->bounds.left);
-        UBYTE tx_right  = PX_TO_TILE(SUBPX_TO_PX(actor->pos.x) + actor->bounds.right);
-        
-        if ((tx_left == x) || (tx_right == x)) {
-            UBYTE ty_top    = PX_TO_TILE(SUBPX_TO_PX(actor->pos.y) + actor->bounds.top);
-            UBYTE ty_bottom = PX_TO_TILE(SUBPX_TO_PX(actor->pos.y) + actor->bounds.bottom);
-
-            if (ty_bottom >= y && ty_top <= y_max) {
-                activate_actor(actor);
-            }
+        actor_t *next = actor->next;        
+        if ( // Left or right edge is in column x
+            ((SUBPX_TO_TILE(actor->pos.x + actor->bounds.left ) == x) ||
+             (SUBPX_TO_TILE(actor->pos.x + actor->bounds.right) == x)) &&
+            // Bottom is below start of column y
+            SUBPX_TO_TILE(actor->pos.y + actor->bounds.bottom) >= y &&
+            // Top is above end of column y
+            SUBPX_TO_TILE(actor->pos.y + actor->bounds.top) <= y_max) {    
+                activate_actor_impl(actor);
         }
-
-        actor = actor->next;
+        actor = next;
     }
 }
 
-void actor_set_frames(actor_t *actor, UBYTE frame_start, UBYTE frame_end) BANKED {
+void actor_set_frames(actor_t *actor, UBYTE frame_start, UBYTE frame_end) NONBANKED {
     if ((actor->frame_start != frame_start) || (actor->frame_end != frame_end)) {
         actor->frame = frame_start;
         actor->frame_start = frame_start;
@@ -324,7 +328,7 @@ actor_t *actor_at_tile(UBYTE tx, UBYTE ty, UBYTE inc_noclip) BANKED {
 }
 
 actor_t *actor_in_front_of_player(UBYTE grid_size, UBYTE inc_noclip) BANKED {
-    point16_t offset;
+    upoint16_t offset;
     offset.x = PLAYER.pos.x;
     offset.y = PLAYER.pos.y;
     point_translate_dir_word(&offset, PLAYER.dir, PX_TO_SUBPX(grid_size));
@@ -350,7 +354,7 @@ actor_t *actor_overlapping_player(UBYTE inc_noclip) BANKED {
     return NULL;
 }
 
-actor_t *actor_overlapping_bb(bounding_box_t *bb, point16_t *offset, actor_t *ignore, UBYTE inc_noclip) BANKED {
+actor_t *actor_overlapping_bb(rect16_t *bb, upoint16_t *offset, actor_t *ignore, UBYTE inc_noclip) BANKED {
     actor_t *actor = &PLAYER;
 
     while (actor) {
@@ -371,10 +375,14 @@ actor_t *actor_overlapping_bb(bounding_box_t *bb, point16_t *offset, actor_t *ig
 
 void actors_handle_player_collision(void) BANKED {
     if (player_iframes == 0 && player_collision_actor != NULL) {
-        if (player_collision_actor->collision_group) {
+        if (player_collision_actor->collision_group & COLLISION_GROUP_MASK) {
             // Execute scene player hit scripts based on actor's collision group
             if (PLAYER.script.bank) {
-                script_execute(PLAYER.script.bank, PLAYER.script.ptr, 0, 1, (UWORD)(player_collision_actor->collision_group));
+                script_execute(
+                    PLAYER.script.bank,
+                    PLAYER.script.ptr, 0, 1,
+                    (UWORD)(player_collision_actor->collision_group & COLLISION_GROUP_MASK)
+                );
             }
             // Execute actor's onHit player script
             if (player_collision_actor->script.bank) {
@@ -389,75 +397,4 @@ void actors_handle_player_collision(void) BANKED {
         player_iframes--;
     }
     player_collision_actor = NULL;
-}
-
-UWORD check_collision_in_direction(UWORD start_x, UWORD start_y, bounding_box_t *bounds, UWORD end_pos, col_check_dir_e check_dir) BANKED {
-    WORD tx1, ty1, tx2, ty2, tt;
-    switch (check_dir) {
-        case CHECK_DIR_LEFT:  // Check left
-            tx1 = PX_TO_TILE(SUBPX_TO_PX(start_x) + bounds->left);
-            tx2 = PX_TO_TILE(SUBPX_TO_PX(end_pos) + bounds->left) - 1;
-            ty1 = PX_TO_TILE(SUBPX_TO_PX(start_y) + bounds->top);
-            ty2 = PX_TO_TILE(SUBPX_TO_PX(start_y) + bounds->bottom) + 1;
-            while (tx1 != tx2) {
-                tt = ty1;
-                while (tt != ty2) {
-                    if (tile_at(tx1, tt) & COLLISION_RIGHT) {
-                        return TILE_TO_SUBPX(tx1 + 1) - PX_TO_SUBPX(bounds->left);
-                    }
-                    tt++;
-                }
-                tx1--;
-            }
-            return end_pos;
-        case CHECK_DIR_RIGHT:  // Check right
-            tx1 = PX_TO_TILE(SUBPX_TO_PX(start_x) + bounds->right);
-            tx2 = PX_TO_TILE(SUBPX_TO_PX(end_pos) + bounds->right) + 1;
-            ty1 = PX_TO_TILE(SUBPX_TO_PX(start_y) + bounds->top);
-            ty2 = PX_TO_TILE(SUBPX_TO_PX(start_y) + bounds->bottom) + 1;
-            while (tx1 != tx2) {
-                tt = ty1;
-                while (tt != ty2) {
-                    if (tile_at(tx1, tt) & COLLISION_LEFT) {
-                        return TILE_TO_SUBPX(tx1) - PX_TO_SUBPX(bounds->right + 1);
-                    }
-                    tt++;
-                }
-                tx1++;
-            }
-            return end_pos;
-        case CHECK_DIR_UP:  // Check up
-            ty1 = PX_TO_TILE(SUBPX_TO_PX(start_y) + bounds->top);
-            ty2 = PX_TO_TILE(SUBPX_TO_PX(end_pos) + bounds->top) - 1;
-            tx1 = PX_TO_TILE(SUBPX_TO_PX(start_x) + bounds->left);
-            tx2 = PX_TO_TILE(SUBPX_TO_PX(start_x) + bounds->right) + 1;
-            while (ty1 != ty2) {
-                tt = tx1;
-                while (tt != tx2) {
-                    if (tile_at(tt, ty1) & COLLISION_BOTTOM) {
-                        return TILE_TO_SUBPX(ty1 + 1) - PX_TO_SUBPX(bounds->top);
-                    }
-                    tt++;
-                }
-                ty1--;
-            }
-            return end_pos;
-        case CHECK_DIR_DOWN:  // Check down
-            ty1 = PX_TO_TILE(SUBPX_TO_PX(start_y) + bounds->bottom);
-            ty2 = PX_TO_TILE(SUBPX_TO_PX(end_pos) + bounds->bottom) + 1;
-            tx1 = PX_TO_TILE(SUBPX_TO_PX(start_x) + bounds->left);
-            tx2 = PX_TO_TILE(SUBPX_TO_PX(start_x) + bounds->right) + 1;
-            while (ty1 != ty2) {
-                tt = tx1;
-                while (tt != tx2) {
-                    if (tile_at(tt, ty1) & COLLISION_TOP) {
-                        return TILE_TO_SUBPX(ty1) - PX_TO_SUBPX(bounds->bottom + 1);
-                    }
-                    tt++;
-                }
-                ty1++;
-            }
-            return end_pos;
-    }
-    return end_pos;
 }

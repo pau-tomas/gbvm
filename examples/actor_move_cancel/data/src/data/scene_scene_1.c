@@ -11,7 +11,7 @@
 #include "data/scene_scene_1_actors.h"
 #include "data/scene_scene_1_sprites.h"
 #include "data/scene_scene_1_projectiles.h"
-#include "data/script_s0_init.h"
+#include "data/scene_scene_1_init.h"
 
 BANKREF(scene_scene_1)
 
@@ -22,7 +22,7 @@ const struct scene_t scene_scene_1 = {
     .background = TO_FAR_PTR_T(bg_placeholder),
     .collisions = TO_FAR_PTR_T(scene_scene_1_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_1),
@@ -35,5 +35,5 @@ const struct scene_t scene_scene_1 = {
     .actors = TO_FAR_PTR_T(scene_scene_1_actors),
     .sprites = TO_FAR_PTR_T(scene_scene_1_sprites),
     .projectiles = TO_FAR_PTR_T(scene_scene_1_projectiles),
-    .script_init = TO_FAR_PTR_T(script_s0_init)
+    .script_init = TO_FAR_PTR_T(scene_scene_1_init)
 };

@@ -7,9 +7,9 @@
 
 BANKREF(sprite_chest)
 
-#define SPRITE_8_STATE_DEFAULT 0
-#define SPRITE_8_STATE_EXPLODE 0
-#define SPRITE_8_STATE_OPEN 8
+#define SPRITE_6_STATE_DEFAULT 0
+#define SPRITE_6_STATE_EXPLODE 0
+#define SPRITE_6_STATE_OPEN 8
 
 const metasprite_t sprite_chest_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 0, 32 },
@@ -94,9 +94,9 @@ const struct animation_t sprite_chest_animations[] = {
 };
 
 const UWORD sprite_chest_animations_lookup[] = {
-    SPRITE_8_STATE_DEFAULT,
-    SPRITE_8_STATE_EXPLODE,
-    SPRITE_8_STATE_OPEN
+    SPRITE_6_STATE_DEFAULT,
+    SPRITE_6_STATE_EXPLODE,
+    SPRITE_6_STATE_OPEN
 };
 
 const struct spritesheet_t sprite_chest = {
@@ -109,10 +109,10 @@ const struct spritesheet_t sprite_chest = {
     .animations = sprite_chest_animations,
     .animations_lookup = sprite_chest_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_chest_tileset),
     .cgb_tileset = { NULL, NULL }

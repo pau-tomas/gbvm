@@ -9,7 +9,7 @@
 
 const void __at(255) __bank_scene_0_actors;
 
-const struct actor_def_t scene_0_actors[] = {
+const struct actor_t scene_0_actors[] = {
     {
         // Actor 1,
         .pos = {
@@ -17,10 +17,10 @@ const struct actor_def_t scene_0_actors[] = {
             .y = 64 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(spritesheet_1),

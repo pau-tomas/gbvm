@@ -22,7 +22,7 @@ const struct scene_t test_scene = {
     .background = TO_FAR_PTR_T(bg_underground),
     .collisions = TO_FAR_PTR_T(test_scene_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_1),

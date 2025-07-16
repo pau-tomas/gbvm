@@ -7,9 +7,9 @@
 
 BANKREF(sprite_checkbox)
 
-#define SPRITE_37_STATE_DEFAULT 0
-#define SPRITE_37_STATE_EXPLODE 0
-#define SPRITE_37_STATE_OPEN 0
+#define SPRITE_35_STATE_DEFAULT 0
+#define SPRITE_35_STATE_EXPLODE 0
+#define SPRITE_35_STATE_OPEN 0
 
 const metasprite_t sprite_checkbox_metasprite_0[]  = {
     { 0, 0, 0, 0 },
@@ -62,7 +62,7 @@ const struct animation_t sprite_checkbox_animations[] = {
 };
 
 const UWORD sprite_checkbox_animations_lookup[] = {
-    SPRITE_37_STATE_DEFAULT
+    SPRITE_35_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_checkbox = {
@@ -75,10 +75,10 @@ const struct spritesheet_t sprite_checkbox = {
     .animations = sprite_checkbox_animations,
     .animations_lookup = sprite_checkbox_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_checkbox_tileset),
     .cgb_tileset = { NULL, NULL }

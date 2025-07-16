@@ -5,199 +5,207 @@
 
 #include "gbs_types.h"
 #include "data/sprite_portal.h"
-#include "data/script_s0a0_interact.h"
+#include "data/actor_portalleft_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s0a1_interact.h"
+#include "data/actor_signpostleft_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s0a2_interact.h"
+#include "data/actor_signposttop_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s0a3_interact.h"
+#include "data/actor_signpostright_interact.h"
 #include "data/sprite_portal.h"
-#include "data/script_s0a4_interact.h"
+#include "data/actor_portalright_interact.h"
 #include "data/sprite_portal.h"
-#include "data/script_s0a5_interact.h"
+#include "data/actor_portaltop_interact.h"
 #include "data/sprite_signpost.h"
-#include "data/script_s0a6_interact.h"
+#include "data/actor_signpostbottom_interact.h"
 #include "data/sprite_portal.h"
-#include "data/script_s0a7_interact.h"
+#include "data/actor_portalbottom_interact.h"
 
 BANKREF(scene_start_actors)
 
-const struct actor_def_t scene_start_actors[] = {
+const struct actor_t scene_start_actors[] = {
     {
         // PortalLeft,
         .pos = {
-            .x = 32 * 16,
-            .y = 56 * 16
+            .x = 1024,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_1,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a0_interact),
+        .script = TO_FAR_PTR_T(actor_portalleft_interact),
         .reserve_tiles = 0
     },
     {
         // SignpostLeft,
         .pos = {
-            .x = 16 * 16,
-            .y = 56 * 16
+            .x = 512,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a1_interact),
+        .script = TO_FAR_PTR_T(actor_signpostleft_interact),
         .reserve_tiles = 0
     },
     {
         // SignpostTop,
         .pos = {
-            .x = 56 * 16,
-            .y = 16 * 16
+            .x = 1792,
+            .y = 512
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a2_interact),
+        .script = TO_FAR_PTR_T(actor_signposttop_interact),
         .reserve_tiles = 0
     },
     {
         // SignpostRight,
         .pos = {
-            .x = 128 * 16,
-            .y = 56 * 16
+            .x = 4096,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a3_interact),
+        .script = TO_FAR_PTR_T(actor_signpostright_interact),
         .reserve_tiles = 0
     },
     {
         // PortalRight,
         .pos = {
-            .x = 112 * 16,
-            .y = 56 * 16
+            .x = 3584,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_1,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a4_interact),
+        .script = TO_FAR_PTR_T(actor_portalright_interact),
         .reserve_tiles = 0
     },
     {
         // PortalTop,
         .pos = {
-            .x = 72 * 16,
-            .y = 16 * 16
+            .x = 2304,
+            .y = 512
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_1,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a5_interact),
+        .script = TO_FAR_PTR_T(actor_portaltop_interact),
         .reserve_tiles = 0
     },
     {
         // SignpostBottom,
         .pos = {
-            .x = 56 * 16,
-            .y = 120 * 16
+            .x = 1792,
+            .y = 3840
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 3,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a6_interact),
+        .script = TO_FAR_PTR_T(actor_signpostbottom_interact),
         .reserve_tiles = 0
     },
     {
         // PortalBottom,
         .pos = {
-            .x = 72 * 16,
-            .y = 120 * 16
+            .x = 2304,
+            .y = 3840
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 7,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_1,
         .collision_enabled = TRUE,
-        .script = TO_FAR_PTR_T(script_s0a7_interact),
+        .script = TO_FAR_PTR_T(actor_portalbottom_interact),
         .reserve_tiles = 0
     }
 };

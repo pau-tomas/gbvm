@@ -1,0 +1,37 @@
+{
+  "_resourceType": "actor",
+  "id": "46ba79c4-8908-40ad-95b0-29286a45436f",
+  "_index": 4,
+  "symbol": "actor_setplayertodog",
+  "prefabId": "",
+  "name": "SetPlayerToDog",
+  "x": 14,
+  "y": 14,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "9a8b6cd9-ea7a-49ab-bdbe-7273ce42f793",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "c8da1b1b-95fc-4e55-ac41-d9cd095c2fa0",
+      "command": "EVENT_ACTOR_SET_SPRITE",
+      "args": {
+        "actorId": "player",
+        "spriteSheetId": "9a8b6cd9-ea7a-49ab-bdbe-7273ce42f793"
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

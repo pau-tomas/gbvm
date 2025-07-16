@@ -1,0 +1,61 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "string[0]",
+      "symbol": "var_string_0_"
+    },
+    {
+      "id": "1",
+      "name": "string[1]",
+      "symbol": "var_string_1_"
+    },
+    {
+      "id": "2",
+      "name": "string[2]",
+      "symbol": "var_string_2_"
+    },
+    {
+      "id": "3",
+      "name": "string[3]",
+      "symbol": "var_string_3_"
+    },
+    {
+      "id": "4",
+      "name": "string[4]",
+      "symbol": "var_string_4_"
+    },
+    {
+      "id": "10",
+      "name": "string.index",
+      "symbol": "var_string_index"
+    },
+    {
+      "id": "100",
+      "name": "menu.item[0]",
+      "symbol": "var_menu_item_0_"
+    },
+    {
+      "id": "101",
+      "name": "menu.item[1]",
+      "symbol": "var_menu_item_1_"
+    },
+    {
+      "id": "110",
+      "name": "menu.amount[0]",
+      "symbol": "var_menu_amount_0_"
+    },
+    {
+      "id": "111",
+      "name": "menu.amount[1]",
+      "symbol": "var_menu_amount_1_"
+    },
+    {
+      "id": "b6c3aacd-257a-425f-a877-a6b3c0056ec4__L0",
+      "name": "Index",
+      "symbol": "var_index"
+    }
+  ],
+  "constants": []
+}

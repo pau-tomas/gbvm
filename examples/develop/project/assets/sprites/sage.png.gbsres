@@ -1,0 +1,127 @@
+{
+  "_resourceType": "sprite",
+  "id": "e20ce140-53a5-4b1b-9964-138ba0c86925",
+  "name": "sage",
+  "symbol": "sprite_sage",
+  "states": [
+    {
+      "id": "361e9a99-1502-4161-a0b6-c705dc569737",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "e9fef412-cff5-4ff7-a5b2-4a824e922ecf",
+          "frames": [
+            {
+              "id": "0fd6e16c-cd7b-4f27-a3da-022e530a824b",
+              "tiles": [
+                {
+                  "id": "e6d0c412-e117-4464-b058-7a2b6a449ab1",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "29e4b191-8865-4368-bb62-92c6a7ffb3d2",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c6c7023a-796f-4311-a1b5-d75459f746df",
+          "frames": [
+            {
+              "id": "ffc56751-d03e-47e0-b689-bb04d089ed34",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "4965d386-df67-484b-9a2f-ebe10f679650",
+          "frames": [
+            {
+              "id": "d0d80184-788f-4f2c-842d-6067ca12e9ba",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "83e71739-2448-426a-8ec0-ea63f717d4ba",
+          "frames": [
+            {
+              "id": "17d323fb-d1f6-4eae-a8f5-5bd596777867",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "7c14bae5-87f9-47fc-abe5-58fc8c20f6ff",
+          "frames": [
+            {
+              "id": "3ba9b2c6-6f96-415a-9a48-227fbe7ab491",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "6391b106-86d4-421a-ac43-71691d645b5a",
+          "frames": [
+            {
+              "id": "a1f541b8-d0eb-4828-a430-e23f2036a357",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "48095cb2-1f63-4291-bfa4-425295429223",
+          "frames": [
+            {
+              "id": "70aba014-057a-4723-a6d1-7ec9048d5591",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "53928994-3cd5-4524-ba59-f06bf8d1b501",
+          "frames": [
+            {
+              "id": "fb6e9e81-b949-4d9e-9541-c8d511b6890c",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 2,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": 0,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "sage.png",
+  "width": 16,
+  "height": 16,
+  "checksum": "0f0fec264c85a7572c4dc810b886ea4a2bf8a3f5"
+}

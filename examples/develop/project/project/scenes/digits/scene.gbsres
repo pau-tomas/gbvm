@@ -1,0 +1,23 @@
+{
+  "_resourceType": "scene",
+  "id": "04fc3521-5d48-4c5b-8d2b-3ac18309bc01",
+  "_index": 10,
+  "type": "TOPDOWN",
+  "name": "Digits",
+  "symbol": "scene_digits",
+  "x": 114,
+  "y": 278,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "063e7894-9473-4062-b4b5-2ee2dd6d5510",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+"
+}

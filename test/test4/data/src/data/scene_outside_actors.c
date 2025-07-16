@@ -9,22 +9,22 @@
 
 BANKREF(scene_outside_actors)
 
-const struct actor_def_t scene_outside_actors[] = {
+const struct actor_t scene_outside_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 120 * 16,
-            .y = 104 * 16
+            .x = 3840,
+            .y = 3328
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

@@ -20,6 +20,6 @@ const struct palette_t palette_3 = {
         CGB_PALETTE(RGB(31, 31, 23), RGB(31, 31, 23), RGB(18, 25, 25), RGB(1, 4, 9)),
         CGB_PALETTE(RGB(31, 27, 22), RGB(31, 27, 22), RGB(15, 24, 15), RGB(11, 7, 4)),
         CGB_PALETTE(RGB(31, 20, 8), RGB(31, 20, 8), RGB(0, 15, 31), RGB(0, 0, 1)),
-        CGB_PALETTE(RGB(31, 31, 31), RGB(31, 31, 31), RGB(28, 11, 2), RGB(10, 6, 1)) 
+        CGB_PALETTE(RGB(31, 31, 31), RGB(31, 31, 31), RGB(28, 11, 2), RGB(10, 6, 1))
     }
 };

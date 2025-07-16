@@ -1,0 +1,78 @@
+{
+  "_resourceType": "actor",
+  "id": "88dde917-1f7c-4615-9fda-88b523406b1d",
+  "_index": 1,
+  "symbol": "actor_3",
+  "prefabId": "",
+  "name": "",
+  "x": 3,
+  "y": 8,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "e9e61bf7-88fd-491d-ae01-4b7f76909108",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [],
+  "startScript": [],
+  "updateScript": [
+    {
+      "command": "EVENT_VARIABLE_MATH_EVALUATE",
+      "args": {
+        "variable": "L0",
+        "expression": "$L0$ + 8"
+      },
+      "id": "ca4d3229-1dbe-40c6-ba7f-a6ddba966a9b"
+    },
+    {
+      "command": "EVENT_LAUNCH_PROJECTILE",
+      "args": {
+        "spriteSheetId": "6dba41ee-c7c7-4e21-a526-bd99587eb695",
+        "actorId": "$self$",
+        "x": 0,
+        "y": 8,
+        "otherActorId": "$self$",
+        "direction": "right",
+        "angle": 80,
+        "angleVariable": "L0",
+        "directionType": "anglevar",
+        "speed": 2,
+        "animSpeed": 15,
+        "lifeTime": 3,
+        "collisionGroup": "1",
+        "collisionMask": [
+          "1",
+          "player",
+          "2",
+          "3"
+        ],
+        "loopAnim": true,
+        "destroyOnHit": true
+      },
+      "id": "0eed0a23-8f1b-4088-8120-e0b1a750aa38"
+    },
+    {
+      "command": "EVENT_WAIT",
+      "args": {
+        "time": {
+          "type": "number",
+          "value": 1
+        },
+        "frames": {
+          "type": "number",
+          "value": 30
+        }
+      },
+      "id": "2cd0d994-2fcd-4a33-b819-08602dce33a6"
+    }
+  ],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

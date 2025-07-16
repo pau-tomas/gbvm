@@ -35,6 +35,8 @@ UBYTE image_tile_width;
 UBYTE image_tile_height;
 UINT16 image_width;
 UINT16 image_height;
+UINT16 image_width_subpx;
+UINT16 image_height_subpx;
 UBYTE sprites_len;
 UBYTE actors_len;
 UBYTE projectiles_len;
@@ -53,26 +55,6 @@ void load_init(void) BANKED {
     actors_len = 0;
     player_sprite_len = 0;
     scene_stack_ptr = scene_stack;
-}
-
-void load_actor_from_def(actor_t* actor, actor_def_t* actor_def) BANKED {
-    memset(actor, 0, sizeof(actor_t));
-    actor->pinned = actor_def->pinned;
-    actor->hidden = actor_def->hidden;
-    actor->disabled = actor_def->disabled;
-    actor->anim_noloop = actor_def->anim_noloop;
-    actor->collision_enabled = actor_def->collision_enabled;
-    actor->persistent = actor_def->persistent;
-    actor->pos = actor_def->pos;
-    actor->dir = actor_def->dir;
-    actor->bounds = actor_def->bounds;
-    actor->anim_tick = actor_def->anim_tick;
-    actor->move_speed = actor_def->move_speed;
-    actor->reserve_tiles = actor_def->reserve_tiles;
-    actor->sprite = actor_def->sprite;
-    actor->script = actor_def->script;
-    actor->script_update = actor_def->script_update;
-    actor->collision_group = actor_def->collision_group;
 }
 
 void load_bkg_tileset(const tileset_t* tiles, UBYTE bank) BANKED {
@@ -124,9 +106,11 @@ void load_background(const background_t* background, UBYTE bank) BANKED {
 
     image_tile_width = bkg.width;
     image_tile_height = bkg.height;
-    image_width = image_tile_width * 8;
+    image_width = TILE_TO_PX(image_tile_width);
+    image_width_subpx = PX_TO_SUBPX(image_width);
     scroll_x_max = image_width - ((UINT16)SCREENWIDTH);
-    image_height = image_tile_height * 8;
+    image_height = TILE_TO_PX(image_tile_height);
+    image_height_subpx = PX_TO_SUBPX(image_height);
     scroll_y_max = image_height - ((UINT16)SCREENHEIGHT);
 
     load_bkg_tileset(bkg.tileset.ptr, bkg.tileset.bank);
@@ -170,7 +154,7 @@ void load_animations(const spritesheet_t *sprite, UBYTE bank, UWORD animation_se
     SWITCH_ROM(_save);
 }
 
-void load_bounds(const spritesheet_t *sprite, UBYTE bank, bounding_box_t * res_bounds) BANKED {
+void load_bounds(const spritesheet_t *sprite, UBYTE bank, rect16_t * res_bounds) BANKED {
     MemcpyBanked(res_bounds, &sprite->bounds, sizeof(sprite->bounds), bank);
 }
 
@@ -288,12 +272,9 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
 
         // Add other actors, activate pinned
         if (actors_len != 0) {
-            actor_def_t actor_def_temp_ram;
-            actor_def_t* p_actor_def = scn.actors.ptr;
             actor_t * actor = actors + 1;
-            for (i = 0; i < actors_len-1; i++, p_actor_def++, actor++) {
-                MemcpyBanked(&actor_def_temp_ram, p_actor_def, sizeof(actor_def_t), scn.actors.bank);
-                load_actor_from_def(actor, &actor_def_temp_ram);
+            MemcpyBanked(actor, scn.actors.ptr, sizeof(actor_t) * (actors_len - 1), scn.actors.bank);
+            for (i = actors_len - 1; i != 0; i--, actor++) {
                 if (actor->reserve_tiles) {
                     // exclusive sprites allocated separately to avoid overwriting if modified
                     actor->base_tile = allocated_sprite_tiles;

@@ -1,0 +1,23 @@
+{
+  "_resourceType": "scene",
+  "id": "df86b99e-7801-47ba-8eba-0f3e3559795d",
+  "_index": 0,
+  "type": "TOPDOWN",
+  "name": "Start",
+  "symbol": "scene_start",
+  "x": 254.5,
+  "y": 271,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "6e1d5b0c-2c5e-4a77-9253-2004fc5b2bed",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+"
+}

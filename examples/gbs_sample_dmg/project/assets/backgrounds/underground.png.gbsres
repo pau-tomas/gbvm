@@ -3,11 +3,11 @@
   "id": "f3102db4-2273-411d-b33f-4d6f65959c60",
   "name": "underground",
   "symbol": "bg_underground",
+  "tileColors": "",
   "width": 32,
   "height": 32,
   "imageWidth": 256,
   "imageHeight": 256,
-  "tileColors": "",
   "filename": "underground.png",
   "autoColor": false
 }

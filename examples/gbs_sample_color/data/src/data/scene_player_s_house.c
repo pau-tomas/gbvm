@@ -20,7 +20,7 @@ const struct scene_t scene_player_s_house = {
     .background = TO_FAR_PTR_T(bg_room),
     .collisions = TO_FAR_PTR_T(scene_player_s_house_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_3),
     .sprite_palette = TO_FAR_PTR_T(palette_9),

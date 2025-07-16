@@ -7,9 +7,9 @@
 
 BANKREF(sprite_npc_gardener)
 
-#define SPRITE_15_STATE_DEFAULT 0
-#define SPRITE_15_STATE_EXPLODE 0
-#define SPRITE_15_STATE_OPEN 0
+#define SPRITE_13_STATE_DEFAULT 0
+#define SPRITE_13_STATE_EXPLODE 0
+#define SPRITE_13_STATE_OPEN 0
 
 const metasprite_t sprite_npc_gardener_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { -16, 0, 2, 0 }, { 16, -8, 4, 0 }, { -16, 0, 6, 0 },
@@ -62,7 +62,7 @@ const struct animation_t sprite_npc_gardener_animations[] = {
 };
 
 const UWORD sprite_npc_gardener_animations_lookup[] = {
-    SPRITE_15_STATE_DEFAULT
+    SPRITE_13_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_npc_gardener = {
@@ -75,10 +75,10 @@ const struct spritesheet_t sprite_npc_gardener = {
     .animations = sprite_npc_gardener_animations,
     .animations_lookup = sprite_npc_gardener_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_npc_gardener_tileset),
     .cgb_tileset = { NULL, NULL }

@@ -8,24 +8,25 @@
 
 BANKREF(scene_parallax_actors)
 
-const struct actor_def_t scene_parallax_actors[] = {
+const struct actor_t scene_parallax_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 112 * 16,
-            .y = 104 * 16
+            .x = 3584,
+            .y = 3328
         },
         .bounds = {
-            .left = -22,
-            .bottom = 7,
-            .right = 33,
-            .top = -31
+            .left = PX_TO_SUBPX(-22),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(33),
+            .top = PX_TO_SUBPX(-31)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_elephant),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
+        .persistent = FALSE,
         .collision_group = COLLISION_GROUP_NONE,
         .collision_enabled = TRUE,
         .reserve_tiles = 0

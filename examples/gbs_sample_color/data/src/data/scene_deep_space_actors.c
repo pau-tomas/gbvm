@@ -12,22 +12,22 @@
 
 BANKREF(scene_deep_space_actors)
 
-const struct actor_def_t scene_deep_space_actors[] = {
+const struct actor_t scene_deep_space_actors[] = {
     {
         // Space Dog,
         .pos = {
-            .x = 112 * 16,
-            .y = 112 * 16
+            .x = 3584,
+            .y = 3584
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_dog),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -39,18 +39,18 @@ const struct actor_def_t scene_deep_space_actors[] = {
     {
         // Portal,
         .pos = {
-            .x = 112 * 16,
-            .y = 80 * 16
+            .x = 3584,
+            .y = 2560
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -61,18 +61,18 @@ const struct actor_def_t scene_deep_space_actors[] = {
     {
         // Save Point,
         .pos = {
-            .x = 152 * 16,
-            .y = 112 * 16
+            .x = 4864,
+            .y = 3584
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_savepoint),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 31,
         .pinned = FALSE,
         .persistent = FALSE,

@@ -1,0 +1,39 @@
+{
+  "_resourceType": "actor",
+  "id": "8c40c4a7-adfb-4340-bcbe-878374d0c4b0",
+  "_index": 6,
+  "symbol": "actor_signpostbottom",
+  "prefabId": "",
+  "name": "SignpostBottom",
+  "x": 7,
+  "y": 15,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "2bbb00f0-33a0-4beb-aaa1-b430a565d5fb",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "c1dc5575-e478-4c60-a4a4-dd7f1a15a522",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Scene With Dynamic\nActor Sprites"
+        ],
+        "avatarId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

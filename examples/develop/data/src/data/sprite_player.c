@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: player
-  
+
 #include "gbs_types.h"
-#include "data/tileset_player.h"
+#include "data/sprite_player_tileset.h"
+
 
 BANKREF(sprite_player)
 
-#define SPRITE_2_STATE_DEFAULT 0
-#define SPRITE_2_STATE_OPEN 0
+#define SPRITE_0_STATE_DEFAULT 0
+#define SPRITE_0_STATE_OPEN 0
 
 const metasprite_t sprite_player_metasprite_0[]  = {
     { 0, 8, 8, 0 }, { 0, -8, 10, 0 },
@@ -100,7 +101,7 @@ const struct animation_t sprite_player_animations[] = {
 };
 
 const UWORD sprite_player_animations_lookup[] = {
-    SPRITE_2_STATE_DEFAULT
+    SPRITE_0_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_player = {
@@ -113,11 +114,11 @@ const struct spritesheet_t sprite_player = {
     .animations = sprite_player_animations,
     .animations_lookup = sprite_player_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = 0
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(0)
     },
-    .tileset = TO_FAR_PTR_T(tileset_player),
+    .tileset = TO_FAR_PTR_T(sprite_player_tileset),
     .cgb_tileset = { NULL, NULL }
 };

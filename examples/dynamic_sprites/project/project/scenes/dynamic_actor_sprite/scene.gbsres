@@ -1,0 +1,33 @@
+{
+  "_resourceType": "scene",
+  "id": "336f895e-ffce-4369-b62a-890661dda9d9",
+  "_index": 4,
+  "type": "TOPDOWN",
+  "name": "Dynamic Actor Sprite",
+  "symbol": "scene_dynamic_actor_sprite",
+  "x": 466.5,
+  "y": 269,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "6e1d5b0c-2c5e-4a77-9253-2004fc5b2bed",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "00f9f36f-8245-4451-ae1b-7e8ea7d83ef4",
+  "script": [
+    {
+      "id": "b6e1c83a-dccb-4372-87ca-cd78cbfe5f31",
+      "command": "EVENT_ACTOR_SET_SPRITE",
+      "args": {
+        "actorId": "$self$",
+        "spriteSheetId": "9a8b6cd9-ea7a-49ab-bdbe-7273ce42f793"
+      }
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00168+"
+}

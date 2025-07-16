@@ -17,22 +17,22 @@
 
 BANKREF(scene_underground_actors)
 
-const struct actor_def_t scene_underground_actors[] = {
+const struct actor_t scene_underground_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 56 * 16,
-            .y = 200 * 16
+            .x = 1792,
+            .y = 6400
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -44,18 +44,18 @@ const struct actor_def_t scene_underground_actors[] = {
     {
         // Ice Block,
         .pos = {
-            .x = 192 * 16,
-            .y = 144 * 16
+            .x = 6144,
+            .y = 4608
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_ice),
-        .move_speed = 32,
+        .move_speed = 64,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -67,18 +67,18 @@ const struct actor_def_t scene_underground_actors[] = {
     {
         // Rock 3,
         .pos = {
-            .x = 184 * 16,
-            .y = 216 * 16
+            .x = 5888,
+            .y = 6912
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -90,18 +90,18 @@ const struct actor_def_t scene_underground_actors[] = {
     {
         // Rock 2,
         .pos = {
-            .x = 168 * 16,
-            .y = 216 * 16
+            .x = 5376,
+            .y = 6912
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -113,18 +113,18 @@ const struct actor_def_t scene_underground_actors[] = {
     {
         // Rock 1,
         .pos = {
-            .x = 152 * 16,
-            .y = 216 * 16
+            .x = 4864,
+            .y = 6912
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_rock),
-        .move_speed = 8,
+        .move_speed = 16,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

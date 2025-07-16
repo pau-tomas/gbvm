@@ -1,0 +1,10 @@
+{
+  "_resourceType": "font",
+  "id": "5d9b6292-8047-4d42-9155-4dae74352d9c",
+  "name": "ascii",
+  "symbol": "font_ascii",
+  "width": 128,
+  "height": 112,
+  "mapping": {},
+  "filename": "ascii.png"
+}

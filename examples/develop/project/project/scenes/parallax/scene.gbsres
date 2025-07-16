@@ -1,0 +1,47 @@
+{
+  "_resourceType": "scene",
+  "id": "88f214e9-8604-47da-97a3-8400850cde77",
+  "_index": 8,
+  "type": "PLATFORM",
+  "name": "Parallax",
+  "symbol": "scene_parallax",
+  "x": 340,
+  "y": 978,
+  "width": 80,
+  "height": 18,
+  "backgroundId": "734c3bb5-e825-4278-a215-7f1e9687c968",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "2801a5c2-3b0b-41b9-90c9-ec2af73d825d",
+    "93eb6fc1-98a9-4211-90dc-a58e5e60dfd5",
+    "442ebe35-d017-49dc-8b71-b48124ec4b9a",
+    "5dafcf6e-b1d8-4c6b-b105-32d877f561e4",
+    "default-bg-5",
+    "2ebac764-bebb-4707-920b-2a975675b2cb",
+    "dmg",
+    "default-ui"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "parallax": [
+    {
+      "height": 10,
+      "speed": 6
+    },
+    {
+      "height": 4,
+      "speed": 3
+    },
+    {
+      "height": 0,
+      "speed": 0
+    }
+  ],
+  "playerSpriteSheetId": "",
+  "script": [],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "00460+0f140+"
+}

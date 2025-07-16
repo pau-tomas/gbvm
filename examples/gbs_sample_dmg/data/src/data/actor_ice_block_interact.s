@@ -22,12 +22,12 @@ _actor_ice_block_interact::
         ; -- Calculate coordinate values
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    15
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    10
             .R_OPERATOR .EQ
@@ -50,7 +50,7 @@ _actor_ice_block_interact::
         VM_IF_CONST             .EQ, .LOCAL_TMP1_PUSH_DIR_VAR, .DIR_RIGHT, 5$, 0
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    12800
+            .R_INT16    25600
             .R_OPERATOR .ADD
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
@@ -58,7 +58,7 @@ _actor_ice_block_interact::
 3$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    12800
+            .R_INT16    25600
             .R_OPERATOR .SUB
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -68,7 +68,7 @@ _actor_ice_block_interact::
 4$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    12800
+            .R_INT16    25600
             .R_OPERATOR .SUB
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -78,7 +78,7 @@ _actor_ice_block_interact::
 5$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    12800
+            .R_INT16    25600
             .R_OPERATOR .ADD
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_STOP
@@ -92,12 +92,12 @@ _actor_ice_block_interact::
         ; -- Calculate coordinate values
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    15
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    10
             .R_OPERATOR .EQ

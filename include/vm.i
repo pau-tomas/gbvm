@@ -594,7 +594,9 @@ OP_VM_SAVE_CLEAR         = 0x2F
 
 OP_VM_ACTOR_MOVE_TO             = 0x30
 .ACTOR_ATTR_H_FIRST             = 0x01
-.ACTOR_ATTR_CHECK_COLL          = 0x02
+.ACTOR_ATTR_CHECK_COLL          = 0x22
+.ACTOR_ATTR_CHECK_COLL_WALLS    = 0x02
+.ACTOR_ATTR_CHECK_COLL_ACTORS   = 0x20
 .ACTOR_ATTR_DIAGONAL            = 0x04
 .ACTOR_ATTR_RELATIVE_SNAP_PX    = 0x08
 .ACTOR_ATTR_RELATIVE_SNAP_TILE  = 0x10
@@ -683,7 +685,7 @@ OP_VM_ACTOR_SET_BOUNDS          = 0x37
 ; @param TOP Top boundary of the bounding box.
 ; @param BOTTOM Bottom boundary of the bounding box.
 .macro VM_ACTOR_SET_BOUNDS ACTOR, LEFT, RIGHT, TOP, BOTTOM
-        .db OP_VM_ACTOR_SET_BOUNDS, #<BOTTOM, #<TOP, #<RIGHT, #<LEFT, #>ACTOR, #<ACTOR
+        .db OP_VM_ACTOR_SET_BOUNDS, #>BOTTOM, #<BOTTOM, #>TOP, #<TOP, #>RIGHT, #<RIGHT, #>LEFT, #<LEFT, #>ACTOR, #<ACTOR
 .endm
 
 OP_VM_ACTOR_SET_SPRITESHEET     = 0x38

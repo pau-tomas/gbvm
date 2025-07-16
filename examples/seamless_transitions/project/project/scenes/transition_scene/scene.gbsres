@@ -11,6 +11,7 @@
   "height": 18,
   "backgroundId": "ab0f13fb-6523-45b1-b75d-1075e056ed90",
   "tilesetId": "6e32cd8c-d7da-493c-bc67-11a4d4bd4698",
+  "colorModeOverride": "none",
   "paletteIds": [],
   "spritePaletteIds": [],
   "autoFadeSpeed": 1,
@@ -74,7 +75,8 @@
               },
               "moveType": "horizontal",
               "useCollisions": false,
-              "__collapse": false
+              "__collapse": false,
+              "collideWith": []
             },
             "id": "0d961bf4-b4e5-43d2-a24f-c7b6758ed3db"
           },
@@ -146,7 +148,8 @@
               "moveType": "horizontal",
               "useCollisions": false,
               "__collapse": true,
-              "__comment": false
+              "__comment": false,
+              "collideWith": []
             },
             "id": "4bc6cb36-c0b3-42ee-9c38-a0ec75b03f45"
           },

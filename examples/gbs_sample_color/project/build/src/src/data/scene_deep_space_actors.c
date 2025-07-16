@@ -12,7 +12,7 @@
 
 BANKREF(scene_deep_space_actors)
 
-const struct actor_def_t scene_deep_space_actors[] = {
+const struct actor_t scene_deep_space_actors[] = {
     {
         // Space Dog,
         .pos = {
@@ -20,10 +20,10 @@ const struct actor_def_t scene_deep_space_actors[] = {
             .y = 112 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_dog),
@@ -43,10 +43,10 @@ const struct actor_def_t scene_deep_space_actors[] = {
             .y = 80 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_portal),
@@ -65,10 +65,10 @@ const struct actor_def_t scene_deep_space_actors[] = {
             .y = 112 * 16
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_savepoint),

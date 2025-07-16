@@ -1,8 +1,9 @@
 #pragma bank 255
 // SpriteSheet: static
-  
+
 #include "gbs_types.h"
-#include "data/tileset_static.h"
+#include "data/sprite_static_tileset.h"
+
 
 BANKREF(sprite_static)
 
@@ -66,11 +67,11 @@ const struct spritesheet_t sprite_static = {
     .animations = sprite_static_animations,
     .animations_lookup = sprite_static_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_static),
+    .tileset = TO_FAR_PTR_T(sprite_static_tileset),
     .cgb_tileset = { NULL, NULL }
 };

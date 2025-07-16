@@ -1,0 +1,108 @@
+{
+  "_resourceType": "scene",
+  "id": "c860944a-2fd8-4d44-94e6-2480b4463283",
+  "_index": 0,
+  "type": "TOPDOWN",
+  "name": "Scene 1",
+  "symbol": "scene_scene_1",
+  "x": 162,
+  "y": 172,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [
+    {
+      "id": "4f795c18-a712-4b7e-93f0-bea97b7cf0c2",
+      "command": "EVENT_FADE_IN",
+      "args": {
+        "speed": "2"
+      }
+    },
+    {
+      "id": "63c4cbb5-79f7-46fe-b556-f81563364b52",
+      "command": "EVENT_CHOICE",
+      "args": {
+        "variable": "L0",
+        "trueText": "Host Game",
+        "falseText": "Join Game"
+      }
+    },
+    {
+      "id": "01fcf9fb-ff7b-4709-b611-69d92e88b82b",
+      "command": "EVENT_IF",
+      "args": {
+        "variable": "L0",
+        "__collapseElse": false,
+        "condition": {
+          "type": "variable",
+          "value": "L0"
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "id": "57781d54-50c2-4652-9d56-6f663052b8c5",
+            "command": "EVENT_LINK_HOST",
+            "args": {
+              "__collapse": false
+            }
+          }
+        ],
+        "false": [
+          {
+            "id": "1565493a-3641-46a5-9246-a77df2a150be",
+            "command": "EVENT_LINK_JOIN",
+            "args": {}
+          }
+        ]
+      }
+    },
+    {
+      "id": "f5986cbd-1bd3-432a-bc4c-aab6b700efec",
+      "command": "EVENT_LOOP",
+      "args": {},
+      "children": {
+        "true": [
+          {
+            "id": "7e551200-7a92-47ff-baf8-1d0d76d92258",
+            "command": "EVENT_CHOICE",
+            "args": {
+              "variable": "L1",
+              "trueText": "1",
+              "falseText": "0"
+            }
+          },
+          {
+            "id": "75690b1e-0df4-4c06-850c-9d18fdfdda1f",
+            "command": "EVENT_LINK_TRANSFER",
+            "args": {
+              "sendVariable": "L1",
+              "receiveVariable": "L2",
+              "size": 1,
+              "__collapse": false
+            }
+          },
+          {
+            "id": "7553d371-c239-4b88-8416-06a62cfbc8d3",
+            "command": "EVENT_TEXT",
+            "args": {
+              "text": [
+                "MINE=$L1$\nTHEIRS=$L2$"
+              ],
+              "avatarId": ""
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": ""
+}

@@ -21,7 +21,7 @@ const struct scene_t scene_level_1 = {
     .background = TO_FAR_PTR_T(symbol),
     .collisions = TO_FAR_PTR_T(scene_level_1_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_1),

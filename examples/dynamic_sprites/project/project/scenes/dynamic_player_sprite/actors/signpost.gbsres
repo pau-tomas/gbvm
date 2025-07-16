@@ -1,0 +1,39 @@
+{
+  "_resourceType": "actor",
+  "id": "a45226cc-d8d3-4d29-85bb-78ccbafeac21",
+  "_index": 1,
+  "symbol": "actor_signpost_0",
+  "prefabId": "",
+  "name": "Signpost",
+  "x": 7,
+  "y": 2,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "2bbb00f0-33a0-4beb-aaa1-b430a565d5fb",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "f5a6b733-ed88-464c-ad5b-1dd368898978",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Return to\nstart scene"
+        ],
+        "avatarId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

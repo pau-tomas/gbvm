@@ -13,8 +13,6 @@
 .LOCAL_TMP2_WAIT_ARGS = -7
 .LOCAL_TMP3_WAIT_ARGS = -7
 .LOCAL_TMP4_CAMERA_SHAKE_ARGS = -7
-.LOCAL_TMP5_LOCAL = -7
-.LOCAL_TMP6_LOCAL = -8
 
 ___bank_trigger_38_interact = 255
 .globl ___bank_trigger_38_interact
@@ -22,7 +20,7 @@ ___bank_trigger_38_interact = 255
 _trigger_38_interact::
         VM_LOCK
 
-        VM_RESERVE              8
+        VM_RESERVE              7
 
         ; If Actor At Position
         VM_SET_CONST            .LOCAL_ACTOR, 2
@@ -30,12 +28,12 @@ _trigger_38_interact::
         ; -- Calculate coordinate values
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    4
             .R_OPERATOR .EQ
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT8     7
+            .R_INT8     8
             .R_OPERATOR .SHR
             .R_INT16    10
             .R_OPERATOR .EQ
@@ -103,7 +101,7 @@ _trigger_38_interact::
         VM_RPN
             .R_INT16    0
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    1152
+            .R_INT16    2304
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
         VM_SET_CONST            .LOCAL_ACTOR, 0
@@ -144,42 +142,15 @@ _trigger_38_interact::
         VM_OVERLAY_WAIT         .UI_MODAL, ^/(.UI_WAIT_WINDOW | .UI_WAIT_TEXT)/
 
         ; Actor Move Relative
-        ; -- Fetch $self$ xpos
-        VM_SET_CONST            .LOCAL_ACTOR, 0
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP5_LOCAL
-            .R_STOP
-        ; -- Fetch $self$ ypos
-        VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    128
-            .R_OPERATOR .DIV
-            .R_REF_SET  .LOCAL_TMP6_LOCAL
-            .R_STOP
         ; -- Calculate coordinate values
         VM_RPN
-            .R_REF      .LOCAL_TMP5_LOCAL
             .R_INT16    0
-            .R_OPERATOR .ADD
-            .R_INT16    7
-            .R_OPERATOR .SHL
-            .R_INT16    0
-            .R_OPERATOR .MAX
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_REF      .LOCAL_TMP6_LOCAL
-            .R_INT16    2
-            .R_OPERATOR .ADD
-            .R_INT16    7
-            .R_OPERATOR .SHL
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    512
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    ^/(.ACTOR_ATTR_H_FIRST | .ACTOR_ATTR_RELATIVE_SNAP_TILE)/
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR

@@ -1,7 +1,7 @@
 #pragma bank 255
 
 // Font: font-vwf.png
-  
+
 #include "gbs_types.h"
 
 static const UBYTE font_font_vwf_table[] = {
@@ -125,7 +125,7 @@ static const UBYTE font_font_vwf_bitmaps[] = {
 
 BANKREF(font_font_vwf)
 const font_desc_t font_font_vwf = {
-    FONT_RECODE | FONT_VWF | FONT_VWF_1BIT, 
+    FONT_RECODE | FONT_VWF | FONT_VWF_1BIT,
     FONT_RECODE_SIZE_7BIT,
     font_font_vwf_table,
     font_font_vwf_widths,

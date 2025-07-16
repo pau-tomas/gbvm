@@ -14,10 +14,10 @@ const struct projectile_def_t scene_2_projectiles[] = {
   {
     // Projectile 1,
     .bounds = {
-      .left = 0,
-      .right = 16,
-      .top = -16,
-      .bottom = 0
+      .left = PX_TO_SUBPX(0),
+      .right = PX_TO_SUBPX(16),
+      .top = PX_TO_SUBPX(-16),
+      .bottom = PX_TO_SUBPX(0)
     },
     .sprite = TO_FAR_PTR_T(spritesheet_5),
     .move_speed = 60,
@@ -30,10 +30,10 @@ const struct projectile_def_t scene_2_projectiles[] = {
   {
     // Projectile 2,
     .bounds = {
-      .left = 0,
-      .right = 16,
-      .top = -16,
-      .bottom = 0
+      .left = PX_TO_SUBPX(0),
+      .right = PX_TO_SUBPX(16),
+      .top = PX_TO_SUBPX(-16),
+      .bottom = PX_TO_SUBPX(0)
     },
     .sprite = TO_FAR_PTR_T(spritesheet_9),
     .move_speed = 32,

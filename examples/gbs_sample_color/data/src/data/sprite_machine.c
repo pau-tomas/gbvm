@@ -7,9 +7,9 @@
 
 BANKREF(sprite_machine)
 
-#define SPRITE_25_STATE_DEFAULT 0
-#define SPRITE_25_STATE_EXPLODE 0
-#define SPRITE_25_STATE_OPEN 0
+#define SPRITE_23_STATE_DEFAULT 0
+#define SPRITE_23_STATE_EXPLODE 0
+#define SPRITE_23_STATE_OPEN 0
 
 const metasprite_t sprite_machine_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -62,7 +62,7 @@ const struct animation_t sprite_machine_animations[] = {
 };
 
 const UWORD sprite_machine_animations_lookup[] = {
-    SPRITE_25_STATE_DEFAULT
+    SPRITE_23_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_machine = {
@@ -75,10 +75,10 @@ const struct spritesheet_t sprite_machine = {
     .animations = sprite_machine_animations,
     .animations_lookup = sprite_machine_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_machine_tileset),
     .cgb_tileset = { NULL, NULL }

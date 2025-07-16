@@ -1,0 +1,177 @@
+{
+  "_resourceType": "actor",
+  "id": "c2e40cab-9a00-4180-b4c0-372726593b18",
+  "_index": 2,
+  "symbol": "actor_2",
+  "prefabId": "",
+  "name": "",
+  "x": 9,
+  "y": 1,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "11b5452b-187c-43a3-afb1-a1f4f74ffda2",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "1",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [],
+  "startScript": [
+    {
+      "command": "EVENT_SET_VALUE",
+      "args": {
+        "variable": "L0",
+        "__collapse": true,
+        "value": {
+          "type": "false"
+        }
+      },
+      "id": "ea3888f2-e86a-49e0-9107-d03b0ec1a9d0"
+    }
+  ],
+  "updateScript": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "variable": "L0",
+        "__collapseElse": true,
+        "__collapse": false,
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "L0"
+          },
+          "valueB": {
+            "type": "false"
+          }
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_VARIABLE_MATH",
+            "args": {
+              "vectorX": "L1",
+              "operation": "set",
+              "other": "rnd",
+              "vectorY": "L0",
+              "value": "0",
+              "minValue": "0",
+              "maxValue": 18,
+              "clamp": false,
+              "__collapse": true
+            },
+            "id": "d7a7139b-69e3-4307-bbf4-155220979b80"
+          },
+          {
+            "command": "EVENT_VARIABLE_MATH",
+            "args": {
+              "vectorX": "L2",
+              "operation": "set",
+              "other": "rnd",
+              "vectorY": "L0",
+              "value": "0",
+              "minValue": 1,
+              "maxValue": 17,
+              "clamp": false,
+              "__collapse": false
+            },
+            "id": "2cec51c4-83e7-4662-bde1-565e838ff294"
+          },
+          {
+            "command": "EVENT_ACTOR_MOVE_TO",
+            "args": {
+              "actorId": "$self$",
+              "x": {
+                "type": "variable",
+                "value": "L1"
+              },
+              "y": {
+                "type": "variable",
+                "value": "L2"
+              },
+              "moveType": "horizontal",
+              "useCollisions": true,
+              "__collapse": false,
+              "collideWith": [
+                "walls",
+                "actors"
+              ]
+            },
+            "id": "4b5bdf99-5006-4800-ac62-0599a394d209"
+          }
+        ],
+        "false": []
+      },
+      "id": "e56bdbab-f660-43ed-a9c3-162ad43586eb"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "VM_IDLE"
+      },
+      "id": "d809322f-1124-445d-8541-81a42b80f619"
+    }
+  ],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": [
+    {
+      "command": "EVENT_IF",
+      "args": {
+        "variable": "L0",
+        "__collapseElse": false,
+        "condition": {
+          "type": "eq",
+          "valueA": {
+            "type": "variable",
+            "value": "L0"
+          },
+          "valueB": {
+            "type": "false"
+          }
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "L0",
+              "__comment": false,
+              "value": {
+                "type": "true"
+              }
+            },
+            "id": "f1c85dea-75b9-4422-bdce-c05cc5a80d96"
+          },
+          {
+            "command": "EVENT_ACTOR_MOVE_CANCEL",
+            "args": {
+              "actorId": "$self$"
+            },
+            "id": "7b7020c2-da3a-4172-979d-f20cccebe10c"
+          }
+        ],
+        "false": [
+          {
+            "command": "EVENT_SET_VALUE",
+            "args": {
+              "variable": "L0",
+              "value": {
+                "type": "false"
+              }
+            },
+            "id": "3b74cce8-e551-40ba-b219-e59040578ce9"
+          }
+        ]
+      },
+      "id": "7e9e410f-b888-4165-9d73-ee67fce97ce7"
+    }
+  ]
+}

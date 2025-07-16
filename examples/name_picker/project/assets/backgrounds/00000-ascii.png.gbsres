@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "8c90060f-fd57-4468-9c8e-6f8549a776e8",
+  "name": "00000-ascii",
+  "symbol": "bg_00000_ascii",
+  "tileColors": "",
+  "filename": "00000-ascii.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}

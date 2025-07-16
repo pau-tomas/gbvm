@@ -7,9 +7,9 @@
 
 BANKREF(sprite_keyboard)
 
-#define SPRITE_26_STATE_DEFAULT 0
-#define SPRITE_26_STATE_EXPLODE 0
-#define SPRITE_26_STATE_OPEN 0
+#define SPRITE_24_STATE_DEFAULT 0
+#define SPRITE_24_STATE_EXPLODE 0
+#define SPRITE_24_STATE_OPEN 0
 
 const metasprite_t sprite_keyboard_metasprite_0[]  = {
     { 0, 16, 0, 0 }, { 0, -8, 2, 0 }, { 0, -8, 4, 0 }, { 0, -8, 6, 0 },
@@ -56,7 +56,7 @@ const struct animation_t sprite_keyboard_animations[] = {
 };
 
 const UWORD sprite_keyboard_animations_lookup[] = {
-    SPRITE_26_STATE_DEFAULT
+    SPRITE_24_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_keyboard = {
@@ -69,10 +69,10 @@ const struct spritesheet_t sprite_keyboard = {
     .animations = sprite_keyboard_animations,
     .animations_lookup = sprite_keyboard_animations_lookup,
     .bounds = {
-        .left = -8,
-        .bottom = 7,
-        .right = 23,
-        .top = -8
+        .left = PX_TO_SUBPX(-8),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(23),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_keyboard_tileset),
     .cgb_tileset = { NULL, NULL }

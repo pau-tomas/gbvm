@@ -8,22 +8,22 @@
 
 BANKREF(scene_color_actors)
 
-const struct actor_def_t scene_color_actors[] = {
+const struct actor_t scene_color_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 80 * 16,
-            .y = 104 * 16
+            .x = 2560,
+            .y = 3328
         },
         .bounds = {
-            .left = -21,
-            .bottom = 7,
-            .right = 25,
-            .top = -31
+            .left = PX_TO_SUBPX(-21),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(25),
+            .top = PX_TO_SUBPX(-31)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_elephant_color),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

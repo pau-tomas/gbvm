@@ -1,0 +1,158 @@
+{
+  "_resourceType": "sprite",
+  "id": "ede130e6-013a-42d1-a786-1aed3fd3cf32",
+  "name": "duck",
+  "symbol": "sprite_duck",
+  "states": [
+    {
+      "id": "6d5229a5-385e-4c3b-9329-9515c9536a2c",
+      "name": "",
+      "animationType": "fixed",
+      "flipLeft": false,
+      "animations": [
+        {
+          "id": "91a91962-e861-4e69-913e-2c71511e1213",
+          "frames": [
+            {
+              "id": "92580f27-adaf-4072-b00d-d0522c274768",
+              "tiles": [
+                {
+                  "id": "8a9851cd-9778-4c1e-bd1d-8eabb9882962",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 0,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "a48ebd3c-a651-4a44-aabf-d272af4ae2a6",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 8,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            },
+            {
+              "id": "fc1883ee-6527-4d8b-9388-2dd3bd3a27a5",
+              "tiles": [
+                {
+                  "id": "a7dc8007-aaf9-4bc0-9c78-3b37f9bda4ec",
+                  "x": 0,
+                  "y": 0,
+                  "sliceX": 16,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                },
+                {
+                  "id": "4afe4eb8-5168-4b43-ab9c-c9ef659242c5",
+                  "x": 8,
+                  "y": 0,
+                  "sliceX": 24,
+                  "sliceY": 0,
+                  "flipX": false,
+                  "flipY": false,
+                  "palette": 0,
+                  "paletteIndex": 0,
+                  "objPalette": "OBP0",
+                  "priority": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8b89dd80-0d08-4501-9573-ba05bcbdac96",
+          "frames": [
+            {
+              "id": "d74ddb0d-24dd-491e-a73a-f7af0d20144a",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "18a96787-90ae-4eab-b640-99f97ec3b872",
+          "frames": [
+            {
+              "id": "7b7f5905-842a-48be-bf0f-12132e4a6622",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "a4e15f7f-b91f-4bcd-a56a-953e4f291278",
+          "frames": [
+            {
+              "id": "e31481b2-42ec-4cb3-b84a-05deef11cde2",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "7f1566fd-8861-42d1-8816-3be9b9fc1370",
+          "frames": [
+            {
+              "id": "8b41bdf9-fa0e-4722-980e-4e45e088e4ec",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "ced7cdce-e24d-4610-81d1-64d3bfaa6ebb",
+          "frames": [
+            {
+              "id": "19777de8-2a1f-497f-888d-bbe18f5e3469",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "a0362a11-5c92-4876-b4c8-a8f3a75714da",
+          "frames": [
+            {
+              "id": "50e23774-c3ce-4612-b379-6b905e6be39d",
+              "tiles": []
+            }
+          ]
+        },
+        {
+          "id": "e488c3f1-43ae-49c7-9566-f632b5299620",
+          "frames": [
+            {
+              "id": "b04e010a-e031-4ba6-a386-9b3d99da02fa",
+              "tiles": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "numTiles": 4,
+  "canvasWidth": 16,
+  "canvasHeight": 16,
+  "boundsX": 0,
+  "boundsY": 0,
+  "boundsWidth": 16,
+  "boundsHeight": 16,
+  "animSpeed": 15,
+  "filename": "duck.png",
+  "width": 32,
+  "height": 16,
+  "checksum": "478ef3a9a69777125e9dd4431884adb5c7f079b3"
+}

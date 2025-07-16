@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "1a089914-a9c6-4577-9d5e-d74543d6a8e3",
+  "name": "gbs-mono",
+  "symbol": "bg_gbs_mono",
+  "tileColors": "",
+  "filename": "gbs-mono.png",
+  "width": 16,
+  "height": 14,
+  "imageWidth": 128,
+  "imageHeight": 112
+}

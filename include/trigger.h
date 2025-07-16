@@ -45,7 +45,25 @@ void trigger_interact(UBYTE i) BANKED;
  */
 UBYTE trigger_activate_at(UBYTE tx, UBYTE ty, UBYTE force) BANKED;
 
-UBYTE trigger_activate_at_intersection(bounding_box_t *bb, point16_t *offset, UBYTE force) BANKED;
-UBYTE trigger_at_intersection(bounding_box_t *bb, point16_t *offset) BANKED;
+UBYTE trigger_activate_at_intersection(rect16_t *bb, upoint16_t *offset, UBYTE force) BANKED;
+
+inline UBYTE trigger_at_intersection(rect16_t *bb, upoint16_t *offset) {
+    UBYTE tile_left   = SUBPX_TO_TILE(offset->x + bb->left);
+    UBYTE tile_right  = SUBPX_TO_TILE(offset->x + bb->right);
+    UBYTE tile_top    = SUBPX_TO_TILE(offset->y + bb->top);
+    UBYTE tile_bottom = SUBPX_TO_TILE(offset->y + bb->bottom);
+    UBYTE i;
+
+    for (i = 0; i != triggers_len; i++) {
+        if ((tile_left <= triggers[i].right)
+            && (tile_right >= triggers[i].left)
+            && (tile_top <= triggers[i].bottom)
+            && (tile_bottom >= triggers[i].top)) {
+                return i;
+        }
+    }
+
+    return NO_TRIGGER_COLLISON;
+}
 
 #endif

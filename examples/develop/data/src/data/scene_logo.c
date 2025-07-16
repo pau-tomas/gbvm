@@ -8,7 +8,7 @@
 #include "data/palette_0.h"
 #include "data/palette_6.h"
 #include "data/sprite_player.h"
-#include "data/script_s1_init.h"
+#include "data/scene_logo_init.h"
 
 BANKREF(scene_logo)
 
@@ -19,7 +19,7 @@ const struct scene_t scene_logo = {
     .background = TO_FAR_PTR_T(bg_logo_test),
     .collisions = TO_FAR_PTR_T(scene_logo_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_6),
@@ -29,5 +29,5 @@ const struct scene_t scene_logo = {
     .n_triggers = 0,
     .n_sprites = 0,
     .n_projectiles = 0,
-    .script_init = TO_FAR_PTR_T(script_s1_init)
+    .script_init = TO_FAR_PTR_T(scene_logo_init)
 };

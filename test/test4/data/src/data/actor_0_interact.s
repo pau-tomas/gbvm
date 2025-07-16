@@ -31,7 +31,7 @@ GBVM$actor_0_interact$92d529bb_be4b_41b0_9d66_320a91fd193c$94c18861_b352_4f49_a6
         VM_IF_CONST             .EQ, .LOCAL_TMP1_PUSH_DIR_VAR, .DIR_RIGHT, 3$, 0
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .ADD
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
             .R_STOP
@@ -39,7 +39,7 @@ GBVM$actor_0_interact$92d529bb_be4b_41b0_9d66_320a91fd193c$94c18861_b352_4f49_a6
 1$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 2)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .SUB
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -49,7 +49,7 @@ GBVM$actor_0_interact$92d529bb_be4b_41b0_9d66_320a91fd193c$94c18861_b352_4f49_a6
 2$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .SUB
             .R_INT16    0
             .R_OPERATOR .MAX
@@ -59,7 +59,7 @@ GBVM$actor_0_interact$92d529bb_be4b_41b0_9d66_320a91fd193c$94c18861_b352_4f49_a6
 3$:
         VM_RPN
             .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    256
+            .R_INT16    512
             .R_OPERATOR .ADD
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_STOP

@@ -11,22 +11,22 @@
 
 BANKREF(scene_scene_1_actors)
 
-const struct actor_def_t scene_scene_1_actors[] = {
+const struct actor_t scene_scene_1_actors[] = {
     {
         // Actor 1,
         .pos = {
-            .x = 16 * 16,
-            .y = 96 * 16
+            .x = 512,
+            .y = 3072
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -38,18 +38,18 @@ const struct actor_def_t scene_scene_1_actors[] = {
     {
         // Actor 2,
         .pos = {
-            .x = 128 * 16,
-            .y = 96 * 16
+            .x = 4096,
+            .y = 3072
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_actor),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

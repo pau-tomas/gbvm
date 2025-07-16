@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: bullet_directional
-  
+
 #include "gbs_types.h"
-#include "data/tileset_bullet_directional.h"
+#include "data/sprite_bullet_directional_tileset.h"
+
 
 BANKREF(sprite_bullet_directional)
 
-#define SPRITE_1_STATE_DEFAULT 0
-#define SPRITE_1_STATE_OPEN 0
+#define SPRITE_17_STATE_DEFAULT 0
+#define SPRITE_17_STATE_OPEN 0
 
 const metasprite_t sprite_bullet_directional_metasprite_0[]  = {
     { 0, 8, 8, 64 }, { 0, -8, 10, 64 },
@@ -96,7 +97,7 @@ const struct animation_t sprite_bullet_directional_animations[] = {
 };
 
 const UWORD sprite_bullet_directional_animations_lookup[] = {
-    SPRITE_1_STATE_DEFAULT
+    SPRITE_17_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_bullet_directional = {
@@ -109,11 +110,11 @@ const struct spritesheet_t sprite_bullet_directional = {
     .animations = sprite_bullet_directional_animations,
     .animations_lookup = sprite_bullet_directional_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_bullet_directional),
+    .tileset = TO_FAR_PTR_T(sprite_bullet_directional_tileset),
     .cgb_tileset = { NULL, NULL }
 };

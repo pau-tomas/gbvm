@@ -11,7 +11,7 @@
 #include "data/scene_underground_actors.h"
 #include "data/scene_underground_triggers.h"
 #include "data/scene_underground_sprites.h"
-#include "data/script_s3_init.h"
+#include "data/scene_underground_init.h"
 
 BANKREF(scene_underground)
 
@@ -22,7 +22,7 @@ const struct scene_t scene_underground = {
     .background = TO_FAR_PTR_T(bg_underground),
     .collisions = TO_FAR_PTR_T(scene_underground_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_6),
@@ -35,5 +35,5 @@ const struct scene_t scene_underground = {
     .actors = TO_FAR_PTR_T(scene_underground_actors),
     .triggers = TO_FAR_PTR_T(scene_underground_triggers),
     .sprites = TO_FAR_PTR_T(scene_underground_sprites),
-    .script_init = TO_FAR_PTR_T(script_s3_init)
+    .script_init = TO_FAR_PTR_T(scene_underground_init)
 };

@@ -10,7 +10,7 @@
 #include "data/sprite_cat.h"
 #include "data/scene_dynamic_player_sprite_actors.h"
 #include "data/scene_dynamic_player_sprite_sprites.h"
-#include "data/script_s2_init.h"
+#include "data/scene_dynamic_player_sprite_init.h"
 
 BANKREF(scene_dynamic_player_sprite)
 
@@ -21,7 +21,7 @@ const struct scene_t scene_dynamic_player_sprite = {
     .background = TO_FAR_PTR_T(bg_placeholder),
     .collisions = TO_FAR_PTR_T(scene_dynamic_player_sprite_collisions),
     .parallax_rows = {
-        PARALLAX_STEP(0,0,0)
+        PARALLAX_STEP(0, 0, 0)
     },
     .palette = TO_FAR_PTR_T(palette_0),
     .sprite_palette = TO_FAR_PTR_T(palette_1),
@@ -33,5 +33,5 @@ const struct scene_t scene_dynamic_player_sprite = {
     .n_projectiles = 0,
     .actors = TO_FAR_PTR_T(scene_dynamic_player_sprite_actors),
     .sprites = TO_FAR_PTR_T(scene_dynamic_player_sprite_sprites),
-    .script_init = TO_FAR_PTR_T(script_s2_init)
+    .script_init = TO_FAR_PTR_T(scene_dynamic_player_sprite_init)
 };

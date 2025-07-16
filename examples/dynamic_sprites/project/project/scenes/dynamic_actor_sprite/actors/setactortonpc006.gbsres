@@ -1,0 +1,37 @@
+{
+  "_resourceType": "actor",
+  "id": "1be597ee-e68c-41c2-9226-250fe320f32a",
+  "_index": 5,
+  "symbol": "actor_setactortonpc006",
+  "prefabId": "",
+  "name": "SetActorToNPC006",
+  "x": 4,
+  "y": 14,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "f78876b6-d8d6-4d47-8a9b-5ef1bebd01fe",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "448b1dc7-cce7-465c-8ca5-c17d01efad50",
+      "command": "EVENT_ACTOR_SET_SPRITE",
+      "args": {
+        "actorId": "fd2c33a9-d4cd-4b14-a26e-fcf628ae765f",
+        "spriteSheetId": "3b426182-2a19-4de7-9fd0-f711a2fee50b"
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

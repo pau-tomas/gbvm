@@ -46,16 +46,13 @@ _cutscene_trigger_interact::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    1280
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    2560
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    2176
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    4352
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    .ACTOR_ATTR_H_FIRST
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
@@ -63,16 +60,13 @@ _cutscene_trigger_interact::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    3072
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    6144
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    2688
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    5376
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    .ACTOR_ATTR_H_FIRST
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
@@ -80,16 +74,13 @@ _cutscene_trigger_interact::
         ; Actor Move To
         ; -- Calculate coordinate values
         VM_RPN
-            .R_INT16    2688
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    5376
             .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    3968
-            .R_INT16    0
-            .R_OPERATOR .MAX
+            .R_INT16    7936
             .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    .ACTOR_ATTR_H_FIRST
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, .ACTOR_ATTR_H_FIRST
         ; -- Move Actor
         VM_SET_CONST            .LOCAL_ACTOR, 0
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR

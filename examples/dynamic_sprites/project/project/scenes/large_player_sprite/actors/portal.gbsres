@@ -1,0 +1,46 @@
+{
+  "_resourceType": "actor",
+  "id": "94672a70-7174-42ac-9cea-231b7340dbab",
+  "_index": 0,
+  "symbol": "actor_portal_1",
+  "prefabId": "",
+  "name": "Portal",
+  "x": 8,
+  "y": 2,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "50c90331-8fb0-44c4-922d-f06e5a02bfb9",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 7,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "1",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "01445e20-f4bf-4618-b9cc-67ea08e746b7",
+      "command": "EVENT_SWITCH_SCENE",
+      "args": {
+        "sceneId": "df86b99e-7801-47ba-8eba-0f3e3559795d",
+        "x": {
+          "type": "number",
+          "value": 9
+        },
+        "y": {
+          "type": "number",
+          "value": 11
+        },
+        "direction": "down",
+        "fadeSpeed": "2"
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

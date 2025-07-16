@@ -1,0 +1,39 @@
+{
+  "_resourceType": "actor",
+  "id": "c7f1e2da-99b9-4ca0-9654-3fd5317aa1d6",
+  "_index": 0,
+  "symbol": "actor_0",
+  "prefabId": "",
+  "name": "",
+  "x": 22,
+  "y": 13,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "ded99398-37ea-4cc1-99ef-bf2d62af2087",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 15,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "37961ab4-1054-4cdf-a7c7-7e6f0e19d94e",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "This is an example of\nproportional text."
+        ],
+        "avatarId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

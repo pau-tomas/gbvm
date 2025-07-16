@@ -1,7 +1,7 @@
 #pragma bank 255
 
 // Font: font-serif.png
-  
+
 #include "gbs_types.h"
 
 static const UBYTE font_font_serif_table[] = {
@@ -250,7 +250,7 @@ static const UBYTE font_font_serif_bitmaps[] = {
 
 BANKREF(font_font_serif)
 const font_desc_t font_font_serif = {
-    FONT_RECODE | FONT_VWF, 
+    FONT_RECODE | FONT_VWF,
     0xFF,
     font_font_serif_table,
     font_font_serif_widths,

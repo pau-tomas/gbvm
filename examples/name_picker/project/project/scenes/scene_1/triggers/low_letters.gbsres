@@ -1,0 +1,427 @@
+{
+  "_resourceType": "trigger",
+  "id": "718d12c1-2c44-4bd7-baca-7320916380a7",
+  "_index": 1,
+  "symbol": "trigger_low_letters",
+  "prefabId": "",
+  "name": "Low letters",
+  "x": 10,
+  "y": 1,
+  "width": 9,
+  "height": 9,
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "de2d1fb2-bc18-48fd-accd-f342550837ad",
+      "command": "EVENT_ACTOR_GET_POSITION",
+      "args": {
+        "actorId": "$self$",
+        "vectorX": "T0",
+        "vectorY": "T1",
+        "__comment": false,
+        "__collapse": true
+      }
+    },
+    {
+      "id": "ff845848-449f-4464-a803-c9b629283e87",
+      "command": "EVENT_VARIABLE_MATH",
+      "args": {
+        "vectorX": "T0",
+        "operation": "sub",
+        "other": "val",
+        "vectorY": "L0",
+        "value": 11,
+        "minValue": "0",
+        "maxValue": "255",
+        "__label": "X offset",
+        "__collapse": true
+      }
+    },
+    {
+      "id": "ca280012-56a3-4a19-bf49-334093bdb5b7",
+      "command": "EVENT_VARIABLE_MATH",
+      "args": {
+        "vectorX": "T1",
+        "operation": "sub",
+        "other": "val",
+        "vectorY": "L0",
+        "value": 2,
+        "minValue": "0",
+        "maxValue": "255",
+        "__label": "Y offset",
+        "__collapse": true
+      },
+      "__type": "event"
+    },
+    {
+      "id": "62f167bf-dbfb-48b0-a889-6ff80cb18298",
+      "command": "EVENT_VARIABLE_MATH",
+      "args": {
+        "vectorX": "T1",
+        "operation": "div",
+        "other": "val",
+        "vectorY": "L0",
+        "value": 2,
+        "minValue": "0",
+        "maxValue": "255",
+        "__label": "Line separation",
+        "__collapse": true
+      },
+      "__type": "event"
+    },
+    {
+      "id": "0f0de4ae-d955-4468-86e8-a50fe9f877eb",
+      "command": "EVENT_GROUP",
+      "args": {
+        "__label": "Calculate index from coords",
+        "__collapse": true
+      },
+      "children": {
+        "true": [
+          {
+            "id": "c0df6742-1894-456c-b384-551df0bf66bf",
+            "command": "EVENT_VARIABLE_MATH",
+            "args": {
+              "vectorX": "L0",
+              "operation": "set",
+              "other": "val",
+              "vectorY": "L0",
+              "value": 7,
+              "minValue": "0",
+              "maxValue": "255"
+            }
+          },
+          {
+            "id": "da0218fd-f142-4a43-bb86-53456566faed",
+            "command": "EVENT_VARIABLE_MATH",
+            "args": {
+              "vectorX": "L0",
+              "operation": "mul",
+              "other": "var",
+              "vectorY": "T1",
+              "value": "1",
+              "minValue": "0",
+              "maxValue": "255"
+            }
+          },
+          {
+            "id": "c8546dbd-2d8e-478b-924c-efdeee0e08bf",
+            "command": "EVENT_VARIABLE_MATH",
+            "args": {
+              "vectorX": "L0",
+              "operation": "add",
+              "other": "var",
+              "vectorY": "T0",
+              "value": "1",
+              "minValue": "0",
+              "maxValue": "255",
+              "__comment": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "38f7d774-7760-4e34-b283-d2806f7c6c04",
+      "command": "EVENT_IF",
+      "args": {
+        "variable": "L0",
+        "operator": "<",
+        "comparator": 26,
+        "__collapseElse": false,
+        "__disableElse": true,
+        "__collapse": false,
+        "__label": "Add Lowercase letter",
+        "condition": {
+          "type": "lt",
+          "valueA": {
+            "type": "variable",
+            "value": "L0"
+          },
+          "valueB": {
+            "type": "number",
+            "value": 26
+          }
+        }
+      },
+      "children": {
+        "true": [
+          {
+            "id": "221ffc6e-4831-4b09-b4bd-95bf9e607cfb",
+            "command": "EVENT_VARIABLE_MATH",
+            "args": {
+              "vectorX": "L0",
+              "operation": "add",
+              "other": "val",
+              "vectorY": "L0",
+              "value": 35,
+              "minValue": "0",
+              "maxValue": "255"
+            }
+          },
+          {
+            "id": "3db25999-4229-48af-9614-f86d76dfccdd",
+            "command": "EVENT_SWITCH",
+            "args": {
+              "variable": "10",
+              "choices": 5,
+              "__collapseCase0": false,
+              "value0": {
+                "type": "number",
+                "value": 0
+              },
+              "__collapseCase1": false,
+              "value1": {
+                "type": "number",
+                "value": 1
+              },
+              "__collapseCase2": false,
+              "value2": {
+                "type": "number",
+                "value": 2
+              },
+              "__collapseCase3": false,
+              "value3": {
+                "type": "number",
+                "value": 3
+              },
+              "__collapseCase4": false,
+              "value4": {
+                "type": "number",
+                "value": 4
+              },
+              "__collapseCase5": false,
+              "value5": {
+                "type": "number",
+                "value": 6
+              },
+              "__collapseCase6": false,
+              "value6": {
+                "type": "number",
+                "value": 7
+              },
+              "__collapseCase7": false,
+              "value7": {
+                "type": "number",
+                "value": 8
+              },
+              "__collapseCase8": false,
+              "value8": {
+                "type": "number",
+                "value": 9
+              },
+              "__collapseCase9": false,
+              "value9": {
+                "type": "number",
+                "value": 10
+              },
+              "__collapseCase10": false,
+              "value10": {
+                "type": "number",
+                "value": 11
+              },
+              "__collapseCase11": false,
+              "value11": {
+                "type": "number",
+                "value": 12
+              },
+              "__collapseCase12": false,
+              "value12": {
+                "type": "number",
+                "value": 13
+              },
+              "__collapseCase13": false,
+              "value13": {
+                "type": "number",
+                "value": 14
+              },
+              "__collapseCase14": false,
+              "value14": {
+                "type": "number",
+                "value": 15
+              },
+              "__collapseCase15": false,
+              "value15": {
+                "type": "number",
+                "value": 16
+              },
+              "__collapseElse": false,
+              "__disableElse": false,
+              "__collapse": false,
+              "__label": "Set letter"
+            },
+            "children": {
+              "true0": [
+                {
+                  "id": "182d4384-cbda-4628-bc5b-7e804234edcd",
+                  "command": "EVENT_VARIABLE_MATH",
+                  "args": {
+                    "vectorX": "0",
+                    "operation": "set",
+                    "other": "var",
+                    "vectorY": "L0",
+                    "value": "1",
+                    "minValue": "0",
+                    "maxValue": "255"
+                  }
+                }
+              ],
+              "true1": [
+                {
+                  "id": "a6e64a92-a085-4abd-b3a0-c6544a4ef237",
+                  "command": "EVENT_VARIABLE_MATH",
+                  "args": {
+                    "vectorX": "1",
+                    "operation": "set",
+                    "other": "var",
+                    "vectorY": "L0",
+                    "value": "1",
+                    "minValue": "0",
+                    "maxValue": "255"
+                  },
+                  "__type": "event"
+                }
+              ],
+              "true2": [
+                {
+                  "id": "127adcfc-e1b1-409f-883f-ef3b7af66d3a",
+                  "command": "EVENT_VARIABLE_MATH",
+                  "args": {
+                    "vectorX": "2",
+                    "operation": "set",
+                    "other": "var",
+                    "vectorY": "L0",
+                    "value": "1",
+                    "minValue": "0",
+                    "maxValue": "255"
+                  },
+                  "__type": "event"
+                }
+              ],
+              "true3": [
+                {
+                  "id": "e9cf91f6-472e-4a0f-a851-27a2ba4c8883",
+                  "command": "EVENT_VARIABLE_MATH",
+                  "args": {
+                    "vectorX": "3",
+                    "operation": "set",
+                    "other": "var",
+                    "vectorY": "L0",
+                    "value": "1",
+                    "minValue": "0",
+                    "maxValue": "255"
+                  },
+                  "__type": "event"
+                }
+              ],
+              "true4": [
+                {
+                  "id": "a946af60-71f0-4d7e-8304-43bd53784618",
+                  "command": "EVENT_VARIABLE_MATH",
+                  "args": {
+                    "vectorX": "4",
+                    "operation": "set",
+                    "other": "var",
+                    "vectorY": "L0",
+                    "value": "1",
+                    "minValue": "0",
+                    "maxValue": "255"
+                  },
+                  "__type": "event"
+                }
+              ],
+              "true5": [],
+              "true6": [],
+              "true7": [],
+              "true8": [],
+              "true9": [],
+              "true10": [],
+              "true11": [],
+              "true12": [],
+              "true13": [],
+              "true14": [],
+              "true15": [],
+              "false": [
+                {
+                  "id": "bebab574-94ca-4abb-8f15-26ebbfacba9a",
+                  "command": "EVENT_VARIABLE_MATH",
+                  "args": {
+                    "vectorX": "4",
+                    "operation": "set",
+                    "other": "var",
+                    "vectorY": "L0",
+                    "value": "1",
+                    "minValue": "0",
+                    "maxValue": "255"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "417b8d97-ae82-406a-bbdb-73dc6001322e",
+            "command": "EVENT_IF",
+            "args": {
+              "variable": "10",
+              "operator": "<",
+              "comparator": 5,
+              "__collapseElse": false,
+              "__disableElse": true,
+              "condition": {
+                "type": "lt",
+                "valueA": {
+                  "type": "variable",
+                  "value": "10"
+                },
+                "valueB": {
+                  "type": "number",
+                  "value": 5
+                }
+              }
+            },
+            "children": {
+              "true": [
+                {
+                  "id": "43e6ed99-1c00-444a-ba37-80a90ec1855d",
+                  "command": "EVENT_INC_VALUE",
+                  "args": {
+                    "variable": "10"
+                  }
+                }
+              ],
+              "false": []
+            },
+            "__type": "event"
+          }
+        ],
+        "false": []
+      }
+    },
+    {
+      "id": "87323606-5e5e-4cca-acf0-748fdba663f4",
+      "command": "EVENT_CALL_CUSTOM_EVENT",
+      "args": {
+        "customEventId": "9eb17486-e82a-42f7-a851-383012fb04de",
+        "__name": "Update Input Fields"
+      },
+      "children": {
+        "script": [
+          {
+            "id": "1cfca713-14da-43fe-8785-cb2f5ba56896",
+            "command": "EVENT_GBVM_SCRIPT",
+            "args": {
+              "script": "VM_REPLACE_TILE_XY      7, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_0_\nVM_REPLACE_TILE_XY      8, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_1_\nVM_REPLACE_TILE_XY      9, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_2_\nVM_REPLACE_TILE_XY      10, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_3_\nVM_REPLACE_TILE_XY      11, 12, ___bank_bg_00000_ascii_tileset, _bg_00000_ascii_tileset, VAR_STRING_4_\n",
+              "references": [
+                {
+                  "type": "background",
+                  "id": "8c90060f-fd57-4468-9c8e-6f8549a776e8"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "leaveScript": []
+}

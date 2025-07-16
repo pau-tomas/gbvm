@@ -17,10 +17,10 @@ const struct actor_t scene_6_actors[] = {
     },
     .dir = DIR_DOWN,
     .bounds = {
-      .left = 0,
-      .bottom = 7,
-      .right = 15,
-      .top = -8
+      .left = PX_TO_SUBPX(0),
+      .bottom = PX_TO_SUBPX(7),
+      .right = PX_TO_SUBPX(15),
+      .top = PX_TO_SUBPX(-8)
     },
     .sprite = TO_FAR_PTR_T(spritesheet_9),
     .move_speed = 1,
@@ -40,10 +40,10 @@ const struct actor_t scene_6_actors[] = {
     },
     .dir = DIR_DOWN,
     .bounds = {
-      .left = 0,
-      .bottom = 7,
-      .right = 15,
-      .top = -8
+      .left = PX_TO_SUBPX(0),
+      .bottom = PX_TO_SUBPX(7),
+      .right = PX_TO_SUBPX(15),
+      .top = PX_TO_SUBPX(-8)
     },    
     .sprite = TO_FAR_PTR_T(spritesheet_9),
     .move_speed = 1,

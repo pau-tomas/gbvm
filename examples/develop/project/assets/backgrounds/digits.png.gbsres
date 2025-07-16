@@ -1,0 +1,12 @@
+{
+  "_resourceType": "background",
+  "id": "063e7894-9473-4062-b4b5-2ee2dd6d5510",
+  "name": "digits",
+  "symbol": "bg_digits",
+  "tileColors": "",
+  "filename": "digits.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144
+}

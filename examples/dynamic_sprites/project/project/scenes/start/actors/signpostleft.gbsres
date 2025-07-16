@@ -1,0 +1,39 @@
+{
+  "_resourceType": "actor",
+  "id": "98e51f99-9d7b-444e-9293-b2e1884822c7",
+  "_index": 1,
+  "symbol": "actor_signpostleft",
+  "prefabId": "",
+  "name": "SignpostLeft",
+  "x": 2,
+  "y": 7,
+  "frame": 0,
+  "animate": false,
+  "spriteSheetId": "2bbb00f0-33a0-4beb-aaa1-b430a565d5fb",
+  "paletteId": "",
+  "direction": "down",
+  "moveSpeed": 1,
+  "animSpeed": 3,
+  "isPinned": false,
+  "persistent": false,
+  "collisionGroup": "",
+  "collisionExtraFlags": [],
+  "prefabScriptOverrides": {},
+  "script": [
+    {
+      "id": "f1469f79-3c53-431c-bc60-976c75d17b98",
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Scene with\nalternate\nplayer sprite"
+        ],
+        "avatarId": ""
+      }
+    }
+  ],
+  "startScript": [],
+  "updateScript": [],
+  "hit1Script": [],
+  "hit2Script": [],
+  "hit3Script": []
+}

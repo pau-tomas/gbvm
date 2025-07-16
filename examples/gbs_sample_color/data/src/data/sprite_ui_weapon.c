@@ -7,9 +7,9 @@
 
 BANKREF(sprite_ui_weapon)
 
-#define SPRITE_20_STATE_DEFAULT 0
-#define SPRITE_20_STATE_EXPLODE 0
-#define SPRITE_20_STATE_OPEN 0
+#define SPRITE_18_STATE_DEFAULT 0
+#define SPRITE_18_STATE_EXPLODE 0
+#define SPRITE_18_STATE_OPEN 0
 
 const metasprite_t sprite_ui_weapon_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -56,7 +56,7 @@ const struct animation_t sprite_ui_weapon_animations[] = {
 };
 
 const UWORD sprite_ui_weapon_animations_lookup[] = {
-    SPRITE_20_STATE_DEFAULT
+    SPRITE_18_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_ui_weapon = {
@@ -69,10 +69,10 @@ const struct spritesheet_t sprite_ui_weapon = {
     .animations = sprite_ui_weapon_animations,
     .animations_lookup = sprite_ui_weapon_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
     .tileset = TO_FAR_PTR_T(sprite_ui_weapon_tileset),
     .cgb_tileset = { NULL, NULL }

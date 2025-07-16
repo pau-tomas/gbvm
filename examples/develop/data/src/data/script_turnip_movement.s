@@ -18,6 +18,8 @@ ___bank_script_turnip_movement = 255
 _script_turnip_movement::
         VM_RESERVE              7
 
+GBVM$script_turnip_movement$15904eb6_30ec_4787_a7e9_013046f9d182$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript = .
+.globl GBVM$script_turnip_movement$15904eb6_30ec_4787_a7e9_013046f9d182$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript
         ; Actor Set Active
         VM_SET_CONST            .LOCAL_ACTOR, 0
 
@@ -30,51 +32,49 @@ _script_turnip_movement::
             .R_REF      ^/(.LOCAL_TMP1_OTHER_ACTOR + 1)/
             .R_OPERATOR .LT
             .R_STOP
-        VM_IF_CONST .EQ         .ARG0, 0, 1$, 1
+        VM_IF_CONST             .EQ, .ARG0, 0, 1$, 1
 
-        ; Actor Set Active
-        VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
-
+GBVM$script_turnip_movement$753e2e8a_a98d_4a66_b326_b1c61a019237$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript = .
+.globl GBVM$script_turnip_movement$753e2e8a_a98d_4a66_b326_b1c61a019237$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript
         ; Actor Move Relative
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
+        ; -- Calculate coordinate values
         VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    -512
-            .R_OPERATOR .ADD
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    -1024
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_INT16    0
-            .R_OPERATOR .ADD
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    ^/(.ACTOR_ATTR_CHECK_COLL_WALLS | .ACTOR_ATTR_CHECK_COLL_ACTORS | .ACTOR_ATTR_H_FIRST | .ACTOR_ATTR_RELATIVE_SNAP_TILE)/
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET                  ^/(.LOCAL_ACTOR + 1 - 2)/, .ARG1
-        VM_SET                  ^/(.LOCAL_ACTOR + 2 - 2)/, .ARG0
-        VM_POP                  2
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, ^/(.ACTOR_ATTR_CHECK_COLL | .ACTOR_ATTR_H_FIRST)/
+        ; -- Move Actor
+        VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
         VM_JUMP                 2$
 1$:
-        ; Actor Set Active
-        VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
-
+GBVM$script_turnip_movement$d565478e_995d_48f4_bbbe_7848a86b71a5$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript = .
+.globl GBVM$script_turnip_movement$d565478e_995d_48f4_bbbe_7848a86b71a5$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript
         ; Actor Move Relative
-        VM_ACTOR_GET_POS        .LOCAL_ACTOR
+        ; -- Calculate coordinate values
         VM_RPN
-            .R_REF      ^/(.LOCAL_ACTOR + 1)/
-            .R_INT16    512
-            .R_OPERATOR .ADD
-            .R_REF      ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    1024
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 1)/
             .R_INT16    0
-            .R_OPERATOR .ADD
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 2)/
+            .R_INT16    ^/(.ACTOR_ATTR_CHECK_COLL_WALLS | .ACTOR_ATTR_CHECK_COLL_ACTORS | .ACTOR_ATTR_H_FIRST | .ACTOR_ATTR_RELATIVE_SNAP_TILE)/
+            .R_REF_SET  ^/(.LOCAL_ACTOR + 3)/
             .R_STOP
-        VM_SET                  ^/(.LOCAL_ACTOR + 1 - 2)/, .ARG1
-        VM_SET                  ^/(.LOCAL_ACTOR + 2 - 2)/, .ARG0
-        VM_POP                  2
-        VM_SET_CONST            ^/(.LOCAL_ACTOR + 3)/, ^/(.ACTOR_ATTR_CHECK_COLL | .ACTOR_ATTR_H_FIRST)/
+        ; -- Move Actor
+        VM_SET                  .LOCAL_ACTOR, .SCRIPT_ARG_0_ACTOR
         VM_ACTOR_MOVE_TO        .LOCAL_ACTOR
 
 2$:
 
-        ; Wait N Frames
+GBVM_END$script_turnip_movement$15904eb6_30ec_4787_a7e9_013046f9d182 = .
+.globl GBVM_END$script_turnip_movement$15904eb6_30ec_4787_a7e9_013046f9d182
+GBVM$script_turnip_movement$19eacd42_ec0b_4def_ac07_68c79e1b675f$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript = .
+.globl GBVM$script_turnip_movement$19eacd42_ec0b_4def_ac07_68c79e1b675f$f8f027ef_b818_4038_9eda_0ac477facb41$actor$98159e3a_0bfe_44ec_8312_9dcef04c253f$updateScript
+        ; Wait 60 frames
         VM_SET_CONST            .LOCAL_TMP2_WAIT_ARGS, 60
         VM_INVOKE               b_wait_frames, _wait_frames, 0, .LOCAL_TMP2_WAIT_ARGS
 

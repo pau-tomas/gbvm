@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: rock
-  
+
 #include "gbs_types.h"
-#include "data/tileset_rock.h"
+#include "data/sprite_rock_tileset.h"
+
 
 BANKREF(sprite_rock)
 
-#define SPRITE_9_STATE_DEFAULT 0
-#define SPRITE_9_STATE_OPEN 0
+#define SPRITE_7_STATE_DEFAULT 0
+#define SPRITE_7_STATE_OPEN 0
 
 const metasprite_t sprite_rock_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -54,7 +55,7 @@ const struct animation_t sprite_rock_animations[] = {
 };
 
 const UWORD sprite_rock_animations_lookup[] = {
-    SPRITE_9_STATE_DEFAULT
+    SPRITE_7_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_rock = {
@@ -67,11 +68,11 @@ const struct spritesheet_t sprite_rock = {
     .animations = sprite_rock_animations,
     .animations_lookup = sprite_rock_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_rock),
+    .tileset = TO_FAR_PTR_T(sprite_rock_tileset),
     .cgb_tileset = { NULL, NULL }
 };

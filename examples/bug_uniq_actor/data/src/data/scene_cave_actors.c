@@ -11,22 +11,22 @@
 
 BANKREF(scene_cave_actors)
 
-const struct actor_def_t scene_cave_actors[] = {
+const struct actor_t scene_cave_actors[] = {
     {
         // Cat,
         .pos = {
-            .x = 104 * 16,
-            .y = 56 * 16
+            .x = 3328,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_cat),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,
@@ -38,18 +38,18 @@ const struct actor_def_t scene_cave_actors[] = {
     {
         // Signpost,
         .pos = {
-            .x = 72 * 16,
-            .y = 56 * 16
+            .x = 2304,
+            .y = 1792
         },
         .bounds = {
-            .left = 0,
-            .bottom = 7,
-            .right = 15,
-            .top = -8
+            .left = PX_TO_SUBPX(0),
+            .bottom = PX_TO_SUBPX(7),
+            .right = PX_TO_SUBPX(15),
+            .top = PX_TO_SUBPX(-8)
         },
         .dir = DIR_DOWN,
         .sprite = TO_FAR_PTR_T(sprite_signpost),
-        .move_speed = 16,
+        .move_speed = 32,
         .anim_tick = 15,
         .pinned = FALSE,
         .persistent = FALSE,

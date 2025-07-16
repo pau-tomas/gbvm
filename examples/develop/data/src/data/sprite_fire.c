@@ -1,13 +1,14 @@
 #pragma bank 255
 // SpriteSheet: fire
-  
+
 #include "gbs_types.h"
-#include "data/tileset_fire.h"
+#include "data/sprite_fire_tileset.h"
+
 
 BANKREF(sprite_fire)
 
-#define SPRITE_4_STATE_DEFAULT 0
-#define SPRITE_4_STATE_OPEN 0
+#define SPRITE_2_STATE_DEFAULT 0
+#define SPRITE_2_STATE_OPEN 0
 
 const metasprite_t sprite_fire_metasprite_0[]  = {
     { 0, 8, 0, 0 }, { 0, -8, 2, 0 },
@@ -72,7 +73,7 @@ const struct animation_t sprite_fire_animations[] = {
 };
 
 const UWORD sprite_fire_animations_lookup[] = {
-    SPRITE_4_STATE_DEFAULT
+    SPRITE_2_STATE_DEFAULT
 };
 
 const struct spritesheet_t sprite_fire = {
@@ -85,11 +86,11 @@ const struct spritesheet_t sprite_fire = {
     .animations = sprite_fire_animations,
     .animations_lookup = sprite_fire_animations_lookup,
     .bounds = {
-        .left = 0,
-        .bottom = 7,
-        .right = 15,
-        .top = -8
+        .left = PX_TO_SUBPX(0),
+        .bottom = PX_TO_SUBPX(7),
+        .right = PX_TO_SUBPX(15),
+        .top = PX_TO_SUBPX(-8)
     },
-    .tileset = TO_FAR_PTR_T(tileset_fire),
+    .tileset = TO_FAR_PTR_T(sprite_fire_tileset),
     .cgb_tileset = { NULL, NULL }
 };
