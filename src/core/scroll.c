@@ -30,6 +30,8 @@ INT16 scroll_x;
 INT16 scroll_y;
 INT16 draw_scroll_x;
 INT16 draw_scroll_y;
+UINT16 scroll_x_min;
+UINT16 scroll_y_min;
 UINT16 scroll_x_max;
 UINT16 scroll_y_max;
 BYTE scroll_offset_x;
@@ -44,6 +46,8 @@ INT16 current_col, new_col;
 void scroll_init(void) BANKED {
     draw_scroll_x   = 0;
     draw_scroll_y   = 0;
+    scroll_x_min    = 0;
+    scroll_y_min    = 0;
     scroll_x_max    = 0;
     scroll_y_max    = 0;
     scroll_offset_x = 0;
@@ -67,13 +71,13 @@ void scroll_update(void) BANKED {
     x = SUBPX_TO_PX(camera_x) - (SCREENWIDTH >> 1);
     y = SUBPX_TO_PX(camera_y) - (SCREENHEIGHT >> 1);
 
-    if (x & 0x8000u) {  // check for negative signed bit
-        x = 0u;
+    if ((x & 0x8000u) || (x < scroll_x_min)) {  // check for negative signed bit
+        x = scroll_x_min;
     } else if (x > scroll_x_max) {
         x = scroll_x_max;
     }
-    if (y & 0x8000u) {
-        y = 0u;
+    if ((y & 0x8000u) || (y < scroll_y_min)) {
+        y = scroll_y_min;
     } else if (y > scroll_y_max) {
         y = scroll_y_max;
     }

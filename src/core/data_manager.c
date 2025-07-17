@@ -108,10 +108,8 @@ void load_background(const background_t* background, UBYTE bank) BANKED {
     image_tile_height = bkg.height;
     image_width = TILE_TO_PX(image_tile_width);
     image_width_subpx = PX_TO_SUBPX(image_width);
-    scroll_x_max = image_width - ((UINT16)SCREENWIDTH);
     image_height = TILE_TO_PX(image_tile_height);
     image_height_subpx = PX_TO_SUBPX(image_height);
-    scroll_y_max = image_height - ((UINT16)SCREENHEIGHT);
 
     load_bkg_tileset(bkg.tileset.ptr, bkg.tileset.bank);
 #ifdef CGB
@@ -223,6 +221,22 @@ UBYTE load_scene(const scene_t * scene, UBYTE bank, UBYTE init_data) BANKED {
         scene_LCD_type = (scene_type == SCENE_TYPE_LOGO) ? LCD_fullscreen : LCD_simple;
     } else {
         scene_LCD_type = LCD_parallax;
+    }
+
+    // Copy scroll bounds - if not set fall back to using image size
+    if (scn.scroll_bounds.right == 0) {
+        scroll_x_min = 0;
+        scroll_x_max = image_width - ((UINT16)SCREENWIDTH);
+    } else {        
+        scroll_x_min = scn.scroll_bounds.left;
+        scroll_x_max = scn.scroll_bounds.right;
+    }
+    if (scn.scroll_bounds.bottom == 0) {
+        scroll_y_min = 0;
+        scroll_y_max = image_height - ((UINT16)SCREENHEIGHT);
+    } else {
+        scroll_y_min = scn.scroll_bounds.top;
+        scroll_y_max = scn.scroll_bounds.bottom;
     }
 
     if (scene_type != SCENE_TYPE_LOGO) {

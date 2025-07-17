@@ -94,6 +94,7 @@ typedef struct scene_t {
     far_ptr_t actors;
     far_ptr_t triggers;
     far_ptr_t projectiles;
+    urect16_t scroll_bounds;
     parallax_row_t parallax_rows[3];
 } scene_t;
 

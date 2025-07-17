@@ -121,6 +121,10 @@ typedef struct rect16_t {
     int16_t left, right, top, bottom;
 } rect16_t;
 
+typedef struct urect16_t {
+    uint16_t left, right, top, bottom;
+} urect16_t;
+
 typedef enum {
     DIR_DOWN = 0,
     DIR_RIGHT,
