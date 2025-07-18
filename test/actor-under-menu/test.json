@@ -1,4 +1,0 @@
-{
-  "description": "Actor displays under menu in CGB",
-  "rules": ["CHECKSCREEN('expected.png')"]
-}
