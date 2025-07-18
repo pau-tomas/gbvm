@@ -10,7 +10,7 @@ BANKREF(sprite_actor)
 #define SPRITE_0_STATE_DEFAULT 0
 
 const metasprite_t sprite_actor_metasprite_0[]  = {
-    { 0, 8, 8, 0 }, { 0, -8, 4, 96 },
+    { 0, 8, 4, 64 }, { 0, -8, 4, 96 },
     {metasprite_end}
 };
 
@@ -20,7 +20,7 @@ const metasprite_t sprite_actor_metasprite_1[]  = {
 };
 
 const metasprite_t sprite_actor_metasprite_2[]  = {
-    { 0, 8, 4, 0 }, { 0, -8, 6, 0 },
+    { 0, 8, 4, 0 }, { 0, -8, 4, 32 },
     {metasprite_end}
 };
 
