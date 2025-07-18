@@ -63,7 +63,7 @@ void pointnclick_update(void) BANKED {
 
     // Move cursor
     if (player_moving) {
-        point_translate_angle(&(PLAYER.pos), angle, PLAYER.move_speed);
+        upoint_translate_angle(&(PLAYER.pos), angle, PLAYER.move_speed);
         // Clamp X
         if (PLAYER.pos.x + PLAYER.bounds.left > image_width_subpx) {
             PLAYER.pos.x = -PLAYER.bounds.left;

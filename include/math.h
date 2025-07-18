@@ -158,12 +158,12 @@ inline void point_translate_dir_word(upoint16_t *point, direction_e dir, uint16_
         point->y -= speed;
 }
 
-inline void point_translate_angle(upoint16_t *point, uint8_t angle, uint8_t speed) {
+inline void upoint_translate_angle(upoint16_t *point, uint8_t angle, uint8_t speed) {
     point->x += ((SIN(angle) * (speed)) >> 7);
     point->y -= ((COS(angle) * (speed)) >> 7);
 }
 
-inline void point_translate_angle_to_delta(upoint16_t *point, uint8_t angle, uint8_t speed) {
+inline void point_translate_angle_to_delta(point16_t *point, uint8_t angle, uint8_t speed) {
     point->x = ((SIN(angle) * (speed)) >> 7);
     point->y = ((COS(angle) * (speed)) >> 7);
 }

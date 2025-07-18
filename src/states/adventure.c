@@ -75,7 +75,7 @@ void adventure_update(void) BANKED {
         upoint16_t new_pos;
         new_pos.x = PLAYER.pos.x;
         new_pos.y = PLAYER.pos.y;
-        point_translate_angle(&new_pos, angle, PLAYER.move_speed);
+        upoint_translate_angle(&new_pos, angle, PLAYER.move_speed);
 
         // Step X
         tile_start = SUBPX_TO_TILE(PLAYER.pos.y + PLAYER.bounds.top);
@@ -100,7 +100,7 @@ void adventure_update(void) BANKED {
                 }
                 tile_start++;
             }
-            PLAYER.pos.x = MAX(0, (WORD)new_pos.x);
+            PLAYER.pos.x = new_pos.x;
         }
 
         // Step Y
