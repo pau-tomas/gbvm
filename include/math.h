@@ -121,6 +121,10 @@ typedef struct rect16_t {
     int16_t left, right, top, bottom;
 } rect16_t;
 
+typedef struct urect16_t {
+    uint16_t left, right, top, bottom;
+} urect16_t;
+
 typedef enum {
     DIR_DOWN = 0,
     DIR_RIGHT,
@@ -154,12 +158,12 @@ inline void point_translate_dir_word(upoint16_t *point, direction_e dir, uint16_
         point->y -= speed;
 }
 
-inline void point_translate_angle(upoint16_t *point, uint8_t angle, uint8_t speed) {
+inline void upoint_translate_angle(upoint16_t *point, uint8_t angle, uint8_t speed) {
     point->x += ((SIN(angle) * (speed)) >> 7);
     point->y -= ((COS(angle) * (speed)) >> 7);
 }
 
-inline void point_translate_angle_to_delta(upoint16_t *point, uint8_t angle, uint8_t speed) {
+inline void point_translate_angle_to_delta(point16_t *point, uint8_t angle, uint8_t speed) {
     point->x = ((SIN(angle) * (speed)) >> 7);
     point->y = ((COS(angle) * (speed)) >> 7);
 }

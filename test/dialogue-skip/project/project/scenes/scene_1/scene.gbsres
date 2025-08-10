@@ -1,0 +1,69 @@
+{
+  "_resourceType": "scene",
+  "id": "6e8e84f5-e349-4e91-958b-1ae0d5fdde9a",
+  "_index": 0,
+  "type": "TOPDOWN",
+  "name": "Scene 1",
+  "symbol": "scene_1",
+  "x": 96,
+  "y": 64,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "1e5f9d6a-bdbc-43e6-8c34-22f5bb5dea05",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "playerSpriteSheetId": "11b5452b-187c-43a3-afb1-a1f4f74ffda2",
+  "script": [
+    {
+      "command": "EVENT_TEXT_SET_ANIMATION_SPEED",
+      "args": {
+        "speedIn": 1,
+        "speedOut": 1,
+        "speed": 4,
+        "allowFastForward": true
+      },
+      "id": "5cb8adef-6948-49ff-9148-9a17c741aa23"
+    },
+    {
+      "command": "EVENT_TEXT",
+      "args": {
+        "text": [
+          "Lorem Ipsum\nBox 1",
+          "Lorem Ipsum\nBox 2",
+          "Lorem Ipsum\nBox 3"
+        ],
+        "__section": "behavior",
+        "avatarId": "",
+        "minHeight": 4,
+        "maxHeight": 7,
+        "textX": 1,
+        "textY": 1,
+        "textHeight": 5,
+        "position": "bottom",
+        "clearPrevious": true,
+        "showFrame": "true",
+        "speedIn": -1,
+        "speedOut": -1,
+        "closeWhen": "key",
+        "closeButton": "a",
+        "closeDelayTime": 0.5,
+        "closeDelayFrames": 30
+      },
+      "id": "14de33d6-7c17-49d9-9e04-c65f58a2aa9d"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "; Test shouldn't reach this point\n; Using Demo recording\n; (see DEMO flag in Makefile.build)\n; which is supposed to stop on Box 2 \nVM_TEST_TERMINATE .TEST_WAIT_VBL"
+      },
+      "id": "2e32e051-8334-40d7-a2da-74cedec001ea"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": ""
+}

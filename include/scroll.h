@@ -21,6 +21,8 @@ extern INT16 scroll_x;
 extern INT16 scroll_y;
 extern INT16 draw_scroll_x;
 extern INT16 draw_scroll_y;
+extern UINT16 scroll_x_min;
+extern UINT16 scroll_y_min;
 extern UINT16 scroll_x_max;
 extern UINT16 scroll_y_max;
 extern BYTE scroll_offset_x;

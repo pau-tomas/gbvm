@@ -2,12 +2,12 @@
   "description": "actor-move-to",
   "rules": [
     [
-      "ASSERT_EQ(DATA('WRAM', ADDR('_actors', 'WRAM')+1, 2), array(\"B\", [0x00, 0x02]))",
-      "actor[0] x coordinate is at 32px"
+      "ASSERT_EQ(DATA('WRAM', ADDR('_actors', 'WRAM')+1, 2), array(\"B\", [0x00, 0x04]))",
+      "actor[0] x coordinate is at 32px (0x0400 in subpx)"
     ],
     [
-      "ASSERT_EQ(DATA('WRAM', ADDR('_actors', 'WRAM')+3, 2), array(\"B\", [0x80, 0x0]))",
-      "actor[0] y coordinate is at 8px"
+      "ASSERT_EQ(DATA('WRAM', ADDR('_actors', 'WRAM')+3, 2), array(\"B\", [0x00, 0x01]))",
+      "actor[0] y coordinate is at 8px (0x0100 in subpx)"
     ],
     "CHECKSCREEN('expected.png')"
   ]

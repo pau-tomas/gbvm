@@ -542,6 +542,7 @@ UBYTE ui_run_menu(menu_item_t * start_item, UBYTE bank, UBYTE options, UBYTE cou
 
 void ui_run_modal(UBYTE wait_flags) BANKED {
     UBYTE fail;
+    input_update();
     do {
         fail = FALSE;
 
