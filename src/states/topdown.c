@@ -144,7 +144,7 @@ void topdown_update(void) BANKED {
         } else if (PLAYER.dir == DIR_DOWN) {
             max_pos = TILE_TO_SUBPX(SUBPX_TO_TILE(PLAYER.pos.y) + tile_offset);
         } else if (PLAYER.dir == DIR_UP) {
-            max_pos = TILE_TO_SUBPX(SUBPX_TO_TILE(PLAYER.pos.y) - tile_offset   );
+            max_pos = TILE_TO_SUBPX(SUBPX_TO_TILE(PLAYER.pos.y) - tile_offset);
         }
     }
 
