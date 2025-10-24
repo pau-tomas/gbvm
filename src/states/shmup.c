@@ -100,7 +100,7 @@ void shmup_update(void) BANKED {
                 UBYTE tile_y = SUBPX_TO_TILE(new_pos.y + PLAYER.bounds.bottom);
                 while (tile_start != tile_end) {
                     if (tile_at(tile_start, tile_y) & COLLISION_TOP) {
-                        new_pos.y = TILE_TO_SUBPX(tile_y) - PLAYER.bounds.bottom - 1;
+                        new_pos.y = TILE_TO_SUBPX(tile_y) - EXCLUSIVE_OFFSET(PLAYER.bounds.bottom);
                         break;
                     }
                     tile_start++;
@@ -125,17 +125,17 @@ void shmup_update(void) BANKED {
                 UBYTE tile_x = SUBPX_TO_TILE(new_pos.x + PLAYER.bounds.right);
                 while (tile_start != tile_end) {
                     if (tile_at(tile_x, tile_start) & COLLISION_LEFT) {
-                        new_pos.x = TILE_TO_SUBPX(tile_x) - PLAYER.bounds.right - 1;
+                        new_pos.x = TILE_TO_SUBPX(tile_x) - EXCLUSIVE_OFFSET(PLAYER.bounds.right);
                         break;
                     }
                     tile_start++;
                 }
-                PLAYER.pos.x = MIN(image_width_subpx - PLAYER.bounds.right - PX_TO_SUBPX(1), new_pos.x);
+                PLAYER.pos.x = MIN(image_width_subpx - EXCLUSIVE_OFFSET(PLAYER.bounds.right), new_pos.x);
             } else {
                 UBYTE tile_x = SUBPX_TO_TILE(new_pos.x + PLAYER.bounds.left);
                 while (tile_start != tile_end) {
                     if (tile_at(tile_x, tile_start) & COLLISION_RIGHT) {
-                        new_pos.x = TILE_TO_SUBPX(tile_x + 1) - PLAYER.bounds.left + 1;
+                        new_pos.x = TILE_TO_SUBPX(tile_x + 1) - PLAYER.bounds.left;
                         break;
                     }
                     tile_start++;

@@ -76,7 +76,7 @@ static UWORD check_collision_horizontal(UWORD start_x, UWORD start_y, rect16_t *
         if (tile_col_test_range_x(tile_mask, ty1, tx1, tx2)) {
             return (start_x > end_pos) ?
                    TILE_TO_SUBPX(tile_hit_x) - bounds->left + TILE_TO_SUBPX(1) : 
-                   TILE_TO_SUBPX(tile_hit_x) - bounds->right - PX_TO_SUBPX(1);
+                   TILE_TO_SUBPX(tile_hit_x) - EXCLUSIVE_OFFSET(bounds->right);
         }                
         ty1++;
     }
@@ -109,7 +109,7 @@ static UWORD check_collision_vertical(UWORD start_x, UWORD start_y, rect16_t *bo
         if (tile_col_test_range_y(tile_mask, tx1, ty1, ty2)) {
             return (start_y > end_pos) ? 
                    TILE_TO_SUBPX(tile_hit_y) - bounds->top + TILE_TO_SUBPX(1) : 
-                   TILE_TO_SUBPX(tile_hit_y) - bounds->bottom - PX_TO_SUBPX(1);
+                   TILE_TO_SUBPX(tile_hit_y) - EXCLUSIVE_OFFSET(bounds->bottom);
         }
         tx1++;
     }
