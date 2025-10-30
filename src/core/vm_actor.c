@@ -203,6 +203,9 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
             // Move up
             SET_FLAG(THIS->flags, MOVE_DIR_V);
         }
+
+        THIS->PC -= (INSTRUCTION_SIZE + sizeof(idx));
+        return;        
     }
 
     // Interrupt actor movement
@@ -222,6 +225,8 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         actor->movement_interrupt = FALSE;
     }
 
+    UBYTE test_actors = IS_FRAME_4 && CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS);
+
     // Move in X Axis
     if (CHK_FLAG(THIS->flags, MOVE_H) == MOVE_H) {
         // Get hoizontal direction from flags
@@ -231,7 +236,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
+        if (test_actors && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
             point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
             THIS->flags = 0;
             actor_set_anim_idle(actor);
@@ -265,7 +270,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
+        if (test_actors && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
             point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
             THIS->flags = 0;
             actor_set_anim_idle(actor);
