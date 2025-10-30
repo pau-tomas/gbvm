@@ -338,17 +338,23 @@ actor_t *actor_in_front_of_player(UBYTE grid_size, UBYTE inc_noclip) BANKED {
 actor_t *actor_overlapping_player(UBYTE inc_noclip) BANKED {
     actor_t *actor = PLAYER.prev;
 
+    const UWORD a_left   = PLAYER.pos.x + PLAYER.bounds.left;
+    const UWORD a_right  = PLAYER.pos.x + PLAYER.bounds.right;
+    const UWORD a_top    = PLAYER.pos.y + PLAYER.bounds.top;
+    const UWORD a_bottom = PLAYER.pos.y + PLAYER.bounds.bottom;
+
     while (actor) {
         if (!inc_noclip && !actor->collision_enabled) {
             actor = actor->prev;
             continue;
-        };
-
-        if (bb_intersects(&PLAYER.bounds, &PLAYER.pos, &actor->bounds, &actor->pos)) {
-            return actor;
         }
 
-        actor = actor->prev;
+        if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
+        if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.bottom) < a_top)    { actor = actor->prev; continue; }
+
+        return actor;
     }
 
     return NULL;
@@ -357,17 +363,23 @@ actor_t *actor_overlapping_player(UBYTE inc_noclip) BANKED {
 actor_t *actor_overlapping_bb(rect16_t *bb, upoint16_t *offset, actor_t *ignore, UBYTE inc_noclip) BANKED {
     actor_t *actor = &PLAYER;
 
+    const UWORD a_left   = offset->x + bb->left;
+    const UWORD a_right  = offset->x + bb->right;
+    const UWORD a_top    = offset->y + bb->top;
+    const UWORD a_bottom = offset->y + bb->bottom;
+
     while (actor) {
         if (actor == ignore || (!inc_noclip && !actor->collision_enabled)) {
             actor = actor->prev;
             continue;
-        };
-
-        if (bb_intersects(bb, offset, &actor->bounds, &actor->pos)) {
-            return actor;
         }
 
-        actor = actor->prev;
+        if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
+        if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.bottom) < a_top)    { actor = actor->prev; continue; }
+
+        return actor;
     }
 
     return NULL;
