@@ -986,6 +986,15 @@ void platform_update(void) BANKED
         }
 #endif
 
+#ifdef FEAT_PLATFORM_DASH
+        // GROUND -> DASH Check
+        if (dash_press && (plat_dash_from & DASH_FROM_GROUND) && plat_dash_cooldown_timer == 0)
+        {
+            plat_next_state = DASH_STATE;
+            break;
+        }
+#endif
+
 #ifdef FEAT_PLATFORM_RUN
         const UBYTE running = INPUT_PLATFORM_RUN;
         if (plat_state == GROUND_STATE && running) {
@@ -1076,15 +1085,6 @@ void platform_update(void) BANKED
         {
             actor_set_anim_idle(&PLAYER);
         }
-
-#ifdef FEAT_PLATFORM_DASH
-        // GROUND -> DASH Check
-        if (dash_press && (plat_dash_from & DASH_FROM_GROUND) && plat_dash_cooldown_timer == 0)
-        {
-            plat_next_state = DASH_STATE;
-            break;
-        }
-#endif
 
 #ifdef FEAT_PLATFORM_JUMP
         // GROUND -> JUMP Check
