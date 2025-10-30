@@ -236,8 +236,13 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (test_actors && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
-            point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
+        actor_t *hit_actor;
+        if (test_actors && (hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE))) {
+            actor->pos.x = hit_actor->pos.x +
+                (new_dir == DIR_LEFT
+                    ? hit_actor->bounds.right - actor->bounds.left + 1
+                    : hit_actor->bounds.left - actor->bounds.right - 1
+                );
             THIS->flags = 0;
             actor_set_anim_idle(actor);
             return;
@@ -270,8 +275,13 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (test_actors && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
-            point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
+        actor_t *hit_actor;
+        if (test_actors && (hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE))) { 
+            actor->pos.y = hit_actor->pos.y +
+                (new_dir == DIR_UP
+                    ? hit_actor->bounds.bottom - actor->bounds.top + 1
+                    : hit_actor->bounds.top - actor->bounds.bottom - 1
+                );
             THIS->flags = 0;
             actor_set_anim_idle(actor);
             return;
