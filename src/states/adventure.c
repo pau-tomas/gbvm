@@ -270,6 +270,9 @@ inline UBYTE dash_input_pressed(void)
 // End of Function Definitions ------------------------------------------------
 
 void adventure_init(void) BANKED {
+
+    adv_callback_reset();
+
     // Set camera to follow player
     camera_offset_x = 0;
     camera_offset_y = 0;
