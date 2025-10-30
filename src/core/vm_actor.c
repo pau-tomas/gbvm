@@ -225,7 +225,7 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         actor->movement_interrupt = FALSE;
     }
 
-    UBYTE test_actors = IS_FRAME_4 && CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS);
+    UBYTE test_actors = CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && ((game_time & 0x03) == (params->ID & 0x03));
 
     // Move in X Axis
     if (CHK_FLAG(THIS->flags, MOVE_H) == MOVE_H) {
