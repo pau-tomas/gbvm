@@ -573,29 +573,23 @@ void adventure_update(void) BANKED {
 
 #ifdef FEAT_ADVENTURE_PUSH
         case PUSH_STATE: {
+
+            handle_dir_input();
   
-            delta.x = 0;
-            delta.y = 0;
-            
-            move_and_collide(COL_CHECK_ACTORS | COL_CHECK_TRIGGERS);
-            
-            // Exit push state if not continuing to hold against the wall
-            UBYTE pressing_away = FALSE;
-            if (PLAYER.dir == DIR_LEFT && !INPUT_LEFT) {
-                pressing_away = TRUE;
-            } else if (PLAYER.dir == DIR_RIGHT && !INPUT_RIGHT) {
-                pressing_away = TRUE;
-            } else if (PLAYER.dir == DIR_UP && !INPUT_UP) {
-                pressing_away = TRUE;
-            } else if (PLAYER.dir == DIR_DOWN && !INPUT_DOWN) {
-                pressing_away = TRUE;
-            }
-            
-            if (pressing_away) {
+            delta.x = VEL_TO_SUBPX(adv_vel_x);
+            delta.y = VEL_TO_SUBPX(adv_vel_y);
+
+            UWORD prev_x = PLAYER.pos.x;
+            UWORD prev_y = PLAYER.pos.y;
+
+            move_and_collide(COL_CHECK_ALL);
+
+            // Check if player is still pushing against an obstacle
+            if (!(joy & INPUT_DPAD) || prev_x != PLAYER.pos.x || prev_y != PLAYER.pos.y) {
                 adv_next_state = GROUND_STATE;
                 break;
             }
-            
+           
             break;
         }
 #endif
