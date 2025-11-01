@@ -51,11 +51,12 @@ typedef struct gbs_farptr_t {
 } gbs_farptr_t;
 
 static UWORD check_collision_horizontal(UWORD start_x, UWORD start_y, rect16_t *bounds, UWORD end_pos) {
-    UBYTE tx1, ty1, tx2, ty2;
+    UBYTE tx1, ty1, tx2, ty2, tile_mask;
     ty1 = SUBPX_TO_TILE(start_y + bounds->top);
     ty2 = SUBPX_TO_TILE(start_y + bounds->bottom) + 1;
     if (start_x > end_pos) {
         // Check left
+        tile_mask = COLLISION_RIGHT;
         tx1 = SUBPX_TO_TILE(start_x + bounds->left);
         tx2 = SUBPX_TO_TILE(end_pos + bounds->left);
         if (tx2 > tx1) {
@@ -64,6 +65,7 @@ static UWORD check_collision_horizontal(UWORD start_x, UWORD start_y, rect16_t *
     }
     else {
         // Check right
+        tile_mask = COLLISION_LEFT;
         tx1 = SUBPX_TO_TILE(start_x + bounds->right);
         tx2 = SUBPX_TO_TILE(end_pos + bounds->right);
         if (tx2 < tx1) {
@@ -71,10 +73,10 @@ static UWORD check_collision_horizontal(UWORD start_x, UWORD start_y, rect16_t *
         }            
     }
     while (ty1 != ty2) {
-        if (tile_col_test_range_x(COLLISION_LEFT, ty1, tx1, tx2)) {
+        if (tile_col_test_range_x(tile_mask, ty1, tx1, tx2)) {
             return (start_x > end_pos) ?
                    TILE_TO_SUBPX(tile_hit_x) - bounds->left + TILE_TO_SUBPX(1) : 
-                   TILE_TO_SUBPX(tile_hit_x) - bounds->right - PX_TO_SUBPX(1);
+                   TILE_TO_SUBPX(tile_hit_x) - EXCLUSIVE_OFFSET(bounds->right);
         }                
         ty1++;
     }
@@ -82,11 +84,12 @@ static UWORD check_collision_horizontal(UWORD start_x, UWORD start_y, rect16_t *
 }
 
 static UWORD check_collision_vertical(UWORD start_x, UWORD start_y, rect16_t *bounds, UWORD end_pos) {
-    UBYTE tx1, ty1, tx2, ty2;
+    UBYTE tx1, ty1, tx2, ty2, tile_mask;
     tx1 = SUBPX_TO_TILE(start_x + bounds->left);
     tx2 = SUBPX_TO_TILE(start_x + bounds->right) + 1;
     if (start_y > end_pos) {
         // Check up
+        tile_mask = COLLISION_BOTTOM;
         ty1 = SUBPX_TO_TILE(start_y + bounds->top);
         ty2 = SUBPX_TO_TILE(end_pos + bounds->top);
         if (ty2 > ty1) {
@@ -95,6 +98,7 @@ static UWORD check_collision_vertical(UWORD start_x, UWORD start_y, rect16_t *bo
     }
     else {
         // Check down
+        tile_mask = COLLISION_TOP;
         ty1 = SUBPX_TO_TILE(start_y + bounds->bottom);
         ty2 = SUBPX_TO_TILE(end_pos + bounds->bottom);
         if (ty2 < ty1) {
@@ -102,10 +106,10 @@ static UWORD check_collision_vertical(UWORD start_x, UWORD start_y, rect16_t *bo
         }
     }
     while (tx1 != tx2) {
-        if (tile_col_test_range_y(COLLISION_TOP, tx1, ty1, ty2)) {
+        if (tile_col_test_range_y(tile_mask, tx1, ty1, ty2)) {
             return (start_y > end_pos) ? 
                    TILE_TO_SUBPX(tile_hit_y) - bounds->top + TILE_TO_SUBPX(1) : 
-                   TILE_TO_SUBPX(tile_hit_y) - bounds->bottom - PX_TO_SUBPX(1);
+                   TILE_TO_SUBPX(tile_hit_y) - EXCLUSIVE_OFFSET(bounds->bottom);
         }
         tx1++;
     }
@@ -199,6 +203,9 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
             // Move up
             SET_FLAG(THIS->flags, MOVE_DIR_V);
         }
+
+        THIS->PC -= (INSTRUCTION_SIZE + sizeof(idx));
+        return;        
     }
 
     // Interrupt actor movement
@@ -218,6 +225,8 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         actor->movement_interrupt = FALSE;
     }
 
+    UBYTE test_actors = CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && ((game_time & 0x03) == (params->ID & 0x03));
+
     // Move in X Axis
     if (CHK_FLAG(THIS->flags, MOVE_H) == MOVE_H) {
         // Get hoizontal direction from flags
@@ -227,8 +236,13 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
-            point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
+        actor_t *hit_actor;
+        if (test_actors && (hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE))) {
+            actor->pos.x = hit_actor->pos.x +
+                (new_dir == DIR_LEFT
+                    ? hit_actor->bounds.right - actor->bounds.left + 1
+                    : hit_actor->bounds.left - actor->bounds.right - 1
+                );
             THIS->flags = 0;
             actor_set_anim_idle(actor);
             return;
@@ -261,8 +275,13 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         point_translate_dir(&actor->pos, new_dir, actor->move_speed);
 
         // Check for actor collision
-        if (CHK_FLAG(params->ATTR, ACTOR_ATTR_CHECK_COLL_ACTORS) && actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE)) {
-            point_translate_dir(&actor->pos, FLIPPED_DIR(new_dir), actor->move_speed);
+        actor_t *hit_actor;
+        if (test_actors && (hit_actor = actor_overlapping_bb(&actor->bounds, &actor->pos, actor, FALSE))) { 
+            actor->pos.y = hit_actor->pos.y +
+                (new_dir == DIR_UP
+                    ? hit_actor->bounds.bottom - actor->bounds.top + 1
+                    : hit_actor->bounds.top - actor->bounds.bottom - 1
+                );
             THIS->flags = 0;
             actor_set_anim_idle(actor);
             return;

@@ -55,6 +55,8 @@
 #define DASH_INPUT_INTERACT 0
 #define DASH_INPUT_DOUBLE_TAP 1
 #define DASH_INPUT_DOWN_JUMP 2
+#define DASH_INPUT_A 3
+#define DASH_INPUT_B 4
 
 #define JUMP_TYPE_NONE 0
 #define JUMP_TYPE_GROUND 1
@@ -379,7 +381,11 @@ inline UBYTE dash_input_pressed(void)
       return FALSE;
     }
 #if INPUT_PLATFORM_DASH == DASH_INPUT_INTERACT
-    return INPUT_PRESSED(INPUT_PLATFORM_INTERACT)
+    return INPUT_PRESSED(INPUT_PLATFORM_INTERACT);
+#elif INPUT_PLATFORM_DASH == DASH_INPUT_A
+    return INPUT_PRESSED(INPUT_A);
+#elif INPUT_PLATFORM_DASH == DASH_INPUT_B
+    return INPUT_PRESSED(INPUT_B);    
 #elif INPUT_PLATFORM_DASH == DASH_INPUT_DOUBLE_TAP
     // Double-Tap Dash
     if (INPUT_PRESSED(INPUT_LEFT))
@@ -980,6 +986,15 @@ void platform_update(void) BANKED
         }
 #endif
 
+#ifdef FEAT_PLATFORM_DASH
+        // GROUND -> DASH Check
+        if (dash_press && (plat_dash_from & DASH_FROM_GROUND) && plat_dash_cooldown_timer == 0)
+        {
+            plat_next_state = DASH_STATE;
+            break;
+        }
+#endif
+
 #ifdef FEAT_PLATFORM_RUN
         const UBYTE running = INPUT_PLATFORM_RUN;
         if (plat_state == GROUND_STATE && running) {
@@ -1001,15 +1016,13 @@ void platform_update(void) BANKED
             }
             // If the player is off the platform to the right, detach
             // from the platform
-            else if (PLAYER.pos.x + PLAYER.bounds.left >
-                     plat_attached_actor->pos.x + PX_TO_SUBPX(1) + plat_attached_actor->bounds.right)
+            else if (PLAYER.pos.x + PLAYER.bounds.left > plat_attached_actor->pos.x + EXCLUSIVE_OFFSET(plat_attached_actor->bounds.right))
             {
                 plat_next_state = FALL_STATE;
                 plat_is_actor_attached = FALSE;
             }
             // If the player is off the platform to the left, detach
-            else if (PLAYER.pos.x + PX_TO_SUBPX(1) + PLAYER.bounds.right <
-                     plat_attached_actor->pos.x + plat_attached_actor->bounds.left)
+            else if (PLAYER.pos.x + EXCLUSIVE_OFFSET(PLAYER.bounds.right) < plat_attached_actor->pos.x + plat_attached_actor->bounds.left)
             {
                 plat_next_state = FALL_STATE;
                 plat_is_actor_attached = FALSE;
@@ -1037,7 +1050,6 @@ void platform_update(void) BANKED
         }
         else
         {
-
             // Normal gravity
             plat_vel_y += plat_grav;
             plat_temp_y = PLAYER.pos.y;
@@ -1073,15 +1085,6 @@ void platform_update(void) BANKED
         {
             actor_set_anim_idle(&PLAYER);
         }
-
-#ifdef FEAT_PLATFORM_DASH
-        // GROUND -> DASH Check
-        if (dash_press && (plat_dash_from & DASH_FROM_GROUND) && plat_dash_cooldown_timer == 0)
-        {
-            plat_next_state = DASH_STATE;
-            break;
-        }
-#endif
 
 #ifdef FEAT_PLATFORM_JUMP
         // GROUND -> JUMP Check
@@ -1373,7 +1376,7 @@ void platform_update(void) BANKED
         else if (INPUT_DOWN)
         {
             // Descend ladder
-            UBYTE tile_y = SUBPX_TO_TILE(PLAYER.pos.y + PLAYER.bounds.bottom + PX_TO_SUBPX(1));
+            UBYTE tile_y = SUBPX_TO_TILE(PLAYER.pos.y + EXCLUSIVE_OFFSET(PLAYER.bounds.bottom));
             UBYTE tile = tile_at(tile_x_mid, tile_y);
             // If tile below is still a ladder climb down
             if (IS_LADDER(tile))
@@ -1954,9 +1957,9 @@ static void move_and_collide(UBYTE mask)
 
         // Edge Locking
         // If the player is past the right screen edge
-        if ((plat_camera_block & CAMERA_LOCK_SCREEN_RIGHT) && ((new_x + PLAYER.bounds.right + PX_TO_SUBPX(1)) > PX_TO_SUBPX(scroll_x + SCREEN_WIDTH)))
+        if ((plat_camera_block & CAMERA_LOCK_SCREEN_RIGHT) && ((new_x + EXCLUSIVE_OFFSET(PLAYER.bounds.right)) > PX_TO_SUBPX(scroll_x + SCREEN_WIDTH)))
         {
-            new_x = PX_TO_SUBPX(scroll_x + SCREEN_WIDTH) - PLAYER.bounds.right - PX_TO_SUBPX(1);
+            new_x = PX_TO_SUBPX(scroll_x + SCREEN_WIDTH) - EXCLUSIVE_OFFSET(PLAYER.bounds.right);
             plat_vel_x = 0;
         }
         // If the player is past the left screen edge
@@ -1982,7 +1985,7 @@ static void move_and_collide(UBYTE mask)
             moving_right = TRUE;
             hit_flag = COLLISION_LEFT;
             wall = WALL_COL_RIGHT;
-            bounds_edge = PLAYER.bounds.right + PX_TO_SUBPX(1);
+            bounds_edge = EXCLUSIVE_OFFSET(PLAYER.bounds.right);
         }
         else
         {
@@ -2147,7 +2150,6 @@ static void move_and_collide(UBYTE mask)
             // Tile snap threshold
             // If offset into tile is greater than amount moved down this frame
             // then must have started below top of the tile and should fall through
-            // if (SUBPX_TILE_REMAINDER(y_bottom) > (SUBPX_TILE_REMAINDER(plat_delta_y) + PX_TO_SUBPX(4))) {
 #ifdef FEAT_PLATFORM_SLOPES
             if (!prev_on_slope && (SUBPX_TILE_REMAINDER(y_bottom) > SUBPX_TILE_REMAINDER(plat_delta_y))) {
 #else
@@ -2230,15 +2232,12 @@ finally_check_actor_col:
                     plat_is_actor_attached = FALSE;
                     plat_next_state = FALL_STATE;
                 }
-                else if (
-                    ((plat_temp_y + PLAYER.bounds.bottom - plat_delta_y - PX_TO_SUBPX(2)) < (hit_actor->pos.y + hit_actor->bounds.top))
-                        && (plat_vel_y >= 0)
-                ) {
+                else if (((plat_temp_y + PLAYER.bounds.bottom - plat_delta_y - PX_TO_SUBPX(2)) < (hit_actor->pos.y + hit_actor->bounds.top)) && (plat_vel_y >= 0)) {
                     // Attach to actor (solid or platform)
                     plat_attached_actor = hit_actor;
                     plat_attached_prev_x = hit_actor->pos.x;
                     plat_attached_prev_y = hit_actor->pos.y;
-                    PLAYER.pos.y = hit_actor->pos.y + hit_actor->bounds.top - PLAYER.bounds.bottom - 4;
+                    PLAYER.pos.y = hit_actor->pos.y + hit_actor->bounds.top - EXCLUSIVE_OFFSET(PLAYER.bounds.bottom);
                     plat_vel_y = 0;
                     plat_is_actor_attached = TRUE;
                     if (plat_state != DASH_STATE)
@@ -2265,18 +2264,18 @@ finally_check_actor_col:
                     {
                         const UBYTE moving_right = PLAYER.pos.x < hit_actor->pos.x;
 
-                        plat_delta_x = (hit_actor->pos.x - PLAYER.pos.x) +
-                                       (moving_right ? -(PLAYER.bounds.right + -hit_actor->bounds.left)
-                                                     : (-PLAYER.bounds.left + hit_actor->bounds.right) + 16);
+                        plat_delta_x = (hit_actor->pos.x - PLAYER.pos.x) + 
+                            (moving_right
+                                ? (hit_actor->bounds.left - EXCLUSIVE_OFFSET(PLAYER.bounds.right))
+                                : (EXCLUSIVE_OFFSET(hit_actor->bounds.right) - PLAYER.bounds.left));
+                        PLAYER.pos.x += CLAMP(plat_delta_x, -MAX_DELTA, MAX_DELTA);
+                        plat_delta_x = 0;
 
                         plat_wall_col = moving_right ? WALL_COL_RIGHT : WALL_COL_LEFT;
                         plat_last_wall_col = plat_wall_col;
                         plat_coyote_timer = plat_coyote_frames + 1;
 
-                        if ((moving_right && !INPUT_RIGHT) || (!moving_right && !INPUT_LEFT))
-                        {
-                            plat_vel_x = 0;
-                        }
+                        plat_vel_x = 0;
 
 #ifdef FEAT_PLATFORM_DASH
                         if (plat_next_state == DASH_STATE)

@@ -92,6 +92,8 @@
 #define SUBPX_TILE_REMAINDER(a) ((UBYTE)((a) & 0xFF))
 #define PX_TILE_REMAINDER(a)    ((UBYTE)((a) & 0x7))
 
+#define EXCLUSIVE_OFFSET(x) ((x) + 1)
+
 #define WORD_MIN            -32768
 #define WORD_MAX            32767
 #define UWORD_MIN           0
