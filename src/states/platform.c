@@ -2325,7 +2325,7 @@ void plat_callback_attach(SCRIPT_CTX *THIS) OLDCALL BANKED
 void plat_callback_detach(SCRIPT_CTX *THIS) OLDCALL BANKED
 {
     UWORD *slot = VM_REF_TO_PTR(FN_ARG0);
-    plat_events[*slot].script_bank = NULL;
+    plat_events[*slot].script_bank = 0;
     plat_events[*slot].script_addr = NULL;
 }
 
