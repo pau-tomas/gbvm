@@ -336,7 +336,11 @@ actor_t *actor_in_front_of_player(UBYTE grid_size, UBYTE inc_noclip) BANKED {
 }
 
 actor_t *actor_overlapping_player(UBYTE inc_noclip) BANKED {
-    actor_t *actor = PLAYER.prev;
+    return actor_overlapping_player_from(NULL, inc_noclip);
+}
+
+actor_t *actor_overlapping_player_from(actor_t *start_actor, UBYTE inc_noclip) BANKED {
+    actor_t *actor = start_actor ? start_actor->prev : PLAYER.prev;
 
     const UWORD a_left   = PLAYER.pos.x + PLAYER.bounds.left;
     const UWORD a_right  = PLAYER.pos.x + PLAYER.bounds.right;
