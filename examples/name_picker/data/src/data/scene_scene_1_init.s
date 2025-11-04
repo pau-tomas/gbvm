@@ -20,8 +20,8 @@ _scene_scene_1_init::
         ; Text Set Animation Speed
         VM_SET_CONST_INT8       _text_ff_joypad, 1
         VM_SET_CONST_INT8       _text_draw_speed, 0
-        VM_SET_CONST_INT8       _text_out_speed, -3
-        VM_SET_CONST_INT8       _text_in_speed, -3
+        VM_SET_CONST_INT8       _text_out_speed, .OVERLAY_SPEED_INSTANT
+        VM_SET_CONST_INT8       _text_in_speed, .OVERLAY_SPEED_INSTANT
 
         ; Input Script Attach
         VM_CONTEXT_PREPARE      3, ___bank_script_input, _script_input

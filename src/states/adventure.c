@@ -895,13 +895,13 @@ static void move_and_collide(UBYTE mask)
     {
         actor_t *hit_actor;
         hit_actor = actor_overlapping_player(FALSE);
-        if (hit_actor != NULL) {
+        adv_attached_actor = NULL;
+
+        while (hit_actor != NULL) {
             const UBYTE is_solid = hit_actor->collision_group & COLLISION_GROUP_FLAG_SOLID;
-             if (is_solid)
+            if (is_solid)
             {
                 adv_attached_actor = hit_actor;
-                adv_attached_prev_x = hit_actor->pos.x;
-                adv_attached_prev_y = hit_actor->pos.y;
                 if ((temp_y + PLAYER.bounds.bottom) < (hit_actor->pos.y + hit_actor->bounds.top)) {
                     PLAYER.pos.y += (hit_actor->pos.y + hit_actor->bounds.top) - (PLAYER.pos.y + EXCLUSIVE_OFFSET(PLAYER.bounds.bottom));
                     collision_dir = DIR_UP;
@@ -918,6 +918,13 @@ static void move_and_collide(UBYTE mask)
                     collision_dir = hit_actor->dir;
                 }
             }
+            hit_actor = actor_overlapping_player_from(hit_actor, FALSE);
+        }
+
+        if (adv_attached_actor != NULL) {
+            hit_actor = adv_attached_actor;
+            adv_attached_prev_x = hit_actor->pos.x;
+            adv_attached_prev_y = hit_actor->pos.y; 
         } else {
             adv_attached_actor = NULL;
             collision_dir = DIR_NONE;
@@ -931,7 +938,6 @@ static void move_and_collide(UBYTE mask)
             player_register_collision_with(hit_actor);
         }
         else if (INPUT_PRESSED(INPUT_ADVENTURE_INTERACT)) {
-            actor_t *hit_actor = adv_attached_actor;
             if (!hit_actor) {
                 hit_actor = actor_in_front_of_player(8, TRUE);
             }
