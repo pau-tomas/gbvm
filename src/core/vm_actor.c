@@ -40,6 +40,11 @@ typedef struct act_set_pos_t {
     UINT16 X, Y;
 } act_set_pos_t;
 
+typedef struct act_set_bounds_t {
+    INT16 ID;
+    INT16 LEFT, RIGHT, TOP, BOTTOM;
+} act_set_bounds_t;
+
 typedef struct act_set_frame_t {
     INT16 ID;
     INT16 FRAME;
@@ -441,13 +446,14 @@ void vm_actor_emote(SCRIPT_CTX * THIS, INT16 idx, UBYTE emote_tiles_bank, const 
     }
 }
 
-void vm_actor_set_bounds(SCRIPT_CTX * THIS, INT16 idx, WORD left, WORD right, WORD top, WORD bottom) OLDCALL BANKED {
-    UBYTE * n_actor = VM_REF_TO_PTR(idx);
-    actor_t * actor = actors + *n_actor;
-    actor->bounds.left = left;
-    actor->bounds.right = right;
-    actor->bounds.top = top;
-    actor->bounds.bottom = bottom;
+void vm_actor_set_bounds(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
+    actor_t *actor;
+    act_set_bounds_t * params = VM_REF_TO_PTR(idx);
+    actor = actors + (UBYTE)(params->ID);
+    actor->bounds.left = params->LEFT;
+    actor->bounds.right = params->RIGHT;
+    actor->bounds.top = params->TOP;
+    actor->bounds.bottom = params->BOTTOM;
 }
 
 void vm_actor_set_spritesheet(SCRIPT_CTX * THIS, INT16 idx, UBYTE spritesheet_bank, const spritesheet_t *spritesheet) OLDCALL BANKED {

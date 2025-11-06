@@ -76,7 +76,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_actor_set_anim,                 BANK(VM_ACTOR),         4}, // 0x34
     {vm_actor_set_pos,                  BANK(VM_ACTOR),         2}, // 0x35
     {vm_actor_emote,                    BANK(VM_ACTOR),         5}, // 0x36
-    {vm_actor_set_bounds,               BANK(VM_ACTOR),        10}, // 0x37
+    {vm_actor_set_bounds,               BANK(VM_ACTOR),         2}, // 0x37
     {vm_actor_set_spritesheet,          BANK(VM_ACTOR),         5}, // 0x38
     {vm_actor_replace_tile,             BANK(VM_ACTOR),         8}, // 0x39
     {vm_actor_get_pos,                  BANK(VM_ACTOR),         2}, // 0x3A
