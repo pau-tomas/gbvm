@@ -154,7 +154,7 @@ void vm_beginthread(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, UBYTE b
         SWITCH_ROM(THIS->bank);             // then switch to bytecode bank
         for (UBYTE i = nargs; i != 0; i--) {
             INT16 A = *((INT16 *)THIS->PC);
-            A = (A < 0) ? *(THIS->stack_ptr + idx) : *(script_memory + idx);
+            A = (A < 0) ? *(THIS->stack_ptr + A) : *(script_memory + A);
             *(ctx->stack_ptr++) = (UWORD)A;
             THIS->PC += 2;
         }
