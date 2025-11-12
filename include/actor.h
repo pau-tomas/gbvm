@@ -41,6 +41,7 @@ extern UBYTE player_moving;
 extern actor_t * player_collision_actor;
 extern actor_t * emote_actor;
 extern UBYTE emote_timer;
+extern UBYTE player_iframes;
 
 extern UBYTE allocated_sprite_tiles;
 extern UBYTE allocated_hardware_sprites;
