@@ -346,10 +346,6 @@ actor_t *actor_overlapping_player(void) BANKED {
     return actor_overlapping_player_from(NULL);
 }
 
-actor_t *actor_overlapping_player_inc_noclip(void) BANKED {
-    return actor_overlapping_player_from_inc_noclip(NULL);
-}
-
 actor_t *actor_overlapping_player_from(actor_t *start_actor) BANKED {
     actor_t *actor = start_actor ? start_actor->prev : PLAYER.prev;
 
@@ -364,26 +360,6 @@ actor_t *actor_overlapping_player_from(actor_t *start_actor) BANKED {
             continue;
         }
 
-        if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
-        if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
-        if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
-        if ((actor->pos.y + actor->bounds.bottom) < a_top)    { actor = actor->prev; continue; }
-
-        return actor;
-    }
-
-    return NULL;
-}
-
-actor_t *actor_overlapping_player_from_inc_noclip(actor_t *start_actor) BANKED {
-    actor_t *actor = start_actor ? start_actor->prev : PLAYER.prev;
-
-    const UWORD a_left   = PLAYER.pos.x + PLAYER.bounds.left;
-    const UWORD a_right  = PLAYER.pos.x + PLAYER.bounds.right;
-    const UWORD a_top    = PLAYER.pos.y + PLAYER.bounds.top;
-    const UWORD a_bottom = PLAYER.pos.y + PLAYER.bounds.bottom;
-
-    while (actor) {
         if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
         if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
         if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
