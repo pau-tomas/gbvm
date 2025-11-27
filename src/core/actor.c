@@ -339,7 +339,32 @@ actor_t *actor_in_front_of_player(UBYTE grid_size, UBYTE inc_noclip) BANKED {
     else
     {
         return actor_overlapping_bb(&PLAYER.bounds, &offset, &PLAYER);
+
+actor_t *actor_with_script_in_front_of_player(UBYTE grid_size) BANKED {
+    upoint16_t offset;
+    offset.x = PLAYER.pos.x;
+    offset.y = PLAYER.pos.y;
+    point_translate_dir_word(&offset, PLAYER.dir, PX_TO_SUBPX(grid_size));
+    actor_t *actor = &PLAYER;
+
+    const UWORD a_left   = offset.x + PLAYER.bounds.left;
+    const UWORD a_right  = offset.x + PLAYER.bounds.right;
+    const UWORD a_top    = offset.y + PLAYER.bounds.top;
+    const UWORD a_bottom = offset.y + PLAYER.bounds.bottom;
+
+    while (actor) {
+        if (!actor->script.bank) {
+            actor = actor->prev;
+            continue;
+        }
+        if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
+        if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.bottom) < a_top)    { actor = actor->prev; continue; }
+        return actor;
     }
+
+    return NULL;
 }
 
 actor_t *actor_overlapping_player(void) BANKED {

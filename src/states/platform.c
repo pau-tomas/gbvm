@@ -2297,7 +2297,7 @@ finally_check_actor_col:
         {
             if (!hit_actor)
             {
-                hit_actor = actor_in_front_of_player(8, TRUE);
+                hit_actor = actor_with_script_in_front_of_player(8);
             }
             if (hit_actor && !(hit_actor->collision_group & COLLISION_GROUP_MASK) && hit_actor->script.bank)
             {

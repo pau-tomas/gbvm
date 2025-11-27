@@ -945,9 +945,7 @@ static void move_and_collide(UBYTE mask)
             player_register_collision_with(hit_actor);
         }
         else if (INPUT_PRESSED(INPUT_ADVENTURE_INTERACT)) {
-            if (!hit_actor) {
-                hit_actor = actor_in_front_of_player(8, TRUE);
-            }
+            hit_actor = actor_with_script_in_front_of_player(8);
             if (hit_actor && !(hit_actor->collision_group & COLLISION_GROUP_MASK) && hit_actor->script.bank) {
                 actor_set_dir(hit_actor, FLIPPED_DIR(PLAYER.dir), FALSE);
                 script_execute(hit_actor->script.bank, hit_actor->script.ptr, 0, 1, 0);

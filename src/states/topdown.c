@@ -125,7 +125,7 @@ void topdown_update(void) BANKED {
         }
 
         if (INPUT_PRESSED(INPUT_TOPDOWN_INTERACT)) {
-            hit_actor = actor_in_front_of_player(topdown_grid, TRUE);
+            hit_actor = actor_with_script_in_front_of_player(topdown_grid);
             if (hit_actor != NULL && !(hit_actor->collision_group & COLLISION_GROUP_MASK)) {
                 actor_set_dir(hit_actor, FLIPPED_DIR(PLAYER.dir), FALSE);
                 player_moving = FALSE;
