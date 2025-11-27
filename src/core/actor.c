@@ -339,6 +339,8 @@ actor_t *actor_in_front_of_player(UBYTE grid_size, UBYTE inc_noclip) BANKED {
     else
     {
         return actor_overlapping_bb(&PLAYER.bounds, &offset, &PLAYER);
+    }
+}
 
 actor_t *actor_with_script_in_front_of_player(UBYTE grid_size) BANKED {
     upoint16_t offset;
