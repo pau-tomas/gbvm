@@ -590,6 +590,13 @@ void adventure_update(void) BANKED {
                 break;
             }
            
+            // Facing and animation update
+            if (joy & INPUT_DPAD) {
+                actor_set_dir(&PLAYER, facing_dir, TRUE);
+            } else {
+                actor_set_anim_idle(&PLAYER);
+            }
+
             break;
         }
 #endif
