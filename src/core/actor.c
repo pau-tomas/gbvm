@@ -77,7 +77,7 @@ void player_init(void) BANKED {
 void actors_update(void) NONBANKED {
     UBYTE _save = CURRENT_BANK;
     static actor_t *actor;
-    static uint8_t screen_tile16_x, screen_tile16_y;
+    static uint8_t screen_tile16_x, screen_tile16_y, screen_tile16_x_end, screen_tile16_y_end;
     static uint8_t actor_tile16_x, actor_tile16_y;
 
     // Convert scroll pos to 16px tile coordinates
@@ -85,7 +85,9 @@ void actors_update(void) NONBANKED {
     // offset by 64 to allow signed comparisons on
     // unsigned int values (is faster)
     screen_tile16_x = PX_TO_TILE16(draw_scroll_x) + TILE16_OFFSET;
+    screen_tile16_x_end = screen_tile16_x + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_W;
     screen_tile16_y = PX_TO_TILE16(draw_scroll_y) + TILE16_OFFSET;
+    screen_tile16_y_end = screen_tile16_y + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_H;
 
     if (emote_actor) {
         SWITCH_ROM(emote_actor->sprite.bank);
@@ -128,11 +130,11 @@ void actors_update(void) NONBANKED {
                 // Actor right edge < screen left edge
                 (actor_tile16_x < screen_tile16_x) ||
                 // Actor left edge > screen right edge
-                ((actor_tile16_x - (ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_W)) > screen_tile16_x) ||
+                (actor_tile16_x > screen_tile16_x_end) ||
                 // Actor bottom edge < screen top edge
                 (actor_tile16_y < screen_tile16_y) ||
                 // Actor top edge > screen bottom edge
-                ((actor_tile16_y - (ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_H)) > screen_tile16_y)
+                (actor_tile16_y > screen_tile16_y_end)
             ) {
                 if (actor->persistent) {
                     actor = actor->prev;
@@ -332,14 +334,48 @@ actor_t *actor_in_front_of_player(UBYTE grid_size, UBYTE inc_noclip) BANKED {
     offset.x = PLAYER.pos.x;
     offset.y = PLAYER.pos.y;
     point_translate_dir_word(&offset, PLAYER.dir, PX_TO_SUBPX(grid_size));
-    return actor_overlapping_bb(&PLAYER.bounds, &offset, &PLAYER, inc_noclip);
+    if(inc_noclip)
+    {
+        return actor_overlapping_bb_inc_noclip(&PLAYER.bounds, &offset, &PLAYER);
+    }
+    else
+    {
+        return actor_overlapping_bb(&PLAYER.bounds, &offset, &PLAYER);
+    }
 }
 
-actor_t *actor_overlapping_player(UBYTE inc_noclip) BANKED {
-    return actor_overlapping_player_from(NULL, inc_noclip);
+actor_t *actor_with_script_in_front_of_player(UBYTE grid_size) BANKED {
+    upoint16_t offset;
+    offset.x = PLAYER.pos.x;
+    offset.y = PLAYER.pos.y;
+    point_translate_dir_word(&offset, PLAYER.dir, PX_TO_SUBPX(grid_size));
+    actor_t *actor = &PLAYER;
+
+    const UWORD a_left   = offset.x + PLAYER.bounds.left;
+    const UWORD a_right  = offset.x + PLAYER.bounds.right;
+    const UWORD a_top    = offset.y + PLAYER.bounds.top;
+    const UWORD a_bottom = offset.y + PLAYER.bounds.bottom;
+
+    while (actor) {
+        if (!actor->script.bank) {
+            actor = actor->prev;
+            continue;
+        }
+        if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
+        if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.bottom) < a_top)    { actor = actor->prev; continue; }
+        return actor;
+    }
+
+    return NULL;
 }
 
-actor_t *actor_overlapping_player_from(actor_t *start_actor, UBYTE inc_noclip) BANKED {
+actor_t *actor_overlapping_player(void) BANKED {
+    return actor_overlapping_player_from(NULL);
+}
+
+actor_t *actor_overlapping_player_from(actor_t *start_actor) BANKED {
     actor_t *actor = start_actor ? start_actor->prev : PLAYER.prev;
 
     const UWORD a_left   = PLAYER.pos.x + PLAYER.bounds.left;
@@ -348,7 +384,7 @@ actor_t *actor_overlapping_player_from(actor_t *start_actor, UBYTE inc_noclip) B
     const UWORD a_bottom = PLAYER.pos.y + PLAYER.bounds.bottom;
 
     while (actor) {
-        if (!inc_noclip && !actor->collision_enabled) {
+        if (!actor->collision_enabled) {
             actor = actor->prev;
             continue;
         }
@@ -364,7 +400,7 @@ actor_t *actor_overlapping_player_from(actor_t *start_actor, UBYTE inc_noclip) B
     return NULL;
 }
 
-actor_t *actor_overlapping_bb(rect16_t *bb, upoint16_t *offset, actor_t *ignore, UBYTE inc_noclip) BANKED {
+actor_t *actor_overlapping_bb(rect16_t *bb, upoint16_t *offset, actor_t *ignore) BANKED {
     actor_t *actor = &PLAYER;
 
     const UWORD a_left   = offset->x + bb->left;
@@ -373,7 +409,32 @@ actor_t *actor_overlapping_bb(rect16_t *bb, upoint16_t *offset, actor_t *ignore,
     const UWORD a_bottom = offset->y + bb->bottom;
 
     while (actor) {
-        if (actor == ignore || (!inc_noclip && !actor->collision_enabled)) {
+        if (actor == ignore || !actor->collision_enabled) {
+            actor = actor->prev;
+            continue;
+        }
+
+        if ((actor->pos.x + actor->bounds.left)   > a_right)  { actor = actor->prev; continue; }
+        if ((actor->pos.x + actor->bounds.right)  < a_left)   { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.top)    > a_bottom) { actor = actor->prev; continue; }
+        if ((actor->pos.y + actor->bounds.bottom) < a_top)    { actor = actor->prev; continue; }
+
+        return actor;
+    }
+
+    return NULL;
+}
+
+actor_t *actor_overlapping_bb_inc_noclip(rect16_t *bb, upoint16_t *offset, actor_t *ignore) BANKED {
+    actor_t *actor = &PLAYER;
+
+    const UWORD a_left   = offset->x + bb->left;
+    const UWORD a_right  = offset->x + bb->right;
+    const UWORD a_top    = offset->y + bb->top;
+    const UWORD a_bottom = offset->y + bb->bottom;
+
+    while (actor) {
+        if (actor == ignore) {
             actor = actor->prev;
             continue;
         }
