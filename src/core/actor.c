@@ -95,7 +95,7 @@ void actors_update(void) BANKED {
             continue;
         }
 
-        if (IS_FRAME_32) {
+        if (IS_FRAME_8) {
             // Bottom right coordinate of actor in 16px tile coordinates
             // Subtract bounding box estimate width/height
             // and offset by 64 to allow signed comparisons with screen tiles
