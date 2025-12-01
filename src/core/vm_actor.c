@@ -237,8 +237,8 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         // Get hoizontal direction from flags
         new_dir = CHK_FLAG(THIS->flags, MOVE_DIR_H) ? DIR_LEFT : DIR_RIGHT;
 
-        // Move actor
-        point_translate_dir(&actor->pos, new_dir, actor->move_speed);
+        // Move actor horizontally
+        actor->pos.x += new_dir == DIR_LEFT ? -actor->move_speed : actor->move_speed;
 
         // Check for actor collision
         actor_t *hit_actor;
@@ -276,8 +276,8 @@ void vm_actor_move_to(SCRIPT_CTX * THIS, INT16 idx) OLDCALL BANKED {
         // Get vertical direction from flags
         new_dir = CHK_FLAG(THIS->flags, MOVE_DIR_V) ? DIR_UP : DIR_DOWN;
 
-        // Move actor
-        point_translate_dir(&actor->pos, new_dir, actor->move_speed);
+        // Move actor vertically
+        actor->pos.y += new_dir == DIR_UP ? -actor->move_speed : actor->move_speed;
 
         // Check for actor collision
         actor_t *hit_actor;
