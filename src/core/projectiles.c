@@ -121,22 +121,12 @@ void projectiles_update(void) NONBANKED {
 
 void projectiles_render(void) NONBANKED {
     projectile = projectiles_active_head;
-    prev_projectile = NULL;
 
     _save_bank = _current_bank;
 
     while (projectile) {
         UINT8 screen_x = (SUBPX_TO_PX(projectile->pos.x) + 8) - draw_scroll_x,
               screen_y = (SUBPX_TO_PX(projectile->pos.y) + 8) - draw_scroll_y;
-
-        if ((screen_x > DEVICE_SCREEN_PX_WIDTH) || (screen_y > DEVICE_SCREEN_PX_HEIGHT)) {
-            // Remove projectile
-            projectile_t *next = projectile->next;
-            LL_REMOVE_ITEM(projectiles_active_head, projectile, prev_projectile);
-            LL_PUSH_HEAD(projectiles_inactive_head, projectile);
-            projectile = next;
-            continue;
-        }
 
         SWITCH_ROM(projectile->def.sprite.bank);
         spritesheet_t *sprite = projectile->def.sprite.ptr;
@@ -149,7 +139,6 @@ void projectiles_render(void) NONBANKED {
             screen_y
         );
 
-        prev_projectile = projectile;
         projectile = projectile->next;
     }
 
