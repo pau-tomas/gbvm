@@ -56,6 +56,8 @@ UBYTE emote_timer;
 UBYTE allocated_sprite_tiles;
 UBYTE allocated_hardware_sprites;
 
+static void deactivate_actor_impl(actor_t *actor);
+
 void actors_init(void) BANKED {
     actors_active_tail = actors_active_head = actors_inactive_head = NULL;
     player_moving           = FALSE;
@@ -123,7 +125,7 @@ void actors_update(void) BANKED {
                     if (actor == &PLAYER) {
                         player_is_offscreen = TRUE;
                     } else {
-                        deactivate_actor(actor);
+                        deactivate_actor_impl(actor);
                     }
                 }
                 actor = prev;
