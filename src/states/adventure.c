@@ -580,6 +580,9 @@ static void handle_dir_input(void) {
             if (adv_vel_y < -max_vel) adv_vel_y = -max_vel;
         }
     }
+
+    adv_vel_x = CLAMP(adv_vel_x, -max_vel, max_vel);
+    adv_vel_y = CLAMP(adv_vel_y, -max_vel, max_vel);
 }
 
 static void move_and_collide(UBYTE mask)
