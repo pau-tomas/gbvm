@@ -108,13 +108,19 @@
 
 #define COL_CHECK_ALL COL_CHECK_X | COL_CHECK_Y | COL_CHECK_ACTORS | COL_CHECK_TRIGGERS | COL_CHECK_WALLS
 
-#define COLLISION_SLOPE_45_RIGHT 0x20
-#define COLLISION_SLOPE_225_RIGHT_BOT 0x40
-#define COLLISION_SLOPE_225_RIGHT_TOP 0x60
-#define COLLISION_SLOPE_45_LEFT 0x30
-#define COLLISION_SLOPE_225_LEFT_BOT 0x50
-#define COLLISION_SLOPE_225_LEFT_TOP 0x70
-#define COLLISION_SLOPE 0xF0
+#define COLLISION_SLOPE_LEFT          0x10u
+#define COLLISION_SLOPE_45            0x20u
+#define COLLISION_SLOPE_225_BOT       0x40u
+#define COLLISION_SLOPE_225_TOP       (COLLISION_SLOPE_45 | COLLISION_SLOPE_225_BOT)
+#define COLLISION_SLOPE_45_RIGHT      COLLISION_SLOPE_45
+#define COLLISION_SLOPE_225_RIGHT_BOT COLLISION_SLOPE_225_BOT
+#define COLLISION_SLOPE_225_RIGHT_TOP COLLISION_SLOPE_225_TOP
+#define COLLISION_SLOPE_45_LEFT       (COLLISION_SLOPE_LEFT | COLLISION_SLOPE_45)
+#define COLLISION_SLOPE_225_LEFT_BOT  (COLLISION_SLOPE_LEFT | COLLISION_SLOPE_225_BOT) 
+#define COLLISION_SLOPE_225_LEFT_TOP  (COLLISION_SLOPE_LEFT | COLLISION_SLOPE_225_TOP)
+#define COLLISION_SLOPE_ANY           (COLLISION_SLOPE_45 | COLLISION_SLOPE_225_BOT | COLLISION_SLOPE_225_TOP)
+#define COLLISION_SLOPE               0x70u
+
 
 #define PLATFORM_ANIM_OVERRIDES_SET \
     defined(PLATFORM_FALL_ANIM) || \
@@ -131,10 +137,10 @@
 
 // Macros ---------------------------------------------------------------------
 
-#define IS_ON_SLOPE(t) ((t) & 0x60)
-#define IS_SLOPE_LEFT(t) ((t) & 0x10)
-#define IS_SLOPE_RIGHT(t) (((t) & 0x10) == 0)
-#define IS_LADDER(t) (((t) & 0xF0) == 0x10)
+#define IS_ON_SLOPE(t) ((t) & COLLISION_SLOPE_ANY)
+#define IS_SLOPE_LEFT(t) ((t) & COLLISION_SLOPE_LEFT)
+#define IS_SLOPE_RIGHT(t) (!((t) & COLLISION_SLOPE_LEFT))
+#define IS_LADDER(t) (((t) & COLLISION_SLOPE) == TILE_PROP_LADDER)
 #define VEL_TO_SUBPX(v) ((((v) & 0x8000) ? (((v) >> 8) | 0xFF00) : ((v) >> 8)) << 1)
 
 #define COUNTER_DECREMENT(x)                                                                                           \
@@ -2085,7 +2091,7 @@ static void move_and_collide(UBYTE mask)
             UWORD x_mid_coord = PLAYER.pos.x + PLAYER.bounds.left + sp_half_width + PX_TO_SUBPX(1);
             UBYTE tile_x = SUBPX_TO_TILE(x_mid_coord);
 
-            tile = tile_col_test_range_y(0x60, tile_x, tile_y_start, tile_y_end);
+            tile = tile_col_test_range_y(COLLISION_SLOPE_ANY, tile_x, tile_y_start, tile_y_end);
             if (tile)
             {
                 const UBYTE slope_type = (tile & COLLISION_SLOPE);
