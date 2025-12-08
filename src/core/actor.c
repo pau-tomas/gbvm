@@ -48,12 +48,15 @@ UBYTE screen_x, screen_y;
 actor_t * invalid;
 UBYTE player_moving;
 UBYTE player_iframes;
+UBYTE player_is_offscreen;
 actor_t * player_collision_actor;
 actor_t * emote_actor;
 UBYTE emote_timer;
 
 UBYTE allocated_sprite_tiles;
 UBYTE allocated_hardware_sprites;
+
+static void deactivate_actor_impl(actor_t *actor);
 
 void actors_init(void) BANKED {
     actors_active_tail = actors_active_head = actors_inactive_head = NULL;
@@ -74,8 +77,7 @@ void player_init(void) BANKED {
     PLAYER.collision_enabled = TRUE;
 }
 
-void actors_update(void) NONBANKED {
-    UBYTE _save = CURRENT_BANK;
+void actors_update(void) BANKED {
     static actor_t *actor;
     static uint8_t screen_tile16_x, screen_tile16_y, screen_tile16_x_end, screen_tile16_y_end;
     static uint8_t actor_tile16_x, actor_tile16_y;
@@ -88,6 +90,74 @@ void actors_update(void) NONBANKED {
     screen_tile16_x_end = screen_tile16_x + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_W;
     screen_tile16_y = PX_TO_TILE16(draw_scroll_y) + TILE16_OFFSET;
     screen_tile16_y_end = screen_tile16_y + ACTOR_BOUNDS_TILE16 + SCREEN_TILE16_H;
+
+    actor = actors_active_tail;
+    while (actor) {
+       if (actor->pinned || actor->persistent) {
+            actor = actor->prev;
+            continue;
+        }
+
+        if (IS_FRAME_8) {
+            // Bottom right coordinate of actor in 16px tile coordinates
+            // Subtract bounding box estimate width/height
+            // and offset by 64 to allow signed comparisons with screen tiles
+            actor_tile16_x = SUBPX_TO_TILE16(actor->pos.x) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
+            actor_tile16_y = SUBPX_TO_TILE16(actor->pos.y) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
+
+            if (
+                // Actor right edge < screen left edge
+                (actor_tile16_x < screen_tile16_x) ||
+                // Actor left edge > screen right edge
+                (actor_tile16_x > screen_tile16_x_end) ||
+                // Actor bottom edge < screen top edge
+                (actor_tile16_y < screen_tile16_y) ||
+                // Actor top edge > screen bottom edge
+                (actor_tile16_y > screen_tile16_y_end)
+            ) {
+                if (actor->persistent) {
+                    actor = actor->prev;
+                    continue;
+                }
+                // Deactivate if offscreen
+                actor_t * prev = actor->prev;
+                if (!VM_ISLOCKED()) {
+                    if (actor == &PLAYER) {
+                        player_is_offscreen = TRUE;
+                    } else {
+                        deactivate_actor_impl(actor);
+                    }
+                }
+                actor = prev;
+                continue;
+            }
+
+            if (actor == &PLAYER) {
+                player_is_offscreen = FALSE;
+            }
+        }
+
+        // Check reached animation tick frame
+        if ((actor->anim_tick != ANIM_PAUSED) && (game_time & actor->anim_tick) == 0) {
+            actor->frame++;
+            // Check reached end of animation
+            if (actor->frame == actor->frame_end) {
+                if (actor->anim_noloop) {
+                    actor->frame--;
+                    // TODO: execute onAnimationEnd here + set to ANIM_PAUSED?
+                } else {
+                    actor->frame = actor->frame_start;
+                }
+            }
+        }
+
+        actor = actor->prev;
+    }
+}
+
+void actors_render(void) NONBANKED {
+    UBYTE _save = CURRENT_BANK;
+    static actor_t *actor;
 
     if (emote_actor) {
         SWITCH_ROM(emote_actor->sprite.bank);
@@ -115,61 +185,50 @@ void actors_update(void) NONBANKED {
     window_hide_actors = (!show_actors_on_overlay) && (WX_REG > DEVICE_WINDOW_PX_OFFSET_X);
 #endif
 
-    actor = actors_active_tail;
-    while (actor) {
+    // Render player
+    if (!player_is_offscreen) {
+        if (PLAYER.pinned) {
+            screen_x = SUBPX_TO_PX(PLAYER.pos.x) + 8;
+            screen_y = SUBPX_TO_PX(PLAYER.pos.y) + 8;
+        } else {
+            screen_x = (SUBPX_TO_PX(PLAYER.pos.x) + 8) - draw_scroll_x;
+            screen_y = (SUBPX_TO_PX(PLAYER.pos.y) + 8) - draw_scroll_y;
+        }
+
+        bool skip_player =
+            PLAYER.hidden ||
+             !PLAYER.active ||
+            (window_hide_actors &&
+             ((screen_x + 8) > WX_REG) &&
+             ((screen_y - 8) > WY_REG));
+
+        if (!skip_player) {
+            SWITCH_ROM(PLAYER.sprite.bank);
+            spritesheet_t *sprite = PLAYER.sprite.ptr;
+
+            allocated_hardware_sprites += move_metasprite(
+                *(sprite->metasprites + PLAYER.frame),
+                PLAYER.base_tile,
+                allocated_hardware_sprites,
+                screen_x,
+                screen_y
+            );
+        }
+    }
+
+    actor = PLAYER.prev;
+
+    // Render other actors
+    while (actor) {         
         if (actor->pinned) {
             screen_x = SUBPX_TO_PX(actor->pos.x) + 8, screen_y = SUBPX_TO_PX(actor->pos.y) + 8;
         } else {
-            // Bottom right coordinate of actor in 16px tile coordinates
-            // Subtract bounding box estimate width/height
-            // and offset by 64 to allow signed comparisons with screen tiles
-            actor_tile16_x = SUBPX_TO_TILE16(actor->pos.x) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
-            actor_tile16_y = SUBPX_TO_TILE16(actor->pos.y) + ACTOR_BOUNDS_TILE16_HALF + TILE16_OFFSET;
-
-            if (
-                // Actor right edge < screen left edge
-                (actor_tile16_x < screen_tile16_x) ||
-                // Actor left edge > screen right edge
-                (actor_tile16_x > screen_tile16_x_end) ||
-                // Actor bottom edge < screen top edge
-                (actor_tile16_y < screen_tile16_y) ||
-                // Actor top edge > screen bottom edge
-                (actor_tile16_y > screen_tile16_y_end)
-            ) {
-                if (actor->persistent) {
-                    actor = actor->prev;
-                    continue;
-                }
-                // Deactivate if offscreen
-                actor_t * prev = actor->prev;
-                if (!VM_ISLOCKED()) deactivate_actor(actor);
-                actor = prev;
-                continue;
-            }
-            // calculate screen coordinates
             screen_x = (SUBPX_TO_PX(actor->pos.x) + 8) - draw_scroll_x, screen_y = (SUBPX_TO_PX(actor->pos.y) + 8) - draw_scroll_y;
         }
-        if (actor->hidden) {
-            actor = actor->prev;
-            continue;
-        } else if ((window_hide_actors) && (((screen_x + 8) > WX_REG) && ((screen_y - 8) > WY_REG))) {
-            // Hide if under window (don't deactivate)
-            actor = actor->prev;
-            continue;
-        }
 
-        // Check reached animation tick frame
-        if ((actor->anim_tick != ANIM_PAUSED) && (game_time & actor->anim_tick) == 0) {
-            actor->frame++;
-            // Check reached end of animation
-            if (actor->frame == actor->frame_end) {
-                if (actor->anim_noloop) {
-                    actor->frame--;
-                    // TODO: execute onAnimationEnd here + set to ANIM_PAUSED?
-                } else {
-                    actor->frame = actor->frame_start;
-                }
-            }
+        if (actor->hidden || ((window_hide_actors) && (((screen_x + 8) > WX_REG) && ((screen_y - 8) > WY_REG)))) {
+            actor = actor->prev;
+            continue;
         }
 
         SWITCH_ROM(actor->sprite.bank);
