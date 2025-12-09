@@ -159,6 +159,8 @@ void topdown_update(void) BANKED {
         } else if (PLAYER.dir == DIR_LEFT) {
             if (PLAYER.pos.x < max_pos) {
                 PLAYER.pos.x = max_pos;
+            } else if (max_pos == 0 && PLAYER.pos.x >= (UWORD_MAX - PLAYER.move_speed)) {
+                PLAYER.pos.x = 0;
             }
         } else if (PLAYER.dir == DIR_DOWN) {
             if (PLAYER.pos.y > max_pos) {
@@ -167,6 +169,8 @@ void topdown_update(void) BANKED {
         } else if (PLAYER.dir == DIR_UP) {
             if (PLAYER.pos.y < max_pos) {
                 PLAYER.pos.y = max_pos;
+            } else if (max_pos == 0 && PLAYER.pos.y >= (UWORD_MAX - PLAYER.move_speed)) {
+                PLAYER.pos.y = 0;
             }
         }
     }
