@@ -108,7 +108,7 @@ void actors_update(void) BANKED {
             }
         }
 
-       if (actor->pinned || actor->persistent) {
+       if (actor->pinned) {
             actor = actor->prev;
             continue;
         }
@@ -130,15 +130,13 @@ void actors_update(void) BANKED {
                 // Actor top edge > screen bottom edge
                 (actor_tile16_y > screen_tile16_y_end)
             ) {
-                if (actor->persistent) {
-                    actor = actor->prev;
-                    continue;
-                }
                 // Deactivate if offscreen
                 actor_t * prev = actor->prev;
                 if (!VM_ISLOCKED()) {
                     if (actor == &PLAYER) {
                         player_is_offscreen = TRUE;
+                    } else if (actor->persistent) {
+                        actor->disabled = TRUE;
                     } else {
                         deactivate_actor_impl(actor);
                     }
@@ -149,6 +147,8 @@ void actors_update(void) BANKED {
 
             if (actor == &PLAYER) {
                 player_is_offscreen = FALSE;
+            } else if (actor->persistent) {
+                actor->disabled = FALSE;
             }
         }
 
@@ -198,6 +198,7 @@ void actors_render(void) NONBANKED {
 
         bool skip_player =
             PLAYER.hidden ||
+            PLAYER.disabled ||
              !PLAYER.active ||
             (window_hide_actors &&
              ((screen_x + 8) > WX_REG) &&
@@ -227,7 +228,7 @@ void actors_render(void) NONBANKED {
             screen_x = (SUBPX_TO_PX(actor->pos.x) + 8) - draw_scroll_x, screen_y = (SUBPX_TO_PX(actor->pos.y) + 8) - draw_scroll_y;
         }
 
-        if (actor->hidden || ((window_hide_actors) && (((screen_x + 8) > WX_REG) && ((screen_y - 8) > WY_REG)))) {
+        if (actor->hidden || actor->disabled || ((window_hide_actors) && (((screen_x + 8) > WX_REG) && ((screen_y - 8) > WY_REG)))) {
             actor = actor->prev;
             continue;
         }
