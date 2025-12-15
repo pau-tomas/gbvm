@@ -93,6 +93,21 @@ void actors_update(void) BANKED {
 
     actor = actors_active_tail;
     while (actor) {
+
+        // Check reached animation tick frame
+        if ((actor->anim_tick != ANIM_PAUSED) && (game_time & actor->anim_tick) == 0) {
+            actor->frame++;
+            // Check reached end of animation
+            if (actor->frame == actor->frame_end) {
+                if (actor->anim_noloop) {
+                    actor->frame--;
+                    // TODO: execute onAnimationEnd here + set to ANIM_PAUSED?
+                } else {
+                    actor->frame = actor->frame_start;
+                }
+            }
+        }
+
        if (actor->pinned || actor->persistent) {
             actor = actor->prev;
             continue;
@@ -134,20 +149,6 @@ void actors_update(void) BANKED {
 
             if (actor == &PLAYER) {
                 player_is_offscreen = FALSE;
-            }
-        }
-
-        // Check reached animation tick frame
-        if ((actor->anim_tick != ANIM_PAUSED) && (game_time & actor->anim_tick) == 0) {
-            actor->frame++;
-            // Check reached end of animation
-            if (actor->frame == actor->frame_end) {
-                if (actor->anim_noloop) {
-                    actor->frame--;
-                    // TODO: execute onAnimationEnd here + set to ANIM_PAUSED?
-                } else {
-                    actor->frame = actor->frame_start;
-                }
             }
         }
 
