@@ -472,18 +472,51 @@ void vm_call_native(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS, UINT8 b
 __asm
         ldhl sp, #6
         ld a, (hl+)
-        ld h, (hl)
-        ld l, a
-        push hl
-
-        ldhl sp, #10
+        ld e, a
+        ld a, (hl+)
+        ld d, a
+        push de
         ld a, (hl+)
         ld e, a
         ld a, (hl+)
         ld h, (hl)
         ld l, a
         call ___sdcc_bcall_ehl
-        add sp, #2
+        pop hl
+        ret
+__endasm;
+#endif
+}
+// call the inlined native code by THIS->PC
+void vm_asm(DUMMY0_t dummy0, DUMMY1_t dummy1, SCRIPT_CTX * THIS) OLDCALL NONBANKED NAKED {
+    dummy0; dummy1; THIS; // suppress warnings
+#if defined(__SDCC) && defined(NINTENDO)
+__asm
+        ldhl sp, #6
+        ld a, (hl+)
+        ld h, (hl)
+        ld l, a                 ; hl contains THIS
+
+        push hl
+
+        inc hl
+        inc hl
+        ld a, (hl-)             ; a contains THIS->bank
+        ldh (__current_bank), a
+        ld (_rROMB0), a         ; switch bank with script
+        ld a, (hl-)
+        ld l, (hl)
+        ld h, a                 ; hl contains THIS->PC
+
+        rst 0x20                ; call hl, new PC returned on stack
+
+        pop de                  ; de contains the new PC
+
+        pop hl                  ; hl contains THIS
+
+        ld (hl), e
+        inc hl
+        ld (hl), d              ; save new PC to THIS->PC
         ret
 __endasm;
 #endif
