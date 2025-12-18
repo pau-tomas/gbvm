@@ -45,7 +45,7 @@ const SCRIPT_CMD script_cmds[] = {
     {vm_idle,                           BANK(VM_MAIN),          0}, // 0x18
     {vm_get_tlocal,                     BANK(VM_MAIN),          4}, // 0x19
     {vm_if_const,                       BANK(VM_MAIN),          8}, // 0x1A
-    {0, 0, 0},
+    {vm_asm,                            BANK(VM_MAIN),          0}, // 0x1B
     {0, 0, 0},
     {0, 0, 0},
     {0, 0, 0},

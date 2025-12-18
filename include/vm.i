@@ -354,6 +354,18 @@ OP_VM_IF_CONST  = 0x1A
         .db OP_VM_IF_CONST, #<N, #>LABEL, #<LABEL, #>B, #<B, #>IDXA, #<IDXA, #<CONDITION
 .endm
 
+OP_VM_ASM             = 0x1B
+;-- Executes the inline native code
+.macro VM_ASM
+        .db OP_VM_ASM
+.endm
+
+;-- Terminates execution of the inline native code
+.macro VM_ENDASM
+        pop hl
+        rst 0x20
+.endm
+
 ;-- Gets unsigned int8 from WRAM.
 ; @param IDXA Target variable.
 ; @param ADDR Address of the unsigned 8-bit value in WRAM.
