@@ -337,6 +337,7 @@ void adventure_update(void) BANKED {
         {
             case GROUND_STATE: {
                 state_exit_ground();
+                break;
             }
 #ifdef FEAT_ADVENTURE_RUN
             case RUN_STATE: {
